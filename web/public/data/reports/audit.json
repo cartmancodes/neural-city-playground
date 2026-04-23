@@ -22,7 +22,7 @@
             },
             {
               "name": "Code",
-              "dtype": "object",
+              "dtype": "str",
               "non_null": 4898,
               "null_pct": 0.02,
               "n_unique": 4898,
@@ -34,7 +34,7 @@
             },
             {
               "name": "Name",
-              "dtype": "object",
+              "dtype": "str",
               "non_null": 4899,
               "null_pct": 0.0,
               "n_unique": 4898,
@@ -46,7 +46,7 @@
             },
             {
               "name": "Address",
-              "dtype": "object",
+              "dtype": "str",
               "non_null": 4897,
               "null_pct": 0.04,
               "n_unique": 4520,
@@ -58,7 +58,7 @@
             },
             {
               "name": "DistrictName",
-              "dtype": "object",
+              "dtype": "str",
               "non_null": 4895,
               "null_pct": 0.08,
               "n_unique": 26,
@@ -70,7 +70,7 @@
             },
             {
               "name": "CircleName",
-              "dtype": "object",
+              "dtype": "str",
               "non_null": 4897,
               "null_pct": 0.04,
               "n_unique": 220,
@@ -82,7 +82,7 @@
             },
             {
               "name": "DepotCode",
-              "dtype": "object",
+              "dtype": "str",
               "non_null": 4899,
               "null_pct": 0.0,
               "n_unique": 31,
@@ -118,7 +118,7 @@
             },
             {
               "name": "Status",
-              "dtype": "object",
+              "dtype": "str",
               "non_null": 4899,
               "null_pct": 0.0,
               "n_unique": 1,
@@ -130,7 +130,7 @@
             },
             {
               "name": "VendorType",
-              "dtype": "object",
+              "dtype": "str",
               "non_null": 4899,
               "null_pct": 0.0,
               "n_unique": 4,
@@ -167,7 +167,7 @@
             },
             {
               "name": "vendorId",
-              "dtype": "object",
+              "dtype": "str",
               "non_null": 632025,
               "null_pct": 0.0,
               "n_unique": 6247,
@@ -179,7 +179,7 @@
             },
             {
               "name": "districtName",
-              "dtype": "object",
+              "dtype": "str",
               "non_null": 632025,
               "null_pct": 0.0,
               "n_unique": 26,
@@ -252,7 +252,7 @@
           "columns": [
             {
               "name": "Retailer Name",
-              "dtype": "object",
+              "dtype": "str",
               "non_null": 645803,
               "null_pct": 0.0,
               "n_unique": 6255,
@@ -264,7 +264,7 @@
             },
             {
               "name": "Date",
-              "dtype": "object",
+              "dtype": "str",
               "non_null": 645803,
               "null_pct": 0.0,
               "n_unique": 331,
@@ -276,7 +276,7 @@
             },
             {
               "name": "Depot Code",
-              "dtype": "object",
+              "dtype": "str",
               "non_null": 645803,
               "null_pct": 0.0,
               "n_unique": 324,
@@ -385,7 +385,7 @@
             },
             {
               "name": "Product Code",
-              "dtype": "object",
+              "dtype": "str",
               "non_null": 1457,
               "null_pct": 0.0,
               "n_unique": 1457,
@@ -397,7 +397,7 @@
             },
             {
               "name": "Brand Code",
-              "dtype": "object",
+              "dtype": "str",
               "non_null": 1457,
               "null_pct": 0.0,
               "n_unique": 475,
@@ -409,7 +409,7 @@
             },
             {
               "name": "Brand Name",
-              "dtype": "object",
+              "dtype": "str",
               "non_null": 1457,
               "null_pct": 0.0,
               "n_unique": 322,
@@ -457,7 +457,7 @@
             },
             {
               "name": "Supplier Code",
-              "dtype": "object",
+              "dtype": "str",
               "non_null": 1457,
               "null_pct": 0.0,
               "n_unique": 103,
@@ -469,7 +469,7 @@
             },
             {
               "name": "Category",
-              "dtype": "object",
+              "dtype": "str",
               "non_null": 1400,
               "null_pct": 3.91,
               "n_unique": 10,
@@ -481,7 +481,7 @@
             },
             {
               "name": "Brand Type",
-              "dtype": "object",
+              "dtype": "str",
               "non_null": 1457,
               "null_pct": 0.0,
               "n_unique": 2,
@@ -517,7 +517,7 @@
             },
             {
               "name": "Main Distillery",
-              "dtype": "object",
+              "dtype": "str",
               "non_null": 1445,
               "null_pct": 0.82,
               "n_unique": 71,
@@ -529,7 +529,7 @@
             },
             {
               "name": "Supplier Address",
-              "dtype": "object",
+              "dtype": "str",
               "non_null": 1457,
               "null_pct": 0.0,
               "n_unique": 81,
@@ -541,7 +541,7 @@
             },
             {
               "name": "Supplier Type",
-              "dtype": "object",
+              "dtype": "str",
               "non_null": 1457,
               "null_pct": 0.0,
               "n_unique": 2,
@@ -553,7 +553,7 @@
             },
             {
               "name": "Office Address",
-              "dtype": "object",
+              "dtype": "str",
               "non_null": 1457,
               "null_pct": 0.0,
               "n_unique": 100,
@@ -590,7 +590,7 @@
             },
             {
               "name": "Application No",
-              "dtype": "object",
+              "dtype": "str",
               "non_null": 575,
               "null_pct": 58.12,
               "n_unique": 575,
@@ -602,7 +602,7 @@
             },
             {
               "name": "Type",
-              "dtype": "object",
+              "dtype": "str",
               "non_null": 575,
               "null_pct": 58.12,
               "n_unique": 4,
@@ -614,7 +614,7 @@
             },
             {
               "name": "Label Type",
-              "dtype": "object",
+              "dtype": "str",
               "non_null": 575,
               "null_pct": 58.12,
               "n_unique": 9,
@@ -626,7 +626,7 @@
             },
             {
               "name": "Label Category",
-              "dtype": "object",
+              "dtype": "str",
               "non_null": 575,
               "null_pct": 58.12,
               "n_unique": 2,
@@ -638,7 +638,7 @@
             },
             {
               "name": "Approval Date",
-              "dtype": "object",
+              "dtype": "str",
               "non_null": 575,
               "null_pct": 58.12,
               "n_unique": 70,
@@ -650,7 +650,7 @@
             },
             {
               "name": "Main Distillery",
-              "dtype": "object",
+              "dtype": "str",
               "non_null": 572,
               "null_pct": 58.34,
               "n_unique": 92,
@@ -662,7 +662,7 @@
             },
             {
               "name": "Unit Name & Sub Lease",
-              "dtype": "object",
+              "dtype": "str",
               "non_null": 575,
               "null_pct": 58.12,
               "n_unique": 109,
@@ -674,7 +674,7 @@
             },
             {
               "name": "Brand Name",
-              "dtype": "object",
+              "dtype": "str",
               "non_null": 575,
               "null_pct": 58.12,
               "n_unique": 486,
@@ -698,7 +698,7 @@
             },
             {
               "name": "Pack Type",
-              "dtype": "object",
+              "dtype": "str",
               "non_null": 1373,
               "null_pct": 0.0,
               "n_unique": 6,
@@ -734,7 +734,7 @@
             },
             {
               "name": "Front Image",
-              "dtype": "object",
+              "dtype": "str",
               "non_null": 1373,
               "null_pct": 0.0,
               "n_unique": 1373,
@@ -746,7 +746,7 @@
             },
             {
               "name": "Back Image",
-              "dtype": "object",
+              "dtype": "str",
               "non_null": 1292,
               "null_pct": 5.9,
               "n_unique": 1292,
@@ -783,7 +783,7 @@
             },
             {
               "name": "Unnamed: 1",
-              "dtype": "object",
+              "dtype": "str",
               "non_null": 54,
               "null_pct": 43.75,
               "n_unique": 54,
@@ -886,7 +886,7 @@
             },
             {
               "name": "Unnamed: 1",
-              "dtype": "object",
+              "dtype": "str",
               "non_null": 9,
               "null_pct": 55.0,
               "n_unique": 9,
@@ -989,7 +989,7 @@
             },
             {
               "name": "Unnamed: 1",
-              "dtype": "object",
+              "dtype": "str",
               "non_null": 4,
               "null_pct": 63.64,
               "n_unique": 4,

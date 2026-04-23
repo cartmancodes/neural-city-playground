@@ -103,12 +103,154 @@ export type Action = {
   action: string;
   reason: string;
   expected_outcome_window: string;
+  data_source?: "sales-demand" | "proxy-brand-label";
 };
 
 export type ProductIntel = {
   tag: string;
+  principle: string;
+  proxy_disclaimer: string;
+  totals: {
+    sku_total: number;
+    brand_total: number;
+    supplier_total: number;
+    distillery_total: number;
+    label_total: number;
+    new_labels_total: number;
+    renewal_total: number;
+    recent_90d_labels: number;
+    recent_90d_new_labels: number;
+  };
   sku_total: number;
   brand_total: number;
+  supplier_total: number;
+  distillery_total: number;
+  // Forward signals
+  label_activity_timeline: Array<{
+    ym: string;
+    new_labels: number;
+    renewals: number;
+    total: number;
+    mom_delta: number;
+  }>;
+  supplier_aggression: Array<{
+    distillery: string;
+    new_labels_180d: number;
+    renewals_180d: number;
+    total_labels_180d: number;
+    pack_sizes_touched: number;
+    brands_touched: number;
+    active_months: number;
+    mean_mrp: number | null;
+    aggression_score: number;
+  }>;
+  supplier_activity_timeline: Array<{
+    distillery: string;
+    ym: string;
+    labels: number;
+  }>;
+  emerging_brands: Array<{
+    brand_name: string;
+    new_labels: number;
+    renewals: number;
+    distilleries: number;
+    pack_sizes: number;
+    first_approval: string;
+    last_approval: string;
+    total: number;
+    new_share: number;
+  }>;
+  renewal_heavy_brands: Array<{
+    brand_name: string;
+    new_labels: number;
+    renewals: number;
+    distilleries: number;
+    pack_sizes: number;
+    first_approval: string;
+    last_approval: string;
+    total: number;
+    new_share: number;
+  }>;
+  overcrowded_segments: Array<{
+    category: string;
+    price_band: string;
+    sku_count: number;
+    brand_count: number;
+    supplier_count: number;
+    mean_mrp: number | null;
+    density_score: number;
+  }>;
+  pack_proliferation: Array<{
+    brand_name: string;
+    brand_type: string | null;
+    pack_sizes: number;
+    sku_count: number;
+    pack_list: number[];
+    distilleries: number;
+  }>;
+  // Structural
+  brand_type_mix: Array<{
+    brand_type: string | null;
+    sku_count: number;
+    brand_count: number;
+  }>;
+  supplier_type_mix: Array<{
+    supplier_type: string | null;
+    sku_count: number;
+    brand_count: number;
+    supplier_count: number;
+  }>;
+  price_band_by_brand_type: Array<{
+    brand_type: string | null;
+    price_band: string;
+    sku_count: number;
+  }>;
+  brand_leaderboard: Array<{
+    brand_name: string;
+    brand_type: string | null;
+    sku_count: number;
+    supplier_count: number;
+    distillery_count: number;
+    mean_mrp: number | null;
+    min_mrp: number | null;
+    max_mrp: number | null;
+    price_bands: string;
+    pack_buckets: string;
+  }>;
+  supplier_footprint: Array<{
+    supplier_code: string;
+    supplier_type: string | null;
+    sku_count: number;
+    brand_count: number;
+    distillery_count: number;
+    mean_mrp: number | null;
+    brand_types: string;
+    top_category: string;
+  }>;
+  distillery_footprint: Array<{
+    distillery: string;
+    sku_count: number;
+    brand_count: number;
+    supplier_count: number;
+    mean_mrp: number | null;
+    brand_types: string;
+    recent_labels_90d: number;
+    recent_new_90d: number;
+  }>;
+  // Fit
+  outlet_fit_profile: Array<{
+    vendor_type: string;
+    outlets: number;
+    active_outlets: number;
+    revenue_30d: number;
+    price_band: string;
+    target_pct: number;
+    catalog_pct: number;
+    gap_pct: number;
+    direction: "under-represented" | "aligned" | "over-represented";
+  }>;
+  catalog_price_band_mix: Record<string, number>;
+  // Back-compat panels
   price_band_pack_matrix: Array<{
     price_band: string;
     pack_bucket: string;
@@ -129,11 +271,15 @@ export type ProductIntel = {
     pack_bucket: string;
     sku_count: number;
     price_spread: number;
+    supplier_count?: number;
+    cannibalization_score?: number;
   }>;
   new_launch_watchlist: Array<{
     distillery: string;
     brand_name: string;
     recent_labels: number;
+    new_labels?: number;
+    renewals?: number;
   }>;
 };
 

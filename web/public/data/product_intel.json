@@ -1,7 +1,2629 @@
 {
-  "tag": "Interim \u2014 no outlet\u00d7SKU sales feed available",
+  "tag": "Brand & Label Intelligence \u2014 sales tells us what happened, labels and brand structure tell us what is likely to happen.",
+  "principle": "Sales data tells us what happened. Label approvals and brand structure tell us what is likely to happen.",
+  "proxy_disclaimer": "Proxy intelligence: derived from brand master + label approvals (forward-looking). Upgrades automatically when outlet\u00d7SKU\u00d7date sales feed is added.",
+  "totals": {
+    "sku_total": 1457,
+    "brand_total": 475,
+    "supplier_total": 103,
+    "distillery_total": 72,
+    "label_total": 575,
+    "new_labels_total": 98,
+    "renewal_total": 477,
+    "recent_90d_labels": 23,
+    "recent_90d_new_labels": 12
+  },
   "sku_total": 1457,
   "brand_total": 475,
+  "supplier_total": 103,
+  "distillery_total": 72,
+  "label_activity_timeline": [
+    {
+      "ym": "2025-01",
+      "new_labels": 1,
+      "renewals": 7,
+      "total": 8,
+      "mom_delta": 0
+    },
+    {
+      "ym": "2025-02",
+      "new_labels": 0,
+      "renewals": 1,
+      "total": 1,
+      "mom_delta": -7
+    },
+    {
+      "ym": "2025-03",
+      "new_labels": 3,
+      "renewals": 5,
+      "total": 8,
+      "mom_delta": 7
+    },
+    {
+      "ym": "2025-04",
+      "new_labels": 3,
+      "renewals": 122,
+      "total": 125,
+      "mom_delta": 117
+    },
+    {
+      "ym": "2025-05",
+      "new_labels": 16,
+      "renewals": 111,
+      "total": 127,
+      "mom_delta": 2
+    },
+    {
+      "ym": "2025-06",
+      "new_labels": 21,
+      "renewals": 75,
+      "total": 96,
+      "mom_delta": -31
+    },
+    {
+      "ym": "2025-07",
+      "new_labels": 15,
+      "renewals": 39,
+      "total": 54,
+      "mom_delta": -42
+    },
+    {
+      "ym": "2025-08",
+      "new_labels": 5,
+      "renewals": 18,
+      "total": 23,
+      "mom_delta": -31
+    },
+    {
+      "ym": "2025-09",
+      "new_labels": 4,
+      "renewals": 15,
+      "total": 19,
+      "mom_delta": -4
+    },
+    {
+      "ym": "2025-10",
+      "new_labels": 2,
+      "renewals": 35,
+      "total": 37,
+      "mom_delta": 18
+    },
+    {
+      "ym": "2025-11",
+      "new_labels": 8,
+      "renewals": 20,
+      "total": 28,
+      "mom_delta": -9
+    },
+    {
+      "ym": "2025-12",
+      "new_labels": 8,
+      "renewals": 18,
+      "total": 26,
+      "mom_delta": -2
+    },
+    {
+      "ym": "2026-02",
+      "new_labels": 7,
+      "renewals": 6,
+      "total": 13,
+      "mom_delta": -13
+    },
+    {
+      "ym": "2026-03",
+      "new_labels": 1,
+      "renewals": 0,
+      "total": 1,
+      "mom_delta": -12
+    },
+    {
+      "ym": "2026-05",
+      "new_labels": 1,
+      "renewals": 0,
+      "total": 1,
+      "mom_delta": 0
+    },
+    {
+      "ym": "2026-06",
+      "new_labels": 2,
+      "renewals": 0,
+      "total": 2,
+      "mom_delta": 1
+    },
+    {
+      "ym": "2026-09",
+      "new_labels": 0,
+      "renewals": 1,
+      "total": 1,
+      "mom_delta": -1
+    },
+    {
+      "ym": "2026-11",
+      "new_labels": 1,
+      "renewals": 0,
+      "total": 1,
+      "mom_delta": 0
+    },
+    {
+      "ym": "2026-12",
+      "new_labels": 0,
+      "renewals": 4,
+      "total": 4,
+      "mom_delta": 3
+    }
+  ],
+  "supplier_aggression": [
+    {
+      "distillery": "2839-M/s Tonia Liquor Industries",
+      "new_labels_180d": 5,
+      "renewals_180d": 0,
+      "total_labels_180d": 5,
+      "pack_sizes_touched": 1,
+      "brands_touched": 5,
+      "active_months": 1,
+      "mean_mrp": 1792.0,
+      "aggression_score": 0.644
+    },
+    {
+      "distillery": "1762-M/S .SENTINI BIOPRODUCTS PVT LIMITED",
+      "new_labels_180d": 1,
+      "renewals_180d": 5,
+      "total_labels_180d": 6,
+      "pack_sizes_touched": 3,
+      "brands_touched": 4,
+      "active_months": 2,
+      "mean_mrp": 701.6666666666666,
+      "aggression_score": 0.519
+    },
+    {
+      "distillery": "3198-M/s BEAM GLOBAL SPIRITS & WINE INDIA PVT LTD., S/L M/S GREAT GALLEON VENTURES LTD",
+      "new_labels_180d": 2,
+      "renewals_180d": 0,
+      "total_labels_180d": 2,
+      "pack_sizes_touched": 2,
+      "brands_touched": 2,
+      "active_months": 1,
+      "mean_mrp": 3380.0,
+      "aggression_score": 0.421
+    },
+    {
+      "distillery": "2014-M/s Aspri Spirits Pvt.Ltd.,",
+      "new_labels_180d": 0,
+      "renewals_180d": 9,
+      "total_labels_180d": 9,
+      "pack_sizes_touched": 2,
+      "brands_touched": 9,
+      "active_months": 1,
+      "mean_mrp": 5071.111111111111,
+      "aggression_score": 0.417
+    },
+    {
+      "distillery": "1668-M/s. Carlsberg India Pvt Ltd",
+      "new_labels_180d": 2,
+      "renewals_180d": 1,
+      "total_labels_180d": 3,
+      "pack_sizes_touched": 1,
+      "brands_touched": 3,
+      "active_months": 2,
+      "mean_mrp": 240.0,
+      "aggression_score": 0.41
+    },
+    {
+      "distillery": "1709-M/s S.P.Y Agro Industries Ltd",
+      "new_labels_180d": 1,
+      "renewals_180d": 1,
+      "total_labels_180d": 2,
+      "pack_sizes_touched": 2,
+      "brands_touched": 2,
+      "active_months": 2,
+      "mean_mrp": 500.0,
+      "aggression_score": 0.391
+    },
+    {
+      "distillery": "1754-M/s SNJ SUGARS AND PRODUCTS LIMITED",
+      "new_labels_180d": 1,
+      "renewals_180d": 2,
+      "total_labels_180d": 3,
+      "pack_sizes_touched": 1,
+      "brands_touched": 2,
+      "active_months": 3,
+      "mean_mrp": 200.0,
+      "aggression_score": 0.358
+    },
+    {
+      "distillery": "1784-M/S. PEARL DISTILLERY PVT LTD",
+      "new_labels_180d": 1,
+      "renewals_180d": 3,
+      "total_labels_180d": 4,
+      "pack_sizes_touched": 1,
+      "brands_touched": 4,
+      "active_months": 2,
+      "mean_mrp": 87.5,
+      "aggression_score": 0.352
+    },
+    {
+      "distillery": "7040-PICCADILY AGRO INDUSTRIES KARNAL HARYANA",
+      "new_labels_180d": 2,
+      "renewals_180d": 0,
+      "total_labels_180d": 2,
+      "pack_sizes_touched": 1,
+      "brands_touched": 2,
+      "active_months": 1,
+      "mean_mrp": null,
+      "aggression_score": 0.338
+    },
+    {
+      "distillery": "7030-M/S National Industrial Corporation Pvt Ltd",
+      "new_labels_180d": 2,
+      "renewals_180d": 0,
+      "total_labels_180d": 2,
+      "pack_sizes_touched": 1,
+      "brands_touched": 2,
+      "active_months": 1,
+      "mean_mrp": null,
+      "aggression_score": 0.338
+    },
+    {
+      "distillery": "7022-ROCK AND STORM DISTILLERIES (P) LTD",
+      "new_labels_180d": 2,
+      "renewals_180d": 0,
+      "total_labels_180d": 2,
+      "pack_sizes_touched": 1,
+      "brands_touched": 2,
+      "active_months": 1,
+      "mean_mrp": null,
+      "aggression_score": 0.338
+    },
+    {
+      "distillery": "1618-M/s Transworld Breweries And Distilleries Private Limited",
+      "new_labels_180d": 2,
+      "renewals_180d": 0,
+      "total_labels_180d": 2,
+      "pack_sizes_touched": 1,
+      "brands_touched": 2,
+      "active_months": 1,
+      "mean_mrp": 99.0,
+      "aggression_score": 0.338
+    },
+    {
+      "distillery": "1807-PMK DISTILLATIONS PVT LTD",
+      "new_labels_180d": 0,
+      "renewals_180d": 2,
+      "total_labels_180d": 2,
+      "pack_sizes_touched": 2,
+      "brands_touched": 2,
+      "active_months": 2,
+      "mean_mrp": 300.0,
+      "aggression_score": 0.311
+    },
+    {
+      "distillery": "1737-M/s Continental Wines Pvt Ltd",
+      "new_labels_180d": 0,
+      "renewals_180d": 4,
+      "total_labels_180d": 4,
+      "pack_sizes_touched": 1,
+      "brands_touched": 4,
+      "active_months": 2,
+      "mean_mrp": 645.0,
+      "aggression_score": 0.272
+    },
+    {
+      "distillery": "7002-M/s TILAKNAGAR INDUSTRIES LTD",
+      "new_labels_180d": 1,
+      "renewals_180d": 1,
+      "total_labels_180d": 2,
+      "pack_sizes_touched": 1,
+      "brands_touched": 2,
+      "active_months": 1,
+      "mean_mrp": null,
+      "aggression_score": 0.258
+    },
+    {
+      "distillery": "7063-KYNDAL INDIAL PVT LTD",
+      "new_labels_180d": 1,
+      "renewals_180d": 0,
+      "total_labels_180d": 1,
+      "pack_sizes_touched": 1,
+      "brands_touched": 1,
+      "active_months": 1,
+      "mean_mrp": null,
+      "aggression_score": 0.236
+    },
+    {
+      "distillery": "7020-M/s CORAL DISTILLERY",
+      "new_labels_180d": 1,
+      "renewals_180d": 0,
+      "total_labels_180d": 1,
+      "pack_sizes_touched": 1,
+      "brands_touched": 1,
+      "active_months": 1,
+      "mean_mrp": null,
+      "aggression_score": 0.236
+    },
+    {
+      "distillery": "3202-M/s KHASA DISTILLERY COMPANY",
+      "new_labels_180d": 1,
+      "renewals_180d": 0,
+      "total_labels_180d": 1,
+      "pack_sizes_touched": 1,
+      "brands_touched": 1,
+      "active_months": 1,
+      "mean_mrp": 2410.0,
+      "aggression_score": 0.236
+    },
+    {
+      "distillery": "7061-M/s. Third Eye Distillery Holdings Pvt. Ltd Lessee at M/s. Sun Moon INC",
+      "new_labels_180d": 1,
+      "renewals_180d": 0,
+      "total_labels_180d": 1,
+      "pack_sizes_touched": 1,
+      "brands_touched": 1,
+      "active_months": 1,
+      "mean_mrp": null,
+      "aggression_score": 0.236
+    },
+    {
+      "distillery": "1679-M/S UNITED BREWERIES LTD",
+      "new_labels_180d": 1,
+      "renewals_180d": 0,
+      "total_labels_180d": 1,
+      "pack_sizes_touched": 1,
+      "brands_touched": 1,
+      "active_months": 1,
+      "mean_mrp": null,
+      "aggression_score": 0.236
+    }
+  ],
+  "supplier_activity_timeline": [
+    {
+      "distillery": "1668-M/s. Carlsberg India Pvt Ltd",
+      "ym": "2025-04",
+      "labels": 2
+    },
+    {
+      "distillery": "1668-M/s. Carlsberg India Pvt Ltd",
+      "ym": "2026-06",
+      "labels": 2
+    },
+    {
+      "distillery": "1668-M/s. Carlsberg India Pvt Ltd",
+      "ym": "2026-12",
+      "labels": 1
+    },
+    {
+      "distillery": "1709-M/s S.P.Y Agro Industries Ltd",
+      "ym": "2025-04",
+      "labels": 9
+    },
+    {
+      "distillery": "1709-M/s S.P.Y Agro Industries Ltd",
+      "ym": "2025-05",
+      "labels": 1
+    },
+    {
+      "distillery": "1709-M/s S.P.Y Agro Industries Ltd",
+      "ym": "2025-06",
+      "labels": 1
+    },
+    {
+      "distillery": "1709-M/s S.P.Y Agro Industries Ltd",
+      "ym": "2025-07",
+      "labels": 5
+    },
+    {
+      "distillery": "1709-M/s S.P.Y Agro Industries Ltd",
+      "ym": "2025-10",
+      "labels": 1
+    },
+    {
+      "distillery": "1709-M/s S.P.Y Agro Industries Ltd",
+      "ym": "2025-11",
+      "labels": 1
+    },
+    {
+      "distillery": "1709-M/s S.P.Y Agro Industries Ltd",
+      "ym": "2026-02",
+      "labels": 1
+    },
+    {
+      "distillery": "1754-M/s SNJ SUGARS AND PRODUCTS LIMITED",
+      "ym": "2025-03",
+      "labels": 2
+    },
+    {
+      "distillery": "1754-M/s SNJ SUGARS AND PRODUCTS LIMITED",
+      "ym": "2025-04",
+      "labels": 16
+    },
+    {
+      "distillery": "1754-M/s SNJ SUGARS AND PRODUCTS LIMITED",
+      "ym": "2025-11",
+      "labels": 1
+    },
+    {
+      "distillery": "1754-M/s SNJ SUGARS AND PRODUCTS LIMITED",
+      "ym": "2025-12",
+      "labels": 1
+    },
+    {
+      "distillery": "1754-M/s SNJ SUGARS AND PRODUCTS LIMITED",
+      "ym": "2026-03",
+      "labels": 1
+    },
+    {
+      "distillery": "1762-M/S .SENTINI BIOPRODUCTS PVT LIMITED",
+      "ym": "2025-05",
+      "labels": 3
+    },
+    {
+      "distillery": "1762-M/S .SENTINI BIOPRODUCTS PVT LIMITED",
+      "ym": "2025-06",
+      "labels": 2
+    },
+    {
+      "distillery": "1762-M/S .SENTINI BIOPRODUCTS PVT LIMITED",
+      "ym": "2025-09",
+      "labels": 2
+    },
+    {
+      "distillery": "1762-M/S .SENTINI BIOPRODUCTS PVT LIMITED",
+      "ym": "2025-10",
+      "labels": 1
+    },
+    {
+      "distillery": "1762-M/S .SENTINI BIOPRODUCTS PVT LIMITED",
+      "ym": "2025-12",
+      "labels": 5
+    },
+    {
+      "distillery": "1784-M/S. PEARL DISTILLERY PVT LTD",
+      "ym": "2025-02",
+      "labels": 1
+    },
+    {
+      "distillery": "1784-M/S. PEARL DISTILLERY PVT LTD",
+      "ym": "2025-04",
+      "labels": 17
+    },
+    {
+      "distillery": "1784-M/S. PEARL DISTILLERY PVT LTD",
+      "ym": "2025-06",
+      "labels": 1
+    },
+    {
+      "distillery": "1784-M/S. PEARL DISTILLERY PVT LTD",
+      "ym": "2025-07",
+      "labels": 2
+    },
+    {
+      "distillery": "1784-M/S. PEARL DISTILLERY PVT LTD",
+      "ym": "2025-10",
+      "labels": 1
+    },
+    {
+      "distillery": "1784-M/S. PEARL DISTILLERY PVT LTD",
+      "ym": "2025-11",
+      "labels": 3
+    },
+    {
+      "distillery": "1784-M/S. PEARL DISTILLERY PVT LTD",
+      "ym": "2026-11",
+      "labels": 1
+    },
+    {
+      "distillery": "2014-M/s Aspri Spirits Pvt.Ltd.,",
+      "ym": "2025-12",
+      "labels": 9
+    },
+    {
+      "distillery": "2839-M/s Tonia Liquor Industries",
+      "ym": "2025-01",
+      "labels": 4
+    },
+    {
+      "distillery": "2839-M/s Tonia Liquor Industries",
+      "ym": "2025-03",
+      "labels": 1
+    },
+    {
+      "distillery": "2839-M/s Tonia Liquor Industries",
+      "ym": "2025-11",
+      "labels": 5
+    },
+    {
+      "distillery": "3198-M/s BEAM GLOBAL SPIRITS & WINE INDIA PVT LTD., S/L M/S GREAT GALLEON VENTURES LTD",
+      "ym": "2025-05",
+      "labels": 2
+    },
+    {
+      "distillery": "3198-M/s BEAM GLOBAL SPIRITS & WINE INDIA PVT LTD., S/L M/S GREAT GALLEON VENTURES LTD",
+      "ym": "2025-07",
+      "labels": 1
+    },
+    {
+      "distillery": "3198-M/s BEAM GLOBAL SPIRITS & WINE INDIA PVT LTD., S/L M/S GREAT GALLEON VENTURES LTD",
+      "ym": "2025-11",
+      "labels": 2
+    },
+    {
+      "distillery": "7030-M/S National Industrial Corporation Pvt Ltd",
+      "ym": "2025-09",
+      "labels": 1
+    },
+    {
+      "distillery": "7030-M/S National Industrial Corporation Pvt Ltd",
+      "ym": "2025-12",
+      "labels": 2
+    },
+    {
+      "distillery": "7040-PICCADILY AGRO INDUSTRIES KARNAL HARYANA",
+      "ym": "2025-07",
+      "labels": 2
+    },
+    {
+      "distillery": "7040-PICCADILY AGRO INDUSTRIES KARNAL HARYANA",
+      "ym": "2025-12",
+      "labels": 2
+    }
+  ],
+  "emerging_brands": [
+    {
+      "brand_name": "BLACK & GOLD RARE PREMIUM WHISKY",
+      "new_labels": 1,
+      "renewals": 0,
+      "distilleries": 1,
+      "pack_sizes": 1,
+      "first_approval": "2025-12-24T00:00:00",
+      "last_approval": "2025-12-24T00:00:00",
+      "total": 1,
+      "new_share": 1.0
+    },
+    {
+      "brand_name": "BLACK BANDIT ORIGINAL SPICED RUM",
+      "new_labels": 1,
+      "renewals": 0,
+      "distilleries": 1,
+      "pack_sizes": 1,
+      "first_approval": "2025-12-24T00:00:00",
+      "last_approval": "2025-12-24T00:00:00",
+      "total": 1,
+      "new_share": 1.0
+    },
+    {
+      "brand_name": "BLUE EYES GREEN APPLE FLAVOURED VODKA",
+      "new_labels": 1,
+      "renewals": 0,
+      "distilleries": 1,
+      "pack_sizes": 1,
+      "first_approval": "2026-02-16T00:00:00",
+      "last_approval": "2026-02-16T00:00:00",
+      "total": 1,
+      "new_share": 1.0
+    },
+    {
+      "brand_name": "BRANDY 99",
+      "new_labels": 1,
+      "renewals": 0,
+      "distilleries": 1,
+      "pack_sizes": 1,
+      "first_approval": "2025-12-06T00:00:00",
+      "last_approval": "2025-12-06T00:00:00",
+      "total": 1,
+      "new_share": 1.0
+    },
+    {
+      "brand_name": "Bacardi Ginger Ultra Platinum Original Ginger Rum",
+      "new_labels": 1,
+      "renewals": 0,
+      "distilleries": 1,
+      "pack_sizes": 1,
+      "first_approval": "2025-11-04T00:00:00",
+      "last_approval": "2025-11-04T00:00:00",
+      "total": 1,
+      "new_share": 1.0
+    },
+    {
+      "brand_name": "Black And White Blended Scotch Whisky",
+      "new_labels": 1,
+      "renewals": 0,
+      "distilleries": 1,
+      "pack_sizes": 1,
+      "first_approval": "2026-02-16T00:00:00",
+      "last_approval": "2026-02-16T00:00:00",
+      "total": 1,
+      "new_share": 1.0
+    },
+    {
+      "brand_name": "CELEBRITY BRANDY",
+      "new_labels": 1,
+      "renewals": 0,
+      "distilleries": 1,
+      "pack_sizes": 1,
+      "first_approval": "2026-02-16T00:00:00",
+      "last_approval": "2026-02-16T00:00:00",
+      "total": 1,
+      "new_share": 1.0
+    },
+    {
+      "brand_name": "CUTTY SARK BLENDED SCOTCH WHISKY",
+      "new_labels": 1,
+      "renewals": 0,
+      "distilleries": 1,
+      "pack_sizes": 1,
+      "first_approval": "2026-05-02T00:00:00",
+      "last_approval": "2026-05-02T00:00:00",
+      "total": 1,
+      "new_share": 1.0
+    },
+    {
+      "brand_name": "Carlsberg Premium Elephant Strong Pilsner Beer",
+      "new_labels": 1,
+      "renewals": 0,
+      "distilleries": 1,
+      "pack_sizes": 1,
+      "first_approval": "2026-06-03T00:00:00",
+      "last_approval": "2026-06-03T00:00:00",
+      "total": 1,
+      "new_share": 1.0
+    },
+    {
+      "brand_name": "Carlsberg Premium Smooth Mild Danish Beer",
+      "new_labels": 1,
+      "renewals": 0,
+      "distilleries": 1,
+      "pack_sizes": 1,
+      "first_approval": "2026-06-03T00:00:00",
+      "last_approval": "2026-06-03T00:00:00",
+      "total": 1,
+      "new_share": 1.0
+    },
+    {
+      "brand_name": "Indri Single Malt Indian Whisky",
+      "new_labels": 1,
+      "renewals": 0,
+      "distilleries": 1,
+      "pack_sizes": 1,
+      "first_approval": "2025-12-08T00:00:00",
+      "last_approval": "2025-12-08T00:00:00",
+      "total": 1,
+      "new_share": 1.0
+    },
+    {
+      "brand_name": "JAMES CARTER RARE PREMIUM WHISKY",
+      "new_labels": 1,
+      "renewals": 0,
+      "distilleries": 1,
+      "pack_sizes": 1,
+      "first_approval": "2025-11-06T00:00:00",
+      "last_approval": "2025-11-06T00:00:00",
+      "total": 1,
+      "new_share": 1.0
+    },
+    {
+      "brand_name": "KINGFISHER STRONG SUPER PREMIUM BEER",
+      "new_labels": 1,
+      "renewals": 0,
+      "distilleries": 1,
+      "pack_sizes": 1,
+      "first_approval": "2026-02-03T00:00:00",
+      "last_approval": "2026-02-03T00:00:00",
+      "total": 1,
+      "new_share": 1.0
+    },
+    {
+      "brand_name": "MAKABI MAZAL RUM AND SPICE",
+      "new_labels": 1,
+      "renewals": 0,
+      "distilleries": 1,
+      "pack_sizes": 1,
+      "first_approval": "2025-11-06T00:00:00",
+      "last_approval": "2025-11-06T00:00:00",
+      "total": 1,
+      "new_share": 1.0
+    },
+    {
+      "brand_name": "MB MIGHTY BARREL PREMIUM MALT WHISKY",
+      "new_labels": 1,
+      "renewals": 0,
+      "distilleries": 1,
+      "pack_sizes": 1,
+      "first_approval": "2025-10-29T00:00:00",
+      "last_approval": "2025-10-29T00:00:00",
+      "total": 1,
+      "new_share": 1.0
+    },
+    {
+      "brand_name": "MONARCH EXPERTLY CRAFTED FINE BRANDY LEGACY EDITION",
+      "new_labels": 1,
+      "renewals": 0,
+      "distilleries": 1,
+      "pack_sizes": 1,
+      "first_approval": "2025-12-24T00:00:00",
+      "last_approval": "2025-12-24T00:00:00",
+      "total": 1,
+      "new_share": 1.0
+    },
+    {
+      "brand_name": "No1 McDowell\u2019s SELECT GOLD INDIAN BRANDY",
+      "new_labels": 1,
+      "renewals": 0,
+      "distilleries": 1,
+      "pack_sizes": 1,
+      "first_approval": "2026-11-02T00:00:00",
+      "last_approval": "2026-11-02T00:00:00",
+      "total": 1,
+      "new_share": 1.0
+    },
+    {
+      "brand_name": "ORIGINAL FRENCH SHOT VSOP BRANDY",
+      "new_labels": 1,
+      "renewals": 0,
+      "distilleries": 1,
+      "pack_sizes": 1,
+      "first_approval": "2025-11-06T00:00:00",
+      "last_approval": "2025-11-06T00:00:00",
+      "total": 1,
+      "new_share": 1.0
+    },
+    {
+      "brand_name": "REVOLUTION PREMIUM XXX RUM",
+      "new_labels": 1,
+      "renewals": 0,
+      "distilleries": 1,
+      "pack_sizes": 1,
+      "first_approval": "2026-02-16T00:00:00",
+      "last_approval": "2026-02-16T00:00:00",
+      "total": 1,
+      "new_share": 1.0
+    },
+    {
+      "brand_name": "ROYAL RIGHT GRAIN WHISKY",
+      "new_labels": 1,
+      "renewals": 0,
+      "distilleries": 1,
+      "pack_sizes": 1,
+      "first_approval": "2026-03-13T00:00:00",
+      "last_approval": "2026-03-13T00:00:00",
+      "total": 1,
+      "new_share": 1.0
+    }
+  ],
+  "renewal_heavy_brands": [
+    {
+      "brand_name": "BRITISH EMPIRE PREMIUM WHISKY",
+      "new_labels": 0,
+      "renewals": 2,
+      "distilleries": 1,
+      "pack_sizes": 1,
+      "first_approval": "2025-11-27T00:00:00",
+      "last_approval": "2025-12-29T00:00:00",
+      "total": 2,
+      "new_share": 0.0
+    },
+    {
+      "brand_name": "KINGFISHER PLATINUM LAGER BEER",
+      "new_labels": 0,
+      "renewals": 2,
+      "distilleries": 2,
+      "pack_sizes": 1,
+      "first_approval": "2025-11-06T00:00:00",
+      "last_approval": "2026-02-19T00:00:00",
+      "total": 2,
+      "new_share": 0.0
+    },
+    {
+      "brand_name": "KINGFISHER SPLENDID STRONG BEER",
+      "new_labels": 0,
+      "renewals": 2,
+      "distilleries": 2,
+      "pack_sizes": 1,
+      "first_approval": "2025-11-06T00:00:00",
+      "last_approval": "2026-12-01T00:00:00",
+      "total": 2,
+      "new_share": 0.0
+    }
+  ],
+  "overcrowded_segments": [
+    {
+      "category": "Local IML",
+      "price_band": "Value",
+      "sku_count": 381,
+      "brand_count": 153,
+      "supplier_count": 38,
+      "mean_mrp": 357.2703412073491,
+      "density_score": 2.49
+    },
+    {
+      "category": "Local IML",
+      "price_band": "Economy",
+      "sku_count": 350,
+      "brand_count": 153,
+      "supplier_count": 39,
+      "mean_mrp": 121.50857142857143,
+      "density_score": 2.29
+    },
+    {
+      "category": "Local IML",
+      "price_band": "Premium",
+      "sku_count": 199,
+      "brand_count": 122,
+      "supplier_count": 30,
+      "mean_mrp": 829.6482412060302,
+      "density_score": 1.63
+    },
+    {
+      "category": "FOREIGN",
+      "price_band": "Luxury",
+      "sku_count": 103,
+      "brand_count": 100,
+      "supplier_count": 10,
+      "mean_mrp": 15506.796116504855,
+      "density_score": 1.03
+    },
+    {
+      "category": "Non Local IML",
+      "price_band": "Premium",
+      "sku_count": 71,
+      "brand_count": 42,
+      "supplier_count": 16,
+      "mean_mrp": 974.9295774647887,
+      "density_score": 1.69
+    },
+    {
+      "category": "Non Local IML",
+      "price_band": "Value",
+      "sku_count": 53,
+      "brand_count": 35,
+      "supplier_count": 14,
+      "mean_mrp": 342.8301886792453,
+      "density_score": 1.51
+    },
+    {
+      "category": "Non Local IML",
+      "price_band": "Luxury",
+      "sku_count": 32,
+      "brand_count": 25,
+      "supplier_count": 10,
+      "mean_mrp": 3268.125,
+      "density_score": 1.28
+    },
+    {
+      "category": "Non Local IML",
+      "price_band": "Economy",
+      "sku_count": 26,
+      "brand_count": 14,
+      "supplier_count": 8,
+      "mean_mrp": 143.07692307692307,
+      "density_score": 1.86
+    },
+    {
+      "category": "Export IML",
+      "price_band": "Value",
+      "sku_count": 25,
+      "brand_count": 12,
+      "supplier_count": 3,
+      "mean_mrp": 374.96,
+      "density_score": 2.08
+    },
+    {
+      "category": "UNSPECIFIED",
+      "price_band": "Economy",
+      "sku_count": 25,
+      "brand_count": 15,
+      "supplier_count": 10,
+      "mean_mrp": 129.6,
+      "density_score": 1.67
+    },
+    {
+      "category": "UNSPECIFIED",
+      "price_band": "Value",
+      "sku_count": 22,
+      "brand_count": 11,
+      "supplier_count": 9,
+      "mean_mrp": 327.27272727272725,
+      "density_score": 2.0
+    },
+    {
+      "category": "Export IML",
+      "price_band": "Premium",
+      "sku_count": 21,
+      "brand_count": 17,
+      "supplier_count": 3,
+      "mean_mrp": 962.8571428571429,
+      "density_score": 1.24
+    },
+    {
+      "category": "Non Local Beer",
+      "price_band": "Economy",
+      "sku_count": 19,
+      "brand_count": 6,
+      "supplier_count": 7,
+      "mean_mrp": 161.57894736842104,
+      "density_score": 3.17
+    },
+    {
+      "category": "Local IML",
+      "price_band": "Luxury",
+      "sku_count": 19,
+      "brand_count": 12,
+      "supplier_count": 4,
+      "mean_mrp": 2463.684210526316,
+      "density_score": 1.58
+    },
+    {
+      "category": "Non Local Beer",
+      "price_band": "Value",
+      "sku_count": 15,
+      "brand_count": 9,
+      "supplier_count": 9,
+      "mean_mrp": 248.0,
+      "density_score": 1.67
+    }
+  ],
+  "pack_proliferation": [
+    {
+      "brand_name": "SEAGRAM'S BLENDERS PRIDE ULTRA PREMIUM WHISKY",
+      "brand_type": "IML",
+      "pack_sizes": 6,
+      "sku_count": 25,
+      "pack_list": [
+        90,
+        180,
+        375,
+        750,
+        1000,
+        2000
+      ],
+      "distilleries": 3
+    },
+    {
+      "brand_name": "SEAGRAM'S ROYAL STAG RESERVE WHISKY",
+      "brand_type": "IML",
+      "pack_sizes": 6,
+      "sku_count": 25,
+      "pack_list": [
+        90,
+        180,
+        375,
+        750,
+        1000,
+        2000
+      ],
+      "distilleries": 4
+    },
+    {
+      "brand_name": "MASTER BLENDER'S SIGNATURE ULTRA PREMIER CLASSIC GRAIN WHISKY RESERVE SELECTION",
+      "brand_type": "IML",
+      "pack_sizes": 6,
+      "sku_count": 18,
+      "pack_list": [
+        90,
+        180,
+        375,
+        750,
+        1000,
+        2000
+      ],
+      "distilleries": 1
+    },
+    {
+      "brand_name": "OFFICER`S CHOICE DELUXE BRANDY",
+      "brand_type": "IML",
+      "pack_sizes": 6,
+      "sku_count": 18,
+      "pack_list": [
+        90,
+        180,
+        375,
+        500,
+        750,
+        1000
+      ],
+      "distilleries": 1
+    },
+    {
+      "brand_name": "ROYAL CHALLENGE BLENDED WHISKY",
+      "brand_type": "IML",
+      "pack_sizes": 6,
+      "sku_count": 15,
+      "pack_list": [
+        90,
+        180,
+        375,
+        750,
+        1000,
+        2000
+      ],
+      "distilleries": 1
+    },
+    {
+      "brand_name": "OLD ADMIRAL FINE VSOP BRANDY",
+      "brand_type": "IML",
+      "pack_sizes": 5,
+      "sku_count": 37,
+      "pack_list": [
+        90,
+        180,
+        375,
+        750,
+        1000
+      ],
+      "distilleries": 5
+    },
+    {
+      "brand_name": "SEAGRAM'S IMPERIAL BLUE SELECT GRAIN WHISKY",
+      "brand_type": "IML",
+      "pack_sizes": 5,
+      "sku_count": 35,
+      "pack_list": [
+        90,
+        180,
+        375,
+        750,
+        1000
+      ],
+      "distilleries": 5
+    },
+    {
+      "brand_name": "MCDOWELL'S NO.1 LUXURY SUPREME WHISKY",
+      "brand_type": "IML",
+      "pack_sizes": 5,
+      "sku_count": 19,
+      "pack_list": [
+        90,
+        180,
+        375,
+        750,
+        1000
+      ],
+      "distilleries": 3
+    },
+    {
+      "brand_name": "HONEY BEE BRANDY",
+      "brand_type": "IML",
+      "pack_sizes": 5,
+      "sku_count": 15,
+      "pack_list": [
+        90,
+        180,
+        375,
+        750,
+        1000
+      ],
+      "distilleries": 1
+    },
+    {
+      "brand_name": "OLD TAVERN DELUXE WHISKY",
+      "brand_type": "IML",
+      "pack_sizes": 5,
+      "sku_count": 14,
+      "pack_list": [
+        90,
+        180,
+        375,
+        750,
+        1000
+      ],
+      "distilleries": 1
+    },
+    {
+      "brand_name": "SIRI'S SENTINI SPECIAL DELUXE GRAIN WHISKY",
+      "brand_type": "IML",
+      "pack_sizes": 5,
+      "sku_count": 13,
+      "pack_list": [
+        90,
+        180,
+        375,
+        750,
+        1000
+      ],
+      "distilleries": 1
+    },
+    {
+      "brand_name": "OLD CLUB VSOP BRANDY",
+      "brand_type": "IML",
+      "pack_sizes": 5,
+      "sku_count": 12,
+      "pack_list": [
+        90,
+        180,
+        375,
+        750,
+        1000
+      ],
+      "distilleries": 1
+    },
+    {
+      "brand_name": "ORIGINAL CHOICE GOLD WHISKY",
+      "brand_type": "IML",
+      "pack_sizes": 5,
+      "sku_count": 12,
+      "pack_list": [
+        90,
+        180,
+        375,
+        750,
+        1000
+      ],
+      "distilleries": 3
+    },
+    {
+      "brand_name": "ROYAL STREET FINE GRAIN WHISKY",
+      "brand_type": "IML",
+      "pack_sizes": 5,
+      "sku_count": 12,
+      "pack_list": [
+        90,
+        180,
+        375,
+        750,
+        1000
+      ],
+      "distilleries": 1
+    },
+    {
+      "brand_name": "SIRI'S CLASSIC RED VSOP BRANDY",
+      "brand_type": "IML",
+      "pack_sizes": 5,
+      "sku_count": 12,
+      "pack_list": [
+        90,
+        180,
+        375,
+        750,
+        1000
+      ],
+      "distilleries": 1
+    },
+    {
+      "brand_name": "BINNIES GRAPE BRANDY",
+      "brand_type": "IML",
+      "pack_sizes": 5,
+      "sku_count": 11,
+      "pack_list": [
+        90,
+        180,
+        375,
+        750,
+        1000
+      ],
+      "distilleries": 1
+    },
+    {
+      "brand_name": "BINNIES SUPER FINE WHISKY",
+      "brand_type": "IML",
+      "pack_sizes": 5,
+      "sku_count": 11,
+      "pack_list": [
+        90,
+        180,
+        375,
+        750,
+        1000
+      ],
+      "distilleries": 1
+    },
+    {
+      "brand_name": "ARISTOCRAT PREMIUM RARE GRAIN WHISKY",
+      "brand_type": "IML",
+      "pack_sizes": 5,
+      "sku_count": 10,
+      "pack_list": [
+        90,
+        180,
+        375,
+        750,
+        1000
+      ],
+      "distilleries": 1
+    },
+    {
+      "brand_name": "GRANTON WHISKY",
+      "brand_type": "IML",
+      "pack_sizes": 5,
+      "sku_count": 8,
+      "pack_list": [
+        90,
+        180,
+        375,
+        750,
+        1000
+      ],
+      "distilleries": 2
+    },
+    {
+      "brand_name": "GRANTON XO BRANDY",
+      "brand_type": "IML",
+      "pack_sizes": 5,
+      "sku_count": 8,
+      "pack_list": [
+        90,
+        180,
+        375,
+        750,
+        1000
+      ],
+      "distilleries": 3
+    }
+  ],
+  "brand_type_mix": [
+    {
+      "brand_type": "IML",
+      "sku_count": 1381,
+      "brand_count": 449
+    },
+    {
+      "brand_type": "BEER",
+      "sku_count": 76,
+      "brand_count": 26
+    }
+  ],
+  "supplier_type_mix": [
+    {
+      "supplier_type": "Local",
+      "sku_count": 1102,
+      "brand_count": 293,
+      "supplier_count": 55
+    },
+    {
+      "supplier_type": "Non-Local",
+      "sku_count": 355,
+      "brand_count": 191,
+      "supplier_count": 48
+    }
+  ],
+  "price_band_by_brand_type": [
+    {
+      "brand_type": "BEER",
+      "price_band": "Economy",
+      "sku_count": 39
+    },
+    {
+      "brand_type": "BEER",
+      "price_band": "Luxury",
+      "sku_count": 2
+    },
+    {
+      "brand_type": "BEER",
+      "price_band": "Value",
+      "sku_count": 35
+    },
+    {
+      "brand_type": "IML",
+      "price_band": "Economy",
+      "sku_count": 411
+    },
+    {
+      "brand_type": "IML",
+      "price_band": "Luxury",
+      "sku_count": 164
+    },
+    {
+      "brand_type": "IML",
+      "price_band": "Premium",
+      "sku_count": 316
+    },
+    {
+      "brand_type": "IML",
+      "price_band": "Value",
+      "sku_count": 490
+    }
+  ],
+  "brand_leaderboard": [
+    {
+      "brand_name": "OLD ADMIRAL FINE VSOP BRANDY",
+      "brand_type": "IML",
+      "sku_count": 30,
+      "supplier_count": 5,
+      "distillery_count": 5,
+      "mean_mrp": 291.6666666666667,
+      "min_mrp": 80,
+      "max_mrp": 640,
+      "price_bands": "Economy, Premium, Value",
+      "pack_buckets": "Full (<=750ml), Half (<=375ml), Magnum (>750ml), Nip (<=90ml), Quarter (<=180ml)"
+    },
+    {
+      "brand_name": "SEAGRAM'S IMPERIAL BLUE SELECT GRAIN WHISKY",
+      "brand_type": "IML",
+      "sku_count": 27,
+      "supplier_count": 6,
+      "distillery_count": 5,
+      "mean_mrp": 421.1111111111111,
+      "min_mrp": 110,
+      "max_mrp": 950,
+      "price_bands": "Economy, Premium, Value",
+      "pack_buckets": "Full (<=750ml), Half (<=375ml), Magnum (>750ml), Nip (<=90ml), Quarter (<=180ml)"
+    },
+    {
+      "brand_name": "SEAGRAM'S ROYAL STAG RESERVE WHISKY",
+      "brand_type": "IML",
+      "sku_count": 20,
+      "supplier_count": 4,
+      "distillery_count": 4,
+      "mean_mrp": 715.5,
+      "min_mrp": 130,
+      "max_mrp": 2220,
+      "price_bands": "Economy, Luxury, Premium, Value",
+      "pack_buckets": "Full (<=750ml), Half (<=375ml), Magnum (>750ml), Nip (<=90ml), Quarter (<=180ml)"
+    },
+    {
+      "brand_name": "TI MANSION HOUSE PLATINUM FRENCH BRANDY",
+      "brand_type": "IML",
+      "sku_count": 19,
+      "supplier_count": 5,
+      "distillery_count": 5,
+      "mean_mrp": 393.6842105263158,
+      "min_mrp": 120,
+      "max_mrp": 780,
+      "price_bands": "Economy, Premium, Value",
+      "pack_buckets": "Full (<=750ml), Half (<=375ml), Nip (<=90ml), Quarter (<=180ml)"
+    },
+    {
+      "brand_name": "MCDOWELL'S NO.1 LUXURY SUPREME WHISKY",
+      "brand_type": "IML",
+      "sku_count": 17,
+      "supplier_count": 4,
+      "distillery_count": 3,
+      "mean_mrp": 439.4117647058824,
+      "min_mrp": 110,
+      "max_mrp": 950,
+      "price_bands": "Economy, Premium, Value",
+      "pack_buckets": "Full (<=750ml), Half (<=375ml), Magnum (>750ml), Nip (<=90ml), Quarter (<=180ml)"
+    },
+    {
+      "brand_name": "SEAGRAM'S BLENDERS PRIDE ULTRA PREMIUM WHISKY",
+      "brand_type": "IML",
+      "sku_count": 16,
+      "supplier_count": 3,
+      "distillery_count": 3,
+      "mean_mrp": 1244.375,
+      "min_mrp": 190,
+      "max_mrp": 3540,
+      "price_bands": "Economy, Luxury, Premium, Value",
+      "pack_buckets": "Full (<=750ml), Half (<=375ml), Magnum (>750ml), Nip (<=90ml), Quarter (<=180ml)"
+    },
+    {
+      "brand_name": "AMBER HORSE SUPERIOR WHISKY",
+      "brand_type": "IML",
+      "sku_count": 16,
+      "supplier_count": 2,
+      "distillery_count": 2,
+      "mean_mrp": 220.0,
+      "min_mrp": 70,
+      "max_mrp": 440,
+      "price_bands": "Economy, Value",
+      "pack_buckets": "Full (<=750ml), Half (<=375ml), Nip (<=90ml), Quarter (<=180ml)"
+    },
+    {
+      "brand_name": "GRAPE HOUSE SUPREME BRANDY",
+      "brand_type": "IML",
+      "sku_count": 16,
+      "supplier_count": 2,
+      "distillery_count": 2,
+      "mean_mrp": 220.0,
+      "min_mrp": 70,
+      "max_mrp": 440,
+      "price_bands": "Economy, Value",
+      "pack_buckets": "Full (<=750ml), Half (<=375ml), Nip (<=90ml), Quarter (<=180ml)"
+    },
+    {
+      "brand_name": "AMBER SPIRITS OCEAN BLUE PREMIUM WHISKY",
+      "brand_type": "IML",
+      "sku_count": 15,
+      "supplier_count": 2,
+      "distillery_count": 2,
+      "mean_mrp": 253.33333333333334,
+      "min_mrp": 80,
+      "max_mrp": 490,
+      "price_bands": "Economy, Value",
+      "pack_buckets": "Full (<=750ml), Half (<=375ml), Nip (<=90ml), Quarter (<=180ml)"
+    },
+    {
+      "brand_name": "WHYTEHALL RARE PREMIUM BRANDY",
+      "brand_type": "IML",
+      "sku_count": 14,
+      "supplier_count": 2,
+      "distillery_count": 2,
+      "mean_mrp": 324.2857142857143,
+      "min_mrp": 90,
+      "max_mrp": 600,
+      "price_bands": "Economy, Premium, Value",
+      "pack_buckets": "Full (<=750ml), Half (<=375ml), Nip (<=90ml), Quarter (<=180ml)"
+    },
+    {
+      "brand_name": "MASTER BLENDER'S SIGNATURE ULTRA PREMIER CLASSIC GRAIN WHISKY RESERVE SELECTION",
+      "brand_type": "IML",
+      "sku_count": 13,
+      "supplier_count": 2,
+      "distillery_count": 1,
+      "mean_mrp": 1442.3076923076924,
+      "min_mrp": 190,
+      "max_mrp": 3410,
+      "price_bands": "Economy, Luxury, Premium, Value",
+      "pack_buckets": "Full (<=750ml), Half (<=375ml), Magnum (>750ml), Nip (<=90ml), Quarter (<=180ml)"
+    },
+    {
+      "brand_name": "BUDWEISER MAGNUM BEER",
+      "brand_type": "BEER",
+      "sku_count": 13,
+      "supplier_count": 4,
+      "distillery_count": 4,
+      "mean_mrp": 802.3076923076923,
+      "min_mrp": 160,
+      "max_mrp": 7830,
+      "price_bands": "Economy, Luxury, Value",
+      "pack_buckets": "Full (<=750ml), Half (<=375ml), Magnum (>750ml), Pint (<=500ml)"
+    },
+    {
+      "brand_name": "BUDWEISER PREMIUM KING OF BEERS",
+      "brand_type": "BEER",
+      "sku_count": 13,
+      "supplier_count": 4,
+      "distillery_count": 4,
+      "mean_mrp": 760.7692307692307,
+      "min_mrp": 150,
+      "max_mrp": 7490,
+      "price_bands": "Economy, Luxury, Value",
+      "pack_buckets": "Full (<=750ml), Half (<=375ml), Magnum (>750ml), Pint (<=500ml)"
+    },
+    {
+      "brand_name": "ROYAL CHALLENGE BLENDED WHISKY",
+      "brand_type": "IML",
+      "sku_count": 12,
+      "supplier_count": 2,
+      "distillery_count": 1,
+      "mean_mrp": 831.6666666666666,
+      "min_mrp": 130,
+      "max_mrp": 2220,
+      "price_bands": "Economy, Luxury, Premium, Value",
+      "pack_buckets": "Full (<=750ml), Half (<=375ml), Magnum (>750ml), Nip (<=90ml), Quarter (<=180ml)"
+    },
+    {
+      "brand_name": "TI MANSION HOUSE RAREST SPIRIT FRENCH BRANDY",
+      "brand_type": "IML",
+      "sku_count": 12,
+      "supplier_count": 4,
+      "distillery_count": 4,
+      "mean_mrp": 466.6666666666667,
+      "min_mrp": 210,
+      "max_mrp": 780,
+      "price_bands": "Premium, Value",
+      "pack_buckets": "Full (<=750ml), Half (<=375ml), Quarter (<=180ml)"
+    },
+    {
+      "brand_name": "TI MANSION HOUSE RAREST SPIRIT FRENCH BRANDY",
+      "brand_type": "IML",
+      "sku_count": 12,
+      "supplier_count": 4,
+      "distillery_count": 4,
+      "mean_mrp": 466.6666666666667,
+      "min_mrp": 210,
+      "max_mrp": 780,
+      "price_bands": "Premium, Value",
+      "pack_buckets": "Full (<=750ml), Half (<=375ml), Quarter (<=180ml)"
+    },
+    {
+      "brand_name": "HYDERABAD HOUSE CLASSIC BRANDY",
+      "brand_type": "IML",
+      "sku_count": 12,
+      "supplier_count": 2,
+      "distillery_count": 2,
+      "mean_mrp": 236.66666666666666,
+      "min_mrp": 80,
+      "max_mrp": 490,
+      "price_bands": "Economy, Value",
+      "pack_buckets": "Full (<=750ml), Nip (<=90ml), Quarter (<=180ml)"
+    },
+    {
+      "brand_name": "ARISTOCRAT PREMIUM RARE GRAIN WHISKY",
+      "brand_type": "IML",
+      "sku_count": 10,
+      "supplier_count": 1,
+      "distillery_count": 1,
+      "mean_mrp": 474.0,
+      "min_mrp": 110,
+      "max_mrp": 950,
+      "price_bands": "Economy, Premium, Value",
+      "pack_buckets": "Full (<=750ml), Half (<=375ml), Magnum (>750ml), Nip (<=90ml), Quarter (<=180ml)"
+    },
+    {
+      "brand_name": "OLD TAVERN DELUXE WHISKY",
+      "brand_type": "IML",
+      "sku_count": 10,
+      "supplier_count": 1,
+      "distillery_count": 1,
+      "mean_mrp": 346.0,
+      "min_mrp": 80,
+      "max_mrp": 690,
+      "price_bands": "Economy, Premium, Value",
+      "pack_buckets": "Full (<=750ml), Half (<=375ml), Magnum (>750ml), Nip (<=90ml), Quarter (<=180ml)"
+    },
+    {
+      "brand_name": "HONEY BEE BRANDY",
+      "brand_type": "IML",
+      "sku_count": 10,
+      "supplier_count": 1,
+      "distillery_count": 1,
+      "mean_mrp": 334.0,
+      "min_mrp": 80,
+      "max_mrp": 670,
+      "price_bands": "Economy, Premium, Value",
+      "pack_buckets": "Full (<=750ml), Half (<=375ml), Magnum (>750ml), Nip (<=90ml), Quarter (<=180ml)"
+    },
+    {
+      "brand_name": "SIRI'S SENTINI SPECIAL DELUXE GRAIN WHISKY",
+      "brand_type": "IML",
+      "sku_count": 10,
+      "supplier_count": 1,
+      "distillery_count": 1,
+      "mean_mrp": 294.0,
+      "min_mrp": 70,
+      "max_mrp": 580,
+      "price_bands": "Economy, Value",
+      "pack_buckets": "Full (<=750ml), Half (<=375ml), Magnum (>750ml), Nip (<=90ml), Quarter (<=180ml)"
+    },
+    {
+      "brand_name": "OLD CLUB VSOP BRANDY",
+      "brand_type": "IML",
+      "sku_count": 10,
+      "supplier_count": 1,
+      "distillery_count": 1,
+      "mean_mrp": 290.0,
+      "min_mrp": 70,
+      "max_mrp": 570,
+      "price_bands": "Economy, Value",
+      "pack_buckets": "Full (<=750ml), Half (<=375ml), Magnum (>750ml), Nip (<=90ml), Quarter (<=180ml)"
+    },
+    {
+      "brand_name": "BINNIES GRAPE BRANDY",
+      "brand_type": "IML",
+      "sku_count": 10,
+      "supplier_count": 1,
+      "distillery_count": 1,
+      "mean_mrp": 257.8,
+      "min_mrp": 70,
+      "max_mrp": 520,
+      "price_bands": "Economy, Value",
+      "pack_buckets": "Full (<=750ml), Half (<=375ml), Magnum (>750ml), Nip (<=90ml), Quarter (<=180ml)"
+    },
+    {
+      "brand_name": "BINNIES SUPER FINE WHISKY",
+      "brand_type": "IML",
+      "sku_count": 10,
+      "supplier_count": 1,
+      "distillery_count": 1,
+      "mean_mrp": 257.8,
+      "min_mrp": 70,
+      "max_mrp": 520,
+      "price_bands": "Economy, Value",
+      "pack_buckets": "Full (<=750ml), Half (<=375ml), Magnum (>750ml), Nip (<=90ml), Quarter (<=180ml)"
+    },
+    {
+      "brand_name": "HYDERABAD BLUE RESERVE WHISKY",
+      "brand_type": "IML",
+      "sku_count": 10,
+      "supplier_count": 2,
+      "distillery_count": 2,
+      "mean_mrp": 194.0,
+      "min_mrp": 90,
+      "max_mrp": 590,
+      "price_bands": "Economy, Value",
+      "pack_buckets": "Full (<=750ml), Half (<=375ml), Nip (<=90ml), Quarter (<=180ml)"
+    },
+    {
+      "brand_name": "SEAGRAM'S 100 PIPERS EXQUISITE BLENDED SCOTCH WHISKY",
+      "brand_type": "IML",
+      "sku_count": 9,
+      "supplier_count": 3,
+      "distillery_count": 3,
+      "mean_mrp": 1490.0,
+      "min_mrp": 690,
+      "max_mrp": 2510,
+      "price_bands": "Luxury, Premium",
+      "pack_buckets": "Full (<=750ml), Half (<=375ml), Quarter (<=180ml)"
+    },
+    {
+      "brand_name": "TI MANSION HOUSE PLATINUM FRENCH BRANDY",
+      "brand_type": "IML",
+      "sku_count": 9,
+      "supplier_count": 4,
+      "distillery_count": 4,
+      "mean_mrp": 497.77777777777777,
+      "min_mrp": 120,
+      "max_mrp": 780,
+      "price_bands": "Economy, Premium, Value",
+      "pack_buckets": "Full (<=750ml), Half (<=375ml), Nip (<=90ml), Quarter (<=180ml)"
+    },
+    {
+      "brand_name": "ROYAL STREET FINE GRAIN WHISKY",
+      "brand_type": "IML",
+      "sku_count": 9,
+      "supplier_count": 1,
+      "distillery_count": 1,
+      "mean_mrp": 301.1111111111111,
+      "min_mrp": 80,
+      "max_mrp": 670,
+      "price_bands": "Economy, Premium, Value",
+      "pack_buckets": "Full (<=750ml), Half (<=375ml), Magnum (>750ml), Nip (<=90ml), Quarter (<=180ml)"
+    },
+    {
+      "brand_name": "OFFICER`S CHOICE DELUXE BRANDY",
+      "brand_type": "IML",
+      "sku_count": 9,
+      "supplier_count": 1,
+      "distillery_count": 1,
+      "mean_mrp": 297.77777777777777,
+      "min_mrp": 70,
+      "max_mrp": 610,
+      "price_bands": "Economy, Premium, Value",
+      "pack_buckets": "Full (<=750ml), Half (<=375ml), Magnum (>750ml), Nip (<=90ml), Pint (<=500ml), Quarter (<=180ml)"
+    },
+    {
+      "brand_name": "OFFICER`S CHOICE DELUXE BRANDY",
+      "brand_type": "IML",
+      "sku_count": 9,
+      "supplier_count": 1,
+      "distillery_count": 1,
+      "mean_mrp": 282.44444444444446,
+      "min_mrp": 57,
+      "max_mrp": 598,
+      "price_bands": "Economy, Value",
+      "pack_buckets": "Full (<=750ml), Half (<=375ml), Magnum (>750ml), Nip (<=90ml), Pint (<=500ml), Quarter (<=180ml)"
+    },
+    {
+      "brand_name": "KINGFISHER SPLENDID STRONG BEER",
+      "brand_type": "BEER",
+      "sku_count": 9,
+      "supplier_count": 8,
+      "distillery_count": 6,
+      "mean_mrp": 190.0,
+      "min_mrp": 110,
+      "max_mrp": 200,
+      "price_bands": "Economy, Value",
+      "pack_buckets": "Full (<=750ml), Half (<=375ml)"
+    },
+    {
+      "brand_name": "SEAGRAM'S IMPERIAL BLUE SELECT GRAIN WHISKY",
+      "brand_type": "IML",
+      "sku_count": 8,
+      "supplier_count": 2,
+      "distillery_count": 2,
+      "mean_mrp": 460.0,
+      "min_mrp": 110,
+      "max_mrp": 950,
+      "price_bands": "Economy, Premium, Value",
+      "pack_buckets": "Full (<=750ml), Half (<=375ml), Magnum (>750ml), Nip (<=90ml), Quarter (<=180ml)"
+    },
+    {
+      "brand_name": "GRANTON WHISKY",
+      "brand_type": "IML",
+      "sku_count": 8,
+      "supplier_count": 2,
+      "distillery_count": 2,
+      "mean_mrp": 458.75,
+      "min_mrp": 110,
+      "max_mrp": 880,
+      "price_bands": "Economy, Premium, Value",
+      "pack_buckets": "Full (<=750ml), Half (<=375ml), Magnum (>750ml), Nip (<=90ml), Quarter (<=180ml)"
+    },
+    {
+      "brand_name": "SIRI'S CLASSIC RED VSOP BRANDY",
+      "brand_type": "IML",
+      "sku_count": 8,
+      "supplier_count": 1,
+      "distillery_count": 1,
+      "mean_mrp": 445.0,
+      "min_mrp": 90,
+      "max_mrp": 770,
+      "price_bands": "Economy, Premium, Value",
+      "pack_buckets": "Full (<=750ml), Half (<=375ml), Magnum (>750ml), Nip (<=90ml)"
+    },
+    {
+      "brand_name": "SIRI'S SENTINI PRIDE PREMIUM BLENDED WHISKY",
+      "brand_type": "IML",
+      "sku_count": 8,
+      "supplier_count": 1,
+      "distillery_count": 1,
+      "mean_mrp": 415.0,
+      "min_mrp": 130,
+      "max_mrp": 860,
+      "price_bands": "Economy, Premium, Value",
+      "pack_buckets": "Full (<=750ml), Half (<=375ml), Nip (<=90ml), Quarter (<=180ml)"
+    },
+    {
+      "brand_name": "GRANTON XO BRANDY",
+      "brand_type": "IML",
+      "sku_count": 8,
+      "supplier_count": 3,
+      "distillery_count": 3,
+      "mean_mrp": 387.5,
+      "min_mrp": 110,
+      "max_mrp": 880,
+      "price_bands": "Economy, Premium, Value",
+      "pack_buckets": "Full (<=750ml), Half (<=375ml), Magnum (>750ml), Nip (<=90ml), Quarter (<=180ml)"
+    },
+    {
+      "brand_name": "SIRI'S FRENCH QUARTERS XO PREMIUM BRANDY",
+      "brand_type": "IML",
+      "sku_count": 8,
+      "supplier_count": 1,
+      "distillery_count": 1,
+      "mean_mrp": 380.0,
+      "min_mrp": 120,
+      "max_mrp": 780,
+      "price_bands": "Economy, Premium, Value",
+      "pack_buckets": "Full (<=750ml), Half (<=375ml), Nip (<=90ml), Quarter (<=180ml)"
+    },
+    {
+      "brand_name": "BAGPIPER GOLD RESERVE WHISKY",
+      "brand_type": "IML",
+      "sku_count": 8,
+      "supplier_count": 1,
+      "distillery_count": 1,
+      "mean_mrp": 300.0,
+      "min_mrp": 100,
+      "max_mrp": 610,
+      "price_bands": "Economy, Premium, Value",
+      "pack_buckets": "Full (<=750ml), Half (<=375ml), Nip (<=90ml), Quarter (<=180ml)"
+    },
+    {
+      "brand_name": "MELISSA PREMIUM BRANDY",
+      "brand_type": "IML",
+      "sku_count": 8,
+      "supplier_count": 1,
+      "distillery_count": 1,
+      "mean_mrp": 295.0,
+      "min_mrp": 90,
+      "max_mrp": 600,
+      "price_bands": "Economy, Premium, Value",
+      "pack_buckets": "Full (<=750ml), Half (<=375ml), Nip (<=90ml), Quarter (<=180ml)"
+    },
+    {
+      "brand_name": "SIRI'S CLASSIC BLUE FINEST WHISKY",
+      "brand_type": "IML",
+      "sku_count": 8,
+      "supplier_count": 1,
+      "distillery_count": 1,
+      "mean_mrp": 295.0,
+      "min_mrp": 90,
+      "max_mrp": 600,
+      "price_bands": "Economy, Premium, Value",
+      "pack_buckets": "Full (<=750ml), Half (<=375ml), Nip (<=90ml), Quarter (<=180ml)"
+    }
+  ],
+  "supplier_footprint": [
+    {
+      "supplier_code": "1762-M/S .SENTINI BIOPRODUCTS PVT LIMITED",
+      "supplier_type": "Local",
+      "sku_count": 78,
+      "brand_count": 17,
+      "distillery_count": 1,
+      "mean_mrp": 351.4102564102564,
+      "brand_types": "IML",
+      "top_category": "Local IML"
+    },
+    {
+      "supplier_code": "1784-M/S. PEARL DISTILLERY PVT LTD",
+      "supplier_type": "Local",
+      "sku_count": 73,
+      "brand_count": 23,
+      "distillery_count": 1,
+      "mean_mrp": 515.8904109589041,
+      "brand_types": "IML",
+      "top_category": "Local IML"
+    },
+    {
+      "supplier_code": "1807-PMK DISTILLATIONS PVT LTD",
+      "supplier_type": "Local",
+      "sku_count": 73,
+      "brand_count": 28,
+      "distillery_count": 1,
+      "mean_mrp": 581.3424657534247,
+      "brand_types": "IML",
+      "top_category": "Local IML"
+    },
+    {
+      "supplier_code": "1714-M/s ALLIED BLENDERS & Distillers Limited",
+      "supplier_type": "Local",
+      "sku_count": 73,
+      "brand_count": 29,
+      "distillery_count": 1,
+      "mean_mrp": 474.041095890411,
+      "brand_types": "IML",
+      "top_category": "Local IML"
+    },
+    {
+      "supplier_code": "1715-M/s Pernod Ricard India (P) Ltd",
+      "supplier_type": "Local",
+      "sku_count": 59,
+      "brand_count": 21,
+      "distillery_count": 1,
+      "mean_mrp": 974.9152542372881,
+      "brand_types": "IML",
+      "top_category": "Local IML"
+    },
+    {
+      "supplier_code": "1709-M/s S.P.Y Agro Industries Ltd",
+      "supplier_type": "Local",
+      "sku_count": 55,
+      "brand_count": 14,
+      "distillery_count": 1,
+      "mean_mrp": 244.94545454545454,
+      "brand_types": "IML",
+      "top_category": "Local IML"
+    },
+    {
+      "supplier_code": "1832-M/s AMBER SPIRITS PVT LIMITED",
+      "supplier_type": "Local",
+      "sku_count": 44,
+      "brand_count": 12,
+      "distillery_count": 1,
+      "mean_mrp": 243.1818181818182,
+      "brand_types": "IML",
+      "top_category": "Local IML"
+    },
+    {
+      "supplier_code": "1821-S/L M/s.Brindavan Marketing Agencies",
+      "supplier_type": "Local",
+      "sku_count": 43,
+      "brand_count": 11,
+      "distillery_count": 1,
+      "mean_mrp": 300.2093023255814,
+      "brand_types": "IML",
+      "top_category": "Local IML"
+    },
+    {
+      "supplier_code": "1769-M/S AMBER SPIRITS PRIVATE LIMITED",
+      "supplier_type": "Local",
+      "sku_count": 43,
+      "brand_count": 11,
+      "distillery_count": 1,
+      "mean_mrp": 219.30232558139534,
+      "brand_types": "IML",
+      "top_category": "Local IML"
+    },
+    {
+      "supplier_code": "1754-M/s SNJ SUGARS AND PRODUCTS LIMITED",
+      "supplier_type": "Local",
+      "sku_count": 42,
+      "brand_count": 17,
+      "distillery_count": 1,
+      "mean_mrp": 501.4047619047619,
+      "brand_types": "IML",
+      "top_category": "Local IML"
+    },
+    {
+      "supplier_code": "1740-M/s.SHARVANI ALCO BREW PVT LTD",
+      "supplier_type": "Local",
+      "sku_count": 36,
+      "brand_count": 6,
+      "distillery_count": 1,
+      "mean_mrp": 287.77777777777777,
+      "brand_types": "IML",
+      "top_category": "Local IML"
+    },
+    {
+      "supplier_code": "6023-UNITED SPIRITS LTD S/L PEARL DISTILLERY PVT LTD",
+      "supplier_type": "Local",
+      "sku_count": 34,
+      "brand_count": 8,
+      "distillery_count": 1,
+      "mean_mrp": 907.6470588235294,
+      "brand_types": "IML",
+      "top_category": "Local IML"
+    },
+    {
+      "supplier_code": "1831-M/s VAHINI DISTILLERIES",
+      "supplier_type": "Local",
+      "sku_count": 30,
+      "brand_count": 6,
+      "distillery_count": 1,
+      "mean_mrp": 387.3333333333333,
+      "brand_types": "IML",
+      "top_category": "Local IML"
+    },
+    {
+      "supplier_code": "1687-M/S. BRK SPIRITS",
+      "supplier_type": "Local",
+      "sku_count": 27,
+      "brand_count": 9,
+      "distillery_count": 1,
+      "mean_mrp": 245.92592592592592,
+      "brand_types": "IML",
+      "top_category": "Local IML"
+    },
+    {
+      "supplier_code": "1814-M/s MS BIOTECH PVT LTD S/L M/s GOWTHAMI AGRO INDUSTRIES LIMITED",
+      "supplier_type": "Local",
+      "sku_count": 27,
+      "brand_count": 7,
+      "distillery_count": 1,
+      "mean_mrp": 252.22222222222223,
+      "brand_types": "IML",
+      "top_category": "Local IML"
+    },
+    {
+      "supplier_code": "2030-M/s United Spirits Ltd., (A Diageo Group of Company)",
+      "supplier_type": "Non-Local",
+      "sku_count": 27,
+      "brand_count": 27,
+      "distillery_count": 1,
+      "mean_mrp": 9463.703703703704,
+      "brand_types": "IML",
+      "top_category": "FOREIGN"
+    },
+    {
+      "supplier_code": "1817-M/S Tilaknagar Industries Ltd",
+      "supplier_type": "Local",
+      "sku_count": 26,
+      "brand_count": 9,
+      "distillery_count": 1,
+      "mean_mrp": 463.03846153846155,
+      "brand_types": "IML",
+      "top_category": "Local IML"
+    },
+    {
+      "supplier_code": "2897-M/s FRATELLI WINES PVT LTD.,",
+      "supplier_type": "Non-Local",
+      "sku_count": 24,
+      "brand_count": 12,
+      "distillery_count": 1,
+      "mean_mrp": 1169.1666666666667,
+      "brand_types": "IML",
+      "top_category": "Non Local IML"
+    },
+    {
+      "supplier_code": "1722-M/s. Radico Khaitan Ltd",
+      "supplier_type": "Local",
+      "sku_count": 22,
+      "brand_count": 9,
+      "distillery_count": 1,
+      "mean_mrp": 390.27272727272725,
+      "brand_types": "IML",
+      "top_category": "Local IML"
+    },
+    {
+      "supplier_code": "2839-M/s Tonia Liquor Industries",
+      "supplier_type": "Non-Local",
+      "sku_count": 21,
+      "brand_count": 8,
+      "distillery_count": 1,
+      "mean_mrp": 726.1904761904761,
+      "brand_types": "IML",
+      "top_category": "Non Local IML"
+    },
+    {
+      "supplier_code": "1716-M/s RADICO KHAITAN LIMITED",
+      "supplier_type": "Local",
+      "sku_count": 21,
+      "brand_count": 9,
+      "distillery_count": 1,
+      "mean_mrp": 256.4761904761905,
+      "brand_types": "IML",
+      "top_category": "Local IML"
+    },
+    {
+      "supplier_code": "2804-M/s Bacardi India Pvt. Ltd",
+      "supplier_type": "Non-Local",
+      "sku_count": 20,
+      "brand_count": 10,
+      "distillery_count": 1,
+      "mean_mrp": 586.0,
+      "brand_types": "IML",
+      "top_category": "Non Local IML"
+    },
+    {
+      "supplier_code": "1733-M/S BDH AGRO VENTURES PVT LTD",
+      "supplier_type": "Local",
+      "sku_count": 19,
+      "brand_count": 3,
+      "distillery_count": 1,
+      "mean_mrp": 247.3684210526316,
+      "brand_types": "IML",
+      "top_category": "Local IML"
+    },
+    {
+      "supplier_code": "3003-M/S PERNOD RICARD INDIA PVT.LTD-NASIK",
+      "supplier_type": "Non-Local",
+      "sku_count": 19,
+      "brand_count": 4,
+      "distillery_count": 1,
+      "mean_mrp": 987.8947368421053,
+      "brand_types": "IML",
+      "top_category": "Non Local IML"
+    },
+    {
+      "supplier_code": "1818-S/L M/s OM SONS MARKETING (P) LTD",
+      "supplier_type": "Local",
+      "sku_count": 18,
+      "brand_count": 5,
+      "distillery_count": 1,
+      "mean_mrp": 388.3333333333333,
+      "brand_types": "IML",
+      "top_category": "Local IML"
+    },
+    {
+      "supplier_code": "3202-M/s KHASA DISTILLERY COMPANY",
+      "supplier_type": "Non-Local",
+      "sku_count": 18,
+      "brand_count": 8,
+      "distillery_count": 1,
+      "mean_mrp": 1253.3333333333333,
+      "brand_types": "IML",
+      "top_category": "Non Local IML"
+    },
+    {
+      "supplier_code": "1770-M/s. VANTAGE DISTILLERIE PRIVATE LIMITED",
+      "supplier_type": "Local",
+      "sku_count": 17,
+      "brand_count": 4,
+      "distillery_count": 1,
+      "mean_mrp": 259.4117647058824,
+      "brand_types": "IML",
+      "top_category": "Local IML"
+    },
+    {
+      "supplier_code": "1804-M/S TILAKNAGAR INDUSTRIES LTD",
+      "supplier_type": "Local",
+      "sku_count": 17,
+      "brand_count": 5,
+      "distillery_count": 1,
+      "mean_mrp": 468.2352941176471,
+      "brand_types": "IML",
+      "top_category": "Local IML"
+    },
+    {
+      "supplier_code": "1806-M/s.Tilaknagar Industries Ltd",
+      "supplier_type": "Local",
+      "sku_count": 17,
+      "brand_count": 7,
+      "distillery_count": 1,
+      "mean_mrp": 489.94117647058823,
+      "brand_types": "IML",
+      "top_category": "Local IML"
+    },
+    {
+      "supplier_code": "2890-M/s PERNOD RICARD INDIA PVT.LTD",
+      "supplier_type": "Non-Local",
+      "sku_count": 16,
+      "brand_count": 5,
+      "distillery_count": 1,
+      "mean_mrp": 805.0,
+      "brand_types": "IML",
+      "top_category": "Non Local IML"
+    }
+  ],
+  "distillery_footprint": [
+    {
+      "distillery": "1784-M/S. PEARL DISTILLERY PVT LTD",
+      "sku_count": 170,
+      "brand_count": 41,
+      "supplier_count": 5,
+      "mean_mrp": 539.8823529411765,
+      "brand_types": "IML",
+      "recent_labels_90d": 1,
+      "recent_new_90d": 1
+    },
+    {
+      "distillery": "1709-M/s S.P.Y Agro Industries Ltd",
+      "sku_count": 108,
+      "brand_count": 36,
+      "supplier_count": 5,
+      "mean_mrp": 276.5,
+      "brand_types": "IML",
+      "recent_labels_90d": 1,
+      "recent_new_90d": 1
+    },
+    {
+      "distillery": "1762-M/S .SENTINI BIOPRODUCTS PVT LIMITED",
+      "sku_count": 87,
+      "brand_count": 23,
+      "supplier_count": 4,
+      "mean_mrp": 345.4712643678161,
+      "brand_types": "IML",
+      "recent_labels_90d": 0,
+      "recent_new_90d": 0
+    },
+    {
+      "distillery": "1807-PMK DISTILLATIONS PVT LTD",
+      "sku_count": 86,
+      "brand_count": 30,
+      "supplier_count": 2,
+      "mean_mrp": 571.2558139534884,
+      "brand_types": "IML",
+      "recent_labels_90d": 1,
+      "recent_new_90d": 0
+    },
+    {
+      "distillery": "1628-M/S SOARING SPIRITS(P)LTD",
+      "sku_count": 82,
+      "brand_count": 22,
+      "supplier_count": 5,
+      "mean_mrp": 304.5121951219512,
+      "brand_types": "IML",
+      "recent_labels_90d": 0,
+      "recent_new_90d": 0
+    },
+    {
+      "distillery": "1736-SRI KRISHNA ENTERPRISES",
+      "sku_count": 73,
+      "brand_count": 29,
+      "supplier_count": 1,
+      "mean_mrp": 474.041095890411,
+      "brand_types": "IML",
+      "recent_labels_90d": 0,
+      "recent_new_90d": 0
+    },
+    {
+      "distillery": "1739- M/s B.V.S Distillery (P) Ltd",
+      "sku_count": 67,
+      "brand_count": 24,
+      "supplier_count": 2,
+      "mean_mrp": 912.3880597014926,
+      "brand_types": "IML",
+      "recent_labels_90d": 0,
+      "recent_new_90d": 0
+    },
+    {
+      "distillery": "1737-M/s Continental Wines Pvt Ltd",
+      "sku_count": 53,
+      "brand_count": 15,
+      "supplier_count": 2,
+      "mean_mrp": 276.0377358490566,
+      "brand_types": "IML",
+      "recent_labels_90d": 0,
+      "recent_new_90d": 0
+    },
+    {
+      "distillery": "1610- M/s Esveeaar Distilleries Pvt. Ltd",
+      "sku_count": 43,
+      "brand_count": 11,
+      "supplier_count": 1,
+      "mean_mrp": 300.2093023255814,
+      "brand_types": "IML",
+      "recent_labels_90d": 0,
+      "recent_new_90d": 0
+    },
+    {
+      "distillery": "1754-M/s SNJ SUGARS AND PRODUCTS LIMITED",
+      "sku_count": 42,
+      "brand_count": 17,
+      "supplier_count": 1,
+      "mean_mrp": 501.4047619047619,
+      "brand_types": "IML",
+      "recent_labels_90d": 1,
+      "recent_new_90d": 1
+    },
+    {
+      "distillery": "1618-M/s Transworld Breweries And Distilleries Private Limited",
+      "sku_count": 36,
+      "brand_count": 17,
+      "supplier_count": 2,
+      "mean_mrp": 426.0,
+      "brand_types": "IML",
+      "recent_labels_90d": 0,
+      "recent_new_90d": 0
+    },
+    {
+      "distillery": "1740-M/s.SHARVANI ALCO BREW PVT LTD",
+      "sku_count": 36,
+      "brand_count": 6,
+      "supplier_count": 1,
+      "mean_mrp": 287.77777777777777,
+      "brand_types": "IML",
+      "recent_labels_90d": 0,
+      "recent_new_90d": 0
+    },
+    {
+      "distillery": "1612-M/s GOWTHAMI AGRO INDUSTRIES PVT LTD",
+      "sku_count": 33,
+      "brand_count": 9,
+      "supplier_count": 2,
+      "mean_mrp": 291.2121212121212,
+      "brand_types": "IML",
+      "recent_labels_90d": 0,
+      "recent_new_90d": 0
+    },
+    {
+      "distillery": "1687-M/S. BRK SPIRITS",
+      "sku_count": 32,
+      "brand_count": 14,
+      "supplier_count": 2,
+      "mean_mrp": 222.375,
+      "brand_types": "IML",
+      "recent_labels_90d": 0,
+      "recent_new_90d": 0
+    },
+    {
+      "distillery": "1733-M/S BDH AGRO VENTURES PVT LTD",
+      "sku_count": 29,
+      "brand_count": 7,
+      "supplier_count": 2,
+      "mean_mrp": 236.82758620689654,
+      "brand_types": "IML",
+      "recent_labels_90d": 0,
+      "recent_new_90d": 0
+    },
+    {
+      "distillery": "2804-M/s Bacardi India Pvt. Ltd",
+      "sku_count": 29,
+      "brand_count": 11,
+      "supplier_count": 3,
+      "mean_mrp": 522.4137931034483,
+      "brand_types": "IML",
+      "recent_labels_90d": 0,
+      "recent_new_90d": 0
+    },
+    {
+      "distillery": "1779-M/s VISAKHA DISTILLERIES LLP",
+      "sku_count": 28,
+      "brand_count": 12,
+      "supplier_count": 3,
+      "mean_mrp": 404.89285714285717,
+      "brand_types": "IML",
+      "recent_labels_90d": 0,
+      "recent_new_90d": 0
+    },
+    {
+      "distillery": "2030-M/s United Spirits Ltd., (A Diageo Group of Company)",
+      "sku_count": 27,
+      "brand_count": 27,
+      "supplier_count": 1,
+      "mean_mrp": 9463.703703703704,
+      "brand_types": "IML",
+      "recent_labels_90d": 0,
+      "recent_new_90d": 0
+    },
+    {
+      "distillery": "1621-M/s PRAG DISTILLERY (P)LTD",
+      "sku_count": 26,
+      "brand_count": 9,
+      "supplier_count": 1,
+      "mean_mrp": 463.03846153846155,
+      "brand_types": "IML",
+      "recent_labels_90d": 0,
+      "recent_new_90d": 0
+    },
+    {
+      "distillery": "2897-M/s FRATELLI WINES PVT LTD.,",
+      "sku_count": 24,
+      "brand_count": 12,
+      "supplier_count": 1,
+      "mean_mrp": 1169.1666666666667,
+      "brand_types": "IML",
+      "recent_labels_90d": 0,
+      "recent_new_90d": 0
+    },
+    {
+      "distillery": "2839-M/s Tonia Liquor Industries",
+      "sku_count": 21,
+      "brand_count": 8,
+      "supplier_count": 1,
+      "mean_mrp": 726.1904761904761,
+      "brand_types": "IML",
+      "recent_labels_90d": 0,
+      "recent_new_90d": 0
+    },
+    {
+      "distillery": "3003-M/S PERNOD RICARD INDIA PVT.LTD-NASIK",
+      "sku_count": 19,
+      "brand_count": 4,
+      "supplier_count": 1,
+      "mean_mrp": 987.8947368421053,
+      "brand_types": "IML",
+      "recent_labels_90d": 0,
+      "recent_new_90d": 0
+    },
+    {
+      "distillery": "3201-M/s UNITED SPIRITS LIMITED, AMRITSAR, PUNJAB",
+      "sku_count": 18,
+      "brand_count": 8,
+      "supplier_count": 1,
+      "mean_mrp": 1253.3333333333333,
+      "brand_types": "IML",
+      "recent_labels_90d": 0,
+      "recent_new_90d": 0
+    },
+    {
+      "distillery": "1738-M/S KHODAY (KUPPAM)",
+      "sku_count": 17,
+      "brand_count": 4,
+      "supplier_count": 1,
+      "mean_mrp": 259.4117647058824,
+      "brand_types": "IML",
+      "recent_labels_90d": 1,
+      "recent_new_90d": 0
+    },
+    {
+      "distillery": "3012-M/s BAPUNA ALCOBREW PVT LTD",
+      "sku_count": 16,
+      "brand_count": 5,
+      "supplier_count": 1,
+      "mean_mrp": 805.0,
+      "brand_types": "IML",
+      "recent_labels_90d": 0,
+      "recent_new_90d": 0
+    },
+    {
+      "distillery": "2013-M/s BACARDI INDIA PVT.LTD.,",
+      "sku_count": 15,
+      "brand_count": 15,
+      "supplier_count": 1,
+      "mean_mrp": 13180.666666666666,
+      "brand_types": "IML",
+      "recent_labels_90d": 0,
+      "recent_new_90d": 0
+    },
+    {
+      "distillery": "8004-M/s.Prodigyy Beverages LLP, Maharashtra",
+      "sku_count": 15,
+      "brand_count": 15,
+      "supplier_count": 1,
+      "mean_mrp": 5442.666666666667,
+      "brand_types": "IML",
+      "recent_labels_90d": 0,
+      "recent_new_90d": 0
+    },
+    {
+      "distillery": "3026-M/S PERNOD RICARD INDIA PVT LTD",
+      "sku_count": 14,
+      "brand_count": 14,
+      "supplier_count": 1,
+      "mean_mrp": 5062.857142857143,
+      "brand_types": "IML",
+      "recent_labels_90d": 0,
+      "recent_new_90d": 0
+    },
+    {
+      "distillery": "3001-M/s Radico Khaitan Limited",
+      "sku_count": 12,
+      "brand_count": 6,
+      "supplier_count": 1,
+      "mean_mrp": 3324.1666666666665,
+      "brand_types": "IML",
+      "recent_labels_90d": 0,
+      "recent_new_90d": 0
+    },
+    {
+      "distillery": "UNSPECIFIED",
+      "sku_count": 12,
+      "brand_count": 5,
+      "supplier_count": 5,
+      "mean_mrp": 204.16666666666666,
+      "brand_types": "BEER",
+      "recent_labels_90d": 0,
+      "recent_new_90d": 0
+    }
+  ],
+  "outlet_fit_profile": [
+    {
+      "vendor_type": "A4",
+      "outlets": 1819,
+      "active_outlets": 1277,
+      "revenue_30d": 786688612.07,
+      "price_band": "Economy",
+      "target_pct": 0.4,
+      "catalog_pct": 0.309,
+      "gap_pct": -0.091,
+      "direction": "under-represented"
+    },
+    {
+      "vendor_type": "A4",
+      "outlets": 1819,
+      "active_outlets": 1277,
+      "revenue_30d": 786688612.07,
+      "price_band": "Value",
+      "target_pct": 0.35,
+      "catalog_pct": 0.36,
+      "gap_pct": 0.01,
+      "direction": "aligned"
+    },
+    {
+      "vendor_type": "A4",
+      "outlets": 1819,
+      "active_outlets": 1277,
+      "revenue_30d": 786688612.07,
+      "price_band": "Premium",
+      "target_pct": 0.2,
+      "catalog_pct": 0.217,
+      "gap_pct": 0.017,
+      "direction": "aligned"
+    },
+    {
+      "vendor_type": "A4",
+      "outlets": 1819,
+      "active_outlets": 1277,
+      "revenue_30d": 786688612.07,
+      "price_band": "Luxury",
+      "target_pct": 0.05,
+      "catalog_pct": 0.114,
+      "gap_pct": 0.064,
+      "direction": "over-represented"
+    },
+    {
+      "vendor_type": "Bars",
+      "outlets": 21,
+      "active_outlets": 4,
+      "revenue_30d": 968153.69,
+      "price_band": "Economy",
+      "target_pct": 0.2,
+      "catalog_pct": 0.309,
+      "gap_pct": 0.109,
+      "direction": "over-represented"
+    },
+    {
+      "vendor_type": "Bars",
+      "outlets": 21,
+      "active_outlets": 4,
+      "revenue_30d": 968153.69,
+      "price_band": "Value",
+      "target_pct": 0.35,
+      "catalog_pct": 0.36,
+      "gap_pct": 0.01,
+      "direction": "aligned"
+    },
+    {
+      "vendor_type": "Bars",
+      "outlets": 21,
+      "active_outlets": 4,
+      "revenue_30d": 968153.69,
+      "price_band": "Premium",
+      "target_pct": 0.35,
+      "catalog_pct": 0.217,
+      "gap_pct": -0.133,
+      "direction": "under-represented"
+    },
+    {
+      "vendor_type": "Bars",
+      "outlets": 21,
+      "active_outlets": 4,
+      "revenue_30d": 968153.69,
+      "price_band": "Luxury",
+      "target_pct": 0.1,
+      "catalog_pct": 0.114,
+      "gap_pct": 0.014,
+      "direction": "aligned"
+    },
+    {
+      "vendor_type": "Clubs",
+      "outlets": 35,
+      "active_outlets": 1,
+      "revenue_30d": 382745.4114,
+      "price_band": "Economy",
+      "target_pct": 0.05,
+      "catalog_pct": 0.309,
+      "gap_pct": 0.259,
+      "direction": "over-represented"
+    },
+    {
+      "vendor_type": "Clubs",
+      "outlets": 35,
+      "active_outlets": 1,
+      "revenue_30d": 382745.4114,
+      "price_band": "Value",
+      "target_pct": 0.25,
+      "catalog_pct": 0.36,
+      "gap_pct": 0.11,
+      "direction": "over-represented"
+    },
+    {
+      "vendor_type": "Clubs",
+      "outlets": 35,
+      "active_outlets": 1,
+      "revenue_30d": 382745.4114,
+      "price_band": "Premium",
+      "target_pct": 0.5,
+      "catalog_pct": 0.217,
+      "gap_pct": -0.283,
+      "direction": "under-represented"
+    },
+    {
+      "vendor_type": "Clubs",
+      "outlets": 35,
+      "active_outlets": 1,
+      "revenue_30d": 382745.4114,
+      "price_band": "Luxury",
+      "target_pct": 0.2,
+      "catalog_pct": 0.114,
+      "gap_pct": -0.086,
+      "direction": "under-represented"
+    },
+    {
+      "vendor_type": "Tourism",
+      "outlets": 26,
+      "active_outlets": 0,
+      "revenue_30d": 0.0,
+      "price_band": "Economy",
+      "target_pct": 0.05,
+      "catalog_pct": 0.309,
+      "gap_pct": 0.259,
+      "direction": "over-represented"
+    },
+    {
+      "vendor_type": "Tourism",
+      "outlets": 26,
+      "active_outlets": 0,
+      "revenue_30d": 0.0,
+      "price_band": "Value",
+      "target_pct": 0.2,
+      "catalog_pct": 0.36,
+      "gap_pct": 0.16,
+      "direction": "over-represented"
+    },
+    {
+      "vendor_type": "Tourism",
+      "outlets": 26,
+      "active_outlets": 0,
+      "revenue_30d": 0.0,
+      "price_band": "Premium",
+      "target_pct": 0.5,
+      "catalog_pct": 0.217,
+      "gap_pct": -0.283,
+      "direction": "under-represented"
+    },
+    {
+      "vendor_type": "Tourism",
+      "outlets": 26,
+      "active_outlets": 0,
+      "revenue_30d": 0.0,
+      "price_band": "Luxury",
+      "target_pct": 0.25,
+      "catalog_pct": 0.114,
+      "gap_pct": -0.136,
+      "direction": "under-represented"
+    },
+    {
+      "vendor_type": null,
+      "outlets": 827,
+      "active_outlets": 0,
+      "revenue_30d": 0.0,
+      "price_band": "Economy",
+      "target_pct": 0.4,
+      "catalog_pct": 0.309,
+      "gap_pct": -0.091,
+      "direction": "under-represented"
+    },
+    {
+      "vendor_type": null,
+      "outlets": 827,
+      "active_outlets": 0,
+      "revenue_30d": 0.0,
+      "price_band": "Value",
+      "target_pct": 0.35,
+      "catalog_pct": 0.36,
+      "gap_pct": 0.01,
+      "direction": "aligned"
+    },
+    {
+      "vendor_type": null,
+      "outlets": 827,
+      "active_outlets": 0,
+      "revenue_30d": 0.0,
+      "price_band": "Premium",
+      "target_pct": 0.2,
+      "catalog_pct": 0.217,
+      "gap_pct": 0.017,
+      "direction": "aligned"
+    },
+    {
+      "vendor_type": null,
+      "outlets": 827,
+      "active_outlets": 0,
+      "revenue_30d": 0.0,
+      "price_band": "Luxury",
+      "target_pct": 0.05,
+      "catalog_pct": 0.114,
+      "gap_pct": 0.064,
+      "direction": "over-represented"
+    }
+  ],
+  "catalog_price_band_mix": {
+    "Economy": 0.309,
+    "Luxury": 0.114,
+    "Premium": 0.217,
+    "Value": 0.36
+  },
   "price_band_pack_matrix": [
     {
       "price_band": "Economy",
@@ -774,333 +3396,564 @@
       "brand_name": "OLD ADMIRAL FINE VSOP BRANDY",
       "pack_bucket": "Quarter (<=180ml)",
       "sku_count": 14,
-      "price_spread": 0.0
+      "price_spread": 0.0,
+      "supplier_count": 5,
+      "cannibalization_score": 4.7
     },
     {
       "brand_name": "KINGFISHER SPLENDID STRONG BEER",
       "pack_bucket": "Full (<=750ml)",
       "sku_count": 9,
-      "price_spread": 0.0
+      "price_spread": 0.0,
+      "supplier_count": 8,
+      "cannibalization_score": 3.8
     },
     {
       "brand_name": "TI MANSION HOUSE PLATINUM FRENCH BRANDY",
       "pack_bucket": "Full (<=750ml)",
       "sku_count": 9,
-      "price_spread": 0.0
+      "price_spread": 0.0,
+      "supplier_count": 5,
+      "cannibalization_score": 3.2
+    },
+    {
+      "brand_name": "SEAGRAM'S IMPERIAL BLUE SELECT GRAIN WHISKY",
+      "pack_bucket": "Full (<=750ml)",
+      "sku_count": 8,
+      "price_spread": 0.0,
+      "supplier_count": 6,
+      "cannibalization_score": 3.1
+    },
+    {
+      "brand_name": "SEAGRAM'S IMPERIAL BLUE SELECT GRAIN WHISKY",
+      "pack_bucket": "Half (<=375ml)",
+      "sku_count": 8,
+      "price_spread": 0.0,
+      "supplier_count": 6,
+      "cannibalization_score": 3.1
+    },
+    {
+      "brand_name": "SEAGRAM'S IMPERIAL BLUE SELECT GRAIN WHISKY",
+      "pack_bucket": "Quarter (<=180ml)",
+      "sku_count": 8,
+      "price_spread": 0.0,
+      "supplier_count": 6,
+      "cannibalization_score": 3.1
+    },
+    {
+      "brand_name": "SEAGRAM'S IMPERIAL BLUE SELECT GRAIN WHISKY",
+      "pack_bucket": "Nip (<=90ml)",
+      "sku_count": 7,
+      "price_spread": 0.0,
+      "supplier_count": 6,
+      "cannibalization_score": 2.8
     },
     {
       "brand_name": "BANGALORE WHISKY",
       "pack_bucket": "Quarter (<=180ml)",
       "sku_count": 8,
-      "price_spread": 0.0
-    },
-    {
-      "brand_name": "SEAGRAM'S IMPERIAL BLUE SELECT GRAIN WHISKY",
-      "pack_bucket": "Quarter (<=180ml)",
-      "sku_count": 8,
-      "price_spread": 0.0
-    },
-    {
-      "brand_name": "TI MANSION HOUSE RAREST SPIRIT FRENCH BRANDY",
-      "pack_bucket": "Quarter (<=180ml)",
-      "sku_count": 8,
-      "price_spread": 0.0
-    },
-    {
-      "brand_name": "TI MANSION HOUSE RAREST SPIRIT FRENCH BRANDY",
-      "pack_bucket": "Half (<=375ml)",
-      "sku_count": 8,
-      "price_spread": 0.0
+      "price_spread": 0.0,
+      "supplier_count": 4,
+      "cannibalization_score": 2.7
     },
     {
       "brand_name": "TI MANSION HOUSE RAREST SPIRIT FRENCH BRANDY",
       "pack_bucket": "Full (<=750ml)",
       "sku_count": 8,
-      "price_spread": 0.0
+      "price_spread": 0.0,
+      "supplier_count": 4,
+      "cannibalization_score": 2.7
     },
     {
-      "brand_name": "SEAGRAM'S IMPERIAL BLUE SELECT GRAIN WHISKY",
+      "brand_name": "TI MANSION HOUSE RAREST SPIRIT FRENCH BRANDY",
       "pack_bucket": "Half (<=375ml)",
       "sku_count": 8,
-      "price_spread": 0.0
+      "price_spread": 0.0,
+      "supplier_count": 4,
+      "cannibalization_score": 2.7
     },
     {
-      "brand_name": "HYDERABAD BLUE RESERVE WHISKY",
+      "brand_name": "TI MANSION HOUSE RAREST SPIRIT FRENCH BRANDY",
       "pack_bucket": "Quarter (<=180ml)",
       "sku_count": 8,
-      "price_spread": 0.0
+      "price_spread": 0.0,
+      "supplier_count": 4,
+      "cannibalization_score": 2.7
     },
     {
-      "brand_name": "SEAGRAM'S IMPERIAL BLUE SELECT GRAIN WHISKY",
+      "brand_name": "OLD ADMIRAL FINE VSOP BRANDY",
       "pack_bucket": "Full (<=750ml)",
-      "sku_count": 8,
-      "price_spread": 0.0
+      "sku_count": 7,
+      "price_spread": 0.0,
+      "supplier_count": 5,
+      "cannibalization_score": 2.6
+    },
+    {
+      "brand_name": "TI MANSION HOUSE PLATINUM FRENCH BRANDY",
+      "pack_bucket": "Half (<=375ml)",
+      "sku_count": 7,
+      "price_spread": 0.0,
+      "supplier_count": 5,
+      "cannibalization_score": 2.6
+    },
+    {
+      "brand_name": "TI MANSION HOUSE PLATINUM FRENCH BRANDY",
+      "pack_bucket": "Quarter (<=180ml)",
+      "sku_count": 7,
+      "price_spread": 0.0,
+      "supplier_count": 5,
+      "cannibalization_score": 2.6
     },
     {
       "brand_name": "MASTER BLENDER'S SIGNATURE ULTRA PREMIER CLASSIC GRAIN WHISKY RESERVE SELECTION",
       "pack_bucket": "Magnum (>750ml)",
       "sku_count": 7,
-      "price_spread": 1710.0
+      "price_spread": 1710.0,
+      "supplier_count": 2,
+      "cannibalization_score": 2.48
     },
     {
-      "brand_name": "SEAGRAM'S IMPERIAL BLUE SELECT GRAIN WHISKY",
-      "pack_bucket": "Nip (<=90ml)",
-      "sku_count": 7,
-      "price_spread": 0.0
+      "brand_name": "HYDERABAD BLUE RESERVE WHISKY",
+      "pack_bucket": "Quarter (<=180ml)",
+      "sku_count": 8,
+      "price_spread": 0.0,
+      "supplier_count": 2,
+      "cannibalization_score": 2.3
     },
     {
       "brand_name": "OLD ADMIRAL FINE VSOP BRANDY",
-      "pack_bucket": "Full (<=750ml)",
-      "sku_count": 7,
-      "price_spread": 0.0
+      "pack_bucket": "Nip (<=90ml)",
+      "sku_count": 6,
+      "price_spread": 0.0,
+      "supplier_count": 5,
+      "cannibalization_score": 2.3
+    },
+    {
+      "brand_name": "SEAGRAM'S ROYAL STAG RESERVE WHISKY",
+      "pack_bucket": "Magnum (>750ml)",
+      "sku_count": 6,
+      "price_spread": 1100.0,
+      "supplier_count": 3,
+      "cannibalization_score": 2.21
+    },
+    {
+      "brand_name": "SEAGRAM'S BLENDERS PRIDE ULTRA PREMIUM WHISKY",
+      "pack_bucket": "Magnum (>750ml)",
+      "sku_count": 5,
+      "price_spread": 1770.0,
+      "supplier_count": 3,
+      "cannibalization_score": 2.1
     },
     {
       "brand_name": "AMBER HORSE SUPERIOR WHISKY",
       "pack_bucket": "Full (<=750ml)",
       "sku_count": 7,
-      "price_spread": 0.0
-    },
-    {
-      "brand_name": "TI MANSION HOUSE PLATINUM FRENCH BRANDY",
-      "pack_bucket": "Half (<=375ml)",
-      "sku_count": 7,
-      "price_spread": 0.0
-    },
-    {
-      "brand_name": "TI MANSION HOUSE PLATINUM FRENCH BRANDY",
-      "pack_bucket": "Quarter (<=180ml)",
-      "sku_count": 7,
-      "price_spread": 0.0
+      "price_spread": 0.0,
+      "supplier_count": 2,
+      "cannibalization_score": 2.0
     },
     {
       "brand_name": "HYDERABAD HOUSE CLASSIC BRANDY",
       "pack_bucket": "Quarter (<=180ml)",
       "sku_count": 7,
-      "price_spread": 0.0
+      "price_spread": 0.0,
+      "supplier_count": 2,
+      "cannibalization_score": 2.0
     },
     {
       "brand_name": "OLD ADMIRAL FINE VSOP BRANDY",
-      "pack_bucket": "Nip (<=90ml)",
-      "sku_count": 6,
-      "price_spread": 0.0
+      "pack_bucket": "Half (<=375ml)",
+      "sku_count": 5,
+      "price_spread": 0.0,
+      "supplier_count": 5,
+      "cannibalization_score": 2.0
+    },
+    {
+      "brand_name": "OLD ADMIRAL FINE VSOP BRANDY",
+      "pack_bucket": "Magnum (>750ml)",
+      "sku_count": 5,
+      "price_spread": 0.0,
+      "supplier_count": 5,
+      "cannibalization_score": 2.0
     },
     {
       "brand_name": "SEAGRAM'S 100 PIPERS EXQUISITE BLENDED SCOTCH WHISKY",
       "pack_bucket": "Full (<=750ml)",
       "sku_count": 6,
-      "price_spread": 310.0
+      "price_spread": 310.0,
+      "supplier_count": 3,
+      "cannibalization_score": 1.99
+    },
+    {
+      "brand_name": "SEAGRAM'S BLENDERS PRIDE ULTRA PREMIUM WHISKY",
+      "pack_bucket": "Full (<=750ml)",
+      "sku_count": 6,
+      "price_spread": 220.0,
+      "supplier_count": 3,
+      "cannibalization_score": 1.96
     },
     {
       "brand_name": "SEAGRAM'S 100 PIPERS EXQUISITE BLENDED SCOTCH WHISKY",
       "pack_bucket": "Half (<=375ml)",
       "sku_count": 6,
-      "price_spread": 160.0
-    },
-    {
-      "brand_name": "SEAGRAM'S 100 PIPERS EXQUISITE BLENDED SCOTCH WHISKY",
-      "pack_bucket": "Quarter (<=180ml)",
-      "sku_count": 6,
-      "price_spread": 70.0
+      "price_spread": 160.0,
+      "supplier_count": 3,
+      "cannibalization_score": 1.95
     },
     {
       "brand_name": "SEAGRAM'S BLENDERS PRIDE ULTRA PREMIUM WHISKY",
       "pack_bucket": "Half (<=375ml)",
       "sku_count": 6,
-      "price_spread": 130.0
+      "price_spread": 130.0,
+      "supplier_count": 3,
+      "cannibalization_score": 1.94
+    },
+    {
+      "brand_name": "SEAGRAM'S 100 PIPERS EXQUISITE BLENDED SCOTCH WHISKY",
+      "pack_bucket": "Quarter (<=180ml)",
+      "sku_count": 6,
+      "price_spread": 70.0,
+      "supplier_count": 3,
+      "cannibalization_score": 1.92
     },
     {
       "brand_name": "SEAGRAM'S BLENDERS PRIDE ULTRA PREMIUM WHISKY",
       "pack_bucket": "Quarter (<=180ml)",
       "sku_count": 6,
-      "price_spread": 70.0
-    },
-    {
-      "brand_name": "HYDERABAD HOUSE CLASSIC BRANDY",
-      "pack_bucket": "Nip (<=90ml)",
-      "sku_count": 6,
-      "price_spread": 0.0
-    },
-    {
-      "brand_name": "SEAGRAM'S ROYAL STAG RESERVE WHISKY",
-      "pack_bucket": "Magnum (>750ml)",
-      "sku_count": 6,
-      "price_spread": 1100.0
-    },
-    {
-      "brand_name": "WHYTEHALL RARE PREMIUM BRANDY",
-      "pack_bucket": "Quarter (<=180ml)",
-      "sku_count": 6,
-      "price_spread": 0.0
+      "price_spread": 70.0,
+      "supplier_count": 3,
+      "cannibalization_score": 1.92
     },
     {
       "brand_name": "BANGALORE BRANDY",
       "pack_bucket": "Quarter (<=180ml)",
       "sku_count": 6,
-      "price_spread": 0.0
-    },
-    {
-      "brand_name": "SIRI'S CLASSIC BLUE FINEST WHISKY",
-      "pack_bucket": "Quarter (<=180ml)",
-      "sku_count": 6,
-      "price_spread": 20.0
+      "price_spread": 0.0,
+      "supplier_count": 3,
+      "cannibalization_score": 1.9
     },
     {
       "brand_name": "TROPICANA VSOP BRANDY",
       "pack_bucket": "Quarter (<=180ml)",
       "sku_count": 6,
-      "price_spread": 0.0
-    },
-    {
-      "brand_name": "AMBER SPIRITS OCEAN BLUE PREMIUM WHISKY",
-      "pack_bucket": "Quarter (<=180ml)",
-      "sku_count": 6,
-      "price_spread": 0.0
-    },
-    {
-      "brand_name": "SEAGRAM'S BLENDERS PRIDE ULTRA PREMIUM WHISKY",
-      "pack_bucket": "Full (<=750ml)",
-      "sku_count": 6,
-      "price_spread": 220.0
-    },
-    {
-      "brand_name": "GRAPE HOUSE SUPREME BRANDY",
-      "pack_bucket": "Quarter (<=180ml)",
-      "sku_count": 5,
-      "price_spread": 0.0
-    },
-    {
-      "brand_name": "SEAGRAM'S ROYAL STAG RESERVE WHISKY",
-      "pack_bucket": "Half (<=375ml)",
-      "sku_count": 5,
-      "price_spread": 0.0
-    },
-    {
-      "brand_name": "HYDERABAD HOUSE CLASSIC BRANDY",
-      "pack_bucket": "Full (<=750ml)",
-      "sku_count": 5,
-      "price_spread": 0.0
-    },
-    {
-      "brand_name": "GRAPE HOUSE SUPREME BRANDY",
-      "pack_bucket": "Full (<=750ml)",
-      "sku_count": 5,
-      "price_spread": 0.0
-    },
-    {
-      "brand_name": "SEAGRAM'S ROYAL STAG RESERVE WHISKY",
-      "pack_bucket": "Full (<=750ml)",
-      "sku_count": 5,
-      "price_spread": 0.0
-    },
-    {
-      "brand_name": "TI MANSION HOUSE PLATINUM FRENCH BRANDY",
-      "pack_bucket": "Nip (<=90ml)",
-      "sku_count": 5,
-      "price_spread": 0.0
-    },
-    {
-      "brand_name": "HD HEARTS DESIRE ULTRA DELUXE WHISKY",
-      "pack_bucket": "Full (<=750ml)",
-      "sku_count": 5,
-      "price_spread": 0.0
-    },
-    {
-      "brand_name": "ROYAL RIGHT GRAIN WHISKY",
-      "pack_bucket": "Quarter (<=180ml)",
-      "sku_count": 5,
-      "price_spread": 0.0
-    },
-    {
-      "brand_name": "Jaisalmer Craft Indian GIN",
-      "pack_bucket": "Full (<=750ml)",
-      "sku_count": 5,
-      "price_spread": 0.0
-    },
-    {
-      "brand_name": "OLD TIMER BLUE CLASSIC WHISKY",
-      "pack_bucket": "Quarter (<=180ml)",
-      "sku_count": 5,
-      "price_spread": 0.0
-    },
-    {
-      "brand_name": "OLD ADMIRAL FINE VSOP BRANDY",
-      "pack_bucket": "Magnum (>750ml)",
-      "sku_count": 5,
-      "price_spread": 0.0
+      "price_spread": 0.0,
+      "supplier_count": 3,
+      "cannibalization_score": 1.9
     },
     {
       "brand_name": "KINGFISHER PLATINUM LAGER BEER",
       "pack_bucket": "Full (<=750ml)",
       "sku_count": 5,
-      "price_spread": 0.0
-    },
-    {
-      "brand_name": "OLD ADMIRAL FINE VSOP BRANDY",
-      "pack_bucket": "Half (<=375ml)",
-      "sku_count": 5,
-      "price_spread": 0.0
-    },
-    {
-      "brand_name": "SEAGRAM'S ROYAL STAG RESERVE WHISKY",
-      "pack_bucket": "Quarter (<=180ml)",
-      "sku_count": 5,
-      "price_spread": 0.0
-    },
-    {
-      "brand_name": "SEAGRAM'S BLENDERS PRIDE ULTRA PREMIUM WHISKY",
-      "pack_bucket": "Magnum (>750ml)",
-      "sku_count": 5,
-      "price_spread": 1770.0
+      "price_spread": 0.0,
+      "supplier_count": 4,
+      "cannibalization_score": 1.8
     },
     {
       "brand_name": "MCDOWELL'S NO.1 LUXURY SUPREME WHISKY",
       "pack_bucket": "Full (<=750ml)",
       "sku_count": 5,
-      "price_spread": 0.0
+      "price_spread": 0.0,
+      "supplier_count": 4,
+      "cannibalization_score": 1.8
+    },
+    {
+      "brand_name": "SEAGRAM'S ROYAL STAG RESERVE WHISKY",
+      "pack_bucket": "Full (<=750ml)",
+      "sku_count": 5,
+      "price_spread": 0.0,
+      "supplier_count": 4,
+      "cannibalization_score": 1.8
+    },
+    {
+      "brand_name": "SEAGRAM'S ROYAL STAG RESERVE WHISKY",
+      "pack_bucket": "Half (<=375ml)",
+      "sku_count": 5,
+      "price_spread": 0.0,
+      "supplier_count": 4,
+      "cannibalization_score": 1.8
+    },
+    {
+      "brand_name": "SEAGRAM'S ROYAL STAG RESERVE WHISKY",
+      "pack_bucket": "Quarter (<=180ml)",
+      "sku_count": 5,
+      "price_spread": 0.0,
+      "supplier_count": 4,
+      "cannibalization_score": 1.8
+    },
+    {
+      "brand_name": "TI MANSION HOUSE PLATINUM FRENCH BRANDY",
+      "pack_bucket": "Nip (<=90ml)",
+      "sku_count": 5,
+      "price_spread": 0.0,
+      "supplier_count": 4,
+      "cannibalization_score": 1.8
+    },
+    {
+      "brand_name": "AMBER SPIRITS OCEAN BLUE PREMIUM WHISKY",
+      "pack_bucket": "Quarter (<=180ml)",
+      "sku_count": 6,
+      "price_spread": 0.0,
+      "supplier_count": 2,
+      "cannibalization_score": 1.7
+    },
+    {
+      "brand_name": "HYDERABAD HOUSE CLASSIC BRANDY",
+      "pack_bucket": "Nip (<=90ml)",
+      "sku_count": 6,
+      "price_spread": 0.0,
+      "supplier_count": 2,
+      "cannibalization_score": 1.7
+    },
+    {
+      "brand_name": "WHYTEHALL RARE PREMIUM BRANDY",
+      "pack_bucket": "Quarter (<=180ml)",
+      "sku_count": 6,
+      "price_spread": 0.0,
+      "supplier_count": 2,
+      "cannibalization_score": 1.7
     },
     {
       "brand_name": "SIRI'S CLASSIC BLUE FINEST WHISKY",
-      "pack_bucket": "Full (<=750ml)",
-      "sku_count": 5,
-      "price_spread": 140.0
+      "pack_bucket": "Quarter (<=180ml)",
+      "sku_count": 6,
+      "price_spread": 20.0,
+      "supplier_count": 1,
+      "cannibalization_score": 1.51
     },
     {
-      "brand_name": "MORPHEUS BLUE XO PREMIUM BRANDY",
+      "brand_name": "BUDWEISER MAGNUM BEER",
+      "pack_bucket": "Full (<=750ml)",
+      "sku_count": 4,
+      "price_spread": 0.0,
+      "supplier_count": 4,
+      "cannibalization_score": 1.5
+    },
+    {
+      "brand_name": "BUDWEISER MAGNUM BEER",
+      "pack_bucket": "Half (<=375ml)",
+      "sku_count": 4,
+      "price_spread": 0.0,
+      "supplier_count": 4,
+      "cannibalization_score": 1.5
+    },
+    {
+      "brand_name": "BUDWEISER MAGNUM BEER",
+      "pack_bucket": "Pint (<=500ml)",
+      "sku_count": 4,
+      "price_spread": 0.0,
+      "supplier_count": 4,
+      "cannibalization_score": 1.5
+    },
+    {
+      "brand_name": "BUDWEISER PREMIUM KING OF BEERS",
+      "pack_bucket": "Full (<=750ml)",
+      "sku_count": 4,
+      "price_spread": 0.0,
+      "supplier_count": 4,
+      "cannibalization_score": 1.5
+    },
+    {
+      "brand_name": "BUDWEISER PREMIUM KING OF BEERS",
+      "pack_bucket": "Half (<=375ml)",
+      "sku_count": 4,
+      "price_spread": 0.0,
+      "supplier_count": 4,
+      "cannibalization_score": 1.5
+    },
+    {
+      "brand_name": "BUDWEISER PREMIUM KING OF BEERS",
+      "pack_bucket": "Pint (<=500ml)",
+      "sku_count": 4,
+      "price_spread": 0.0,
+      "supplier_count": 4,
+      "cannibalization_score": 1.5
+    },
+    {
+      "brand_name": "MCDOWELL'S NO.1 LUXURY SUPREME WHISKY",
+      "pack_bucket": "Half (<=375ml)",
+      "sku_count": 4,
+      "price_spread": 0.0,
+      "supplier_count": 4,
+      "cannibalization_score": 1.5
+    },
+    {
+      "brand_name": "MCDOWELL'S NO.1 LUXURY SUPREME WHISKY",
       "pack_bucket": "Quarter (<=180ml)",
       "sku_count": 4,
-      "price_spread": 0.0
+      "price_spread": 0.0,
+      "supplier_count": 4,
+      "cannibalization_score": 1.5
+    },
+    {
+      "brand_name": "ROYAL CHALLENGE BLENDED WHISKY",
+      "pack_bucket": "Magnum (>750ml)",
+      "sku_count": 4,
+      "price_spread": 1100.0,
+      "supplier_count": 2,
+      "cannibalization_score": 1.41
     }
   ],
   "new_launch_watchlist": [
     {
       "distillery": "1668-M/s. Carlsberg India Pvt Ltd",
-      "brand_name": "Tuborg Green Mild Lager Beer",
-      "recent_labels": 1
+      "brand_name": "Carlsberg Premium Elephant Strong Pilsner Beer",
+      "recent_labels": 1,
+      "new_labels": 1,
+      "renewals": 0
     },
     {
-      "distillery": "1738-M/S KHODAY (KUPPAM)",
-      "brand_name": "Royal Kings Superior Grain Whisky",
-      "recent_labels": 1
-    },
-    {
-      "distillery": "1784-M/S. PEARL DISTILLERY PVT LTD",
-      "brand_name": "No1 McDowell\u2019s SELECT GOLD INDIAN BRANDY",
-      "recent_labels": 1
-    },
-    {
-      "distillery": "7055-M/s. ANHEUSER BUSCH INBEV INDIA LIMITED",
-      "brand_name": "Budweiser Magnum Beer",
-      "recent_labels": 1
-    },
-    {
-      "distillery": "7055-M/s. ANHEUSER BUSCH INBEV INDIA LIMITED",
-      "brand_name": "Budweiser Premium King of Beers",
-      "recent_labels": 1
+      "distillery": "6032-M/s United Breweries Ltd S / L Ilios Breweries Pvt Ltd",
+      "brand_name": "KALYANI BLACK LABEL STRONG BEER",
+      "recent_labels": 1,
+      "new_labels": 0,
+      "renewals": 1
     },
     {
       "distillery": "7064-M/s UNITED BREWERIES LIMITED",
       "brand_name": "KINGFISHER SPLENDID STRONG BEER",
-      "recent_labels": 1
+      "recent_labels": 1,
+      "new_labels": 0,
+      "renewals": 1
+    },
+    {
+      "distillery": "7063-KYNDAL INDIAL PVT LTD",
+      "brand_name": "CUTTY SARK BLENDED SCOTCH WHISKY",
+      "recent_labels": 1,
+      "new_labels": 1,
+      "renewals": 0
+    },
+    {
+      "distillery": "7061-M/s. Third Eye Distillery Holdings Pvt. Ltd Lessee at M/s. Sun Moon INC",
+      "brand_name": "Stranger & Sons Gin",
+      "recent_labels": 1,
+      "new_labels": 1,
+      "renewals": 0
+    },
+    {
+      "distillery": "7055-M/s. ANHEUSER BUSCH INBEV INDIA LIMITED",
+      "brand_name": "Budweiser Premium King of Beers",
+      "recent_labels": 1,
+      "new_labels": 0,
+      "renewals": 1
+    },
+    {
+      "distillery": "7055-M/s. ANHEUSER BUSCH INBEV INDIA LIMITED",
+      "brand_name": "Budweiser Magnum Beer",
+      "recent_labels": 1,
+      "new_labels": 0,
+      "renewals": 1
+    },
+    {
+      "distillery": "7042-M/s. Woodpekcer Distilleries & Breweries (P) Ltd. for M/s. Som Distilleries & Breweries Ltd",
+      "brand_name": "WOODPECKER REFRESHING LAGER BEER",
+      "recent_labels": 1,
+      "new_labels": 0,
+      "renewals": 1
+    },
+    {
+      "distillery": "7022-ROCK AND STORM DISTILLERIES (P) LTD",
+      "brand_name": "REVOLUTION PREMIUM XXX RUM",
+      "recent_labels": 1,
+      "new_labels": 1,
+      "renewals": 0
+    },
+    {
+      "distillery": "7022-ROCK AND STORM DISTILLERIES (P) LTD",
+      "brand_name": "BLUE EYES GREEN APPLE FLAVOURED VODKA",
+      "recent_labels": 1,
+      "new_labels": 1,
+      "renewals": 0
+    },
+    {
+      "distillery": "6032-M/s United Breweries Ltd S / L Ilios Breweries Pvt Ltd",
+      "brand_name": "KINGFISHER PLATINUM LAGER BEER",
+      "recent_labels": 1,
+      "new_labels": 0,
+      "renewals": 1
+    },
+    {
+      "distillery": "3202-M/s KHASA DISTILLERY COMPANY",
+      "brand_name": "Black And White Blended Scotch Whisky",
+      "recent_labels": 1,
+      "new_labels": 1,
+      "renewals": 0
+    },
+    {
+      "distillery": "1668-M/s. Carlsberg India Pvt Ltd",
+      "brand_name": "Carlsberg Premium Smooth Mild Danish Beer",
+      "recent_labels": 1,
+      "new_labels": 1,
+      "renewals": 0
+    },
+    {
+      "distillery": "2886-M/s Blue Ocean Beverages Private Limited",
+      "brand_name": "GREATER THAN LONDON DRY GIN SMALL BATCH",
+      "recent_labels": 1,
+      "new_labels": 0,
+      "renewals": 1
+    },
+    {
+      "distillery": "2022-M/s UNITED SPIRITS LIMITED",
+      "brand_name": "Royal Challenge American Pride Luxe Gold Whisky",
+      "recent_labels": 1,
+      "new_labels": 1,
+      "renewals": 0
+    },
+    {
+      "distillery": "1807-PMK DISTILLATIONS PVT LTD",
+      "brand_name": "Bols Brandy Special XO Excellence",
+      "recent_labels": 1,
+      "new_labels": 0,
+      "renewals": 1
+    },
+    {
+      "distillery": "1784-M/S. PEARL DISTILLERY PVT LTD",
+      "brand_name": "No1 McDowell\u2019s SELECT GOLD INDIAN BRANDY",
+      "recent_labels": 1,
+      "new_labels": 1,
+      "renewals": 0
+    },
+    {
+      "distillery": "1754-M/s SNJ SUGARS AND PRODUCTS LIMITED",
+      "brand_name": "ROYAL RIGHT GRAIN WHISKY",
+      "recent_labels": 1,
+      "new_labels": 1,
+      "renewals": 0
+    },
+    {
+      "distillery": "1738-M/S KHODAY (KUPPAM)",
+      "brand_name": "Royal Kings Superior Grain Whisky",
+      "recent_labels": 1,
+      "new_labels": 0,
+      "renewals": 1
+    },
+    {
+      "distillery": "1709-M/s S.P.Y Agro Industries Ltd",
+      "brand_name": "CELEBRITY BRANDY",
+      "recent_labels": 1,
+      "new_labels": 1,
+      "renewals": 0
+    },
+    {
+      "distillery": "1679-M/S UNITED BREWERIES LTD",
+      "brand_name": "KINGFISHER STRONG SUPER PREMIUM BEER",
+      "recent_labels": 1,
+      "new_labels": 1,
+      "renewals": 0
+    },
+    {
+      "distillery": "1668-M/s. Carlsberg India Pvt Ltd",
+      "brand_name": "Tuborg Green Mild Lager Beer",
+      "recent_labels": 1,
+      "new_labels": 0,
+      "renewals": 1
+    },
+    {
+      "distillery": "7067-M/S GOAN LIQUOR PRODUCTS PVT LTD S/L KYNDAL INDIAL PVT LTD",
+      "brand_name": "BOLS BRANDY SPECIAL XO EXCELLENCE",
+      "recent_labels": 1,
+      "new_labels": 0,
+      "renewals": 1
     }
   ]
 }

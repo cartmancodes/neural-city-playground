@@ -457,63 +457,436 @@ def anomaly_flags(feats: pd.DataFrame) -> pd.DataFrame:
 
 
 # ---------------- Product / assortment intelligence ----------------
-def product_intelligence(d: dict[str, pd.DataFrame]) -> dict:
+# Brand + Label intelligence is treated as a PRIMARY layer: label approvals are a
+# forward-looking proxy for supplier expectations of demand, distinct from the
+# sales-based signal. Every output is tagged so the UI can distinguish them.
+def product_intelligence(d: dict[str, pd.DataFrame], feats: pd.DataFrame) -> dict:
     products = d["products"]
     brands = d["brands"]
-    labels = d["labels"]
+    labels = d["labels"].copy()
+    outlets = d["outlets"]
 
+    today = pd.Timestamp.now().normalize()
+    cutoff_90 = today - pd.Timedelta(days=90)
+    cutoff_180 = today - pd.Timedelta(days=180)
+
+    # Enrich labels with new/renewal flags + month bucket.
+    # NOTE: naive case-insensitive "contains('new')" matches reNEWal → use
+    # explicit substring checks that are mutually exclusive.
+    lc = labels["label_category"].fillna("").astype(str).str.lower()
+    labels["is_renewal"] = lc.str.contains("renewal", regex=False)
+    labels["is_new"] = lc.str.contains("new label", regex=False) & ~labels["is_renewal"]
+    labels["ym"] = labels["approval_date"].dt.to_period("M").astype(str)
+
+    # === structural baseline: price-band × pack-bucket density ===
     by_band_pack = (
         products.groupby(["price_band", "pack_bucket", "category"], dropna=False)
         .size()
         .reset_index(name="sku_count")
     )
 
-    brand_proliferation = brands.assign(proliferation_score=lambda x: x["sku_count"] / x["sku_count"].max())
-
-    label_churn = (
-        labels.assign(month=lambda x: x["approval_date"].dt.to_period("M").astype(str))
-        .groupby("month")
-        .size()
-        .reset_index(name="approvals")
-        .sort_values("month")
+    brand_proliferation = brands.assign(
+        proliferation_score=lambda x: x["sku_count"] / x["sku_count"].max()
     )
 
-    # Redundancy candidates: same brand + same pack_bucket with >3 SKUs
-    redundancy = (
-        products.groupby(["brand_name", "pack_bucket"], dropna=False)
-        .agg(sku_count=("product_code", "nunique"), price_spread=("mrp", lambda s: float(s.max() - s.min())))
+    # ------------------------------------------------------------------
+    # 1. LABEL APPROVAL INTELLIGENCE — forward signal
+    # ------------------------------------------------------------------
+    # Stacked monthly activity: new vs renewal
+    label_activity_timeline = (
+        labels.groupby("ym")
+        .agg(
+            new_labels=("is_new", "sum"),
+            renewals=("is_renewal", "sum"),
+            total=("application_no", "count"),
+        )
+        .reset_index()
+        .sort_values("ym")
+    )
+    # simple month-over-month delta on total
+    label_activity_timeline["mom_delta"] = (
+        label_activity_timeline["total"].diff().fillna(0).astype(int)
+    )
+
+    # Supplier aggression: weighted mix of new labels, pack-size expansion,
+    # brand breadth and active months (all over the last 180d)
+    recent_labels_180 = labels[labels["approval_date"] >= cutoff_180]
+    sup_agg_raw = (
+        recent_labels_180.groupby("distillery", dropna=False)
+        .agg(
+            new_labels_180d=("is_new", "sum"),
+            renewals_180d=("is_renewal", "sum"),
+            total_labels_180d=("application_no", "count"),
+            pack_sizes_touched=("size_ml", "nunique"),
+            brands_touched=("brand_name", "nunique"),
+            active_months=("ym", "nunique"),
+            mean_mrp=("mrp", "mean"),
+        )
         .reset_index()
     )
-    rationalization_candidates = redundancy[redundancy["sku_count"] >= 3].sort_values(
-        "sku_count", ascending=False
+
+    def _norm(s: pd.Series) -> pd.Series:
+        mx = s.max()
+        if pd.isna(mx) or mx == 0:
+            return s * 0.0
+        return s / mx
+
+    if len(sup_agg_raw):
+        sup_agg_raw["aggression_score"] = (
+            _norm(sup_agg_raw["new_labels_180d"]) * 0.40
+            + _norm(sup_agg_raw["pack_sizes_touched"]) * 0.25
+            + _norm(sup_agg_raw["brands_touched"]) * 0.20
+            + _norm(sup_agg_raw["active_months"]) * 0.15
+        ).round(3)
+    else:
+        sup_agg_raw["aggression_score"] = []
+    supplier_aggression = sup_agg_raw.sort_values(
+        "aggression_score", ascending=False
+    ).head(20)
+
+    # Emerging brands: mostly new labels (proxy for upcoming launches)
+    # vs Renewal-heavy brands: stable incumbents
+    brand_lbl = (
+        recent_labels_180.groupby("brand_name", dropna=False)
+        .agg(
+            new_labels=("is_new", "sum"),
+            renewals=("is_renewal", "sum"),
+            distilleries=("distillery", "nunique"),
+            pack_sizes=("size_ml", "nunique"),
+            first_approval=("approval_date", "min"),
+            last_approval=("approval_date", "max"),
+        )
+        .reset_index()
+    )
+    brand_lbl["total"] = brand_lbl["new_labels"] + brand_lbl["renewals"]
+    brand_lbl["new_share"] = (
+        brand_lbl["new_labels"] / brand_lbl["total"].clip(lower=1)
+    ).round(3)
+
+    emerging_brands = (
+        brand_lbl[(brand_lbl["new_share"] >= 0.5) & (brand_lbl["new_labels"] >= 1)]
+        .sort_values(["new_labels", "pack_sizes"], ascending=[False, False])
+        .head(20)
+    )
+    renewal_heavy_brands = (
+        brand_lbl[(brand_lbl["renewals"] >= 2) & (brand_lbl["new_share"] <= 0.33)]
+        .sort_values("renewals", ascending=False)
+        .head(20)
     )
 
-    new_launches = labels[labels["approval_date"] >= labels["approval_date"].max() - pd.Timedelta(days=90)]
+    # Top-supplier activity timeline (for a heatmap in the UI)
+    top_sup_list = supplier_aggression["distillery"].dropna().head(10).tolist()
+    supplier_activity_timeline = (
+        labels[labels["distillery"].isin(top_sup_list)]
+        .groupby(["distillery", "ym"])
+        .size()
+        .reset_index(name="labels")
+    )
+
+    # ------------------------------------------------------------------
+    # 2. PRICE BAND + PACK SIZE INTELLIGENCE
+    # ------------------------------------------------------------------
+    # Overcrowded: category × price_band density
+    overcrowded = (
+        products.groupby(["category", "price_band"], dropna=False)
+        .agg(
+            sku_count=("product_code", "nunique"),
+            brand_count=("brand_code", "nunique"),
+            supplier_count=("supplier_code", "nunique"),
+            mean_mrp=("mrp", "mean"),
+        )
+        .reset_index()
+    )
+    overcrowded["density_score"] = (
+        overcrowded["sku_count"] / overcrowded["brand_count"].clip(lower=1)
+    ).round(2)
+    overcrowded = overcrowded[overcrowded["sku_count"] >= 10].sort_values(
+        ["sku_count", "density_score"], ascending=[False, False]
+    ).head(15)
+
+    # Pack-size proliferation per brand: same brand appearing across many sizes
+    pack_prolif = (
+        products.groupby(["brand_name", "brand_type"], dropna=False)
+        .agg(
+            pack_sizes=("size_ml", "nunique"),
+            sku_count=("product_code", "nunique"),
+            pack_list=(
+                "size_ml",
+                lambda s: sorted({int(x) for x in s if pd.notna(x)}),
+            ),
+            distilleries=("distillery", "nunique"),
+        )
+        .reset_index()
+    )
+    pack_prolif = pack_prolif[pack_prolif["pack_sizes"] >= 3].sort_values(
+        ["pack_sizes", "sku_count"], ascending=[False, False]
+    ).head(20)
+
+    # ------------------------------------------------------------------
+    # 3. PROXY SKU RATIONALIZATION (rule-based; marked as proxy in UI)
+    # ------------------------------------------------------------------
+    redundancy = (
+        products.groupby(["brand_name", "pack_bucket"], dropna=False)
+        .agg(
+            sku_count=("product_code", "nunique"),
+            price_spread=(
+                "mrp",
+                lambda s: float(s.max() - s.min()) if s.notna().any() else 0.0,
+            ),
+            supplier_count=("supplier_code", "nunique"),
+        )
+        .reset_index()
+    )
+    redundancy = redundancy[redundancy["sku_count"] >= 3].copy()
+    if len(redundancy):
+        max_spread = max(1.0, redundancy["price_spread"].max())
+        redundancy["cannibalization_score"] = (
+            (redundancy["sku_count"] - 1) * 0.3
+            + (redundancy["supplier_count"] - 1) * 0.2
+            + (redundancy["price_spread"] / max_spread) * 0.5
+        ).round(2)
+    rationalization_candidates = redundancy.sort_values(
+        ["cannibalization_score", "sku_count"], ascending=[False, False]
+    ).head(50)
+
+    # ------------------------------------------------------------------
+    # 4. BRAND-TO-OUTLET FIT MODEL (priors by vendor_type)
+    # Priors: government outlet classes have distinct expected assortment weights.
+    # These are planning-grade priors — called out in UI as inferred, not learned.
+    # ------------------------------------------------------------------
+    PRIORS = {
+        "Bars":    {"Economy": 0.20, "Value": 0.35, "Premium": 0.35, "Luxury": 0.10},
+        "Clubs":   {"Economy": 0.05, "Value": 0.25, "Premium": 0.50, "Luxury": 0.20},
+        "Tourism": {"Economy": 0.05, "Value": 0.20, "Premium": 0.50, "Luxury": 0.25},
+        "A4":      {"Economy": 0.40, "Value": 0.35, "Premium": 0.20, "Luxury": 0.05},
+    }
+
+    # Catalog-wide price-band mix (excluding UNKNOWN)
+    catalog_counts = (
+        products[products["price_band"].isin(["Economy", "Value", "Premium", "Luxury"])]
+        .groupby("price_band")["product_code"].nunique()
+    )
+    catalog_total = max(1, int(catalog_counts.sum()))
+    catalog_mix = {k: round(v / catalog_total, 3) for k, v in catalog_counts.to_dict().items()}
+
+    # Per-vendor-type outlet rollup
+    feat_roll = (
+        feats.groupby("vendor_type", dropna=False)
+        .agg(
+            outlets=("outlet_code", "count"),
+            active=("dormant", lambda s: int((~s).sum())),
+            revenue_30d=("recent30_value", "sum"),
+            avg_daily=("avg_daily_value", "mean"),
+        )
+        .reset_index()
+    )
+
+    outlet_fit_profile: list[dict] = []
+    for _, r in feat_roll.iterrows():
+        vt = r["vendor_type"]
+        target = PRIORS.get(vt, PRIORS["A4"])
+        for band in ["Economy", "Value", "Premium", "Luxury"]:
+            target_pct = target[band]
+            catalog_pct = catalog_mix.get(band, 0.0)
+            gap = round(catalog_pct - target_pct, 3)
+            outlet_fit_profile.append({
+                "vendor_type": vt,
+                "outlets": int(r["outlets"]),
+                "active_outlets": int(r["active"]),
+                "revenue_30d": float(r["revenue_30d"]),
+                "price_band": band,
+                "target_pct": round(target_pct, 3),
+                "catalog_pct": round(catalog_pct, 3),
+                "gap_pct": gap,
+                "direction": "under-represented" if gap < -0.05 else ("over-represented" if gap > 0.05 else "aligned"),
+            })
+
+    # ------------------------------------------------------------------
+    # 5. STRUCTURAL MIXES (brand-master view)
+    # ------------------------------------------------------------------
+    brand_type_mix = (
+        products.groupby("brand_type", dropna=False)
+        .agg(sku_count=("product_code", "nunique"), brand_count=("brand_code", "nunique"))
+        .reset_index()
+        .sort_values("sku_count", ascending=False)
+    )
+    supplier_type_mix = (
+        products.groupby("supplier_type", dropna=False)
+        .agg(
+            sku_count=("product_code", "nunique"),
+            brand_count=("brand_code", "nunique"),
+            supplier_count=("supplier_code", "nunique"),
+        )
+        .reset_index()
+        .sort_values("sku_count", ascending=False)
+    )
+    price_band_by_brand_type = (
+        products.groupby(["brand_type", "price_band"], dropna=False)
+        .size()
+        .reset_index(name="sku_count")
+    )
+
+    # Brand leaderboard
+    def _join_list(s):
+        try:
+            items = list(s)
+        except TypeError:
+            return str(s)
+        return ", ".join(str(x) for x in items)
+
+    brand_leaderboard = (
+        brands.assign(
+            price_bands_str=lambda x: x["price_bands"].apply(_join_list),
+            pack_buckets_str=lambda x: x["pack_buckets"].apply(_join_list),
+        )
+        .sort_values(["sku_count", "mean_mrp"], ascending=[False, False])
+        .head(40)[
+            [
+                "brand_name",
+                "brand_type",
+                "sku_count",
+                "supplier_count",
+                "distillery_count",
+                "mean_mrp",
+                "min_mrp",
+                "max_mrp",
+                "price_bands_str",
+                "pack_buckets_str",
+            ]
+        ]
+        .rename(columns={"price_bands_str": "price_bands", "pack_buckets_str": "pack_buckets"})
+    )
+
+    # Supplier footprint
+    supplier_footprint = (
+        products.groupby(["supplier_code", "supplier_type"], dropna=False)
+        .agg(
+            sku_count=("product_code", "nunique"),
+            brand_count=("brand_code", "nunique"),
+            distillery_count=("distillery", "nunique"),
+            mean_mrp=("mrp", "mean"),
+            brand_types=(
+                "brand_type",
+                lambda s: ", ".join(sorted({str(x) for x in s if pd.notna(x)})),
+            ),
+            top_category=(
+                "category",
+                lambda s: s.mode().iloc[0] if not s.mode().empty else "—",
+            ),
+        )
+        .reset_index()
+        .sort_values("sku_count", ascending=False)
+        .head(30)
+    )
+
+    # Distillery footprint (merge recent activity)
+    dist_recent = (
+        labels[labels["approval_date"] >= cutoff_90]
+        .groupby("distillery", dropna=False)
+        .agg(
+            recent_labels_90d=("application_no", "count"),
+            recent_new_90d=("is_new", "sum"),
+        )
+        .reset_index()
+    )
+    distillery_footprint = (
+        products.groupby("distillery", dropna=False)
+        .agg(
+            sku_count=("product_code", "nunique"),
+            brand_count=("brand_code", "nunique"),
+            supplier_count=("supplier_code", "nunique"),
+            mean_mrp=("mrp", "mean"),
+            brand_types=(
+                "brand_type",
+                lambda s: ", ".join(sorted({str(x) for x in s if pd.notna(x)})),
+            ),
+        )
+        .reset_index()
+        .merge(dist_recent, on="distillery", how="left")
+        .fillna({"recent_labels_90d": 0, "recent_new_90d": 0})
+    )
+    distillery_footprint["recent_labels_90d"] = distillery_footprint["recent_labels_90d"].astype(int)
+    distillery_footprint["recent_new_90d"] = distillery_footprint["recent_new_90d"].astype(int)
+    distillery_footprint = distillery_footprint.sort_values(
+        ["sku_count", "recent_labels_90d"], ascending=[False, False]
+    ).head(30)
+
+    # Back-compat: month label churn
+    label_churn = (
+        labels.groupby("ym")
+        .size()
+        .reset_index(name="approvals")
+        .rename(columns={"ym": "month"})
+        .sort_values("month")
+    )
+    new_launches = labels[labels["approval_date"] >= cutoff_90]
     new_launch_watchlist = (
         new_launches.groupby(["distillery", "brand_name"], dropna=False)
-        .size()
-        .reset_index(name="recent_labels")
+        .agg(
+            recent_labels=("application_no", "count"),
+            new_labels=("is_new", "sum"),
+            renewals=("is_renewal", "sum"),
+        )
+        .reset_index()
         .sort_values("recent_labels", ascending=False)
         .head(40)
     )
 
     return {
-        "tag": "Interim — no outlet×SKU sales feed available",
+        "tag": "Brand & Label Intelligence — sales tells us what happened, labels and brand structure tell us what is likely to happen.",
+        "principle": "Sales data tells us what happened. Label approvals and brand structure tell us what is likely to happen.",
+        "proxy_disclaimer": "Proxy intelligence: derived from brand master + label approvals (forward-looking). Upgrades automatically when outlet×SKU×date sales feed is added.",
+        "totals": {
+            "sku_total": int(len(products)),
+            "brand_total": int(len(brands)),
+            "supplier_total": int(products["supplier_code"].nunique()),
+            "distillery_total": int(products["distillery"].nunique()),
+            "label_total": int(len(labels)),
+            "new_labels_total": int(labels["is_new"].sum()),
+            "renewal_total": int(labels["is_renewal"].sum()),
+            "recent_90d_labels": int((labels["approval_date"] >= cutoff_90).sum()),
+            "recent_90d_new_labels": int(((labels["approval_date"] >= cutoff_90) & labels["is_new"]).sum()),
+        },
+        # Back-compat top-level keys (older UI code still references these)
         "sku_total": int(len(products)),
         "brand_total": int(len(brands)),
+        "supplier_total": int(products["supplier_code"].nunique()),
+        "distillery_total": int(products["distillery"].nunique()),
+        # ---- Forward signals (label-based) ----
+        "label_activity_timeline": label_activity_timeline.to_dict("records"),
+        "supplier_aggression": supplier_aggression.to_dict("records"),
+        "supplier_activity_timeline": supplier_activity_timeline.to_dict("records"),
+        "emerging_brands": emerging_brands.to_dict("records"),
+        "renewal_heavy_brands": renewal_heavy_brands.to_dict("records"),
+        "overcrowded_segments": overcrowded.to_dict("records"),
+        "pack_proliferation": pack_prolif.to_dict("records"),
+        # ---- Structural ----
+        "brand_type_mix": brand_type_mix.to_dict("records"),
+        "supplier_type_mix": supplier_type_mix.to_dict("records"),
+        "price_band_by_brand_type": price_band_by_brand_type.to_dict("records"),
+        "brand_leaderboard": brand_leaderboard.to_dict("records"),
+        "supplier_footprint": supplier_footprint.to_dict("records"),
+        "distillery_footprint": distillery_footprint.to_dict("records"),
+        # ---- Brand-to-outlet fit (priors) ----
+        "outlet_fit_profile": outlet_fit_profile,
+        "catalog_price_band_mix": catalog_mix,
+        # ---- Existing back-compat panels ----
         "price_band_pack_matrix": by_band_pack.to_dict("records"),
         "category_distribution": products["category"].value_counts().to_dict(),
         "brand_proliferation_top": brand_proliferation.sort_values("proliferation_score", ascending=False)
         .head(30)[["brand_name", "sku_count", "proliferation_score", "supplier_count", "distillery_count"]]
         .to_dict("records"),
         "label_churn": label_churn.to_dict("records"),
-        "rationalization_candidates": rationalization_candidates.head(50).to_dict("records"),
+        "rationalization_candidates": rationalization_candidates.to_dict("records"),
         "new_launch_watchlist": new_launch_watchlist.to_dict("records"),
     }
 
 
 # ---------------- Action engine ----------------
-def build_actions(feats: pd.DataFrame) -> list[dict]:
+# Every action carries a `data_source` tag so the UI can keep sales-demand
+# actions visually distinct from brand/label-proxy actions (mandatory per the
+# "do not mix silently" rule).
+def build_actions(feats: pd.DataFrame, pi: dict | None = None) -> list[dict]:
     actions: list[dict] = []
     today = pd.Timestamp.now().normalize()
 
@@ -639,7 +1012,7 @@ def build_actions(feats: pd.DataFrame) -> list[dict]:
                 }
             )
 
-    # 6. Supplier/label churn flag
+    # 6. Supplier/label churn flag (generic summary — kept for back-compat)
     actions.append(
         {
             "entity_type": "supplier",
@@ -657,6 +1030,167 @@ def build_actions(feats: pd.DataFrame) -> list[dict]:
             "expected_outcome_window": "30 days",
         }
     )
+
+    # Stamp every sales-anchored action with its data source
+    for a in actions:
+        a.setdefault("data_source", "sales-demand")
+
+    # ========================================================================
+    # BRAND / LABEL PROXY ACTIONS (forward-looking, distinct data source)
+    # ========================================================================
+    if pi is not None:
+        proxy_actions: list[dict] = []
+
+        # A) Aggressive suppliers — monitor expansion
+        for r in pi.get("supplier_aggression", [])[:6]:
+            if (r.get("new_labels_180d") or 0) < 3:
+                continue
+            agg_score = float(r.get("aggression_score") or 0)
+            proxy_actions.append(
+                {
+                    "entity_type": "supplier",
+                    "district": None,
+                    "depot": None,
+                    "outlet": None,
+                    "outlet_code": None,
+                    "category": "Brand & label proxy",
+                    "issue": (
+                        f"Aggressive supplier expansion — {int(r['new_labels_180d'])} new labels "
+                        f"across {int(r.get('pack_sizes_touched') or 0)} pack sizes in 180 days"
+                    ),
+                    "confidence": round(min(0.9, 0.55 + agg_score * 0.35), 2),
+                    "revenue_impact_inr": None,
+                    "urgency": "Medium" if agg_score > 0.5 else "Low",
+                    "action": (
+                        f"Monitor {r.get('distillery', 'distillery')} rollout; pre-allocate shelf "
+                        f"in high-throughput outlets where brand mix fits"
+                    ),
+                    "reason": (
+                        f"Label feed: {int(r['new_labels_180d'])} new / "
+                        f"{int(r.get('renewals_180d') or 0)} renewal across "
+                        f"{int(r.get('brands_touched') or 0)} brands in "
+                        f"{int(r.get('active_months') or 0)} active months. "
+                        f"Aggression score {agg_score:.2f}."
+                    ),
+                    "expected_outcome_window": "45–90 days",
+                    "data_source": "proxy-brand-label",
+                }
+            )
+
+        # B) Overcrowded product segments — consolidation candidates
+        for r in pi.get("overcrowded_segments", [])[:5]:
+            if (r.get("sku_count") or 0) < 40:
+                continue
+            proxy_actions.append(
+                {
+                    "entity_type": "category",
+                    "district": None,
+                    "depot": None,
+                    "outlet": None,
+                    "outlet_code": None,
+                    "category": f"{r.get('category','—')} · {r.get('price_band','—')}",
+                    "issue": (
+                        f"Overcrowded segment — {int(r['sku_count'])} SKUs / "
+                        f"{int(r.get('brand_count') or 0)} brands / "
+                        f"{int(r.get('supplier_count') or 0)} suppliers"
+                    ),
+                    "confidence": 0.65,
+                    "revenue_impact_inr": None,
+                    "urgency": "Low",
+                    "action": "Review assortment discipline; encourage consolidation of lowest-velocity SKUs at next label-renewal cycle",
+                    "reason": f"Density {r.get('density_score', 0)} SKUs per brand suggests cannibalization.",
+                    "expected_outcome_window": "Next excise year",
+                    "data_source": "proxy-brand-label",
+                }
+            )
+
+        # C) Pack-size proliferation — pruning candidates for low-throughput outlets
+        for r in pi.get("pack_proliferation", [])[:6]:
+            proxy_actions.append(
+                {
+                    "entity_type": "brand",
+                    "district": None,
+                    "depot": None,
+                    "outlet": None,
+                    "outlet_code": None,
+                    "category": "Brand & label proxy",
+                    "issue": (
+                        f"Pack-size proliferation — '{r.get('brand_name','—')}' across "
+                        f"{int(r.get('pack_sizes') or 0)} sizes"
+                    ),
+                    "confidence": 0.55,
+                    "revenue_impact_inr": None,
+                    "urgency": "Low",
+                    "action": "Prune pack-size variants in low-throughput (A4 low-productivity) outlets",
+                    "reason": (
+                        f"{int(r.get('sku_count') or 0)} SKUs · "
+                        f"{int(r.get('distilleries') or 0)} distilleries · "
+                        f"sizes {r.get('pack_list', [])}"
+                    ),
+                    "expected_outcome_window": "60 days",
+                    "data_source": "proxy-brand-label",
+                }
+            )
+
+        # D) Brand-mix push in high-growth outlets (Bars / Clubs / Tourism + growing A4)
+        high_cap = feats[
+            (feats["growth_30d"] > 0.3)
+            & (~feats["dormant"])
+            & (feats["vendor_type"].isin(["Bars", "Clubs", "Tourism", "A4"]))
+        ]
+        for _, r in high_cap.nlargest(15, "recent30_value").iterrows():
+            proxy_actions.append(
+                {
+                    "entity_type": "outlet",
+                    "district": r["district"],
+                    "depot": r["depot_code"],
+                    "outlet": r["outlet_name"],
+                    "outlet_code": r["outlet_code"],
+                    "category": "Brand-mix / assortment",
+                    "issue": "High-growth outlet — premium SKU presence likely under-penetrated",
+                    "confidence": 0.7,
+                    "revenue_impact_inr": float(r["recent30_value"] * 0.08),
+                    "urgency": "Medium",
+                    "action": "Increase Premium / Luxury SKU presence; track weekly offtake",
+                    "reason": (
+                        f"30d growth {r['growth_30d']*100:.0f}% · vendor_type {r['vendor_type']} · "
+                        f"prior assortment fit suggests headroom at higher band."
+                    ),
+                    "expected_outcome_window": "30 days",
+                    "data_source": "proxy-brand-label",
+                }
+            )
+
+        # E) Brand-mix prune in low-productivity A4 outlets
+        low_prod = feats[
+            (feats["vendor_type"] == "A4")
+            & (~feats["dormant"])
+            & (feats["segment"].astype(str).str.contains("Low-Productivity|Declining", na=False, regex=True))
+        ]
+        for _, r in low_prod.nsmallest(10, "recent30_value").iterrows():
+            proxy_actions.append(
+                {
+                    "entity_type": "outlet",
+                    "district": r["district"],
+                    "depot": r["depot_code"],
+                    "outlet": r["outlet_name"],
+                    "outlet_code": r["outlet_code"],
+                    "category": "Brand-mix / assortment",
+                    "issue": "Low-productivity outlet — redundant pack sizes likely drag mix",
+                    "confidence": 0.6,
+                    "revenue_impact_inr": None,
+                    "urgency": "Low",
+                    "action": "Simplify assortment — drop duplicate packs, retain top-velocity SKU per brand",
+                    "reason": (
+                        f"Segment '{r['segment']}' · avg daily revenue ₹{r['avg_daily_value']:,.0f}. "
+                        f"Pack proliferation signal suggests pruning has low demand risk."
+                    ),
+                    "expected_outcome_window": "45 days",
+                    "data_source": "proxy-brand-label",
+                }
+            )
+
+        actions.extend(proxy_actions)
 
     return actions
 
@@ -771,11 +1305,11 @@ def main() -> None:
     write_json("forecast_outlets", ot_fc)
 
     print("Product intelligence...")
-    pi = product_intelligence(d)
+    pi = product_intelligence(d, feats)
     write_json("product_intel", pi)
 
     print("Actions...")
-    actions = build_actions(feats)
+    actions = build_actions(feats, pi)
     write_json("actions", {"actions": actions, "total": len(actions)})
 
     print("External intelligence...")

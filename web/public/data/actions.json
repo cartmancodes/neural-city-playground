@@ -13,7 +13,8 @@
       "urgency": "High",
       "action": "Increase allocation by 10\u201320% and push premium pack mix",
       "reason": "Last 30d revenue up 50% vs prior 30d; CV=0.70 (stable). Segment 'Volatile \u2014 Tighter Replenishment' typically has absorption capacity for premium.",
-      "expected_outcome_window": "14\u201321 days"
+      "expected_outcome_window": "14\u201321 days",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -28,7 +29,8 @@
       "urgency": "Medium",
       "action": "Review assortment fit \u2014 push higher-band packs; audit supplier mix",
       "reason": "Avg daily revenue \u20b9204,084 vs district peer median \u20b9517,967. Opportunity score 85/100.",
-      "expected_outcome_window": "30\u201360 days"
+      "expected_outcome_window": "30\u201360 days",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -43,7 +45,8 @@
       "urgency": "Medium",
       "action": "Review assortment fit \u2014 push higher-band packs; audit supplier mix",
       "reason": "Avg daily revenue \u20b9241,822 vs district peer median \u20b9373,936. Opportunity score 83/100.",
-      "expected_outcome_window": "30\u201360 days"
+      "expected_outcome_window": "30\u201360 days",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -58,7 +61,8 @@
       "urgency": "Medium",
       "action": "Review assortment fit \u2014 push higher-band packs; audit supplier mix",
       "reason": "Avg daily revenue \u20b9262,757 vs district peer median \u20b9479,784. Opportunity score 83/100.",
-      "expected_outcome_window": "30\u201360 days"
+      "expected_outcome_window": "30\u201360 days",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -73,7 +77,8 @@
       "urgency": "Medium",
       "action": "Review assortment fit \u2014 push higher-band packs; audit supplier mix",
       "reason": "Avg daily revenue \u20b9238,139 vs district peer median \u20b9479,784. Opportunity score 82/100.",
-      "expected_outcome_window": "30\u201360 days"
+      "expected_outcome_window": "30\u201360 days",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -88,7 +93,8 @@
       "urgency": "Medium",
       "action": "Review assortment fit \u2014 push higher-band packs; audit supplier mix",
       "reason": "Avg daily revenue \u20b9200,564 vs district peer median \u20b9373,936. Opportunity score 81/100.",
-      "expected_outcome_window": "30\u201360 days"
+      "expected_outcome_window": "30\u201360 days",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -103,7 +109,8 @@
       "urgency": "Medium",
       "action": "Review assortment fit \u2014 push higher-band packs; audit supplier mix",
       "reason": "Avg daily revenue \u20b9273,924 vs district peer median \u20b9479,784. Opportunity score 81/100.",
-      "expected_outcome_window": "30\u201360 days"
+      "expected_outcome_window": "30\u201360 days",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -118,7 +125,8 @@
       "urgency": "Medium",
       "action": "Review assortment fit \u2014 push higher-band packs; audit supplier mix",
       "reason": "Avg daily revenue \u20b9320,685 vs district peer median \u20b9514,601. Opportunity score 81/100.",
-      "expected_outcome_window": "30\u201360 days"
+      "expected_outcome_window": "30\u201360 days",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -133,7 +141,8 @@
       "urgency": "Medium",
       "action": "Review assortment fit \u2014 push higher-band packs; audit supplier mix",
       "reason": "Avg daily revenue \u20b9330,961 vs district peer median \u20b9514,601. Opportunity score 81/100.",
-      "expected_outcome_window": "30\u201360 days"
+      "expected_outcome_window": "30\u201360 days",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -148,7 +157,8 @@
       "urgency": "Medium",
       "action": "Review assortment fit \u2014 push higher-band packs; audit supplier mix",
       "reason": "Avg daily revenue \u20b9409,480 vs district peer median \u20b9650,199. Opportunity score 80/100.",
-      "expected_outcome_window": "30\u201360 days"
+      "expected_outcome_window": "30\u201360 days",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -163,7 +173,8 @@
       "urgency": "Medium",
       "action": "Review assortment fit \u2014 push higher-band packs; audit supplier mix",
       "reason": "Avg daily revenue \u20b9214,571 vs district peer median \u20b9338,790. Opportunity score 80/100.",
-      "expected_outcome_window": "30\u201360 days"
+      "expected_outcome_window": "30\u201360 days",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -178,7 +189,8 @@
       "urgency": "Medium",
       "action": "Review assortment fit \u2014 push higher-band packs; audit supplier mix",
       "reason": "Avg daily revenue \u20b9231,898 vs district peer median \u20b9420,094. Opportunity score 80/100.",
-      "expected_outcome_window": "30\u201360 days"
+      "expected_outcome_window": "30\u201360 days",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -193,7 +205,8 @@
       "urgency": "Medium",
       "action": "Review assortment fit \u2014 push higher-band packs; audit supplier mix",
       "reason": "Avg daily revenue \u20b9195,501 vs district peer median \u20b9373,936. Opportunity score 79/100.",
-      "expected_outcome_window": "30\u201360 days"
+      "expected_outcome_window": "30\u201360 days",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -208,7 +221,8 @@
       "urgency": "Medium",
       "action": "Review assortment fit \u2014 push higher-band packs; audit supplier mix",
       "reason": "Avg daily revenue \u20b9195,613 vs district peer median \u20b9373,936. Opportunity score 79/100.",
-      "expected_outcome_window": "30\u201360 days"
+      "expected_outcome_window": "30\u201360 days",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -223,7 +237,8 @@
       "urgency": "Medium",
       "action": "Review assortment fit \u2014 push higher-band packs; audit supplier mix",
       "reason": "Avg daily revenue \u20b9312,652 vs district peer median \u20b9479,784. Opportunity score 79/100.",
-      "expected_outcome_window": "30\u201360 days"
+      "expected_outcome_window": "30\u201360 days",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -238,7 +253,8 @@
       "urgency": "Medium",
       "action": "Review assortment fit \u2014 push higher-band packs; audit supplier mix",
       "reason": "Avg daily revenue \u20b9302,379 vs district peer median \u20b9479,784. Opportunity score 79/100.",
-      "expected_outcome_window": "30\u201360 days"
+      "expected_outcome_window": "30\u201360 days",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -253,7 +269,8 @@
       "urgency": "Medium",
       "action": "Review assortment fit \u2014 push higher-band packs; audit supplier mix",
       "reason": "Avg daily revenue \u20b9522,863 vs district peer median \u20b9638,112. Opportunity score 79/100.",
-      "expected_outcome_window": "30\u201360 days"
+      "expected_outcome_window": "30\u201360 days",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -268,7 +285,8 @@
       "urgency": "Medium",
       "action": "Review assortment fit \u2014 push higher-band packs; audit supplier mix",
       "reason": "Avg daily revenue \u20b9350,863 vs district peer median \u20b9632,898. Opportunity score 79/100.",
-      "expected_outcome_window": "30\u201360 days"
+      "expected_outcome_window": "30\u201360 days",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -283,7 +301,8 @@
       "urgency": "Medium",
       "action": "Review assortment fit \u2014 push higher-band packs; audit supplier mix",
       "reason": "Avg daily revenue \u20b9198,036 vs district peer median \u20b9373,936. Opportunity score 78/100.",
-      "expected_outcome_window": "30\u201360 days"
+      "expected_outcome_window": "30\u201360 days",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -298,7 +317,8 @@
       "urgency": "Medium",
       "action": "Review assortment fit \u2014 push higher-band packs; audit supplier mix",
       "reason": "Avg daily revenue \u20b9286,715 vs district peer median \u20b9296,308. Opportunity score 78/100.",
-      "expected_outcome_window": "30\u201360 days"
+      "expected_outcome_window": "30\u201360 days",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -313,7 +333,8 @@
       "urgency": "Medium",
       "action": "Review assortment fit \u2014 push higher-band packs; audit supplier mix",
       "reason": "Avg daily revenue \u20b9255,060 vs district peer median \u20b9479,784. Opportunity score 78/100.",
-      "expected_outcome_window": "30\u201360 days"
+      "expected_outcome_window": "30\u201360 days",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -328,7 +349,8 @@
       "urgency": "Medium",
       "action": "Review assortment fit \u2014 push higher-band packs; audit supplier mix",
       "reason": "Avg daily revenue \u20b9243,824 vs district peer median \u20b9479,784. Opportunity score 78/100.",
-      "expected_outcome_window": "30\u201360 days"
+      "expected_outcome_window": "30\u201360 days",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -343,7 +365,8 @@
       "urgency": "Medium",
       "action": "Review assortment fit \u2014 push higher-band packs; audit supplier mix",
       "reason": "Avg daily revenue \u20b9214,561 vs district peer median \u20b9338,790. Opportunity score 78/100.",
-      "expected_outcome_window": "30\u201360 days"
+      "expected_outcome_window": "30\u201360 days",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -358,7 +381,8 @@
       "urgency": "Medium",
       "action": "Review assortment fit \u2014 push higher-band packs; audit supplier mix",
       "reason": "Avg daily revenue \u20b9326,619 vs district peer median \u20b9580,866. Opportunity score 78/100.",
-      "expected_outcome_window": "30\u201360 days"
+      "expected_outcome_window": "30\u201360 days",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -373,7 +397,8 @@
       "urgency": "Medium",
       "action": "Review assortment fit \u2014 push higher-band packs; audit supplier mix",
       "reason": "Avg daily revenue \u20b9421,663 vs district peer median \u20b9597,905. Opportunity score 78/100.",
-      "expected_outcome_window": "30\u201360 days"
+      "expected_outcome_window": "30\u201360 days",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -388,7 +413,8 @@
       "urgency": "Medium",
       "action": "Review assortment fit \u2014 push higher-band packs; audit supplier mix",
       "reason": "Avg daily revenue \u20b9314,084 vs district peer median \u20b9429,908. Opportunity score 78/100.",
-      "expected_outcome_window": "30\u201360 days"
+      "expected_outcome_window": "30\u201360 days",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -403,7 +429,8 @@
       "urgency": "Medium",
       "action": "Review assortment fit \u2014 push higher-band packs; audit supplier mix",
       "reason": "Avg daily revenue \u20b9254,740 vs district peer median \u20b9373,936. Opportunity score 78/100.",
-      "expected_outcome_window": "30\u201360 days"
+      "expected_outcome_window": "30\u201360 days",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -418,7 +445,8 @@
       "urgency": "Medium",
       "action": "Review assortment fit \u2014 push higher-band packs; audit supplier mix",
       "reason": "Avg daily revenue \u20b9217,914 vs district peer median \u20b9632,898. Opportunity score 77/100.",
-      "expected_outcome_window": "30\u201360 days"
+      "expected_outcome_window": "30\u201360 days",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -433,7 +461,8 @@
       "urgency": "Medium",
       "action": "Review assortment fit \u2014 push higher-band packs; audit supplier mix",
       "reason": "Avg daily revenue \u20b9141,974 vs district peer median \u20b9338,790. Opportunity score 77/100.",
-      "expected_outcome_window": "30\u201360 days"
+      "expected_outcome_window": "30\u201360 days",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -448,7 +477,8 @@
       "urgency": "Medium",
       "action": "Review assortment fit \u2014 push higher-band packs; audit supplier mix",
       "reason": "Avg daily revenue \u20b9324,480 vs district peer median \u20b9479,784. Opportunity score 77/100.",
-      "expected_outcome_window": "30\u201360 days"
+      "expected_outcome_window": "30\u201360 days",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -463,7 +493,8 @@
       "urgency": "Medium",
       "action": "Review assortment fit \u2014 push higher-band packs; audit supplier mix",
       "reason": "Avg daily revenue \u20b9243,251 vs district peer median \u20b9373,936. Opportunity score 77/100.",
-      "expected_outcome_window": "30\u201360 days"
+      "expected_outcome_window": "30\u201360 days",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -478,7 +509,8 @@
       "urgency": "Medium",
       "action": "Review assortment fit \u2014 push higher-band packs; audit supplier mix",
       "reason": "Avg daily revenue \u20b9287,544 vs district peer median \u20b9479,784. Opportunity score 77/100.",
-      "expected_outcome_window": "30\u201360 days"
+      "expected_outcome_window": "30\u201360 days",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -493,7 +525,8 @@
       "urgency": "Medium",
       "action": "Review assortment fit \u2014 push higher-band packs; audit supplier mix",
       "reason": "Avg daily revenue \u20b9306,452 vs district peer median \u20b9479,784. Opportunity score 77/100.",
-      "expected_outcome_window": "30\u201360 days"
+      "expected_outcome_window": "30\u201360 days",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -508,7 +541,8 @@
       "urgency": "Medium",
       "action": "Review assortment fit \u2014 push higher-band packs; audit supplier mix",
       "reason": "Avg daily revenue \u20b9268,091 vs district peer median \u20b9373,936. Opportunity score 77/100.",
-      "expected_outcome_window": "30\u201360 days"
+      "expected_outcome_window": "30\u201360 days",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -523,7 +557,8 @@
       "urgency": "Medium",
       "action": "Review assortment fit \u2014 push higher-band packs; audit supplier mix",
       "reason": "Avg daily revenue \u20b9300,544 vs district peer median \u20b9373,936. Opportunity score 77/100.",
-      "expected_outcome_window": "30\u201360 days"
+      "expected_outcome_window": "30\u201360 days",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -538,7 +573,8 @@
       "urgency": "Medium",
       "action": "Review assortment fit \u2014 push higher-band packs; audit supplier mix",
       "reason": "Avg daily revenue \u20b9300,638 vs district peer median \u20b9373,936. Opportunity score 77/100.",
-      "expected_outcome_window": "30\u201360 days"
+      "expected_outcome_window": "30\u201360 days",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -553,7 +589,8 @@
       "urgency": "Medium",
       "action": "Review assortment fit \u2014 push higher-band packs; audit supplier mix",
       "reason": "Avg daily revenue \u20b9214,371 vs district peer median \u20b9422,905. Opportunity score 77/100.",
-      "expected_outcome_window": "30\u201360 days"
+      "expected_outcome_window": "30\u201360 days",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -568,7 +605,8 @@
       "urgency": "Medium",
       "action": "Review assortment fit \u2014 push higher-band packs; audit supplier mix",
       "reason": "Avg daily revenue \u20b9328,845 vs district peer median \u20b9497,489. Opportunity score 77/100.",
-      "expected_outcome_window": "30\u201360 days"
+      "expected_outcome_window": "30\u201360 days",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -583,7 +621,8 @@
       "urgency": "Medium",
       "action": "Review assortment fit \u2014 push higher-band packs; audit supplier mix",
       "reason": "Avg daily revenue \u20b9445,930 vs district peer median \u20b9650,199. Opportunity score 77/100.",
-      "expected_outcome_window": "30\u201360 days"
+      "expected_outcome_window": "30\u201360 days",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -598,7 +637,8 @@
       "urgency": "High",
       "action": "Visit outlet; check competitor activity and stock fill rate",
       "reason": "Revenue down -100% in last 30d vs prior 30d while peers in West Godavari remained stable.",
-      "expected_outcome_window": "7\u201314 days"
+      "expected_outcome_window": "7\u201314 days",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -613,7 +653,8 @@
       "urgency": "High",
       "action": "Visit outlet; check competitor activity and stock fill rate",
       "reason": "Revenue down -99% in last 30d vs prior 30d while peers in West Godavari remained stable.",
-      "expected_outcome_window": "7\u201314 days"
+      "expected_outcome_window": "7\u201314 days",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -628,7 +669,8 @@
       "urgency": "High",
       "action": "Visit outlet; check competitor activity and stock fill rate",
       "reason": "Revenue down -99% in last 30d vs prior 30d while peers in Srikakulam remained stable.",
-      "expected_outcome_window": "7\u201314 days"
+      "expected_outcome_window": "7\u201314 days",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -643,7 +685,8 @@
       "urgency": "High",
       "action": "Visit outlet; check competitor activity and stock fill rate",
       "reason": "Revenue down -99% in last 30d vs prior 30d while peers in West Godavari remained stable.",
-      "expected_outcome_window": "7\u201314 days"
+      "expected_outcome_window": "7\u201314 days",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -658,7 +701,8 @@
       "urgency": "High",
       "action": "Visit outlet; check competitor activity and stock fill rate",
       "reason": "Revenue down -99% in last 30d vs prior 30d while peers in YSR remained stable.",
-      "expected_outcome_window": "7\u201314 days"
+      "expected_outcome_window": "7\u201314 days",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -673,7 +717,8 @@
       "urgency": "High",
       "action": "Visit outlet; check competitor activity and stock fill rate",
       "reason": "Revenue down -99% in last 30d vs prior 30d while peers in Visakhapatnam remained stable.",
-      "expected_outcome_window": "7\u201314 days"
+      "expected_outcome_window": "7\u201314 days",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -688,7 +733,8 @@
       "urgency": "High",
       "action": "Visit outlet; check competitor activity and stock fill rate",
       "reason": "Revenue down -99% in last 30d vs prior 30d while peers in Srikakulam remained stable.",
-      "expected_outcome_window": "7\u201314 days"
+      "expected_outcome_window": "7\u201314 days",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -703,7 +749,8 @@
       "urgency": "High",
       "action": "Visit outlet; check competitor activity and stock fill rate",
       "reason": "Revenue down -99% in last 30d vs prior 30d while peers in Palnadu remained stable.",
-      "expected_outcome_window": "7\u201314 days"
+      "expected_outcome_window": "7\u201314 days",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -718,7 +765,8 @@
       "urgency": "High",
       "action": "Visit outlet; check competitor activity and stock fill rate",
       "reason": "Revenue down -99% in last 30d vs prior 30d while peers in Palnadu remained stable.",
-      "expected_outcome_window": "7\u201314 days"
+      "expected_outcome_window": "7\u201314 days",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -733,7 +781,8 @@
       "urgency": "High",
       "action": "Visit outlet; check competitor activity and stock fill rate",
       "reason": "Revenue down -99% in last 30d vs prior 30d while peers in Palnadu remained stable.",
-      "expected_outcome_window": "7\u201314 days"
+      "expected_outcome_window": "7\u201314 days",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -748,7 +797,8 @@
       "urgency": "High",
       "action": "Visit outlet; check competitor activity and stock fill rate",
       "reason": "Revenue down -99% in last 30d vs prior 30d while peers in Palnadu remained stable.",
-      "expected_outcome_window": "7\u201314 days"
+      "expected_outcome_window": "7\u201314 days",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -763,7 +813,8 @@
       "urgency": "High",
       "action": "Visit outlet; check competitor activity and stock fill rate",
       "reason": "Revenue down -99% in last 30d vs prior 30d while peers in Visakhapatnam remained stable.",
-      "expected_outcome_window": "7\u201314 days"
+      "expected_outcome_window": "7\u201314 days",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -778,7 +829,8 @@
       "urgency": "High",
       "action": "Visit outlet; check competitor activity and stock fill rate",
       "reason": "Revenue down -99% in last 30d vs prior 30d while peers in Krishna remained stable.",
-      "expected_outcome_window": "7\u201314 days"
+      "expected_outcome_window": "7\u201314 days",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -793,7 +845,8 @@
       "urgency": "High",
       "action": "Visit outlet; check competitor activity and stock fill rate",
       "reason": "Revenue down -99% in last 30d vs prior 30d while peers in Eluru remained stable.",
-      "expected_outcome_window": "7\u201314 days"
+      "expected_outcome_window": "7\u201314 days",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -808,7 +861,8 @@
       "urgency": "High",
       "action": "Visit outlet; check competitor activity and stock fill rate",
       "reason": "Revenue down -99% in last 30d vs prior 30d while peers in West Godavari remained stable.",
-      "expected_outcome_window": "7\u201314 days"
+      "expected_outcome_window": "7\u201314 days",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -823,7 +877,8 @@
       "urgency": "High",
       "action": "Visit outlet; check competitor activity and stock fill rate",
       "reason": "Revenue down -99% in last 30d vs prior 30d while peers in West Godavari remained stable.",
-      "expected_outcome_window": "7\u201314 days"
+      "expected_outcome_window": "7\u201314 days",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -838,7 +893,8 @@
       "urgency": "High",
       "action": "Visit outlet; check competitor activity and stock fill rate",
       "reason": "Revenue down -99% in last 30d vs prior 30d while peers in YSR remained stable.",
-      "expected_outcome_window": "7\u201314 days"
+      "expected_outcome_window": "7\u201314 days",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -853,7 +909,8 @@
       "urgency": "High",
       "action": "Visit outlet; check competitor activity and stock fill rate",
       "reason": "Revenue down -99% in last 30d vs prior 30d while peers in Nandyal remained stable.",
-      "expected_outcome_window": "7\u201314 days"
+      "expected_outcome_window": "7\u201314 days",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -868,7 +925,8 @@
       "urgency": "High",
       "action": "Visit outlet; check competitor activity and stock fill rate",
       "reason": "Revenue down -99% in last 30d vs prior 30d while peers in Guntur remained stable.",
-      "expected_outcome_window": "7\u201314 days"
+      "expected_outcome_window": "7\u201314 days",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -883,7 +941,8 @@
       "urgency": "High",
       "action": "Visit outlet; check competitor activity and stock fill rate",
       "reason": "Revenue down -99% in last 30d vs prior 30d while peers in Tirupati remained stable.",
-      "expected_outcome_window": "7\u201314 days"
+      "expected_outcome_window": "7\u201314 days",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -898,7 +957,8 @@
       "urgency": "High",
       "action": "Visit outlet; check competitor activity and stock fill rate",
       "reason": "Revenue down -99% in last 30d vs prior 30d while peers in Srikakulam remained stable.",
-      "expected_outcome_window": "7\u201314 days"
+      "expected_outcome_window": "7\u201314 days",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -913,7 +973,8 @@
       "urgency": "High",
       "action": "Visit outlet; check competitor activity and stock fill rate",
       "reason": "Revenue down -99% in last 30d vs prior 30d while peers in YSR remained stable.",
-      "expected_outcome_window": "7\u201314 days"
+      "expected_outcome_window": "7\u201314 days",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -928,7 +989,8 @@
       "urgency": "High",
       "action": "Visit outlet; check competitor activity and stock fill rate",
       "reason": "Revenue down -99% in last 30d vs prior 30d while peers in Eluru remained stable.",
-      "expected_outcome_window": "7\u201314 days"
+      "expected_outcome_window": "7\u201314 days",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -943,7 +1005,8 @@
       "urgency": "High",
       "action": "Visit outlet; check competitor activity and stock fill rate",
       "reason": "Revenue down -99% in last 30d vs prior 30d while peers in West Godavari remained stable.",
-      "expected_outcome_window": "7\u201314 days"
+      "expected_outcome_window": "7\u201314 days",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -958,7 +1021,8 @@
       "urgency": "High",
       "action": "Visit outlet; check competitor activity and stock fill rate",
       "reason": "Revenue down -99% in last 30d vs prior 30d while peers in Tirupati remained stable.",
-      "expected_outcome_window": "7\u201314 days"
+      "expected_outcome_window": "7\u201314 days",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -973,7 +1037,8 @@
       "urgency": "High",
       "action": "Visit outlet; check competitor activity and stock fill rate",
       "reason": "Revenue down -99% in last 30d vs prior 30d while peers in Tirupati remained stable.",
-      "expected_outcome_window": "7\u201314 days"
+      "expected_outcome_window": "7\u201314 days",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -988,7 +1053,8 @@
       "urgency": "High",
       "action": "Visit outlet; check competitor activity and stock fill rate",
       "reason": "Revenue down -99% in last 30d vs prior 30d while peers in YSR remained stable.",
-      "expected_outcome_window": "7\u201314 days"
+      "expected_outcome_window": "7\u201314 days",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -1003,7 +1069,8 @@
       "urgency": "High",
       "action": "Visit outlet; check competitor activity and stock fill rate",
       "reason": "Revenue down -99% in last 30d vs prior 30d while peers in Eluru remained stable.",
-      "expected_outcome_window": "7\u201314 days"
+      "expected_outcome_window": "7\u201314 days",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -1018,7 +1085,8 @@
       "urgency": "High",
       "action": "Visit outlet; check competitor activity and stock fill rate",
       "reason": "Revenue down -99% in last 30d vs prior 30d while peers in Eluru remained stable.",
-      "expected_outcome_window": "7\u201314 days"
+      "expected_outcome_window": "7\u201314 days",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -1033,7 +1101,8 @@
       "urgency": "High",
       "action": "Visit outlet; check competitor activity and stock fill rate",
       "reason": "Revenue down -99% in last 30d vs prior 30d while peers in Krishna remained stable.",
-      "expected_outcome_window": "7\u201314 days"
+      "expected_outcome_window": "7\u201314 days",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -1048,7 +1117,8 @@
       "urgency": "High",
       "action": "Contact outlet; verify license status and replenishment block",
       "reason": "Outlet had \u20b9280,696,311 lifetime revenue but 0 sales in last 30d.",
-      "expected_outcome_window": "Immediate"
+      "expected_outcome_window": "Immediate",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -1063,7 +1133,8 @@
       "urgency": "High",
       "action": "Contact outlet; verify license status and replenishment block",
       "reason": "Outlet had \u20b9194,932,051 lifetime revenue but 0 sales in last 30d.",
-      "expected_outcome_window": "Immediate"
+      "expected_outcome_window": "Immediate",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -1078,7 +1149,8 @@
       "urgency": "High",
       "action": "Contact outlet; verify license status and replenishment block",
       "reason": "Outlet had \u20b9194,596,110 lifetime revenue but 0 sales in last 30d.",
-      "expected_outcome_window": "Immediate"
+      "expected_outcome_window": "Immediate",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -1093,7 +1165,8 @@
       "urgency": "High",
       "action": "Contact outlet; verify license status and replenishment block",
       "reason": "Outlet had \u20b9188,492,743 lifetime revenue but 0 sales in last 30d.",
-      "expected_outcome_window": "Immediate"
+      "expected_outcome_window": "Immediate",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -1108,7 +1181,8 @@
       "urgency": "High",
       "action": "Contact outlet; verify license status and replenishment block",
       "reason": "Outlet had \u20b9175,458,328 lifetime revenue but 0 sales in last 30d.",
-      "expected_outcome_window": "Immediate"
+      "expected_outcome_window": "Immediate",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -1123,7 +1197,8 @@
       "urgency": "High",
       "action": "Contact outlet; verify license status and replenishment block",
       "reason": "Outlet had \u20b9171,274,520 lifetime revenue but 0 sales in last 30d.",
-      "expected_outcome_window": "Immediate"
+      "expected_outcome_window": "Immediate",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -1138,7 +1213,8 @@
       "urgency": "High",
       "action": "Contact outlet; verify license status and replenishment block",
       "reason": "Outlet had \u20b9170,350,650 lifetime revenue but 0 sales in last 30d.",
-      "expected_outcome_window": "Immediate"
+      "expected_outcome_window": "Immediate",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -1153,7 +1229,8 @@
       "urgency": "High",
       "action": "Contact outlet; verify license status and replenishment block",
       "reason": "Outlet had \u20b9167,291,674 lifetime revenue but 0 sales in last 30d.",
-      "expected_outcome_window": "Immediate"
+      "expected_outcome_window": "Immediate",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -1168,7 +1245,8 @@
       "urgency": "High",
       "action": "Contact outlet; verify license status and replenishment block",
       "reason": "Outlet had \u20b9166,445,818 lifetime revenue but 0 sales in last 30d.",
-      "expected_outcome_window": "Immediate"
+      "expected_outcome_window": "Immediate",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -1183,7 +1261,8 @@
       "urgency": "High",
       "action": "Contact outlet; verify license status and replenishment block",
       "reason": "Outlet had \u20b9166,208,904 lifetime revenue but 0 sales in last 30d.",
-      "expected_outcome_window": "Immediate"
+      "expected_outcome_window": "Immediate",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -1198,7 +1277,8 @@
       "urgency": "High",
       "action": "Contact outlet; verify license status and replenishment block",
       "reason": "Outlet had \u20b9165,738,064 lifetime revenue but 0 sales in last 30d.",
-      "expected_outcome_window": "Immediate"
+      "expected_outcome_window": "Immediate",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -1213,7 +1293,8 @@
       "urgency": "High",
       "action": "Contact outlet; verify license status and replenishment block",
       "reason": "Outlet had \u20b9164,392,182 lifetime revenue but 0 sales in last 30d.",
-      "expected_outcome_window": "Immediate"
+      "expected_outcome_window": "Immediate",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -1228,7 +1309,8 @@
       "urgency": "High",
       "action": "Contact outlet; verify license status and replenishment block",
       "reason": "Outlet had \u20b9160,346,731 lifetime revenue but 0 sales in last 30d.",
-      "expected_outcome_window": "Immediate"
+      "expected_outcome_window": "Immediate",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -1243,7 +1325,8 @@
       "urgency": "High",
       "action": "Contact outlet; verify license status and replenishment block",
       "reason": "Outlet had \u20b9160,223,812 lifetime revenue but 0 sales in last 30d.",
-      "expected_outcome_window": "Immediate"
+      "expected_outcome_window": "Immediate",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -1258,7 +1341,8 @@
       "urgency": "High",
       "action": "Contact outlet; verify license status and replenishment block",
       "reason": "Outlet had \u20b9155,310,179 lifetime revenue but 0 sales in last 30d.",
-      "expected_outcome_window": "Immediate"
+      "expected_outcome_window": "Immediate",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -1273,7 +1357,8 @@
       "urgency": "High",
       "action": "Contact outlet; verify license status and replenishment block",
       "reason": "Outlet had \u20b9154,641,068 lifetime revenue but 0 sales in last 30d.",
-      "expected_outcome_window": "Immediate"
+      "expected_outcome_window": "Immediate",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -1288,7 +1373,8 @@
       "urgency": "High",
       "action": "Contact outlet; verify license status and replenishment block",
       "reason": "Outlet had \u20b9154,317,020 lifetime revenue but 0 sales in last 30d.",
-      "expected_outcome_window": "Immediate"
+      "expected_outcome_window": "Immediate",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -1303,7 +1389,8 @@
       "urgency": "High",
       "action": "Contact outlet; verify license status and replenishment block",
       "reason": "Outlet had \u20b9153,832,382 lifetime revenue but 0 sales in last 30d.",
-      "expected_outcome_window": "Immediate"
+      "expected_outcome_window": "Immediate",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -1318,7 +1405,8 @@
       "urgency": "High",
       "action": "Contact outlet; verify license status and replenishment block",
       "reason": "Outlet had \u20b9146,306,178 lifetime revenue but 0 sales in last 30d.",
-      "expected_outcome_window": "Immediate"
+      "expected_outcome_window": "Immediate",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "outlet",
@@ -1333,7 +1421,8 @@
       "urgency": "High",
       "action": "Contact outlet; verify license status and replenishment block",
       "reason": "Outlet had \u20b9144,450,223 lifetime revenue but 0 sales in last 30d.",
-      "expected_outcome_window": "Immediate"
+      "expected_outcome_window": "Immediate",
+      "data_source": "sales-demand"
     },
     {
       "entity_type": "supplier",
@@ -1348,8 +1437,377 @@
       "urgency": "Low",
       "action": "Prioritize supplier / replenishment review for distilleries with >3 new labels in 90 days",
       "reason": "Label approval feed shows concentrated activity by a small set of distilleries.",
-      "expected_outcome_window": "30 days"
+      "expected_outcome_window": "30 days",
+      "data_source": "sales-demand"
+    },
+    {
+      "entity_type": "supplier",
+      "district": null,
+      "depot": null,
+      "outlet": null,
+      "outlet_code": null,
+      "category": "Brand & label proxy",
+      "issue": "Aggressive supplier expansion \u2014 5 new labels across 1 pack sizes in 180 days",
+      "confidence": 0.78,
+      "revenue_impact_inr": null,
+      "urgency": "Medium",
+      "action": "Monitor 2839-M/s Tonia Liquor Industries rollout; pre-allocate shelf in high-throughput outlets where brand mix fits",
+      "reason": "Label feed: 5 new / 0 renewal across 5 brands in 1 active months. Aggression score 0.64.",
+      "expected_outcome_window": "45\u201390 days",
+      "data_source": "proxy-brand-label"
+    },
+    {
+      "entity_type": "category",
+      "district": null,
+      "depot": null,
+      "outlet": null,
+      "outlet_code": null,
+      "category": "Local IML \u00b7 Value",
+      "issue": "Overcrowded segment \u2014 381 SKUs / 153 brands / 38 suppliers",
+      "confidence": 0.65,
+      "revenue_impact_inr": null,
+      "urgency": "Low",
+      "action": "Review assortment discipline; encourage consolidation of lowest-velocity SKUs at next label-renewal cycle",
+      "reason": "Density 2.49 SKUs per brand suggests cannibalization.",
+      "expected_outcome_window": "Next excise year",
+      "data_source": "proxy-brand-label"
+    },
+    {
+      "entity_type": "category",
+      "district": null,
+      "depot": null,
+      "outlet": null,
+      "outlet_code": null,
+      "category": "Local IML \u00b7 Economy",
+      "issue": "Overcrowded segment \u2014 350 SKUs / 153 brands / 39 suppliers",
+      "confidence": 0.65,
+      "revenue_impact_inr": null,
+      "urgency": "Low",
+      "action": "Review assortment discipline; encourage consolidation of lowest-velocity SKUs at next label-renewal cycle",
+      "reason": "Density 2.29 SKUs per brand suggests cannibalization.",
+      "expected_outcome_window": "Next excise year",
+      "data_source": "proxy-brand-label"
+    },
+    {
+      "entity_type": "category",
+      "district": null,
+      "depot": null,
+      "outlet": null,
+      "outlet_code": null,
+      "category": "Local IML \u00b7 Premium",
+      "issue": "Overcrowded segment \u2014 199 SKUs / 122 brands / 30 suppliers",
+      "confidence": 0.65,
+      "revenue_impact_inr": null,
+      "urgency": "Low",
+      "action": "Review assortment discipline; encourage consolidation of lowest-velocity SKUs at next label-renewal cycle",
+      "reason": "Density 1.63 SKUs per brand suggests cannibalization.",
+      "expected_outcome_window": "Next excise year",
+      "data_source": "proxy-brand-label"
+    },
+    {
+      "entity_type": "category",
+      "district": null,
+      "depot": null,
+      "outlet": null,
+      "outlet_code": null,
+      "category": "FOREIGN \u00b7 Luxury",
+      "issue": "Overcrowded segment \u2014 103 SKUs / 100 brands / 10 suppliers",
+      "confidence": 0.65,
+      "revenue_impact_inr": null,
+      "urgency": "Low",
+      "action": "Review assortment discipline; encourage consolidation of lowest-velocity SKUs at next label-renewal cycle",
+      "reason": "Density 1.03 SKUs per brand suggests cannibalization.",
+      "expected_outcome_window": "Next excise year",
+      "data_source": "proxy-brand-label"
+    },
+    {
+      "entity_type": "category",
+      "district": null,
+      "depot": null,
+      "outlet": null,
+      "outlet_code": null,
+      "category": "Non Local IML \u00b7 Premium",
+      "issue": "Overcrowded segment \u2014 71 SKUs / 42 brands / 16 suppliers",
+      "confidence": 0.65,
+      "revenue_impact_inr": null,
+      "urgency": "Low",
+      "action": "Review assortment discipline; encourage consolidation of lowest-velocity SKUs at next label-renewal cycle",
+      "reason": "Density 1.69 SKUs per brand suggests cannibalization.",
+      "expected_outcome_window": "Next excise year",
+      "data_source": "proxy-brand-label"
+    },
+    {
+      "entity_type": "brand",
+      "district": null,
+      "depot": null,
+      "outlet": null,
+      "outlet_code": null,
+      "category": "Brand & label proxy",
+      "issue": "Pack-size proliferation \u2014 'SEAGRAM'S BLENDERS PRIDE ULTRA PREMIUM WHISKY' across 6 sizes",
+      "confidence": 0.55,
+      "revenue_impact_inr": null,
+      "urgency": "Low",
+      "action": "Prune pack-size variants in low-throughput (A4 low-productivity) outlets",
+      "reason": "25 SKUs \u00b7 3 distilleries \u00b7 sizes [90, 180, 375, 750, 1000, 2000]",
+      "expected_outcome_window": "60 days",
+      "data_source": "proxy-brand-label"
+    },
+    {
+      "entity_type": "brand",
+      "district": null,
+      "depot": null,
+      "outlet": null,
+      "outlet_code": null,
+      "category": "Brand & label proxy",
+      "issue": "Pack-size proliferation \u2014 'SEAGRAM'S ROYAL STAG RESERVE WHISKY' across 6 sizes",
+      "confidence": 0.55,
+      "revenue_impact_inr": null,
+      "urgency": "Low",
+      "action": "Prune pack-size variants in low-throughput (A4 low-productivity) outlets",
+      "reason": "25 SKUs \u00b7 4 distilleries \u00b7 sizes [90, 180, 375, 750, 1000, 2000]",
+      "expected_outcome_window": "60 days",
+      "data_source": "proxy-brand-label"
+    },
+    {
+      "entity_type": "brand",
+      "district": null,
+      "depot": null,
+      "outlet": null,
+      "outlet_code": null,
+      "category": "Brand & label proxy",
+      "issue": "Pack-size proliferation \u2014 'MASTER BLENDER'S SIGNATURE ULTRA PREMIER CLASSIC GRAIN WHISKY RESERVE SELECTION' across 6 sizes",
+      "confidence": 0.55,
+      "revenue_impact_inr": null,
+      "urgency": "Low",
+      "action": "Prune pack-size variants in low-throughput (A4 low-productivity) outlets",
+      "reason": "18 SKUs \u00b7 1 distilleries \u00b7 sizes [90, 180, 375, 750, 1000, 2000]",
+      "expected_outcome_window": "60 days",
+      "data_source": "proxy-brand-label"
+    },
+    {
+      "entity_type": "brand",
+      "district": null,
+      "depot": null,
+      "outlet": null,
+      "outlet_code": null,
+      "category": "Brand & label proxy",
+      "issue": "Pack-size proliferation \u2014 'OFFICER`S CHOICE DELUXE BRANDY' across 6 sizes",
+      "confidence": 0.55,
+      "revenue_impact_inr": null,
+      "urgency": "Low",
+      "action": "Prune pack-size variants in low-throughput (A4 low-productivity) outlets",
+      "reason": "18 SKUs \u00b7 1 distilleries \u00b7 sizes [90, 180, 375, 500, 750, 1000]",
+      "expected_outcome_window": "60 days",
+      "data_source": "proxy-brand-label"
+    },
+    {
+      "entity_type": "brand",
+      "district": null,
+      "depot": null,
+      "outlet": null,
+      "outlet_code": null,
+      "category": "Brand & label proxy",
+      "issue": "Pack-size proliferation \u2014 'ROYAL CHALLENGE BLENDED WHISKY' across 6 sizes",
+      "confidence": 0.55,
+      "revenue_impact_inr": null,
+      "urgency": "Low",
+      "action": "Prune pack-size variants in low-throughput (A4 low-productivity) outlets",
+      "reason": "15 SKUs \u00b7 1 distilleries \u00b7 sizes [90, 180, 375, 750, 1000, 2000]",
+      "expected_outcome_window": "60 days",
+      "data_source": "proxy-brand-label"
+    },
+    {
+      "entity_type": "brand",
+      "district": null,
+      "depot": null,
+      "outlet": null,
+      "outlet_code": null,
+      "category": "Brand & label proxy",
+      "issue": "Pack-size proliferation \u2014 'OLD ADMIRAL FINE VSOP BRANDY' across 5 sizes",
+      "confidence": 0.55,
+      "revenue_impact_inr": null,
+      "urgency": "Low",
+      "action": "Prune pack-size variants in low-throughput (A4 low-productivity) outlets",
+      "reason": "37 SKUs \u00b7 5 distilleries \u00b7 sizes [90, 180, 375, 750, 1000]",
+      "expected_outcome_window": "60 days",
+      "data_source": "proxy-brand-label"
+    },
+    {
+      "entity_type": "outlet",
+      "district": "Tirupati",
+      "depot": "089",
+      "outlet": "1714550-M/s Dhs Restaurant&bar(5 Star Hotel)",
+      "outlet_code": "1714550",
+      "category": "Brand-mix / assortment",
+      "issue": "High-growth outlet \u2014 premium SKU presence likely under-penetrated",
+      "confidence": 0.7,
+      "revenue_impact_inr": 23613.916800000003,
+      "urgency": "Medium",
+      "action": "Increase Premium / Luxury SKU presence; track weekly offtake",
+      "reason": "30d growth 50% \u00b7 vendor_type Bars \u00b7 prior assortment fit suggests headroom at higher band.",
+      "expected_outcome_window": "30 days",
+      "data_source": "proxy-brand-label"
+    },
+    {
+      "entity_type": "outlet",
+      "district": "Nandyal",
+      "depot": "096",
+      "outlet": "24096053-PRATHAPAREDDY ERIGALA",
+      "outlet_code": "24096053",
+      "category": "Brand-mix / assortment",
+      "issue": "Low-productivity outlet \u2014 redundant pack sizes likely drag mix",
+      "confidence": 0.6,
+      "revenue_impact_inr": null,
+      "urgency": "Low",
+      "action": "Simplify assortment \u2014 drop duplicate packs, retain top-velocity SKU per brand",
+      "reason": "Segment 'Declining \u2014 Intervention Needed' \u00b7 avg daily revenue \u20b9479,784. Pack proliferation signal suggests pruning has low demand risk.",
+      "expected_outcome_window": "45 days",
+      "data_source": "proxy-brand-label"
+    },
+    {
+      "entity_type": "outlet",
+      "district": "YSR",
+      "depot": "095",
+      "outlet": "24095089-Bojja Siva prasad Reddy",
+      "outlet_code": "24095089",
+      "category": "Brand-mix / assortment",
+      "issue": "Low-productivity outlet \u2014 redundant pack sizes likely drag mix",
+      "confidence": 0.6,
+      "revenue_impact_inr": null,
+      "urgency": "Low",
+      "action": "Simplify assortment \u2014 drop duplicate packs, retain top-velocity SKU per brand",
+      "reason": "Segment 'Declining \u2014 Intervention Needed' \u00b7 avg daily revenue \u20b9561,820. Pack proliferation signal suggests pruning has low demand risk.",
+      "expected_outcome_window": "45 days",
+      "data_source": "proxy-brand-label"
+    },
+    {
+      "entity_type": "outlet",
+      "district": "Visakhapatnam",
+      "depot": "086",
+      "outlet": "24085121-PAVAN SAI LIQUORS",
+      "outlet_code": "24085121",
+      "category": "Brand-mix / assortment",
+      "issue": "Low-productivity outlet \u2014 redundant pack sizes likely drag mix",
+      "confidence": 0.6,
+      "revenue_impact_inr": null,
+      "urgency": "Low",
+      "action": "Simplify assortment \u2014 drop duplicate packs, retain top-velocity SKU per brand",
+      "reason": "Segment 'Declining \u2014 Intervention Needed' \u00b7 avg daily revenue \u20b9591,520. Pack proliferation signal suggests pruning has low demand risk.",
+      "expected_outcome_window": "45 days",
+      "data_source": "proxy-brand-label"
+    },
+    {
+      "entity_type": "outlet",
+      "district": "Srikakulam",
+      "depot": "088",
+      "outlet": "24088004-A4 SHOP",
+      "outlet_code": "24088004",
+      "category": "Brand-mix / assortment",
+      "issue": "Low-productivity outlet \u2014 redundant pack sizes likely drag mix",
+      "confidence": 0.6,
+      "revenue_impact_inr": null,
+      "urgency": "Low",
+      "action": "Simplify assortment \u2014 drop duplicate packs, retain top-velocity SKU per brand",
+      "reason": "Segment 'Declining \u2014 Intervention Needed' \u00b7 avg daily revenue \u20b9693,646. Pack proliferation signal suggests pruning has low demand risk.",
+      "expected_outcome_window": "45 days",
+      "data_source": "proxy-brand-label"
+    },
+    {
+      "entity_type": "outlet",
+      "district": "Srikakulam",
+      "depot": "088",
+      "outlet": "24088009-A4 SHOP",
+      "outlet_code": "24088009",
+      "category": "Brand-mix / assortment",
+      "issue": "Low-productivity outlet \u2014 redundant pack sizes likely drag mix",
+      "confidence": 0.6,
+      "revenue_impact_inr": null,
+      "urgency": "Low",
+      "action": "Simplify assortment \u2014 drop duplicate packs, retain top-velocity SKU per brand",
+      "reason": "Segment 'Declining \u2014 Intervention Needed' \u00b7 avg daily revenue \u20b9422,701. Pack proliferation signal suggests pruning has low demand risk.",
+      "expected_outcome_window": "45 days",
+      "data_source": "proxy-brand-label"
+    },
+    {
+      "entity_type": "outlet",
+      "district": "Palnadu",
+      "depot": "092",
+      "outlet": "2409221-Vaddempudi Viswanadham",
+      "outlet_code": "2409221",
+      "category": "Brand-mix / assortment",
+      "issue": "Low-productivity outlet \u2014 redundant pack sizes likely drag mix",
+      "confidence": 0.6,
+      "revenue_impact_inr": null,
+      "urgency": "Low",
+      "action": "Simplify assortment \u2014 drop duplicate packs, retain top-velocity SKU per brand",
+      "reason": "Segment 'Declining \u2014 Intervention Needed' \u00b7 avg daily revenue \u20b9441,633. Pack proliferation signal suggests pruning has low demand risk.",
+      "expected_outcome_window": "45 days",
+      "data_source": "proxy-brand-label"
+    },
+    {
+      "entity_type": "outlet",
+      "district": "Palnadu",
+      "depot": "092",
+      "outlet": "2409287-Nalabolu Sriramamurthy",
+      "outlet_code": "2409287",
+      "category": "Brand-mix / assortment",
+      "issue": "Low-productivity outlet \u2014 redundant pack sizes likely drag mix",
+      "confidence": 0.6,
+      "revenue_impact_inr": null,
+      "urgency": "Low",
+      "action": "Simplify assortment \u2014 drop duplicate packs, retain top-velocity SKU per brand",
+      "reason": "Segment 'Declining \u2014 Intervention Needed' \u00b7 avg daily revenue \u20b9424,488. Pack proliferation signal suggests pruning has low demand risk.",
+      "expected_outcome_window": "45 days",
+      "data_source": "proxy-brand-label"
+    },
+    {
+      "entity_type": "outlet",
+      "district": "Tirupati",
+      "depot": "089",
+      "outlet": "2408915-M/s Vihari Wines",
+      "outlet_code": "2408915",
+      "category": "Brand-mix / assortment",
+      "issue": "Low-productivity outlet \u2014 redundant pack sizes likely drag mix",
+      "confidence": 0.6,
+      "revenue_impact_inr": null,
+      "urgency": "Low",
+      "action": "Simplify assortment \u2014 drop duplicate packs, retain top-velocity SKU per brand",
+      "reason": "Segment 'Declining \u2014 Intervention Needed' \u00b7 avg daily revenue \u20b9418,100. Pack proliferation signal suggests pruning has low demand risk.",
+      "expected_outcome_window": "45 days",
+      "data_source": "proxy-brand-label"
+    },
+    {
+      "entity_type": "outlet",
+      "district": "Tirupati",
+      "depot": "089",
+      "outlet": "24094003-M/s Eega Wines",
+      "outlet_code": "24094003",
+      "category": "Brand-mix / assortment",
+      "issue": "Low-productivity outlet \u2014 redundant pack sizes likely drag mix",
+      "confidence": 0.6,
+      "revenue_impact_inr": null,
+      "urgency": "Low",
+      "action": "Simplify assortment \u2014 drop duplicate packs, retain top-velocity SKU per brand",
+      "reason": "Segment 'Declining \u2014 Intervention Needed' \u00b7 avg daily revenue \u20b9483,102. Pack proliferation signal suggests pruning has low demand risk.",
+      "expected_outcome_window": "45 days",
+      "data_source": "proxy-brand-label"
+    },
+    {
+      "entity_type": "outlet",
+      "district": "YSR",
+      "depot": "095",
+      "outlet": "24095070-CHADIPIRALLA VEERA RAGHUVARDHAN REDDY",
+      "outlet_code": "24095070",
+      "category": "Brand-mix / assortment",
+      "issue": "Low-productivity outlet \u2014 redundant pack sizes likely drag mix",
+      "confidence": 0.6,
+      "revenue_impact_inr": null,
+      "urgency": "Low",
+      "action": "Simplify assortment \u2014 drop duplicate packs, retain top-velocity SKU per brand",
+      "reason": "Segment 'Declining \u2014 Intervention Needed' \u00b7 avg daily revenue \u20b9481,196. Pack proliferation signal suggests pruning has low demand risk.",
+      "expected_outcome_window": "45 days",
+      "data_source": "proxy-brand-label"
     }
   ],
-  "total": 90
+  "total": 113
 }
