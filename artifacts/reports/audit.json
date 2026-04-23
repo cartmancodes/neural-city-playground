@@ -1,0 +1,3421 @@
+{
+  "files": {
+    "retailer_info": {
+      "filename": "Copy of Retailer Info.xlsx",
+      "size_mb": 0.51,
+      "sheets": {
+        "Active Vendors": {
+          "rows": 4899,
+          "cols": 11,
+          "columns": [
+            {
+              "name": "S.No",
+              "dtype": "int64",
+              "non_null": 4899,
+              "null_pct": 0.0,
+              "n_unique": 4899,
+              "sample": [
+                "1",
+                "2",
+                "3"
+              ]
+            },
+            {
+              "name": "Code",
+              "dtype": "object",
+              "non_null": 4898,
+              "null_pct": 0.02,
+              "n_unique": 4898,
+              "sample": [
+                "1714001",
+                "1714142",
+                "1714289"
+              ]
+            },
+            {
+              "name": "Name",
+              "dtype": "object",
+              "non_null": 4899,
+              "null_pct": 0.0,
+              "n_unique": 4898,
+              "sample": [
+                "1714001-M/s Bliss Hotels Ltd., Restaurant&amp;bar(3star Hotel)",
+                "1714142-M/s Fortune Kences Restaurant&amp;bar(3starhotel)",
+                "1714289-M/s.minerva Grand Restaurant&amp;bar"
+              ]
+            },
+            {
+              "name": "Address",
+              "dtype": "object",
+              "non_null": 4897,
+              "null_pct": 0.04,
+              "n_unique": 4520,
+              "sample": [
+                "Sy.No.3/3, D.No.19-3-45, Renigunta Road, Tirupati",
+                "D.No: 13-6-79, Renigunta Road, Tirupati",
+                "D.No: 19-3-39, Renigunta Road, Near Fly Over Bridge, Tirupati"
+              ]
+            },
+            {
+              "name": "DistrictName",
+              "dtype": "object",
+              "non_null": 4895,
+              "null_pct": 0.08,
+              "n_unique": 26,
+              "sample": [
+                "Tirupati",
+                "Tirupati",
+                "Tirupati"
+              ]
+            },
+            {
+              "name": "CircleName",
+              "dtype": "object",
+              "non_null": 4897,
+              "null_pct": 0.04,
+              "n_unique": 220,
+              "sample": [
+                "Tirupathi Urban",
+                "Tirupathi Urban",
+                "Tirupathi Urban"
+              ]
+            },
+            {
+              "name": "DepotCode",
+              "dtype": "object",
+              "non_null": 4899,
+              "null_pct": 0.0,
+              "n_unique": 31,
+              "sample": [
+                "089-Excise Depot Chittoor-II",
+                "089-Excise Depot Chittoor-II",
+                "089-Excise Depot Chittoor-II"
+              ]
+            },
+            {
+              "name": "Latitude",
+              "dtype": "float64",
+              "non_null": 4460,
+              "null_pct": 8.96,
+              "n_unique": 4460,
+              "sample": [
+                "13.6252496",
+                "13.6285676",
+                "13.6273921"
+              ]
+            },
+            {
+              "name": "Longitude",
+              "dtype": "float64",
+              "non_null": 4460,
+              "null_pct": 8.96,
+              "n_unique": 4459,
+              "sample": [
+                "79.4323884",
+                "79.4269189",
+                "79.4285451"
+              ]
+            },
+            {
+              "name": "Status",
+              "dtype": "object",
+              "non_null": 4899,
+              "null_pct": 0.0,
+              "n_unique": 1,
+              "sample": [
+                "Active",
+                "Active",
+                "Active"
+              ]
+            },
+            {
+              "name": "VendorType",
+              "dtype": "object",
+              "non_null": 4899,
+              "null_pct": 0.0,
+              "n_unique": 4,
+              "sample": [
+                "Bars",
+                "Bars",
+                "Bars"
+              ]
+            }
+          ],
+          "likely_primary_key": "S.No"
+        }
+      }
+    },
+    "retailer_sales_monthly": {
+      "filename": "Copy of Retailer Wise Sales(in).xlsx",
+      "size_mb": 27.62,
+      "sheets": {
+        "Retailer Wise Sales(in)": {
+          "rows": 632025,
+          "cols": 7,
+          "columns": [
+            {
+              "name": "date",
+              "dtype": "object",
+              "non_null": 632025,
+              "null_pct": 0.0,
+              "n_unique": 287,
+              "sample": [
+                "2025-02-04 00:00:00",
+                "2025-02-04 00:00:00",
+                "2025-02-04 00:00:00"
+              ]
+            },
+            {
+              "name": "vendorId",
+              "dtype": "object",
+              "non_null": 632025,
+              "null_pct": 0.0,
+              "n_unique": 6247,
+              "sample": [
+                "1713282-M/s. S.v. Restaurant &amp; Bar",
+                "1713305-M/s Mandakini Rest. &amp;bar",
+                "1713307-M/s Dega Rest. &amp; Bar"
+              ]
+            },
+            {
+              "name": "districtName",
+              "dtype": "object",
+              "non_null": 632025,
+              "null_pct": 0.0,
+              "n_unique": 26,
+              "sample": [
+                "Tirupati",
+                "SPR Nellore",
+                "SPR Nellore"
+              ]
+            },
+            {
+              "name": "cases",
+              "dtype": "int64",
+              "non_null": 632025,
+              "null_pct": 0.0,
+              "n_unique": 803,
+              "sample": [
+                "121",
+                "49",
+                "17"
+              ]
+            },
+            {
+              "name": "bottles",
+              "dtype": "int64",
+              "non_null": 632025,
+              "null_pct": 0.0,
+              "n_unique": 497,
+              "sample": [
+                "0",
+                "47",
+                "0"
+              ]
+            },
+            {
+              "name": "totalBottles",
+              "dtype": "int64",
+              "non_null": 632025,
+              "null_pct": 0.0,
+              "n_unique": 13453,
+              "sample": [
+                "1584",
+                "1343",
+                "348"
+              ]
+            },
+            {
+              "name": "saleValue",
+              "dtype": "float64",
+              "non_null": 632025,
+              "null_pct": 0.0,
+              "n_unique": 594890,
+              "sample": [
+                "405795.58",
+                "309188.55",
+                "96612.65"
+              ]
+            }
+          ],
+          "likely_primary_key": null
+        }
+      }
+    },
+    "retailer_sales_yearly": {
+      "filename": "Copy of Retailer Sales Year wise -1.xlsx",
+      "size_mb": 27.41,
+      "sheets": {
+        "shop wise sales from apr 25 to ": {
+          "rows": 645803,
+          "cols": 9,
+          "columns": [
+            {
+              "name": "Retailer Name",
+              "dtype": "object",
+              "non_null": 645803,
+              "null_pct": 0.0,
+              "n_unique": 6255,
+              "sample": [
+                "1710700-Salvin reddy",
+                "1711585-M/s. A.p. Tourisim Haritha Rest.&amp; Bar",
+                "1711585-M/s. A.p. Tourisim Haritha Rest.&amp; Bar"
+              ]
+            },
+            {
+              "name": "Date",
+              "dtype": "object",
+              "non_null": 645803,
+              "null_pct": 0.0,
+              "n_unique": 331,
+              "sample": [
+                "03-06-2025",
+                "16-05-2025",
+                "20-08-2025"
+              ]
+            },
+            {
+              "name": "Depot Code",
+              "dtype": "object",
+              "non_null": 645803,
+              "null_pct": 0.0,
+              "n_unique": 324,
+              "sample": [
+                "098-Excise Depot Chittoor-III",
+                "095-Excise Depot Prodduturu",
+                "095-Excise Depot Prodduturu"
+              ]
+            },
+            {
+              "name": "cases",
+              "dtype": "object",
+              "non_null": 645803,
+              "null_pct": 0.0,
+              "n_unique": 879,
+              "sample": [
+                "164",
+                "115",
+                "97"
+              ]
+            },
+            {
+              "name": "bottles",
+              "dtype": "object",
+              "non_null": 645803,
+              "null_pct": 0.0,
+              "n_unique": 503,
+              "sample": [
+                "0",
+                "0",
+                "0"
+              ]
+            },
+            {
+              "name": "Total Bottles",
+              "dtype": "int64",
+              "non_null": 645803,
+              "null_pct": 0.0,
+              "n_unique": 13483,
+              "sample": [
+                "2208",
+                "1908",
+                "1740"
+              ]
+            },
+            {
+              "name": "Sale Value",
+              "dtype": "float64",
+              "non_null": 645803,
+              "null_pct": 0.0,
+              "n_unique": 605474,
+              "sample": [
+                "541343.86",
+                "383394.71",
+                "358146.41"
+              ]
+            },
+            {
+              "name": "Unnamed: 7",
+              "dtype": "float64",
+              "non_null": 2848,
+              "null_pct": 99.56,
+              "n_unique": 2730,
+              "sample": [
+                "75303.04",
+                "250586.05",
+                "126009.5"
+              ]
+            },
+            {
+              "name": "Unnamed: 8",
+              "dtype": "float64",
+              "non_null": 61,
+              "null_pct": 99.99,
+              "n_unique": 61,
+              "sample": [
+                "136125.44",
+                "126776.21",
+                "72692.34"
+              ]
+            }
+          ],
+          "likely_primary_key": null
+        }
+      }
+    },
+    "brand_supplier": {
+      "filename": "Copy of Brand & Supplier Info.xlsx",
+      "size_mb": 0.14,
+      "sheets": {
+        "ActiveBrandProducts": {
+          "rows": 1457,
+          "cols": 16,
+          "columns": [
+            {
+              "name": "S.No",
+              "dtype": "int64",
+              "non_null": 1457,
+              "null_pct": 0.0,
+              "n_unique": 1457,
+              "sample": [
+                "1",
+                "2",
+                "3"
+              ]
+            },
+            {
+              "name": "Product Code",
+              "dtype": "object",
+              "non_null": 1457,
+              "null_pct": 0.0,
+              "n_unique": 1457,
+              "sample": [
+                "1603BC015GBS",
+                "1603BC031GAP",
+                "1603BC031GBS"
+              ]
+            },
+            {
+              "name": "Brand Code",
+              "dtype": "object",
+              "non_null": 1457,
+              "null_pct": 0.0,
+              "n_unique": 475,
+              "sample": [
+                "C015-BLOCK BUSTER ULTRA PREMIUM STRONG BEER",
+                "C031-KARJURA XTRA STRONG BEER",
+                "C031-KARJURA XTRA STRONG BEER"
+              ]
+            },
+            {
+              "name": "Brand Name",
+              "dtype": "object",
+              "non_null": 1457,
+              "null_pct": 0.0,
+              "n_unique": 322,
+              "sample": [
+                "BLOCK BUSTER ULTRA PREMIUM STRONG BEER",
+                "KARJURA XTRA STRONG BEER",
+                "KARJURA XTRA STRONG BEER"
+              ]
+            },
+            {
+              "name": "Size",
+              "dtype": "int64",
+              "non_null": 1457,
+              "null_pct": 0.0,
+              "n_unique": 15,
+              "sample": [
+                "650",
+                "500",
+                "650"
+              ]
+            },
+            {
+              "name": "Units Per Case",
+              "dtype": "int64",
+              "non_null": 1457,
+              "null_pct": 0.0,
+              "n_unique": 12,
+              "sample": [
+                "12",
+                "24",
+                "12"
+              ]
+            },
+            {
+              "name": "Basic Price",
+              "dtype": "float64",
+              "non_null": 1457,
+              "null_pct": 0.0,
+              "n_unique": 447,
+              "sample": [
+                "489.88",
+                "560.0",
+                "395.0"
+              ]
+            },
+            {
+              "name": "Supplier Code",
+              "dtype": "object",
+              "non_null": 1457,
+              "null_pct": 0.0,
+              "n_unique": 103,
+              "sample": [
+                "1603-M/s Arthos Breweries Ltd",
+                "1603-M/s Arthos Breweries Ltd",
+                "1603-M/s Arthos Breweries Ltd"
+              ]
+            },
+            {
+              "name": "Category",
+              "dtype": "object",
+              "non_null": 1400,
+              "null_pct": 3.91,
+              "n_unique": 10,
+              "sample": [
+                "Local Beer",
+                "Local Beer",
+                "Local Beer"
+              ]
+            },
+            {
+              "name": "Brand Type",
+              "dtype": "object",
+              "non_null": 1457,
+              "null_pct": 0.0,
+              "n_unique": 2,
+              "sample": [
+                "BEER",
+                "BEER",
+                "BEER"
+              ]
+            },
+            {
+              "name": "Final MRP",
+              "dtype": "int64",
+              "non_null": 1457,
+              "null_pct": 0.0,
+              "n_unique": 237,
+              "sample": [
+                "220",
+                "130",
+                "180"
+              ]
+            },
+            {
+              "name": "Issue Price Rounded",
+              "dtype": "int64",
+              "non_null": 1457,
+              "null_pct": 0.0,
+              "n_unique": 475,
+              "sample": [
+                "1966",
+                "2336",
+                "1609"
+              ]
+            },
+            {
+              "name": "Main Distillery",
+              "dtype": "object",
+              "non_null": 1445,
+              "null_pct": 0.82,
+              "n_unique": 71,
+              "sample": [
+                "1603-M/s Arthos Breweries Ltd",
+                "1603-M/s Arthos Breweries Ltd",
+                "1603-M/s Arthos Breweries Ltd"
+              ]
+            },
+            {
+              "name": "Supplier Address",
+              "dtype": "object",
+              "non_null": 1457,
+              "null_pct": 0.0,
+              "n_unique": 81,
+              "sample": [
+                "Drakshrama Road, Ramachandrapuram, E.G. Dist.",
+                "Drakshrama Road, Ramachandrapuram, E.G. Dist.",
+                "Drakshrama Road, Ramachandrapuram, E.G. Dist."
+              ]
+            },
+            {
+              "name": "Supplier Type",
+              "dtype": "object",
+              "non_null": 1457,
+              "null_pct": 0.0,
+              "n_unique": 2,
+              "sample": [
+                "Local",
+                "Local",
+                "Local"
+              ]
+            },
+            {
+              "name": "Office Address",
+              "dtype": "object",
+              "non_null": 1457,
+              "null_pct": 0.0,
+              "n_unique": 100,
+              "sample": [
+                "Drakshrama Road, Ramachandrapuram, E.G. Dist.",
+                "Drakshrama Road, Ramachandrapuram, E.G. Dist.",
+                "Drakshrama Road, Ramachandrapuram, E.G. Dist."
+              ]
+            }
+          ],
+          "likely_primary_key": "S.No"
+        }
+      }
+    },
+    "label_approvals": {
+      "filename": "Copy of Label Approvals_2025_2026.xlsx",
+      "size_mb": 0.25,
+      "sheets": {
+        "Sheet1": {
+          "rows": 1373,
+          "cols": 15,
+          "columns": [
+            {
+              "name": "S.No",
+              "dtype": "float64",
+              "non_null": 575,
+              "null_pct": 58.12,
+              "n_unique": 575,
+              "sample": [
+                "1.0",
+                "2.0",
+                "3.0"
+              ]
+            },
+            {
+              "name": "Application No",
+              "dtype": "object",
+              "non_null": 575,
+              "null_pct": 58.12,
+              "n_unique": 575,
+              "sample": [
+                "APPID76",
+                "APPID77",
+                "APPID78"
+              ]
+            },
+            {
+              "name": "Type",
+              "dtype": "object",
+              "non_null": 575,
+              "null_pct": 58.12,
+              "n_unique": 4,
+              "sample": [
+                "Non Local",
+                "Non Local",
+                "Non Local"
+              ]
+            },
+            {
+              "name": "Label Type",
+              "dtype": "object",
+              "non_null": 575,
+              "null_pct": 58.12,
+              "n_unique": 9,
+              "sample": [
+                "Import",
+                "Import",
+                "Import"
+              ]
+            },
+            {
+              "name": "Label Category",
+              "dtype": "object",
+              "non_null": 575,
+              "null_pct": 58.12,
+              "n_unique": 2,
+              "sample": [
+                "New Label",
+                "New Label",
+                "New Label"
+              ]
+            },
+            {
+              "name": "Approval Date",
+              "dtype": "object",
+              "non_null": 575,
+              "null_pct": 58.12,
+              "n_unique": 70,
+              "sample": [
+                "4/11/2025",
+                "4/14/2025",
+                "4/14/2025"
+              ]
+            },
+            {
+              "name": "Main Distillery",
+              "dtype": "object",
+              "non_null": 572,
+              "null_pct": 58.34,
+              "n_unique": 92,
+              "sample": [
+                "2804-M/s Bacardi India Pvt. Ltd",
+                "2804-M/s Bacardi India Pvt. Ltd",
+                "2804-M/s Bacardi India Pvt. Ltd"
+              ]
+            },
+            {
+              "name": "Unit Name & Sub Lease",
+              "dtype": "object",
+              "non_null": 575,
+              "null_pct": 58.12,
+              "n_unique": 109,
+              "sample": [
+                "2804-M/s Bacardi India Pvt. Ltd",
+                "2804-M/s Bacardi India Pvt. Ltd",
+                "2804-M/s Bacardi India Pvt. Ltd"
+              ]
+            },
+            {
+              "name": "Brand Name",
+              "dtype": "object",
+              "non_null": 575,
+              "null_pct": 58.12,
+              "n_unique": 486,
+              "sample": [
+                "Bacardi Ginger Ultra Platinum Original Ginger Rum",
+                "Bacardi Mango Chilli Ultra Platinum Original Mango Chilli Rum",
+                "Black By Bacardi Original Premium Crafted Rum"
+              ]
+            },
+            {
+              "name": "Size",
+              "dtype": "object",
+              "non_null": 1373,
+              "null_pct": 0.0,
+              "n_unique": 32,
+              "sample": [
+                "750(QQ)",
+                "375(PP)",
+                "180(NN)"
+              ]
+            },
+            {
+              "name": "Pack Type",
+              "dtype": "object",
+              "non_null": 1373,
+              "null_pct": 0.0,
+              "n_unique": 6,
+              "sample": [
+                "Glass(G)",
+                "Glass(G)",
+                "Glass(G)"
+              ]
+            },
+            {
+              "name": "Basic Price",
+              "dtype": "float64",
+              "non_null": 1373,
+              "null_pct": 0.0,
+              "n_unique": 604,
+              "sample": [
+                "3270.0",
+                "3285.0",
+                "3300.0"
+              ]
+            },
+            {
+              "name": "MRP",
+              "dtype": "object",
+              "non_null": 1198,
+              "null_pct": 12.75,
+              "n_unique": 256,
+              "sample": [
+                "1350",
+                "680",
+                "350"
+              ]
+            },
+            {
+              "name": "Front Image",
+              "dtype": "object",
+              "non_null": 1373,
+              "null_pct": 0.0,
+              "n_unique": 1373,
+              "sample": [
+                "https://s3-prod-tnt.s3.ap-south-1.amazonaws.com/labels/APPID76/Ging 750ml21-03-2025T1715145165.jpg",
+                "https://s3-prod-tnt.s3.ap-south-1.amazonaws.com/labels/APPID76/Ginger 375ml Front21-03-2025T1715146111.jpg",
+                "https://s3-prod-tnt.s3.ap-south-1.amazonaws.com/labels/APPID76/Ginger 180ml Front21-03-2025T1715141752.jpg"
+              ]
+            },
+            {
+              "name": "Back Image",
+              "dtype": "object",
+              "non_null": 1292,
+              "null_pct": 5.9,
+              "n_unique": 1292,
+              "sample": [
+                "https://s3-prod-tnt.s3.ap-south-1.amazonaws.com/labels/APPID76/Ging 750ml mrp21-03-2025T1715149847.jpg",
+                "https://s3-prod-tnt.s3.ap-south-1.amazonaws.com/labels/APPID76/Ginger  375ml Back21-03-2025T1715147728.jpg",
+                "https://s3-prod-tnt.s3.ap-south-1.amazonaws.com/labels/APPID76/gINGER 180ML Back21-03-2025T1715148689.jpg"
+              ]
+            }
+          ],
+          "likely_primary_key": "Front Image"
+        }
+      }
+    },
+    "distillery_statement": {
+      "filename": "Copy of Statement Pharma Molasses and Distillery March 26.xlsx",
+      "size_mb": 0.02,
+      "sheets": {
+        "Distillery 16.03.2026": {
+          "rows": 96,
+          "cols": 8,
+          "columns": [
+            {
+              "name": "DISTILLERY UNIT (IMFL)",
+              "dtype": "object",
+              "non_null": 24,
+              "null_pct": 75.0,
+              "n_unique": 24,
+              "sample": [
+                "(ENA/SPECIAL SPIRITS)",
+                "Sl.No",
+                "AC(D) Kakinada"
+              ]
+            },
+            {
+              "name": "Unnamed: 1",
+              "dtype": "object",
+              "non_null": 54,
+              "null_pct": 43.75,
+              "n_unique": 54,
+              "sample": [
+                "Name of the Unit & S/L or Tie up with the unit with Code No.",
+                "M/s PMK Distillations Private Limited Franchise with M/s Radico Khaitan Limited",
+                "M/s PMK Distillations Private Limited Sublease M/s Radico Khaitan Limited"
+              ]
+            },
+            {
+              "name": "Unnamed: 2",
+              "dtype": "object",
+              "non_null": 53,
+              "null_pct": 44.79,
+              "n_unique": 38,
+              "sample": [
+                "Base Quota in PLs",
+                "5000000",
+                "5240000"
+              ]
+            },
+            {
+              "name": "Unnamed: 3",
+              "dtype": "object",
+              "non_null": 53,
+              "null_pct": 44.79,
+              "n_unique": 38,
+              "sample": [
+                "Base Quota in BLs",
+                "3086419.75308642",
+                "3234567.9012345676"
+              ]
+            },
+            {
+              "name": "Unnamed: 4",
+              "dtype": "object",
+              "non_null": 53,
+              "null_pct": 44.79,
+              "n_unique": 33,
+              "sample": [
+                "Opening Balance",
+                "237623.38",
+                "165314.48"
+              ]
+            },
+            {
+              "name": "Unnamed: 5",
+              "dtype": "object",
+              "non_null": 53,
+              "null_pct": 44.79,
+              "n_unique": 37,
+              "sample": [
+                "So for Alloted",
+                "2172167.96",
+                "2458391.6"
+              ]
+            },
+            {
+              "name": "Unnamed: 6",
+              "dtype": "object",
+              "non_null": 52,
+              "null_pct": 45.83,
+              "n_unique": 36,
+              "sample": [
+                "So for lifted",
+                "2072167.96",
+                "2455455.82"
+              ]
+            },
+            {
+              "name": "Unnamed: 7",
+              "dtype": "object",
+              "non_null": 53,
+              "null_pct": 44.79,
+              "n_unique": 51,
+              "sample": [
+                "Balance Quota",
+                "676628.4130864199",
+                "610861.8212345676"
+              ]
+            }
+          ],
+          "likely_primary_key": null
+        },
+        "Export ENA": {
+          "rows": 20,
+          "cols": 8,
+          "columns": [
+            {
+              "name": "PRIMARY UNIT ",
+              "dtype": "object",
+              "non_null": 11,
+              "null_pct": 45.0,
+              "n_unique": 11,
+              "sample": [
+                "EXPORT OF ENA",
+                "01.04.2026 to 14.03.2026",
+                "Sl.No"
+              ]
+            },
+            {
+              "name": "Unnamed: 1",
+              "dtype": "object",
+              "non_null": 9,
+              "null_pct": 55.0,
+              "n_unique": 9,
+              "sample": [
+                "Name of the Unit & S/L or Tie up with the unit with Code No.",
+                "M/s Pearl Distillery Private Limited",
+                "M/s. Sentini Bio Products (P) Ltd"
+              ]
+            },
+            {
+              "name": "Unnamed: 2",
+              "dtype": "object",
+              "non_null": 9,
+              "null_pct": 55.0,
+              "n_unique": 7,
+              "sample": [
+                "Annual permitted Base Quota",
+                "40500000",
+                "72000000"
+              ]
+            },
+            {
+              "name": "Unnamed: 3",
+              "dtype": "object",
+              "non_null": 9,
+              "null_pct": 55.0,
+              "n_unique": 9,
+              "sample": [
+                "Production as on Date 14.03.2026",
+                "45003896",
+                "31556152"
+              ]
+            },
+            {
+              "name": "Unnamed: 4",
+              "dtype": "object",
+              "non_null": 9,
+              "null_pct": 55.0,
+              "n_unique": 9,
+              "sample": [
+                "Exported as per GO on 14.03.2026",
+                "6420000",
+                "15480000"
+              ]
+            },
+            {
+              "name": "Unnamed: 5",
+              "dtype": "object",
+              "non_null": 9,
+              "null_pct": 55.0,
+              "n_unique": 9,
+              "sample": [
+                "Opening Balance",
+                "491096.65",
+                "2432082"
+              ]
+            },
+            {
+              "name": "Unnamed: 6",
+              "dtype": "object",
+              "non_null": 9,
+              "null_pct": 55.0,
+              "n_unique": 9,
+              "sample": [
+                "So for Alloted",
+                "6420000",
+                "15480000"
+              ]
+            },
+            {
+              "name": "Unnamed: 7",
+              "dtype": "object",
+              "non_null": 9,
+              "null_pct": 55.0,
+              "n_unique": 9,
+              "sample": [
+                "So for lifted",
+                "6420000",
+                "15145000"
+              ]
+            }
+          ],
+          "likely_primary_key": null
+        },
+        "Export AA": {
+          "rows": 11,
+          "cols": 8,
+          "columns": [
+            {
+              "name": "PRIMARY UNIT ",
+              "dtype": "object",
+              "non_null": 6,
+              "null_pct": 45.45,
+              "n_unique": 6,
+              "sample": [
+                "EXPORT OF ETHANOL/ABSOULTE ALCOHOL/Impure Spirit",
+                "01.04.2026 to 14.03.2026",
+                "Sl.No"
+              ]
+            },
+            {
+              "name": "Unnamed: 1",
+              "dtype": "object",
+              "non_null": 4,
+              "null_pct": 63.64,
+              "n_unique": 4,
+              "sample": [
+                "Name of the Unit & S/L or Tie up with the unit with Code No.",
+                "M/S SPY Agro Industries Limitied",
+                "M/s. MS BIOTECH PVT LTD"
+              ]
+            },
+            {
+              "name": "Unnamed: 2",
+              "dtype": "object",
+              "non_null": 4,
+              "null_pct": 63.64,
+              "n_unique": 4,
+              "sample": [
+                "Annual permitted Base Quota",
+                "77000000",
+                "36000000"
+              ]
+            },
+            {
+              "name": "Unnamed: 3",
+              "dtype": "object",
+              "non_null": 4,
+              "null_pct": 63.64,
+              "n_unique": 4,
+              "sample": [
+                "Production as on Date 14.03.2026",
+                "21322794",
+                "3099845"
+              ]
+            },
+            {
+              "name": "Unnamed: 4",
+              "dtype": "object",
+              "non_null": 4,
+              "null_pct": 63.64,
+              "n_unique": 4,
+              "sample": [
+                "Exported as per GO on 14.03.2026",
+                "10661397",
+                "2106000"
+              ]
+            },
+            {
+              "name": "Unnamed: 5",
+              "dtype": "object",
+              "non_null": 4,
+              "null_pct": 63.64,
+              "n_unique": 4,
+              "sample": [
+                "Opening Balance",
+                "NIL",
+                "296700"
+              ]
+            },
+            {
+              "name": "Unnamed: 6",
+              "dtype": "object",
+              "non_null": 4,
+              "null_pct": 63.64,
+              "n_unique": 4,
+              "sample": [
+                "So for Alloted",
+                "1485726",
+                "2106000"
+              ]
+            },
+            {
+              "name": "Unnamed: 7",
+              "dtype": "object",
+              "non_null": 4,
+              "null_pct": 63.64,
+              "n_unique": 4,
+              "sample": [
+                "So for lifted",
+                "1485726",
+                "1726000"
+              ]
+            }
+          ],
+          "likely_primary_key": null
+        }
+      }
+    },
+    "month_wise_idl": {
+      "filename": "Copy of MONTH WISE DATA ID NDPL DPL GANJA FROM 2019 TO 09-02-2026.xlsx",
+      "size_mb": 0.16,
+      "sheets": {
+        "Table 1": {
+          "rows": 68,
+          "cols": 36,
+          "columns": [
+            {
+              "name": "STATEMENT SHOWING DETECTED & SEIZURES / DESTROYED OF ID LIQUOR : MONTH WISE FROM FEB-2026 (UP TO 09-02-2026)",
+              "dtype": "object",
+              "non_null": 30,
+              "null_pct": 55.88,
+              "n_unique": 14,
+              "sample": [
+                "Sl. No",
+                "1",
+                "1"
+              ]
+            },
+            {
+              "name": "Unnamed: 1",
+              "dtype": "float64",
+              "non_null": 0,
+              "null_pct": 100.0,
+              "n_unique": 0,
+              "sample": []
+            },
+            {
+              "name": "Unnamed: 2",
+              "dtype": "float64",
+              "non_null": 0,
+              "null_pct": 100.0,
+              "n_unique": 0,
+              "sample": []
+            },
+            {
+              "name": "Unnamed: 3",
+              "dtype": "float64",
+              "non_null": 0,
+              "null_pct": 100.0,
+              "n_unique": 0,
+              "sample": []
+            },
+            {
+              "name": "Unnamed: 4",
+              "dtype": "float64",
+              "non_null": 0,
+              "null_pct": 100.0,
+              "n_unique": 0,
+              "sample": []
+            },
+            {
+              "name": "Unnamed: 5",
+              "dtype": "object",
+              "non_null": 28,
+              "null_pct": 58.82,
+              "n_unique": 14,
+              "sample": [
+                "MONTHs",
+                "2",
+                "JAN"
+              ]
+            },
+            {
+              "name": "Unnamed: 6",
+              "dtype": "float64",
+              "non_null": 0,
+              "null_pct": 100.0,
+              "n_unique": 0,
+              "sample": []
+            },
+            {
+              "name": "Unnamed: 7",
+              "dtype": "float64",
+              "non_null": 0,
+              "null_pct": 100.0,
+              "n_unique": 0,
+              "sample": []
+            },
+            {
+              "name": "Unnamed: 8",
+              "dtype": "float64",
+              "non_null": 0,
+              "null_pct": 100.0,
+              "n_unique": 0,
+              "sample": []
+            },
+            {
+              "name": "Unnamed: 9",
+              "dtype": "object",
+              "non_null": 32,
+              "null_pct": 52.94,
+              "n_unique": 31,
+              "sample": [
+                "CASES DETECTED",
+                "2019",
+                "3"
+              ]
+            },
+            {
+              "name": "Unnamed: 10",
+              "dtype": "float64",
+              "non_null": 30,
+              "null_pct": 55.88,
+              "n_unique": 28,
+              "sample": [
+                "2020.0",
+                "4.0",
+                "1514.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 11",
+              "dtype": "float64",
+              "non_null": 30,
+              "null_pct": 55.88,
+              "n_unique": 29,
+              "sample": [
+                "2021.0",
+                "5.0",
+                "3037.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 12",
+              "dtype": "float64",
+              "non_null": 30,
+              "null_pct": 55.88,
+              "n_unique": 29,
+              "sample": [
+                "2022.0",
+                "6.0",
+                "4016.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 13",
+              "dtype": "float64",
+              "non_null": 30,
+              "null_pct": 55.88,
+              "n_unique": 29,
+              "sample": [
+                "2023.0",
+                "7.0",
+                "1034.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 14",
+              "dtype": "float64",
+              "non_null": 30,
+              "null_pct": 55.88,
+              "n_unique": 29,
+              "sample": [
+                "2024.0",
+                "8.0",
+                "2162.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 15",
+              "dtype": "float64",
+              "non_null": 30,
+              "null_pct": 55.88,
+              "n_unique": 29,
+              "sample": [
+                "2025.0",
+                "9.0",
+                "1406.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 16",
+              "dtype": "float64",
+              "non_null": 10,
+              "null_pct": 85.29,
+              "n_unique": 9,
+              "sample": [
+                "2026.0",
+                "10.0",
+                "340.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 17",
+              "dtype": "object",
+              "non_null": 28,
+              "null_pct": 58.82,
+              "n_unique": 27,
+              "sample": [
+                "TOTAL",
+                "14667",
+                "12041"
+              ]
+            },
+            {
+              "name": "Unnamed: 18",
+              "dtype": "object",
+              "non_null": 32,
+              "null_pct": 52.94,
+              "n_unique": 31,
+              "sample": [
+                "PERSONS ARRESTED",
+                "2019",
+                "11"
+              ]
+            },
+            {
+              "name": "Unnamed: 19",
+              "dtype": "float64",
+              "non_null": 30,
+              "null_pct": 55.88,
+              "n_unique": 29,
+              "sample": [
+                "2020.0",
+                "12.0",
+                "1144.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 20",
+              "dtype": "float64",
+              "non_null": 30,
+              "null_pct": 55.88,
+              "n_unique": 28,
+              "sample": [
+                "2021.0",
+                "13.0",
+                "1553.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 21",
+              "dtype": "float64",
+              "non_null": 30,
+              "null_pct": 55.88,
+              "n_unique": 29,
+              "sample": [
+                "2022.0",
+                "14.0",
+                "1847.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 22",
+              "dtype": "float64",
+              "non_null": 30,
+              "null_pct": 55.88,
+              "n_unique": 28,
+              "sample": [
+                "2023.0",
+                "15.0",
+                "1002.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 23",
+              "dtype": "float64",
+              "non_null": 30,
+              "null_pct": 55.88,
+              "n_unique": 29,
+              "sample": [
+                "2024.0",
+                "16.0",
+                "901.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 24",
+              "dtype": "float64",
+              "non_null": 30,
+              "null_pct": 55.88,
+              "n_unique": 29,
+              "sample": [
+                "2025.0",
+                "17.0",
+                "720.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 25",
+              "dtype": "float64",
+              "non_null": 10,
+              "null_pct": 85.29,
+              "n_unique": 8,
+              "sample": [
+                "2026.0",
+                "18.0",
+                "311.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 26",
+              "dtype": "object",
+              "non_null": 28,
+              "null_pct": 58.82,
+              "n_unique": 27,
+              "sample": [
+                "TOTAL",
+                "8222",
+                "7465"
+              ]
+            },
+            {
+              "name": "Unnamed: 27",
+              "dtype": "object",
+              "non_null": 32,
+              "null_pct": 52.94,
+              "n_unique": 29,
+              "sample": [
+                "QTY. OF ID LIQUOR SEIZED (IN LTRS)",
+                "2019",
+                "19"
+              ]
+            },
+            {
+              "name": "Unnamed: 28",
+              "dtype": "float64",
+              "non_null": 30,
+              "null_pct": 55.88,
+              "n_unique": 29,
+              "sample": [
+                "2020.0",
+                "20.0",
+                "18013.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 29",
+              "dtype": "float64",
+              "non_null": 30,
+              "null_pct": 55.88,
+              "n_unique": 29,
+              "sample": [
+                "2021.0",
+                "21.0",
+                "31036.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 30",
+              "dtype": "float64",
+              "non_null": 30,
+              "null_pct": 55.88,
+              "n_unique": 29,
+              "sample": [
+                "2022.0",
+                "22.0",
+                "58882.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 31",
+              "dtype": "float64",
+              "non_null": 30,
+              "null_pct": 55.88,
+              "n_unique": 27,
+              "sample": [
+                "2023.0",
+                "23.0",
+                "8773.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 32",
+              "dtype": "float64",
+              "non_null": 30,
+              "null_pct": 55.88,
+              "n_unique": 29,
+              "sample": [
+                "2024.0",
+                "24.0",
+                "21771.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 33",
+              "dtype": "float64",
+              "non_null": 30,
+              "null_pct": 55.88,
+              "n_unique": 27,
+              "sample": [
+                "2025.0",
+                "25.0",
+                "10744.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 34",
+              "dtype": "float64",
+              "non_null": 10,
+              "null_pct": 85.29,
+              "n_unique": 9,
+              "sample": [
+                "2026.0",
+                "26.0",
+                "3305.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 35",
+              "dtype": "object",
+              "non_null": 28,
+              "null_pct": 58.82,
+              "n_unique": 27,
+              "sample": [
+                "TOTAL",
+                "162761",
+                "149139"
+              ]
+            }
+          ],
+          "likely_primary_key": null
+        },
+        "Table 2": {
+          "rows": 16,
+          "cols": 38,
+          "columns": [
+            {
+              "name": "STATEMENT SHOWING DETECTED & SEIZURES OF NON-DUTY PAID LIQUOR : MONTH WISE FROM FEB-2026 (UP TO 09-02-2026)",
+              "dtype": "object",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 14,
+              "sample": [
+                "Sl. No",
+                "1",
+                "1"
+              ]
+            },
+            {
+              "name": "Unnamed: 1",
+              "dtype": "object",
+              "non_null": 14,
+              "null_pct": 12.5,
+              "n_unique": 14,
+              "sample": [
+                "MONTHs",
+                "2",
+                "JAN"
+              ]
+            },
+            {
+              "name": "Unnamed: 2",
+              "dtype": "object",
+              "non_null": 16,
+              "null_pct": 0.0,
+              "n_unique": 15,
+              "sample": [
+                "CASES DETECTED",
+                "2019",
+                "3"
+              ]
+            },
+            {
+              "name": "Unnamed: 3",
+              "dtype": "float64",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 14,
+              "sample": [
+                "2020.0",
+                "4.0",
+                "267.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 4",
+              "dtype": "float64",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 15,
+              "sample": [
+                "2021.0",
+                "5.0",
+                "532.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 5",
+              "dtype": "float64",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 15,
+              "sample": [
+                "2022.0",
+                "6.0",
+                "299.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 6",
+              "dtype": "float64",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 15,
+              "sample": [
+                "2023.0",
+                "7.0",
+                "367.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 7",
+              "dtype": "float64",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 15,
+              "sample": [
+                "2024.0",
+                "8.0",
+                "1031.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 8",
+              "dtype": "object",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 15,
+              "sample": [
+                "2025    2026",
+                "9",
+                "527"
+              ]
+            },
+            {
+              "name": "Unnamed: 9",
+              "dtype": "float64",
+              "non_null": 4,
+              "null_pct": 75.0,
+              "n_unique": 4,
+              "sample": [
+                "10.0",
+                "199.0",
+                "43.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 10",
+              "dtype": "object",
+              "non_null": 14,
+              "null_pct": 12.5,
+              "n_unique": 14,
+              "sample": [
+                "TOTAL",
+                "3313",
+                "3051"
+              ]
+            },
+            {
+              "name": "Unnamed: 11",
+              "dtype": "object",
+              "non_null": 16,
+              "null_pct": 0.0,
+              "n_unique": 16,
+              "sample": [
+                "PERSONS ARRESTED",
+                "2019",
+                "11"
+              ]
+            },
+            {
+              "name": "Unnamed: 12",
+              "dtype": "float64",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 15,
+              "sample": [
+                "2020.0",
+                "12.0",
+                "411.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 13",
+              "dtype": "float64",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 15,
+              "sample": [
+                "2021.0",
+                "13.0",
+                "644.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 14",
+              "dtype": "float64",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 14,
+              "sample": [
+                "2022.0",
+                "14.0",
+                "341.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 15",
+              "dtype": "float64",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 15,
+              "sample": [
+                "2023.0",
+                "15.0",
+                "424.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 16",
+              "dtype": "float64",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 15,
+              "sample": [
+                "2024.0",
+                "16.0",
+                "1104.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 17",
+              "dtype": "object",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 15,
+              "sample": [
+                "2025    2026",
+                "17",
+                "546"
+              ]
+            },
+            {
+              "name": "Unnamed: 18",
+              "dtype": "float64",
+              "non_null": 4,
+              "null_pct": 75.0,
+              "n_unique": 4,
+              "sample": [
+                "18.0",
+                "207.0",
+                "43.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 19",
+              "dtype": "object",
+              "non_null": 14,
+              "null_pct": 12.5,
+              "n_unique": 14,
+              "sample": [
+                "TOTAL",
+                "3767",
+                "3473"
+              ]
+            },
+            {
+              "name": "Unnamed: 20",
+              "dtype": "object",
+              "non_null": 16,
+              "null_pct": 0.0,
+              "n_unique": 16,
+              "sample": [
+                "QTY. OF IMFL SEIZED (IN LTRS)",
+                "2019",
+                "19"
+              ]
+            },
+            {
+              "name": "Unnamed: 21",
+              "dtype": "float64",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 15,
+              "sample": [
+                "2020.0",
+                "20.0",
+                "2863.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 22",
+              "dtype": "float64",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 15,
+              "sample": [
+                "2021.0",
+                "21.0",
+                "7924.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 23",
+              "dtype": "float64",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 15,
+              "sample": [
+                "2022.0",
+                "22.0",
+                "5879.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 24",
+              "dtype": "float64",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 15,
+              "sample": [
+                "2023.0",
+                "23.0",
+                "17855.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 25",
+              "dtype": "float64",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 15,
+              "sample": [
+                "2024.0",
+                "24.0",
+                "8190.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 26",
+              "dtype": "object",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 15,
+              "sample": [
+                "2025        2026",
+                "25",
+                "3937"
+              ]
+            },
+            {
+              "name": "Unnamed: 27",
+              "dtype": "float64",
+              "non_null": 4,
+              "null_pct": 75.0,
+              "n_unique": 4,
+              "sample": [
+                "26.0",
+                "1025.0",
+                "109.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 28",
+              "dtype": "object",
+              "non_null": 14,
+              "null_pct": 12.5,
+              "n_unique": 14,
+              "sample": [
+                "TOTAL",
+                "47922",
+                "65819"
+              ]
+            },
+            {
+              "name": "Unnamed: 29",
+              "dtype": "object",
+              "non_null": 16,
+              "null_pct": 0.0,
+              "n_unique": 16,
+              "sample": [
+                "VEHICLES SEIZED",
+                "2019",
+                "27"
+              ]
+            },
+            {
+              "name": "Unnamed: 30",
+              "dtype": "float64",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 15,
+              "sample": [
+                "2020.0",
+                "28.0",
+                "167.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 31",
+              "dtype": "float64",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 15,
+              "sample": [
+                "2021.0",
+                "29.0",
+                "197.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 32",
+              "dtype": "float64",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 14,
+              "sample": [
+                "2022.0",
+                "30.0",
+                "67.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 33",
+              "dtype": "float64",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 14,
+              "sample": [
+                "2023.0",
+                "31.0",
+                "94.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 34",
+              "dtype": "float64",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 14,
+              "sample": [
+                "2024.0",
+                "32.0",
+                "157.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 35",
+              "dtype": "float64",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 13,
+              "sample": [
+                "2025.0",
+                "33.0",
+                "74.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 36",
+              "dtype": "float64",
+              "non_null": 5,
+              "null_pct": 68.75,
+              "n_unique": 5,
+              "sample": [
+                "2026.0",
+                "34.0",
+                "9.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 37",
+              "dtype": "object",
+              "non_null": 14,
+              "null_pct": 12.5,
+              "n_unique": 14,
+              "sample": [
+                "TOTAL",
+                "812",
+                "826"
+              ]
+            }
+          ],
+          "likely_primary_key": "Unnamed: 11"
+        },
+        "Table 3": {
+          "rows": 64,
+          "cols": 35,
+          "columns": [
+            {
+              "name": "STATEMENT SHOWING DETECTED & SEIZURES / DESTROYED OF SPURIOUS LIQUOR : MONTH WISE FROM FEB-2026 (UP TO 09-02-2026)",
+              "dtype": "object",
+              "non_null": 45,
+              "null_pct": 29.69,
+              "n_unique": 14,
+              "sample": [
+                "Sl. No",
+                "1",
+                "1"
+              ]
+            },
+            {
+              "name": "Unnamed: 1",
+              "dtype": "float64",
+              "non_null": 0,
+              "null_pct": 100.0,
+              "n_unique": 0,
+              "sample": []
+            },
+            {
+              "name": "Unnamed: 2",
+              "dtype": "float64",
+              "non_null": 0,
+              "null_pct": 100.0,
+              "n_unique": 0,
+              "sample": []
+            },
+            {
+              "name": "Unnamed: 3",
+              "dtype": "float64",
+              "non_null": 0,
+              "null_pct": 100.0,
+              "n_unique": 0,
+              "sample": []
+            },
+            {
+              "name": "Unnamed: 4",
+              "dtype": "float64",
+              "non_null": 0,
+              "null_pct": 100.0,
+              "n_unique": 0,
+              "sample": []
+            },
+            {
+              "name": "Unnamed: 5",
+              "dtype": "object",
+              "non_null": 42,
+              "null_pct": 34.38,
+              "n_unique": 14,
+              "sample": [
+                "MONTHs",
+                "2",
+                "JAN"
+              ]
+            },
+            {
+              "name": "Unnamed: 6",
+              "dtype": "object",
+              "non_null": 48,
+              "null_pct": 25.0,
+              "n_unique": 14,
+              "sample": [
+                "CASES DETECTED",
+                "2019",
+                "3"
+              ]
+            },
+            {
+              "name": "Unnamed: 7",
+              "dtype": "float64",
+              "non_null": 45,
+              "null_pct": 29.69,
+              "n_unique": 9,
+              "sample": [
+                "2020.0",
+                "4.0",
+                "1.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 8",
+              "dtype": "float64",
+              "non_null": 45,
+              "null_pct": 29.69,
+              "n_unique": 11,
+              "sample": [
+                "2021.0",
+                "5.0",
+                "2.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 9",
+              "dtype": "float64",
+              "non_null": 45,
+              "null_pct": 29.69,
+              "n_unique": 12,
+              "sample": [
+                "2022.0",
+                "6.0",
+                "3.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 10",
+              "dtype": "float64",
+              "non_null": 45,
+              "null_pct": 29.69,
+              "n_unique": 8,
+              "sample": [
+                "2023.0",
+                "7.0",
+                "1.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 11",
+              "dtype": "float64",
+              "non_null": 45,
+              "null_pct": 29.69,
+              "n_unique": 7,
+              "sample": [
+                "2024.0",
+                "8.0",
+                "0.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 12",
+              "dtype": "float64",
+              "non_null": 45,
+              "null_pct": 29.69,
+              "n_unique": 21,
+              "sample": [
+                "2025.0",
+                "9.0",
+                "11.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 13",
+              "dtype": "float64",
+              "non_null": 15,
+              "null_pct": 76.56,
+              "n_unique": 5,
+              "sample": [
+                "2026.0",
+                "10.0",
+                "0.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 14",
+              "dtype": "object",
+              "non_null": 36,
+              "null_pct": 43.75,
+              "n_unique": 20,
+              "sample": [
+                "TOTAL",
+                "18",
+                "4"
+              ]
+            },
+            {
+              "name": "Unnamed: 15",
+              "dtype": "float64",
+              "non_null": 6,
+              "null_pct": 90.62,
+              "n_unique": 3,
+              "sample": [
+                "2.0",
+                "3.0",
+                "3.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 16",
+              "dtype": "object",
+              "non_null": 48,
+              "null_pct": 25.0,
+              "n_unique": 12,
+              "sample": [
+                "PERSONS ARRESTED",
+                "2019",
+                "11"
+              ]
+            },
+            {
+              "name": "Unnamed: 17",
+              "dtype": "float64",
+              "non_null": 45,
+              "null_pct": 29.69,
+              "n_unique": 12,
+              "sample": [
+                "2020.0",
+                "12.0",
+                "4.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 18",
+              "dtype": "float64",
+              "non_null": 45,
+              "null_pct": 29.69,
+              "n_unique": 9,
+              "sample": [
+                "2021.0",
+                "13.0",
+                "16.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 19",
+              "dtype": "float64",
+              "non_null": 45,
+              "null_pct": 29.69,
+              "n_unique": 10,
+              "sample": [
+                "2022.0",
+                "14.0",
+                "5.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 20",
+              "dtype": "float64",
+              "non_null": 45,
+              "null_pct": 29.69,
+              "n_unique": 8,
+              "sample": [
+                "2023.0",
+                "15.0",
+                "2.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 21",
+              "dtype": "float64",
+              "non_null": 45,
+              "null_pct": 29.69,
+              "n_unique": 6,
+              "sample": [
+                "2024.0",
+                "16.0",
+                "0.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 22",
+              "dtype": "float64",
+              "non_null": 45,
+              "null_pct": 29.69,
+              "n_unique": 16,
+              "sample": [
+                "2025.0",
+                "17.0",
+                "45.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 23",
+              "dtype": "float64",
+              "non_null": 15,
+              "null_pct": 76.56,
+              "n_unique": 5,
+              "sample": [
+                "2026.0",
+                "18.0",
+                "0.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 24",
+              "dtype": "object",
+              "non_null": 41,
+              "null_pct": 35.94,
+              "n_unique": 17,
+              "sample": [
+                "TOTAL",
+                "72",
+                "17"
+              ]
+            },
+            {
+              "name": "Unnamed: 25",
+              "dtype": "float64",
+              "non_null": 1,
+              "null_pct": 98.44,
+              "n_unique": 1,
+              "sample": [
+                "10.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 26",
+              "dtype": "object",
+              "non_null": 48,
+              "null_pct": 25.0,
+              "n_unique": 14,
+              "sample": [
+                "Spurious Liquor Seized (in ltrs)",
+                "2019",
+                "19"
+              ]
+            },
+            {
+              "name": "Unnamed: 27",
+              "dtype": "float64",
+              "non_null": 45,
+              "null_pct": 29.69,
+              "n_unique": 16,
+              "sample": [
+                "2020.0",
+                "20.0",
+                "41.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 28",
+              "dtype": "float64",
+              "non_null": 45,
+              "null_pct": 29.69,
+              "n_unique": 15,
+              "sample": [
+                "2021.0",
+                "21.0",
+                "1906.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 29",
+              "dtype": "float64",
+              "non_null": 45,
+              "null_pct": 29.69,
+              "n_unique": 11,
+              "sample": [
+                "2022.0",
+                "22.0",
+                "115.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 30",
+              "dtype": "float64",
+              "non_null": 45,
+              "null_pct": 29.69,
+              "n_unique": 9,
+              "sample": [
+                "2023.0",
+                "23.0",
+                "18.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 31",
+              "dtype": "float64",
+              "non_null": 45,
+              "null_pct": 29.69,
+              "n_unique": 7,
+              "sample": [
+                "2024.0",
+                "24.0",
+                "0.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 32",
+              "dtype": "float64",
+              "non_null": 45,
+              "null_pct": 29.69,
+              "n_unique": 19,
+              "sample": [
+                "2025.0",
+                "25.0",
+                "567.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 33",
+              "dtype": "float64",
+              "non_null": 15,
+              "null_pct": 76.56,
+              "n_unique": 5,
+              "sample": [
+                "2026.0",
+                "26.0",
+                "0.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 34",
+              "dtype": "object",
+              "non_null": 42,
+              "null_pct": 34.38,
+              "n_unique": 25,
+              "sample": [
+                "TOTAL",
+                "2647",
+                "111"
+              ]
+            }
+          ],
+          "likely_primary_key": null
+        },
+        "Table 4": {
+          "rows": 16,
+          "cols": 40,
+          "columns": [
+            {
+              "name": "STATEMENT SHOWING DETECTED & SEIZURES OF DUTY PAID LIQUOR : MONTH WISE FROM FEB-2026 (UP TO 09-02-2026)",
+              "dtype": "object",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 14,
+              "sample": [
+                "Sl. No",
+                "1",
+                "1"
+              ]
+            },
+            {
+              "name": "Unnamed: 1",
+              "dtype": "float64",
+              "non_null": 0,
+              "null_pct": 100.0,
+              "n_unique": 0,
+              "sample": []
+            },
+            {
+              "name": "Unnamed: 2",
+              "dtype": "object",
+              "non_null": 14,
+              "null_pct": 12.5,
+              "n_unique": 14,
+              "sample": [
+                "MONTHs",
+                "2",
+                "JAN"
+              ]
+            },
+            {
+              "name": "Unnamed: 3",
+              "dtype": "object",
+              "non_null": 16,
+              "null_pct": 0.0,
+              "n_unique": 16,
+              "sample": [
+                "CASES DETECTED",
+                "2019",
+                "3"
+              ]
+            },
+            {
+              "name": "Unnamed: 4",
+              "dtype": "float64",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 15,
+              "sample": [
+                "2020.0",
+                "4.0",
+                "1033.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 5",
+              "dtype": "float64",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 15,
+              "sample": [
+                "2021.0",
+                "5.0",
+                "808.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 6",
+              "dtype": "float64",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 15,
+              "sample": [
+                "2022.0",
+                "6.0",
+                "496.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 7",
+              "dtype": "float64",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 15,
+              "sample": [
+                "2023.0",
+                "7.0",
+                "435.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 8",
+              "dtype": "float64",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 15,
+              "sample": [
+                "2024.0",
+                "8.0",
+                "3677.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 9",
+              "dtype": "float64",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 15,
+              "sample": [
+                "2025.0",
+                "9.0",
+                "1420.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 10",
+              "dtype": "float64",
+              "non_null": 5,
+              "null_pct": 68.75,
+              "n_unique": 5,
+              "sample": [
+                "2026.0",
+                "10.0",
+                "817.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 11",
+              "dtype": "object",
+              "non_null": 14,
+              "null_pct": 12.5,
+              "n_unique": 14,
+              "sample": [
+                "TOTAL",
+                "10464",
+                "9971"
+              ]
+            },
+            {
+              "name": "Unnamed: 12",
+              "dtype": "object",
+              "non_null": 16,
+              "null_pct": 0.0,
+              "n_unique": 16,
+              "sample": [
+                "PERSONS ARRESTED",
+                "2019",
+                "11"
+              ]
+            },
+            {
+              "name": "Unnamed: 13",
+              "dtype": "float64",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 15,
+              "sample": [
+                "2020.0",
+                "12.0",
+                "1309.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 14",
+              "dtype": "float64",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 14,
+              "sample": [
+                "2021.0",
+                "13.0",
+                "850.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 15",
+              "dtype": "float64",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 15,
+              "sample": [
+                "2022.0",
+                "14.0",
+                "479.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 16",
+              "dtype": "float64",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 15,
+              "sample": [
+                "2023.0",
+                "15.0",
+                "405.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 17",
+              "dtype": "float64",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 15,
+              "sample": [
+                "2024.0",
+                "16.0",
+                "3629.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 18",
+              "dtype": "float64",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 15,
+              "sample": [
+                "2025.0",
+                "17.0",
+                "1419.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 19",
+              "dtype": "float64",
+              "non_null": 5,
+              "null_pct": 68.75,
+              "n_unique": 5,
+              "sample": [
+                "2026.0",
+                "18.0",
+                "815.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 20",
+              "dtype": "object",
+              "non_null": 14,
+              "null_pct": 12.5,
+              "n_unique": 14,
+              "sample": [
+                "TOTAL",
+                "10758",
+                "10299"
+              ]
+            },
+            {
+              "name": "Unnamed: 21",
+              "dtype": "object",
+              "non_null": 16,
+              "null_pct": 0.0,
+              "n_unique": 16,
+              "sample": [
+                "QTY. OF IMFL SEIZED (IN LTRS)",
+                "2019",
+                "19"
+              ]
+            },
+            {
+              "name": "Unnamed: 22",
+              "dtype": "float64",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 15,
+              "sample": [
+                "2020.0",
+                "20.0",
+                "2565.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 23",
+              "dtype": "float64",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 15,
+              "sample": [
+                "2021.0",
+                "21.0",
+                "4230.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 24",
+              "dtype": "float64",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 15,
+              "sample": [
+                "2022.0",
+                "22.0",
+                "1325.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 25",
+              "dtype": "float64",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 15,
+              "sample": [
+                "2023.0",
+                "23.0",
+                "1417.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 26",
+              "dtype": "float64",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 15,
+              "sample": [
+                "2024.0",
+                "24.0",
+                "12810.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 27",
+              "dtype": "float64",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 15,
+              "sample": [
+                "2025.0",
+                "25.0",
+                "3128.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 28",
+              "dtype": "float64",
+              "non_null": 5,
+              "null_pct": 68.75,
+              "n_unique": 5,
+              "sample": [
+                "2026.0",
+                "26.0",
+                "1328.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 29",
+              "dtype": "object",
+              "non_null": 13,
+              "null_pct": 18.75,
+              "n_unique": 13,
+              "sample": [
+                "TOTAL",
+                "31491",
+                "37126"
+              ]
+            },
+            {
+              "name": "Unnamed: 30",
+              "dtype": "float64",
+              "non_null": 1,
+              "null_pct": 93.75,
+              "n_unique": 1,
+              "sample": [
+                "10970.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 31",
+              "dtype": "object",
+              "non_null": 16,
+              "null_pct": 0.0,
+              "n_unique": 16,
+              "sample": [
+                "VEHICLES SEIZED",
+                "2019",
+                "27"
+              ]
+            },
+            {
+              "name": "Unnamed: 32",
+              "dtype": "float64",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 13,
+              "sample": [
+                "2020.0",
+                "28.0",
+                "84.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 33",
+              "dtype": "float64",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 15,
+              "sample": [
+                "2021.0",
+                "29.0",
+                "68.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 34",
+              "dtype": "float64",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 13,
+              "sample": [
+                "2022.0",
+                "30.0",
+                "21.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 35",
+              "dtype": "float64",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 9,
+              "sample": [
+                "2023.0",
+                "31.0",
+                "20.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 36",
+              "dtype": "float64",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 14,
+              "sample": [
+                "2024.0",
+                "32.0",
+                "55.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 37",
+              "dtype": "float64",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 8,
+              "sample": [
+                "2025.0",
+                "33.0",
+                "7.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 38",
+              "dtype": "float64",
+              "non_null": 5,
+              "null_pct": 68.75,
+              "n_unique": 4,
+              "sample": [
+                "2026.0",
+                "34.0",
+                "3.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 39",
+              "dtype": "object",
+              "non_null": 14,
+              "null_pct": 12.5,
+              "n_unique": 14,
+              "sample": [
+                "TOTAL",
+                "306",
+                "472"
+              ]
+            }
+          ],
+          "likely_primary_key": "Unnamed: 3"
+        },
+        "Table 5": {
+          "rows": 16,
+          "cols": 47,
+          "columns": [
+            {
+              "name": "STATEMENT SHOWING DETECTED & SEIZURES / DESTROYED OF GANJA : MONTH WISE FROM FEB-2026 (UP TO 09-02-2026)",
+              "dtype": "object",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 14,
+              "sample": [
+                "Sl. No",
+                "1",
+                "1"
+              ]
+            },
+            {
+              "name": "Unnamed: 1",
+              "dtype": "object",
+              "non_null": 14,
+              "null_pct": 12.5,
+              "n_unique": 14,
+              "sample": [
+                "MONTHs",
+                "2",
+                "JAN"
+              ]
+            },
+            {
+              "name": "Unnamed: 2",
+              "dtype": "object",
+              "non_null": 16,
+              "null_pct": 0.0,
+              "n_unique": 15,
+              "sample": [
+                "CASES DETECTED",
+                "2019",
+                "3"
+              ]
+            },
+            {
+              "name": "Unnamed: 3",
+              "dtype": "float64",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 10,
+              "sample": [
+                "2020.0",
+                "4.0",
+                "17.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 4",
+              "dtype": "float64",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 15,
+              "sample": [
+                "2021.0",
+                "5.0",
+                "0.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 5",
+              "dtype": "float64",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 14,
+              "sample": [
+                "2022.0",
+                "6.0",
+                "34.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 6",
+              "dtype": "float64",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 14,
+              "sample": [
+                "2023.0",
+                "7.0",
+                "18.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 7",
+              "dtype": "float64",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 14,
+              "sample": [
+                "2024.0",
+                "8.0",
+                "23.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 8",
+              "dtype": "float64",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 13,
+              "sample": [
+                "2025.0",
+                "9.0",
+                "7.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 9",
+              "dtype": "float64",
+              "non_null": 5,
+              "null_pct": 68.75,
+              "n_unique": 5,
+              "sample": [
+                "2026.0",
+                "10.0",
+                "4.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 10",
+              "dtype": "object",
+              "non_null": 14,
+              "null_pct": 12.5,
+              "n_unique": 14,
+              "sample": [
+                "TOTAL",
+                "114",
+                "144"
+              ]
+            },
+            {
+              "name": "Unnamed: 11",
+              "dtype": "object",
+              "non_null": 16,
+              "null_pct": 0.0,
+              "n_unique": 16,
+              "sample": [
+                "PERSONS ARRESTED",
+                "2019",
+                "11"
+              ]
+            },
+            {
+              "name": "Unnamed: 12",
+              "dtype": "float64",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 12,
+              "sample": [
+                "2020.0",
+                "12.0",
+                "35.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 13",
+              "dtype": "float64",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 15,
+              "sample": [
+                "2021.0",
+                "13.0",
+                "0.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 14",
+              "dtype": "float64",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 14,
+              "sample": [
+                "2022.0",
+                "14.0",
+                "40.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 15",
+              "dtype": "float64",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 14,
+              "sample": [
+                "2023.0",
+                "15.0",
+                "55.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 16",
+              "dtype": "float64",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 14,
+              "sample": [
+                "2024.0",
+                "16.0",
+                "38.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 17",
+              "dtype": "float64",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 13,
+              "sample": [
+                "2025.0",
+                "17.0",
+                "16.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 18",
+              "dtype": "float64",
+              "non_null": 5,
+              "null_pct": 68.75,
+              "n_unique": 5,
+              "sample": [
+                "2026.0",
+                "18.0",
+                "5.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 19",
+              "dtype": "object",
+              "non_null": 14,
+              "null_pct": 12.5,
+              "n_unique": 14,
+              "sample": [
+                "TOTAL",
+                "207",
+                "295"
+              ]
+            },
+            {
+              "name": "Unnamed: 20",
+              "dtype": "object",
+              "non_null": 16,
+              "null_pct": 0.0,
+              "n_unique": 16,
+              "sample": [
+                "QTY. OF GANJA SEIZED (IN KGS)",
+                "2019",
+                "19"
+              ]
+            },
+            {
+              "name": "Unnamed: 21",
+              "dtype": "float64",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 12,
+              "sample": [
+                "2020.0",
+                "20.0",
+                "868.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 22",
+              "dtype": "float64",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 15,
+              "sample": [
+                "2021.0",
+                "21.0",
+                "0.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 23",
+              "dtype": "float64",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 15,
+              "sample": [
+                "2022.0",
+                "22.0",
+                "2773.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 24",
+              "dtype": "float64",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 14,
+              "sample": [
+                "2023.0",
+                "23.0",
+                "160.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 25",
+              "dtype": "float64",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 14,
+              "sample": [
+                "2024.0",
+                "24.0",
+                "215.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 26",
+              "dtype": "float64",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 15,
+              "sample": [
+                "2025.0",
+                "25.0",
+                "89.09"
+              ]
+            },
+            {
+              "name": "Unnamed: 27",
+              "dtype": "float64",
+              "non_null": 5,
+              "null_pct": 68.75,
+              "n_unique": 5,
+              "sample": [
+                "2026.0",
+                "26.0",
+                "13.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 28",
+              "dtype": "object",
+              "non_null": 14,
+              "null_pct": 12.5,
+              "n_unique": 14,
+              "sample": [
+                "TOTAL",
+                "4560",
+                "11020"
+              ]
+            },
+            {
+              "name": "Unnamed: 29",
+              "dtype": "object",
+              "non_null": 16,
+              "null_pct": 0.0,
+              "n_unique": 8,
+              "sample": [
+                "NO. OF PLANTS DESTROYED",
+                "2019",
+                "27"
+              ]
+            },
+            {
+              "name": "Unnamed: 30",
+              "dtype": "float64",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 4,
+              "sample": [
+                "2020.0",
+                "28.0",
+                "0.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 31",
+              "dtype": "float64",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 8,
+              "sample": [
+                "2021.0",
+                "29.0",
+                "0.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 32",
+              "dtype": "float64",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 8,
+              "sample": [
+                "2022.0",
+                "30.0",
+                "345000.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 33",
+              "dtype": "float64",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 10,
+              "sample": [
+                "2023.0",
+                "31.0",
+                "80.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 34",
+              "dtype": "float64",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 7,
+              "sample": [
+                "2024.0",
+                "32.0",
+                "212050.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 35",
+              "dtype": "float64",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 9,
+              "sample": [
+                "2025.0",
+                "33.0",
+                "0.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 36",
+              "dtype": "float64",
+              "non_null": 5,
+              "null_pct": 68.75,
+              "n_unique": 4,
+              "sample": [
+                "2026.0",
+                "34.0",
+                "6.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 37",
+              "dtype": "object",
+              "non_null": 14,
+              "null_pct": 12.5,
+              "n_unique": 11,
+              "sample": [
+                "TOTAL",
+                "557136",
+                "540"
+              ]
+            },
+            {
+              "name": "Unnamed: 38",
+              "dtype": "object",
+              "non_null": 16,
+              "null_pct": 0.0,
+              "n_unique": 13,
+              "sample": [
+                "VEHICLES SEIZED",
+                "2019",
+                "35"
+              ]
+            },
+            {
+              "name": "Unnamed: 39",
+              "dtype": "float64",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 11,
+              "sample": [
+                "2020.0",
+                "36.0",
+                "7.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 40",
+              "dtype": "float64",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 12,
+              "sample": [
+                "2021.0",
+                "37.0",
+                "0.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 41",
+              "dtype": "float64",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 10,
+              "sample": [
+                "2022.0",
+                "38.0",
+                "8.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 42",
+              "dtype": "float64",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 11,
+              "sample": [
+                "2023.0",
+                "39.0",
+                "5.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 43",
+              "dtype": "float64",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 10,
+              "sample": [
+                "2024.0",
+                "40.0",
+                "6.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 44",
+              "dtype": "float64",
+              "non_null": 15,
+              "null_pct": 6.25,
+              "n_unique": 10,
+              "sample": [
+                "2025.0",
+                "41.0",
+                "2.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 45",
+              "dtype": "float64",
+              "non_null": 5,
+              "null_pct": 68.75,
+              "n_unique": 3,
+              "sample": [
+                "2026.0",
+                "42.0",
+                "0.0"
+              ]
+            },
+            {
+              "name": "Unnamed: 46",
+              "dtype": "object",
+              "non_null": 14,
+              "null_pct": 12.5,
+              "n_unique": 14,
+              "sample": [
+                "TOTAL",
+                "36",
+                "61"
+              ]
+            }
+          ],
+          "likely_primary_key": "Unnamed: 11"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #05080f;
+  --fg: #e5e7eb;
+  --panel: #0a0f1c;
+  --panel-border: #1f2937;
+  --muted: #94a3b8;
+  --grid: #111827;
+}
+
+html,
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-feature-settings: "ss01", "ss02", "cv11";
+  letter-spacing: -0.005em;
+}
+
+body {
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: #f59e0b;
+  color: #05080f;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .panel {
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: 10px;
+  }
+  .divide-panel > * + * {
+    border-top: 1px solid var(--panel-border);
+  }
+  .hairline {
+    border-color: var(--panel-border);
+  }
+  .grid-bg {
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Recharts tweaks for dark theme */
+.recharts-cartesian-axis-tick text {
+  fill: #94a3b8;
+  font-size: 11px;
+}
+.recharts-cartesian-grid-horizontal line,
+.recharts-cartesian-grid-vertical line {
+  stroke: rgba(255, 255, 255, 0.05);
+}
+.recharts-default-tooltip {
+  background: #0a0f1c !important;
+  border: 1px solid #1f2937 !important;
+  border-radius: 8px !important;
+  color: #e5e7eb !important;
+  font-size: 12px !important;
+}
+.recharts-tooltip-label {
+  color: #94a3b8 !important;
+}

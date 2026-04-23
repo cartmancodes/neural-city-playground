@@ -1,208 +1,205 @@
-# NTCP Safe School Verification — Andhra Pradesh
+# APSBCL Market & Product Intelligence — Hackathon POC
 
-A production-style demo dashboard for an **AI-Powered Verification of Tobacco-Free Schools**
-platform under the National Tobacco Control Programme. Built for government officers at
-state and district level to monitor compliance using AI-analyzed, geo-tagged image evidence
-uploaded by schools.
+Decision intelligence for the Andhra Pradesh Prohibition & Excise / APSBCL liquor
+distribution challenge. Built around one question the panel cares about:
 
-This is **not** a school management app. It is a **compliance verification and evidence
-review system**: every status is backed by image proof and AI findings, and every decision
-has a visible "why".
+> **What should the department do tomorrow morning?**
 
-## Quick start
+This is not a BI dashboard. It is a decision system: forecasting, peer-benchmarked
+outlet segmentation, revenue-opportunity scoring, anomaly detection, product
+rationalization, and an explainable action engine — wired together and exposed
+through a government-grade multi-page web app.
+
+---
+
+## Architecture
+
+```
+┌───────────────────┐      ┌────────────────────┐      ┌──────────────────────┐
+│  Raw Excels (7)   │─ETL─▶│ Canonical parquet  │─analytics─▶ artifacts/*.json │
+│  outlet, sales,   │      │ (outlets, sales,   │      │ forecast · segments  │
+│  brand, label     │      │  products, labels) │      │ opps · anomalies     │
+└───────────────────┘      └────────────────────┘      │ actions · signals    │
+                                                       └──────────┬───────────┘
+                                                                  │
+                          ┌───────────────────────────────────────┤
+                          │                                       │
+                 ┌────────▼────────┐                   ┌──────────▼──────────┐
+                 │ FastAPI backend │                   │ Next.js 14 UI       │
+                 │ typed endpoints │                   │ Tailwind · Recharts │
+                 └─────────────────┘                   │ SSR from /public    │
+                                                       └─────────────────────┘
+```
+
+### Why this layout
+
+- **Artifacts are the contract.** Both surfaces (FastAPI + Next.js) read the same
+  JSON artifacts, so the UI works without the API running and vice versa.
+- **Modular future feeds.** True SKU sales, GPS, Suraksha, and depot balances
+  each have a contract + UI placeholder. Wiring them in is an ETL change, not a
+  UI rewrite.
+- **No fabricated data.** Every analytic is computed on data that is actually in
+  the uploaded files. Anything we can't compute honestly is scaffolded and
+  labelled "interim" or "awaiting feed".
+
+---
+
+## What is real vs scaffolded
+
+| Layer                                  | Status    | Notes                                                                |
+| -------------------------------------- | --------- | -------------------------------------------------------------------- |
+| Outlet / district / depot forecasting  | **Real**  | 14-day horizon, best-of-baselines, rolling backtest, MAPE reported   |
+| Outlet segmentation (6 clusters)       | **Real**  | KMeans on standardized sales features; human-readable segment labels |
+| Peer-benchmarked opportunity scoring   | **Real**  | district × vendor-type peer median; 0–100 composite                  |
+| Anomaly detection                      | **Real**  | Isolation Forest + explainable reason strings                        |
+| Brand proliferation / label churn      | **Real**  | From product master + label approvals                                |
+| Rule-based SKU rationalization         | **Real**  | Flagged as *interim* per the honesty contract                        |
+| Action engine (with explainability)    | **Real**  | Revenue-impact sorted; confidence + drivers attached                 |
+| Scenario simulator (what-if levers)    | **Real**  | Linear elasticity model; confidence decays with lever magnitude      |
+| Map intelligence (SVG geo scatter)     | **Real**  | ~4500 outlets at real coordinates                                    |
+| External signals (policy, supply, …)   | Scaffolded | Mock seed; ingestion contract live in `/signals`                     |
+| True SKU × outlet forecasting          | Scaffolded | Requires outlet × SKU × date feed                                    |
+| GPS / route intelligence               | Scaffolded | Requires GPS logs + dispatch schedules                               |
+| Suraksha consumer intelligence         | Scaffolded | Requires consumer transactions                                       |
+| Depot balancing                        | Scaffolded | Requires inventory positions                                         |
+
+Open `/data-quality` in the app for the complete audit log.
+
+---
+
+## Project layout
+
+```
+neural-city-playground/
+├── pipeline/
+│   ├── audit.py          Phase 1 data audit (inventory, schema, join strategy)
+│   ├── etl.py            Excel → canonical parquet (outlets, sales, products, labels)
+│   └── analytics.py      Feature engineering, forecasting, segmentation, scoring,
+│                         anomaly detection, product intel, actions, signals
+├── server/
+│   └── main.py           FastAPI app exposing artifacts as typed endpoints
+├── artifacts/
+│   ├── reports/audit.json   raw data audit
+│   ├── data_quality.json    honesty report (issues, joins, feasibility)
+│   ├── districts.json       per-district rollups
+│   ├── outlets.json         every outlet with segment / score / anomaly flags
+│   ├── forecast_*.json      district + top-outlet forecasts
+│   ├── segments.json        cluster summaries + recommended stocking logic
+│   ├── product_intel.json   heatmap, rationalization, new-launch watchlist
+│   ├── actions.json         ranked action recommendations
+│   └── external_feed.json   mock policy / supply / competitor signals
+├── data/
+│   └── processed/           parquet cache (gitignored)
+└── web/                     Next.js 14 + TypeScript + Tailwind + Recharts
+    ├── src/app/             App Router pages (10 routes)
+    ├── src/components/      layout + UI primitives + chart wrappers
+    ├── src/lib/data.ts      typed SSR data loader
+    └── public/data/         mirror of artifacts for static SSR
+```
+
+---
+
+## Running the POC
+
+Prerequisites: Python 3.9+ and Node 20+.
+
+### 1. Run the pipeline
 
 ```bash
+python3 -m venv .venv
+.venv/bin/pip install -U pip pandas openpyxl numpy scikit-learn pyarrow fastapi "uvicorn[standard]"
+
+# Phase 1: audit the raw files
+.venv/bin/python pipeline/audit.py
+
+# Phase 2: ETL raw → canonical parquet
+.venv/bin/python pipeline/etl.py
+
+# Phase 3: analytics → artifact JSONs
+.venv/bin/python pipeline/analytics.py
+
+# refresh the copies the frontend reads
+cp -r artifacts web/public/data
+```
+
+### 2. Run the backend (optional)
+
+```bash
+.venv/bin/uvicorn server.main:app --reload --port 8000
+# http://127.0.0.1:8000/api/health
+# http://127.0.0.1:8000/api/districts
+# http://127.0.0.1:8000/api/scenario/simulate?premium_mix_delta=0.1&sku_prune_pct=0.05&event_district=Tirupati&event_uplift=0.2
+```
+
+### 3. Run the frontend
+
+```bash
+cd web
 npm install
-npm run dev      # Vite dev server on http://localhost:5173
-npm run build    # Production build to dist/
-npm run preview  # Preview the production build
+npm run dev       # http://localhost:3000
+# or
+npm run build && npm run start
 ```
 
-Node 18+ recommended. No environment variables required — all data is mocked.
+---
 
-## Tech stack
+## Key screens (what each answers)
 
-- **React 18** + **Vite** — fast dev & build
-- **Tailwind CSS** — utility styling, clean government palette
-- **React Router 6** — routing
-- **Recharts** — charts
-- **Leaflet** + **react-leaflet** — maps
-- **lucide-react** — icons
-- **date-fns** — date handling
+1. **Executive Command Center (`/`)** — *What should the department do tomorrow
+   morning?* Today's forecast, high-urgency actions, anomalies, opportunity
+   outlets, segment distribution, forecast MAPE by district.
+2. **Action Center (`/actions`)** — every recommendation with `entity ·
+   district · depot · outlet · issue · confidence · impact · urgency · action ·
+   why · window`. Filterable.
+3. **Districts (`/districts`)** — league table across all 26 districts.
+   Click-through to a district drilldown with forecast vs actual, segment mix,
+   depot dependency, declining watchlist, and top opportunities.
+4. **Outlets (`/outlets`, `/outlets/[code]`)** — 4,899 outlets with peer
+   comparison, volatility, growth, anomaly flags, and recommended strategy.
+5. **Product & Assortment (`/products`)** — price-band × pack-size heatmap,
+   rationalization candidates, new-launch watchlist, brand proliferation.
+   Clearly labelled as interim pending outlet × SKU sales.
+6. **Scenario Simulator (`/scenario`)** — move levers for premiumization, SKU
+   prune, event uplift, route delay. Decomposed impact + confidence decay.
+7. **Map Intelligence (`/map`)** — every geo-located outlet plotted, colour by
+   segment / opportunity / anomaly / growth.
+8. **External Signals (`/signals`)** — mock policy / supply / competitor /
+   search signals with ingestion contract for live wiring.
+9. **Data Audit (`/data-quality`)** — totals, issues, join strengths,
+   feasibility matrix, scaffolded future modules.
 
-## App structure
+---
 
-```
-src/
-├── main.jsx                      # App entry + router
-├── App.jsx                       # Route definitions
-├── index.css                     # Tailwind + Leaflet polish
-├── api/
-│   └── index.js                  # Mock API layer — the swap point for real backend
-├── data/
-│   ├── districts.js              # 13 AP districts with coords
-│   ├── schools.js                # Seeded mock schools + per-image AI outputs
-│   └── trends.js                 # Derived rollups for charts
-├── utils/
-│   ├── status.js                 # Compliance state enum, labels, colors, issue codes
-│   └── format.js                 # Number/date/confidence formatters
-├── components/
-│   ├── layout/{Layout,Sidebar,TopBar}.jsx
-│   ├── ui/{Card,Button,StatusBadge,IssueChip,KpiCard,ConfidenceBar,FilterBar,Table,Modal,EmptyState}.jsx
-│   ├── charts/{StatusDonut,TrendLine,DistrictBar,IssueBar,UploadsArea,ConfidenceHistogram}.jsx
-│   ├── map/SchoolMap.jsx         # Shared Leaflet map with status coloring + geofence
-│   └── evidence/{EvidenceCard,AIOverlay}.jsx
-└── views/
-    ├── Overview.jsx              # View 1 — Executive Overview
-    ├── DistrictMonitoring.jsx    # View 2
-    ├── VerificationQueue.jsx     # View 3
-    ├── SchoolDetail.jsx          # View 4
-    ├── ImageReview.jsx           # View 5
-    ├── MapView.jsx               # View 6
-    ├── Analytics.jsx             # View 7
-    ├── DataQuality.jsx           # View 8
-    └── Admin.jsx                 # Settings
-```
+## Honest constraints (what this build does NOT claim)
 
-## Views
+- No true SKU-level forecasting — the sales feed is at `outlet × date`, not
+  `outlet × SKU × date`. All SKU-level logic is rule-based and marked as
+  "interim — pending SKU transaction feed".
+- No GPS or route intelligence — no vehicle GPS logs were uploaded.
+- No Suraksha consumer intelligence — no consumer transaction feed was uploaded.
+- No real depot balancing — no inventory-position / dispatch-schedule feed was
+  uploaded.
+- Scenario elasticities are prior-based planning values, not causally estimated.
 
-| Route | View | Purpose |
-|-------|------|---------|
-| `/` | Executive Overview | Top-line KPIs, compliance trend, district ranking, top repeated issues. Skimmable in 20s. |
-| `/districts` | District Monitoring | District ranking chart, drill-down side panel, filter by type/status. |
-| `/queue` | Verification Queue | Filterable, sortable table — the operational review screen. |
-| `/schools/:id` | School Detail | Identity card, location + geofence, compliance breakdown, evidence gallery, officer actions. |
-| `/schools/:id/image/:imageId` | Image Review | Focused AI evidence view with bounding boxes, metadata, reason codes, recommended action. |
-| `/map` | Map View | Andhra Pradesh map with school markers, color-coded by status, issue layer toggles. |
-| `/analytics` | Analytics & Trends | Compliance over time, upload pipeline, issue frequency, model confidence histogram. |
-| `/data-quality` | Data Quality / Admin | Image pipeline health, API sync, model processing status. |
-| `/admin` | Settings / Admin | Users, roles, notification rules, localization, integration endpoints. |
+These are called out inside `/data-quality` and inside each relevant screen so
+officers and analysts know exactly what the system is asserting.
 
-## Compliance status logic
+---
 
-Four states drive every colour, badge, and filter in the app:
+## Design principles
 
-| State | Label | Score range | Color |
-|-------|-------|-------------|-------|
-| `compliant` | Compliant | ≥ 85 | emerald |
-| `partial` | Needs Attention | 65–84 | amber |
-| `review` | Review Required | 45–64 | sky |
-| `non_compliant` | Non-Compliant | < 45 | rose |
+1. **Build for tired judges.** Decision tables, action recommendations, and
+   explainability — not a wall of KPIs.
+2. **Be transparent.** Every limitation is declared on the Data Audit page and
+   mirrored in screen-level captions.
+3. **Think like a revenue and operations intelligence system.** Where is mix
+   suboptimal? Where is demand shifting? Which outlet needs intervention first?
+4. **Look like a system a Commissioner would trust.** Government-grade dark
+   theme, information-dense, no gimmicks.
 
-Each status carries a "why" — an array of issue codes:
+---
 
-`signage_missing`, `signage_incorrect`, `signage_misplaced`, `geotag_invalid`,
-`outside_geofence`, `tobacco_indicators`, `possible_sale_point`,
-`high_surrounding_risk`, `insufficient_evidence`, `low_image_quality`,
-`duplicate_suspected`, `no_recent_upload`.
+## License
 
-## Data model
-
-The shapes below are what `src/api/index.js` returns today and what a real backend should
-return to plug in seamlessly.
-
-### School
-
-```js
-{
-  school_id: 'AP-0001',
-  school_name: string,
-  district: string,
-  district_id: string,
-  mandal: string,
-  address: string,
-  latitude: number,
-  longitude: number,
-  school_type: 'Government' | 'Aided' | 'Private' | 'Residential',
-  geofence_radius_m: number,
-  status: 'compliant' | 'partial' | 'review' | 'non_compliant',
-  review_required: boolean,
-  school_compliance_score: 0-100,
-  signage_compliance_score: 0-100,
-  geo_authenticity_score: 0-100,
-  surrounding_risk_score: 0-100,
-  dominant_issues: string[],
-  model_confidence: 0-1,
-  last_verification_date: ISO string,
-  total_images_uploaded: number,
-  images: Image[],
-}
-```
-
-### Image
-
-```js
-{
-  image_id: string,
-  school_id: string,
-  image_url: string,
-  thumbnail_url: string,
-  capture_timestamp: ISO,
-  upload_timestamp: ISO,
-  latitude: number,
-  longitude: number,
-  geotag_valid: boolean,
-  inside_school_geofence: boolean,
-  image_source: 'school_upload' | 'field' | 'drone',
-  image_quality_score: 0-1,
-  image_blur: boolean,
-  duplicate_suspected: boolean,
-  ai: {
-    signage_detected: boolean,
-    signage_confidence: 0-1,
-    signage_correct_design: boolean,
-    signage_correct_placement: boolean,
-    tobacco_indicator_detected: boolean,
-    tobacco_indicator_types: string[],
-    possible_sale_point_detected: boolean,
-    surrounding_risk_score: 0-100,
-    review_required: boolean,
-    model_confidence: 0-1,
-    reason_codes: string[],
-  },
-  boxes: { type, x, y, w, h, label, ok }[],  // percentage coords for AIOverlay
-}
-```
-
-## Connecting a real backend
-
-All data access goes through `src/api/index.js`. The mock implementation returns static
-fixtures; switch it to real HTTP by replacing each function body:
-
-```js
-// Before (mock)
-async getSchools(filters = {}) {
-  return schools.filter(/* … */)
-}
-
-// After (real)
-async getSchools(filters = {}) {
-  const res = await fetch(`/api/schools?${new URLSearchParams(filters)}`)
-  if (!res.ok) throw new Error('Failed to load schools')
-  return res.json()
-}
-```
-
-The component layer never touches the fixtures directly — it always calls `api.*`. Keep the
-return shapes identical to the ones above and nothing else changes.
-
-For image evidence:
-- Set `image_url` / `thumbnail_url` to signed URLs from your object store (GCS, S3).
-- The UI lazy-loads thumbnails and supports any aspect ratio.
-- AI bounding boxes (`boxes[]`) use percentage coordinates so they render correctly at any
-  render size — compute them once from pixel coords when the model runs.
-
-## Spec and design docs
-
-- Design: `docs/superpowers/specs/2026-04-22-safe-school-dashboard-design.md`
-- Plan: `docs/superpowers/plans/2026-04-22-safe-school-dashboard-plan.md`
-- Source spec: `safe school.pdf`
-
-## Notes on scope
-
-This is a demo prototype. It intentionally stops short of:
-
-- Real authentication / RBAC wiring (Admin view shows where it would live)
-- Real export (PDF / XLSX) — buttons are placeholders
-- Telugu localization — structured so string keys can be translated later
-- Batch actions — surfaced as nice-to-have in the spec
+POC build for hackathon demonstration purposes. Attribution: AP Prohibition &
+Excise / APSBCL data sources.

@@ -5,3 +5,19 @@ dist
 *.log
 .env
 .env.local
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# generated processed parquet (rebuild via pipeline/etl.py)
+data/processed/
+
+# Next.js build output
+web/.next/
+web/out/
+
+# keep artifacts committed — they are the contract between backend and frontend
+!artifacts/
+!web/public/data/

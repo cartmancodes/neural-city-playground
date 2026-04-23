@@ -1,0 +1,96 @@
+{
+  "generated_at": "2026-04-23T23:53:43.505261",
+  "totals": {
+    "outlets": 4899,
+    "outlets_with_sales": 2728,
+    "dormant_outlets": 2171,
+    "sales_rows": 408738,
+    "products_master": 1457,
+    "brands": 475,
+    "label_approvals": 575,
+    "districts": 27,
+    "depots": 31,
+    "date_min": "2025-01-07",
+    "date_max": "2026-12-02"
+  },
+  "issues": [
+    {
+      "severity": "info",
+      "code": "NO_SKU_LEVEL_SALES",
+      "message": "Sales grain is outlet x date only. True SKU forecasting is not possible until outlet x SKU x date feed is added.",
+      "affected": "all SKU analytics",
+      "mitigation": "Rule-based SKU rationalization engine marked 'interim'; placeholder module scaffolded for real SKU feed."
+    },
+    {
+      "severity": "warning",
+      "code": "DORMANT_OUTLETS",
+      "message": "2,171 of 4,899 outlets have no sales rows in the provided feed.",
+      "affected": "outlet intelligence coverage",
+      "mitigation": "Flagged in outlet table; excluded from forecasting but still surfaced as dormant risk."
+    },
+    {
+      "severity": "warning",
+      "code": "MISSING_COORDINATES",
+      "message": "439 outlets lack lat/lng and will not appear on the map.",
+      "affected": "map view coverage",
+      "mitigation": "Map view renders only geo-located outlets; others surfaced in table views."
+    },
+    {
+      "severity": "info",
+      "code": "FUTURE_DATED_ROWS",
+      "message": "20416 sales rows bear dates beyond today (likely Excel type coercion or forward entries).",
+      "affected": "trend slope, latest-week aggregates",
+      "mitigation": "Forecasting uses a train cutoff of today to avoid leakage."
+    },
+    {
+      "severity": "info",
+      "code": "NO_GPS_SURAKSHA",
+      "message": "GPS logs, Suraksha App transactions, and depot dispatch schedules are not present in the uploaded files.",
+      "affected": "route intelligence, consumer intelligence, depot balancing",
+      "mitigation": "Dedicated modules are scaffolded with wire-in contracts; UI surfaces placeholders."
+    }
+  ],
+  "joins": [
+    {
+      "from": "sales.vendor_id",
+      "to": "outlets.outlet_code",
+      "method": "leading-numeric-prefix regex",
+      "strength": "strong"
+    },
+    {
+      "from": "sales.depot_raw",
+      "to": "outlets.depot_code",
+      "method": "3-digit prefix extraction",
+      "strength": "strong"
+    },
+    {
+      "from": "labels.brand_name",
+      "to": "products.brand_name",
+      "method": "normalized string match",
+      "strength": "medium"
+    },
+    {
+      "from": "labels.distillery",
+      "to": "products.distillery",
+      "method": "normalized string match",
+      "strength": "medium"
+    }
+  ],
+  "analytics_feasible_now": [
+    "outlet-level daily/weekly demand forecasting",
+    "district & depot rollup forecasting",
+    "outlet segmentation (KMeans on sales features)",
+    "outlet anomaly detection (Isolation Forest + peer z-score)",
+    "outlet revenue opportunity scoring",
+    "brand / supplier / label churn intelligence",
+    "rule-based SKU rationalization (price band x pack x category)",
+    "district action recommendations with explainability"
+  ],
+  "analytics_pending_feeds": [
+    "true outlet x SKU demand forecasting",
+    "SKU-level stock-out / overstock risk",
+    "GPS route deviation, fleet utilization, delivery SLA",
+    "Suraksha consumer preference and micro-market demand",
+    "depot stock balancing and inter-depot transfer priorities"
+  ]
+}
