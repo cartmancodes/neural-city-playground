@@ -2,7 +2,7 @@
   "signals": [
     {
       "source": "AP Excise Gazette (mock)",
-      "signal_date": "2026-04-21",
+      "signal_date": "2026-04-22",
       "signal_type": "MRP / tax revision",
       "geo_relevance": "Andhra Pradesh \u2013 statewide",
       "affected": [
@@ -16,7 +16,7 @@
     },
     {
       "source": "APSBCL Depot Bulletin (mock)",
-      "signal_date": "2026-04-22",
+      "signal_date": "2026-04-23",
       "signal_type": "supply constraint",
       "geo_relevance": "SPR Nellore, Tirupati",
       "affected": [
@@ -29,7 +29,7 @@
     },
     {
       "source": "Industry news (mock)",
-      "signal_date": "2026-04-18",
+      "signal_date": "2026-04-19",
       "signal_type": "competitor launch",
       "geo_relevance": "Chittoor, Kadapa",
       "affected": [
@@ -42,7 +42,7 @@
     },
     {
       "source": "Search trend proxy (mock)",
-      "signal_date": "2026-04-20",
+      "signal_date": "2026-04-21",
       "signal_type": "consumer interest",
       "geo_relevance": "Visakhapatnam",
       "affected": [
