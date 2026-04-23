@@ -1,101 +1,100 @@
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
-import { getDistricts, getForecastDistricts } from "@/lib/data";
-import {
-  Badge,
-  ConfidenceBar,
-  PageHeader,
-  Panel,
-  PanelHeader,
-  TrendArrow,
-} from "@/components/ui/primitives";
-import { MiniLine } from "@/components/charts/MiniLine";
-import { formatINR, formatNumber } from "@/lib/format";
+import { Shell, PageHeader, Body } from "@/components/Shell";
+import { getDistricts, getCommandCenter } from "@/lib/data";
+import { num, pct, actionLabel } from "@/lib/format";
+import { RiskBar } from "@/components/RiskBar";
 
-export default async function DistrictsPage() {
-  const [districts, fc] = await Promise.all([getDistricts(), getForecastDistricts()]);
-  const fcMap = new Map(fc.districts.map((d) => [d.district, d]));
-
-  const sorted = [...districts].sort((a, b) => b.recent30_revenue - a.recent30_revenue);
+export default function DistrictsIndex() {
+  const doc = getDistricts();
+  const cc = getCommandCenter();
 
   return (
-    <>
+    <Shell current="/districts">
       <PageHeader
-        eyebrow="District Intelligence"
-        title="All 26 districts at a glance"
-        description="Forecast vs recent actual, segment mix, opportunity density, depot dependency and premiumization headroom for every district."
+        kicker="View 3 · District Decision Table"
+        title="Districts"
+        subtitle="Where should the next 100 interventions happen first? Which districts need transport/migration capacity vs academic support?"
       />
-
-      <Panel>
-        <PanelHeader
-          title="District league table"
-          hint="Sorted by last-30-day revenue · click any row to drill in"
-          action={<Badge tone="info">{districts.length} districts</Badge>}
-        />
-        <div className="overflow-x-auto">
-          <table className="w-full text-xs tabular">
-            <thead>
-              <tr className="text-ink-400 text-2xs uppercase tracking-wider border-b hairline">
-                <th className="text-left px-4 py-3 font-medium">District</th>
-                <th className="text-right px-3 py-3 font-medium">Outlets</th>
-                <th className="text-right px-3 py-3 font-medium">Dormant</th>
-                <th className="text-right px-3 py-3 font-medium">30d revenue</th>
-                <th className="text-right px-3 py-3 font-medium">Growth</th>
-                <th className="text-right px-3 py-3 font-medium">Opportunity</th>
-                <th className="text-right px-3 py-3 font-medium">Anomalies</th>
-                <th className="text-left px-3 py-3 font-medium">28d trend</th>
-                <th className="text-left px-3 py-3 font-medium">Forecast conf.</th>
-                <th className="px-3 py-3"></th>
-              </tr>
-            </thead>
-            <tbody>
-              {sorted.map((d) => {
-                const f = fcMap.get(d.district);
-                return (
-                  <tr key={d.district} className="border-b hairline hover:bg-ink-800/40 transition-colors">
-                    <td className="px-4 py-2">
-                      <Link
-                        href={`/districts/${encodeURIComponent(d.district)}`}
-                        className="font-medium text-ink-100 hover:text-accent-400"
-                      >
+      <Body>
+        <div className="card overflow-hidden">
+          <div className="scroll-x thin-scroll">
+            <table className="table-grid w-full min-w-[1100px]">
+              <thead>
+                <tr>
+                  <th>District</th>
+                  <th className="text-right">Students</th>
+                  <th className="text-right">High-risk</th>
+                  <th>Intensity</th>
+                  <th className="text-right">Schools w/ conc. risk</th>
+                  <th>Dominant drivers</th>
+                  <th>Recommended action</th>
+                  <th className="text-right">Intervention load</th>
+                </tr>
+              </thead>
+              <tbody>
+                {doc.items.map((d) => (
+                  <tr key={d.district_code}>
+                    <td>
+                      <Link href={`/districts/${d.district_code}`} className="hover:underline font-medium">
                         {d.district}
                       </Link>
+                      <div className="text-[11px] text-[var(--text-muted)]">
+                        DISE {d.district_code} · {pct(d.historical_dropout_rate, 2)} historic dropout
+                      </div>
                     </td>
-                    <td className="px-3 py-2 text-right text-ink-200">{formatNumber(d.outlets)}</td>
-                    <td className="px-3 py-2 text-right text-ink-300">{formatNumber(d.dormant_outlets)}</td>
-                    <td className="px-3 py-2 text-right text-ink-100 font-medium">
-                      {formatINR(d.recent30_revenue)}
+                    <td className="text-right tnum">{num(d.students_tracked)}</td>
+                    <td className="text-right tnum font-medium">{num(d.students_high_risk)}</td>
+                    <td className="w-36">
+                      <div className="flex items-center gap-2">
+                        <div className="bar-track flex-1">
+                          <div
+                            className="bar-fill"
+                            style={{
+                              width: `${Math.min(d.high_risk_rate * 100 * 5, 100)}%`,
+                              background: "#b8283b",
+                            }}
+                          />
+                        </div>
+                        <span className="tnum text-[11px] text-[var(--text-muted)] w-10 text-right">
+                          {pct(d.high_risk_rate, 1)}
+                        </span>
+                      </div>
                     </td>
-                    <td className="px-3 py-2 text-right">
-                      <TrendArrow value={d.avg_growth} />
+                    <td className="text-right tnum">{num(d.schools_concentrated_risk)}</td>
+                    <td className="max-w-[220px]">
+                      <div className="flex flex-wrap gap-1">
+                        {d.dominant_drivers.slice(0, 2).map((dr) => (
+                          <span key={dr.name} className="pill">
+                            {dr.name.replace(" pattern", "")}
+                          </span>
+                        ))}
+                      </div>
                     </td>
-                    <td className="px-3 py-2 text-right text-ink-200">
-                      {d.mean_opportunity.toFixed(0)}
+                    <td className="text-[12px] text-[var(--text-strong)] max-w-[280px]">
+                      {d.recommended_district_action}
                     </td>
-                    <td className="px-3 py-2 text-right">
-                      <Badge tone={d.anomalies > 5 ? "warn" : "neutral"}>{d.anomalies}</Badge>
-                    </td>
-                    <td className="px-3 py-2 w-[140px]">
-                      {f ? <MiniLine data={f.actual_last_28d} color="#14b8a6" height={30} /> : "—"}
-                    </td>
-                    <td className="px-3 py-2 w-[140px]">
-                      {f ? <ConfidenceBar value={f.confidence} /> : "—"}
-                    </td>
-                    <td className="px-3 py-2 text-right">
-                      <Link
-                        href={`/districts/${encodeURIComponent(d.district)}`}
-                        className="inline-flex items-center text-accent-400 hover:text-accent-300"
-                      >
-                        <ArrowUpRight className="size-4" />
-                      </Link>
+                    <td className="text-right tnum">
+                      {num(d.intervention_load)}
+                      <div className="text-[11px] text-[var(--text-muted)]">
+                        {d.intervention_mix.slice(0, 2).map((m) => actionLabel(m.action)).join(" + ")}
+                      </div>
                     </td>
                   </tr>
-                );
-              })}
-            </tbody>
-          </table>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
-      </Panel>
-    </>
+
+        <section className="card p-5">
+          <div className="stat-label">How to read this page</div>
+          <ul className="mt-2 text-[13px] text-[var(--text-muted)] leading-relaxed list-disc pl-5 space-y-1">
+            <li>The <b>dominant drivers</b> column tells you whether a district's dropout pressure is attendance-driven, academic, or school-systemic. Intervention mix should follow driver mix, not default to uniform.</li>
+            <li>Districts with a high count of <b>schools with concentrated risk</b> (≥15% of cohort in critical/high tier) need block-level action, not just headmaster-level fixes.</li>
+            <li>The <b>recommended action</b> is a starting point — human-in-the-loop confirmation is expected before any resource allocation.</li>
+          </ul>
+        </section>
+      </Body>
+    </Shell>
   );
 }

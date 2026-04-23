@@ -3,80 +3,123 @@
 @tailwind utilities;
 
 :root {
-  --bg: #05080f;
-  --fg: #e5e7eb;
-  --panel: #0a0f1c;
-  --panel-border: #1f2937;
-  --muted: #94a3b8;
-  --grid: #111827;
+  --bg: #f5f6fa;
+  --surface: #ffffff;
+  --surface-2: #eef1f8;
+  --border: #dde2ec;
+  --text-strong: #0b1220;
+  --text-muted: #5a6687;
+  --accent: #1867d8;
 }
 
-html,
-body {
+html, body {
   background: var(--bg);
-  color: var(--fg);
-  font-feature-settings: "ss01", "ss02", "cv11";
-  letter-spacing: -0.005em;
-}
-
-body {
-  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  color: var(--text-strong);
+  font-feature-settings: "ss01", "cv11", "tnum";
   -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
 }
 
-::selection {
-  background: #f59e0b;
-  color: #05080f;
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-  .panel {
-    background: var(--panel);
-    border: 1px solid var(--panel-border);
-    border-radius: 10px;
-  }
-  .divide-panel > * + * {
-    border-top: 1px solid var(--panel-border);
-  }
-  .hairline {
-    border-color: var(--panel-border);
-  }
-  .grid-bg {
-    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-    background-size: 24px 24px;
-  }
-  .no-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
-  .no-scrollbar {
-    scrollbar-width: none;
-  }
-  .tabular {
-    font-variant-numeric: tabular-nums;
-  }
+.surface-2 {
+  background: var(--surface-2);
 }
 
-/* Recharts tweaks for dark theme */
-.recharts-cartesian-axis-tick text {
-  fill: #94a3b8;
+.stat-label {
   font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
 }
-.recharts-cartesian-grid-horizontal line,
-.recharts-cartesian-grid-vertical line {
-  stroke: rgba(255, 255, 255, 0.05);
+
+.number-xl {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  font-size: 32px;
+  letter-spacing: -0.02em;
 }
-.recharts-default-tooltip {
-  background: #0a0f1c !important;
-  border: 1px solid #1f2937 !important;
-  border-radius: 8px !important;
-  color: #e5e7eb !important;
-  font-size: 12px !important;
+
+.number-md {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  font-size: 22px;
 }
-.recharts-tooltip-label {
-  color: #94a3b8 !important;
+
+.tnum {
+  font-variant-numeric: tabular-nums;
 }
+
+.table-grid {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.table-grid th {
+  text-align: left;
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  background: #f5f7fb;
+  border-bottom: 1px solid var(--border);
+  padding: 10px 14px;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.table-grid td {
+  padding: 10px 14px;
+  font-size: 13px;
+  border-bottom: 1px solid #eef0f7;
+  vertical-align: middle;
+}
+
+.table-grid tr:last-child td { border-bottom: none; }
+
+.table-grid tr:hover td { background: #f8faff; }
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+.pill-critical { background: #ffe7ec; color: #8b1a2a; border-color: #f3c0c9; }
+.pill-high     { background: #ffeadc; color: #8a4a13; border-color: #f3cdb0; }
+.pill-medium   { background: #fff5d4; color: #7a5b0a; border-color: #f3dd97; }
+.pill-watch    { background: #e4efff; color: #174088; border-color: #c2d5f5; }
+.pill-low      { background: #e1f3e9; color: #14693d; border-color: #bce0ca; }
+
+.bar-track {
+  position: relative;
+  height: 6px;
+  border-radius: 3px;
+  background: #eef1f8;
+  overflow: hidden;
+}
+.bar-fill {
+  position: absolute;
+  inset: 0;
+  border-radius: 3px;
+}
+
+.scroll-x {
+  overflow-x: auto;
+}
+
+.thin-scroll::-webkit-scrollbar { height: 8px; width: 8px; }
+.thin-scroll::-webkit-scrollbar-thumb { background: #c8cde0; border-radius: 4px; }
+
+.sparkline path { fill: none; stroke-width: 1.6; }

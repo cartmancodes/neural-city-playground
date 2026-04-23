@@ -11,13 +11,25 @@ dist
 __pycache__/
 *.pyc
 
-# generated processed parquet (rebuild via pipeline/etl.py)
-data/processed/
-
 # Next.js build output
 web/.next/
 web/out/
+web/*.tsbuildinfo
+web/node_modules/
 
-# keep artifacts committed — they are the contract between backend and frontend
+# Heavy intermediate pipeline outputs — rebuild via pipeline/run.py
+artifacts/features.parquet
+artifacts/student_scores.parquet
+artifacts/features.csv
+artifacts/student_scores.csv
+
+# Raw uploads — treat as PII, do not commit
+data/*.csv
+data/*.xlsx
+data/*.pdf
+
+# keep JSON artifacts + dashboard data committed — contract between pipeline and UI
 !artifacts/
+!artifacts/*.json
 !web/public/data/
+!web/public/data/*.json

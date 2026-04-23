@@ -1,546 +1,228 @@
 import Link from "next/link";
-import {
-  AlertTriangle,
-  ArrowUpRight,
-  Flame,
-  Sparkles,
-  Store,
-  TrendingUp,
-  Truck,
-} from "lucide-react";
-import {
-  Badge,
-  ConfidenceBar,
-  Kpi,
-  PageHeader,
-  Panel,
-  PanelBody,
-  PanelHeader,
-  TrendArrow,
-} from "@/components/ui/primitives";
-import { ForecastLine, MiniLine } from "@/components/charts/MiniLine";
-import {
-  getActions,
-  getDataQuality,
-  getDistricts,
-  getForecastDistricts,
-  getOutlets,
-  getSegments,
-} from "@/lib/data";
-import { formatINR, formatNumber, formatPct } from "@/lib/format";
+import { Shell, PageHeader, Body } from "@/components/Shell";
+import { Stat } from "@/components/Stat";
+import { Sparkline } from "@/components/Sparkline";
+import { RiskBar } from "@/components/RiskBar";
+import { getCommandCenter, getInsights } from "@/lib/data";
+import { pct, num, actionLabel } from "@/lib/format";
 
-export default async function CommandCenter() {
-  const [dq, districts, outlets, fc, segments, actions] = await Promise.all([
-    getDataQuality(),
-    getDistricts(),
-    getOutlets(),
-    getForecastDistricts(),
-    getSegments(),
-    getActions(),
-  ]);
-
-  const topOpportunities = [...outlets]
-    .filter((o) => !o.dormant && o.opportunity_score > 0)
-    .sort((a, b) => b.opportunity_score - a.opportunity_score)
-    .slice(0, 8);
-  const topAnomalies = outlets
-    .filter((o) => o.anomaly)
-    .sort((a, b) => Math.abs(b.growth_30d) - Math.abs(a.growth_30d))
-    .slice(0, 8);
-  const highUrgencyActions = actions.actions
-    .filter((a) => a.urgency === "High")
-    .slice(0, 6);
-  const dormantCount = outlets.filter((o) => o.dormant).length;
-
-  const tomorrowForecast = fc.districts.reduce(
-    (sum, d) => sum + (d.forecast_next_14d[0]?.value || 0),
-    0,
-  );
-  const weekForecast = fc.districts.reduce(
-    (sum, d) =>
-      sum + d.forecast_next_14d.slice(0, 7).reduce((a, b) => a + b.value, 0),
-    0,
-  );
-  const avgConfidence =
-    fc.districts.reduce((sum, d) => sum + d.confidence, 0) /
-    Math.max(fc.districts.length, 1);
-
-  const districtsNeedingAction = districts
-    .map((d) => ({
-      ...d,
-      score: d.anomalies * 2 + d.dormant_outlets / Math.max(d.outlets, 1),
-    }))
-    .sort((a, b) => b.score - a.score)
-    .slice(0, 5);
-
-  const aggSpark = fc.districts
-    .flatMap((d) => d.actual_last_28d)
-    .reduce<Record<string, number>>((acc, p) => {
-      acc[p.date] = (acc[p.date] || 0) + p.value;
-      return acc;
-    }, {});
-  const aggSparkArr = Object.entries(aggSpark)
-    .sort(([a], [b]) => a.localeCompare(b))
-    .slice(-28)
-    .map(([date, value]) => ({ date, value }));
-
-  const apStateForecast = aggregateForecast(fc);
+export default function Home() {
+  const cc = getCommandCenter();
+  const insights = getInsights();
+  const monthSeries = cc.state_attendance_by_month.map((m) => m.attendance_rate);
+  const monthLabels = cc.state_attendance_by_month.map((m) => m.month);
+  const riskTotal = cc.total_students_tracked || 1;
 
   return (
-    <>
+    <Shell current="/">
       <PageHeader
-        eyebrow="Executive Command Center"
-        title="What should the department do tomorrow morning?"
-        description="A single screen answering: where is demand rising, which outlets need intervention today, and where is revenue being left on the table."
-        action={
-          <Link
-            href="/actions"
-            className="inline-flex items-center gap-2 rounded-md border border-accent-500/40 bg-accent-500/10 px-3 py-2 text-xs font-medium text-accent-400 hover:bg-accent-500/20 transition-colors"
-          >
-            Open Action Center <ArrowUpRight className="size-3.5" />
-          </Link>
+        kicker="View 1 · State Command Center"
+        title="Stay-In School · Andhra Pradesh"
+        subtitle="AI early warning & intervention intelligence for the School Education Department. Operational, explainable, human-in-the-loop."
+        right={
+          <div className="text-xs text-[var(--text-muted)] space-y-1 text-right">
+            <div>Academic year <b>{cc.year}</b></div>
+            <div>{num(cc.schools_tracked)} schools · {cc.districts_tracked} districts</div>
+          </div>
         }
       />
-
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-        <Kpi
-          label="Tomorrow's demand"
-          value={formatINR(tomorrowForecast)}
-          trend={`${formatPct(avgConfidence, 0)} confidence`}
-          hint="next day · 26 districts"
-          tone="accent"
-          sparkline={<MiniLine data={aggSparkArr} color="#f59e0b" />}
-        />
-        <Kpi
-          label="This week's revenue projection"
-          value={formatINR(weekForecast)}
-          trend={`${districts.length} districts`}
-          hint="seasonal-naive ensemble"
-          tone="neutral"
-          sparkline={<MiniLine data={aggSparkArr.slice(-14)} color="#14b8a6" />}
-        />
-        <Kpi
-          label="Active outlets"
-          value={formatNumber(outlets.filter((o) => !o.dormant).length)}
-          trend={`${dormantCount} dormant >30d`}
-          hint={`${formatNumber(outlets.length)} registered`}
-          tone={dormantCount > 200 ? "warn" : "neutral"}
-        />
-        <Kpi
-          label="High-urgency actions"
-          value={formatNumber(highUrgencyActions.length)}
-          trend={`${actions.total} total`}
-          hint="flagged for tomorrow"
-          tone="warn"
-        />
-      </div>
-
-      <div className="grid grid-cols-12 gap-4 mb-6">
-        <Panel className="col-span-12 xl:col-span-8">
-          <PanelHeader
-            title="State-wide demand · 28 days actual + 14 days forecast"
-            hint="Aggregated across all 26 districts · best-of-baselines ensemble"
-            action={<Badge tone="info">ensemble</Badge>}
+      <Body>
+        <section className="grid grid-cols-4 gap-4">
+          <Stat
+            label="Students tracked"
+            value={num(cc.total_students_tracked)}
+            sub={`${num(cc.schools_tracked)} schools, ${cc.districts_tracked} districts`}
           />
-          <PanelBody>
-            <ForecastLine
-              actual={apStateForecast.actual}
-              forecast={apStateForecast.forecast}
-              height={260}
-            />
-            <div className="mt-4 grid grid-cols-2 md:grid-cols-4 gap-3 text-2xs">
-              <Metric label="avg district MAPE" value={avgMape(fc)} tone="neutral" />
-              <Metric label="weekend uplift" value={weekendUplift(fc)} tone="neutral" />
-              <Metric
-                label="trend bias"
-                value={trendBias(fc)}
-                tone={trendBias(fc).startsWith("+") ? "up" : "down"}
-              />
-              <Metric
-                label="train cutoff"
-                value={new Date().toLocaleDateString("en-IN", { day: "2-digit", month: "short" })}
-                tone="neutral"
-              />
-            </div>
-          </PanelBody>
-        </Panel>
-
-        <Panel className="col-span-12 xl:col-span-4">
-          <PanelHeader
-            title="Outlet segments"
-            hint="Actionable clusters (KMeans · 6 groups)"
-            action={
-              <Link
-                href="/outlets"
-                className="text-2xs text-ink-400 hover:text-ink-200 inline-flex items-center gap-1"
-              >
-                all outlets <ArrowUpRight className="size-3" />
-              </Link>
-            }
+          <Stat
+            label="Critical risk"
+            value={num(cc.critical_count)}
+            sub={`${pct(cc.critical_count / riskTotal)} of cohort · 48h action`}
+            tone="critical"
           />
-          <PanelBody>
-            <div className="space-y-3">
-              {segments.segments
-                .sort((a, b) => b.size - a.size)
-                .map((s) => (
-                  <div
-                    key={s.cluster_id}
-                    className="flex items-center gap-3 p-2 rounded-md border hairline bg-ink-950/40"
-                  >
-                    <div
-                      className="h-9 w-1 rounded-full"
-                      style={{ background: segmentColor(s.segment) }}
-                    />
-                    <div className="min-w-0 flex-1">
-                      <div className="text-xs font-medium text-ink-100 truncate">{s.segment}</div>
-                      <div className="text-2xs text-ink-400 truncate">{s.recommended_stocking}</div>
-                    </div>
-                    <div className="text-right">
-                      <div className="text-xs font-semibold tabular text-ink-100">
-                        {formatNumber(s.size)}
-                      </div>
-                      <TrendArrow value={s.growth_30d} />
-                    </div>
-                  </div>
-                ))}
-            </div>
-          </PanelBody>
-        </Panel>
-      </div>
-
-      <div className="grid grid-cols-12 gap-4 mb-6">
-        <Panel className="col-span-12 md:col-span-6 xl:col-span-5">
-          <PanelHeader
-            title="Top revenue opportunities"
-            hint="Outlets underperforming district + vendor-type peer median"
-            action={
-              <Link
-                href="/outlets"
-                className="text-2xs text-ink-400 hover:text-ink-200 inline-flex items-center gap-1"
-              >
-                explore <ArrowUpRight className="size-3" />
-              </Link>
-            }
+          <Stat
+            label="High risk"
+            value={num(cc.high_count)}
+            sub={`${pct(cc.high_count / riskTotal)} · this-week action`}
+            tone="high"
           />
-          <div className="divide-panel">
-            {topOpportunities.map((o) => (
-              <div key={o.outlet_code} className="px-4 py-3 flex items-center gap-3">
-                <Flame className="size-4 text-accent-400 shrink-0" />
-                <div className="min-w-0 flex-1">
-                  <Link
-                    href={`/outlets/${o.outlet_code}`}
-                    className="text-xs font-medium text-ink-100 hover:text-accent-400 truncate block"
-                  >
-                    {o.outlet_name}
-                  </Link>
-                  <div className="text-2xs text-ink-400 truncate">
-                    {o.district} · depot {o.depot_code} ·{" "}
-                    <span className="text-ink-300">{o.segment}</span>
-                  </div>
+          <Stat
+            label="Historic dropouts · 23-24"
+            value={num(cc.historic_dropout_count)}
+            sub={`Base rate ${pct(cc.historic_dropout_rate, 2)} · labels we trust`}
+          />
+        </section>
+
+        <section className="grid grid-cols-12 gap-4">
+          <div className="card col-span-8 p-5">
+            <div className="flex items-start justify-between">
+              <div>
+                <div className="stat-label">State attendance · month-over-month</div>
+                <div className="number-md tnum mt-1">
+                  {pct(monthSeries[0] ?? 0)} → {pct(monthSeries[monthSeries.length - 1] ?? 0)}
                 </div>
-                <div className="text-right">
-                  <div className="text-xs font-semibold text-ink-100 tabular">
-                    {formatINR(o.estimated_uplift_inr)}
-                  </div>
-                  <div className="text-2xs text-ink-400 tabular">
-                    score {o.opportunity_score.toFixed(0)}
-                  </div>
+                <div className="text-xs text-[var(--text-muted)] mt-1">
+                  Jun → Apr · aggregated across all tracked students
                 </div>
               </div>
-            ))}
-          </div>
-        </Panel>
-
-        <Panel className="col-span-12 md:col-span-6 xl:col-span-4">
-          <PanelHeader
-            title="Recent anomalies"
-            hint="Isolation Forest · peer z-score"
-            action={
-              <Link
-                href="/outlets"
-                className="text-2xs text-ink-400 hover:text-ink-200 inline-flex items-center gap-1"
-              >
-                view all <ArrowUpRight className="size-3" />
-              </Link>
-            }
-          />
-          <div className="divide-panel">
-            {topAnomalies.map((o) => (
-              <div key={o.outlet_code} className="px-4 py-3 flex items-start gap-3">
-                <AlertTriangle
-                  className={`size-4 shrink-0 mt-0.5 ${
-                    o.growth_30d < 0 ? "text-bad" : "text-accent-400"
-                  }`}
-                />
-                <div className="min-w-0 flex-1">
-                  <Link
-                    href={`/outlets/${o.outlet_code}`}
-                    className="text-xs font-medium text-ink-100 hover:text-accent-400 truncate block"
-                  >
-                    {o.outlet_name}
-                  </Link>
-                  <div className="text-2xs text-ink-400 leading-snug line-clamp-2">
-                    {o.anomaly_reason}
-                  </div>
-                </div>
-                <TrendArrow value={o.growth_30d} />
-              </div>
-            ))}
-          </div>
-        </Panel>
-
-        <Panel className="col-span-12 xl:col-span-3">
-          <PanelHeader
-            title="Districts needing action"
-            hint="Ranked by anomaly density + dormancy"
-          />
-          <div className="divide-panel">
-            {districtsNeedingAction.map((d) => (
-              <Link
-                key={d.district}
-                href={`/districts/${encodeURIComponent(d.district)}`}
-                className="px-4 py-3 flex items-center gap-3 hover:bg-ink-800/60 transition-colors"
-              >
-                <Store className="size-4 text-ink-400" />
-                <div className="flex-1 min-w-0">
-                  <div className="text-xs font-medium text-ink-100 truncate">{d.district}</div>
-                  <div className="text-2xs text-ink-400 tabular">
-                    {d.outlets} outlets · {d.anomalies} alerts
-                  </div>
-                </div>
-                <TrendArrow value={d.avg_growth} />
-              </Link>
-            ))}
-          </div>
-        </Panel>
-      </div>
-
-      <Panel className="mb-6">
-        <PanelHeader
-          title="Tomorrow morning — high-urgency actions"
-          hint="Drawn from the Action Center · ranked by revenue impact × urgency"
-          action={
-            <Link
-              href="/actions"
-              className="text-2xs text-ink-400 hover:text-ink-200 inline-flex items-center gap-1"
-            >
-              full action center <ArrowUpRight className="size-3" />
-            </Link>
-          }
-        />
-        <PanelBody className="overflow-x-auto">
-          <table className="w-full text-xs tabular">
-            <thead>
-              <tr className="text-ink-400 text-2xs uppercase tracking-wider">
-                <th className="text-left pb-2 font-medium">Entity</th>
-                <th className="text-left pb-2 font-medium">Issue</th>
-                <th className="text-left pb-2 font-medium">Action</th>
-                <th className="text-right pb-2 font-medium">Impact</th>
-                <th className="text-left pb-2 font-medium pl-4">Confidence</th>
-                <th className="text-left pb-2 font-medium">Window</th>
-              </tr>
-            </thead>
-            <tbody>
-              {highUrgencyActions.map((a, i) => (
-                <tr key={i} className="border-t hairline align-top">
-                  <td className="py-3 pr-2">
-                    <div className="flex items-center gap-2">
-                      <Badge tone={entityTone(a.entity_type)}>{a.entity_type}</Badge>
-                      <div className="min-w-0">
-                        <div className="text-ink-100 font-medium truncate max-w-[220px]">
-                          {a.outlet || a.district || "—"}
-                        </div>
-                        <div className="text-2xs text-ink-400 truncate max-w-[220px]">
-                          {[a.district, a.depot && `depot ${a.depot}`].filter(Boolean).join(" · ")}
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td className="py-3 pr-2 text-ink-200 max-w-[280px]">
-                    <div className="truncate">{a.issue}</div>
-                    <div className="text-2xs text-ink-400 line-clamp-2">{a.reason}</div>
-                  </td>
-                  <td className="py-3 pr-2 text-ink-200 max-w-[260px]">
-                    <span className="text-accent-400">▸</span> {a.action}
-                  </td>
-                  <td className="py-3 pr-2 text-right text-ink-100">
-                    {a.revenue_impact_inr ? formatINR(a.revenue_impact_inr) : "—"}
-                  </td>
-                  <td className="py-3 pr-2 pl-4">
-                    <ConfidenceBar value={a.confidence} />
-                  </td>
-                  <td className="py-3 pr-2 text-ink-300 text-2xs">{a.expected_outcome_window}</td>
-                </tr>
+              <Sparkline data={monthSeries} width={360} height={72} />
+            </div>
+            <div className="grid grid-cols-11 gap-1 mt-4 text-[11px] text-[var(--text-muted)]">
+              {monthLabels.map((m) => (
+                <div key={m} className="text-center">{m}</div>
               ))}
-            </tbody>
-          </table>
-        </PanelBody>
-      </Panel>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <Panel>
-          <PanelHeader
-            title="What this system can and cannot do — today"
-            hint="Honest scoping per the data we actually have"
-          />
-          <PanelBody>
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <div className="text-2xs uppercase tracking-wider text-ok mb-2 flex items-center gap-1.5">
-                  <Sparkles className="size-3" /> Feasible now
-                </div>
-                <ul className="space-y-1.5 text-xs text-ink-200">
-                  {dq.analytics_feasible_now.map((x) => (
-                    <li key={x} className="flex gap-2">
-                      <span className="text-ok shrink-0">✓</span>
-                      <span>{x}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div>
-                <div className="text-2xs uppercase tracking-wider text-accent-400 mb-2 flex items-center gap-1.5">
-                  <Truck className="size-3" /> Waiting on feeds
-                </div>
-                <ul className="space-y-1.5 text-xs text-ink-200">
-                  {dq.analytics_pending_feeds.map((x) => (
-                    <li key={x} className="flex gap-2">
-                      <span className="text-accent-400 shrink-0">~</span>
-                      <span>{x}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
             </div>
-          </PanelBody>
-        </Panel>
+            <div className="grid grid-cols-11 gap-1 mt-0.5 text-[11px] tnum">
+              {monthSeries.map((v, i) => (
+                <div key={i} className="text-center font-medium">{(v * 100).toFixed(0)}</div>
+              ))}
+            </div>
+          </div>
 
-        <Panel>
-          <PanelHeader
-            title="Forecast quality by district"
-            hint="Best model selected via 14-day rolling backtest"
-          />
-          <div className="divide-panel max-h-[340px] overflow-y-auto">
-            {fc.districts
-              .sort(
-                (a, b) =>
-                  (a.models[a.best_model]?.mape ?? 0) - (b.models[b.best_model]?.mape ?? 0),
-              )
-              .slice(0, 12)
-              .map((d) => (
-                <div
-                  key={d.district}
-                  className="px-4 py-2.5 flex items-center gap-3"
-                >
-                  <TrendingUp className="size-4 text-teal-500 shrink-0" />
-                  <div className="min-w-0 flex-1">
-                    <div className="text-xs font-medium text-ink-100 truncate">
-                      {d.district}
+          <div className="card col-span-4 p-5">
+            <div className="stat-label">Intervention load</div>
+            <div className="number-md tnum mt-1">{num(cc.intervention_load.total)}</div>
+            <div className="text-xs text-[var(--text-muted)]">actions in the queue today</div>
+            <div className="mt-4 space-y-2">
+              {cc.intervention_load.mix.slice(0, 6).map((m) => (
+                <div key={m.action} className="flex items-center justify-between text-[13px]">
+                  <div className="text-[var(--text-strong)]">{actionLabel(m.action)}</div>
+                  <div className="flex items-center gap-2">
+                    <div className="bar-track w-24">
+                      <div className="bar-fill" style={{ width: `${m.share * 100}%`, background: "#1867d8" }} />
                     </div>
-                    <div className="text-2xs text-ink-400">
-                      {d.best_model.replace(/_/g, " ")}
-                    </div>
-                  </div>
-                  <div className="text-right">
-                    <div className="text-xs tabular text-ink-100">
-                      MAPE {d.models[d.best_model]?.mape?.toFixed(1) ?? "—"}%
-                    </div>
-                    <ConfidenceBar value={d.confidence} />
+                    <span className="tnum text-[11px] text-[var(--text-muted)] w-10 text-right">
+                      {num(m.count)}
+                    </span>
                   </div>
                 </div>
               ))}
+            </div>
           </div>
-        </Panel>
-      </div>
-    </>
+        </section>
+
+        <section className="grid grid-cols-12 gap-4">
+          <div className="card col-span-7 overflow-hidden">
+            <div className="px-5 pt-5 pb-3 border-b border-[var(--border)] flex items-end justify-between">
+              <div>
+                <div className="stat-label">Top districts by high-risk count</div>
+                <div className="text-xs text-[var(--text-muted)]">Click a district for the full decision table.</div>
+              </div>
+              <Link href="/districts" className="text-[13px] text-accent-500 hover:underline">
+                All districts →
+              </Link>
+            </div>
+            <div className="max-h-[420px] overflow-auto thin-scroll">
+              <table className="table-grid w-full">
+                <thead>
+                  <tr>
+                    <th>District</th>
+                    <th className="text-right">Students</th>
+                    <th className="text-right">High-risk</th>
+                    <th>Intensity</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {cc.top_districts_by_risk.map((d) => (
+                    <tr key={d.district_code}>
+                      <td>
+                        <Link href={`/districts/${d.district_code}`} className="hover:underline">
+                          {d.district}
+                        </Link>
+                        <div className="text-[11px] text-[var(--text-muted)]">DISE {d.district_code}</div>
+                      </td>
+                      <td className="text-right tnum">{num(d.students)}</td>
+                      <td className="text-right tnum font-medium">{num(d.high_risk)}</td>
+                      <td className="w-40">
+                        <div className="flex items-center gap-2">
+                          <div className="bar-track flex-1">
+                            <div
+                              className="bar-fill"
+                              style={{
+                                width: `${Math.min(d.high_risk_rate * 100 * 6, 100)}%`,
+                                background: "#b8283b",
+                              }}
+                            />
+                          </div>
+                          <span className="tnum text-[11px] text-[var(--text-muted)] w-10 text-right">
+                            {pct(d.high_risk_rate, 1)}
+                          </span>
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div className="card col-span-5 overflow-hidden">
+            <div className="px-5 pt-5 pb-3 border-b border-[var(--border)] flex items-end justify-between">
+              <div>
+                <div className="stat-label">Worst schools — priority queue preview</div>
+                <div className="text-xs text-[var(--text-muted)]">Ranked by high-risk student count.</div>
+              </div>
+              <Link href="/schools" className="text-[13px] text-accent-500 hover:underline">
+                All schools →
+              </Link>
+            </div>
+            <div className="max-h-[420px] overflow-auto thin-scroll">
+              <table className="table-grid w-full">
+                <thead>
+                  <tr>
+                    <th>School · District</th>
+                    <th className="text-right">HR</th>
+                    <th className="text-right">Conc.</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {cc.worst_schools_preview.map((s) => (
+                    <tr key={s.school_id}>
+                      <td>
+                        <Link href={`/schools/${s.school_id}`} className="hover:underline font-medium">
+                          School {s.school_id.slice(-5)}
+                        </Link>
+                        <div className="text-[11px] text-[var(--text-muted)]">
+                          {s.district} · block {s.block_code} · {num(s.student_count)} students
+                        </div>
+                      </td>
+                      <td className="text-right tnum">{num(s.students_high_risk)}</td>
+                      <td className="text-right tnum">{pct(s.risk_concentration, 0)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <section className="card p-5">
+          <div className="flex items-end justify-between mb-3">
+            <div>
+              <div className="stat-label">Non-obvious findings surfaced by the engine</div>
+              <h3 className="text-lg font-semibold tracking-tight">What the data is actually saying</h3>
+            </div>
+            <Link href="/insights" className="text-[13px] text-accent-500 hover:underline">All insights →</Link>
+          </div>
+          <div className="grid grid-cols-2 gap-4">
+            {insights.findings.slice(0, 4).map((f, i) => (
+              <div key={i} className="rounded-lg border border-[var(--border)] p-4 bg-[#fbfcff]">
+                <div className="flex items-center gap-2 mb-1">
+                  <span
+                    className={`pill ${f.confidence === "strong" ? "pill-low" : "pill-medium"}`}
+                  >
+                    {f.confidence}
+                  </span>
+                  <span className="text-[11px] text-[var(--text-muted)] uppercase tracking-wide">
+                    {f.tag.replace(/_/g, " ")}
+                  </span>
+                </div>
+                <div className="font-medium text-[14px] leading-snug mb-1">{f.headline}</div>
+                <div className="text-[12px] text-[var(--text-muted)] leading-relaxed">{f.body}</div>
+              </div>
+            ))}
+          </div>
+        </section>
+      </Body>
+    </Shell>
   );
-}
-
-function Metric({
-  label,
-  value,
-  tone,
-}: {
-  label: string;
-  value: string;
-  tone: "up" | "down" | "neutral";
-}) {
-  const tones = { up: "text-ok", down: "text-bad", neutral: "text-ink-100" } as const;
-  return (
-    <div className="rounded-md border hairline bg-ink-950/40 p-2.5">
-      <div className="text-2xs uppercase tracking-wider text-ink-400">{label}</div>
-      <div className={`text-sm font-semibold tabular ${tones[tone]}`}>{value}</div>
-    </div>
-  );
-}
-
-function segmentColor(s: string): string {
-  if (s.includes("Premium Growth")) return "#f59e0b";
-  if (s.includes("Stable High")) return "#14b8a6";
-  if (s.includes("Declining")) return "#ef4444";
-  if (s.includes("Volatile")) return "#eab308";
-  if (s.includes("Low-Productivity")) return "#94a3b8";
-  return "#3b82f6";
-}
-
-function entityTone(t: string) {
-  const m: Record<string, "accent" | "info" | "warn" | "neutral"> = {
-    outlet: "accent",
-    district: "info",
-    supplier: "warn",
-    depot: "neutral",
-  };
-  return m[t] || "neutral";
-}
-
-function aggregateForecast(fc: {
-  districts: Array<{
-    actual_last_28d: Array<{ date: string; value: number }>;
-    forecast_next_14d: Array<{ date: string; value: number }>;
-  }>;
-}) {
-  const actualMap = new Map<string, number>();
-  const fcstMap = new Map<string, number>();
-  fc.districts.forEach((d) => {
-    d.actual_last_28d.forEach((p) =>
-      actualMap.set(p.date, (actualMap.get(p.date) || 0) + p.value),
-    );
-    d.forecast_next_14d.forEach((p) =>
-      fcstMap.set(p.date, (fcstMap.get(p.date) || 0) + p.value),
-    );
-  });
-  const actual = [...actualMap.entries()]
-    .sort(([a], [b]) => a.localeCompare(b))
-    .map(([date, value]) => ({ date, value }));
-  const forecast = [...fcstMap.entries()]
-    .sort(([a], [b]) => a.localeCompare(b))
-    .map(([date, value]) => ({ date, value }));
-  return { actual, forecast };
-}
-
-function avgMape(fc: {
-  districts: Array<{ best_model: string; models: Record<string, { mape: number | null }> }>;
-}) {
-  const vals = fc.districts
-    .map((d) => d.models[d.best_model]?.mape)
-    .filter((v): v is number => typeof v === "number" && !Number.isNaN(v));
-  if (vals.length === 0) return "—";
-  return `${(vals.reduce((a, b) => a + b, 0) / vals.length).toFixed(1)}%`;
-}
-
-function weekendUplift(fc: { districts: Array<{ drivers: Record<string, unknown> }> }) {
-  const vals = fc.districts
-    .map((d) => d.drivers?.weekend_uplift as number | undefined)
-    .filter((v): v is number => typeof v === "number");
-  if (!vals.length) return "—";
-  return `${((vals.reduce((a, b) => a + b, 0) / vals.length - 1) * 100).toFixed(0)}%`;
-}
-
-function trendBias(fc: { districts: Array<{ drivers: Record<string, unknown> }> }) {
-  const up = fc.districts.filter((d) => d.drivers?.recent_trend === "up").length;
-  const down = fc.districts.filter((d) => d.drivers?.recent_trend === "down").length;
-  const n = up + down;
-  if (!n) return "—";
-  const pct = (up - down) / n;
-  return `${pct >= 0 ? "+" : ""}${(pct * 100).toFixed(0)}% up`;
 }

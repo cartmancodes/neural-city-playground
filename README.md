@@ -1,205 +1,120 @@
-# APSBCL Market & Product Intelligence — Hackathon POC
+# Stay-In School — AI Early Warning & Intervention Intelligence
 
-Decision intelligence for the Andhra Pradesh Prohibition & Excise / APSBCL liquor
-distribution challenge. Built around one question the panel cares about:
+A hackathon-grade but government-deployable prototype of a **predictive intelligence
+and action system for student retention** for the School Education Department,
+Government of Andhra Pradesh.
 
-> **What should the department do tomorrow morning?**
+The product answers five operational questions the department actually asks:
 
-This is not a BI dashboard. It is a decision system: forecasting, peer-benchmarked
-outlet segmentation, revenue-opportunity scoring, anomaly detection, product
-rationalization, and an explainable action engine — wired together and exposed
-through a government-grade multi-page web app.
+1. **Who** is at risk of dropping out this year?
+2. **Why** — in plain language a teacher, headmaster, or DEO can understand?
+3. **What** should each of them do about it, by when?
+4. **Where** should the next 100 interventions happen first?
+5. **How early** can we flag it — can the system fire in August, not March?
 
----
-
-## Architecture
-
-```
-┌───────────────────┐      ┌────────────────────┐      ┌──────────────────────┐
-│  Raw Excels (7)   │─ETL─▶│ Canonical parquet  │─analytics─▶ artifacts/*.json │
-│  outlet, sales,   │      │ (outlets, sales,   │      │ forecast · segments  │
-│  brand, label     │      │  products, labels) │      │ opps · anomalies     │
-└───────────────────┘      └────────────────────┘      │ actions · signals    │
-                                                       └──────────┬───────────┘
-                                                                  │
-                          ┌───────────────────────────────────────┤
-                          │                                       │
-                 ┌────────▼────────┐                   ┌──────────▼──────────┐
-                 │ FastAPI backend │                   │ Next.js 14 UI       │
-                 │ typed endpoints │                   │ Tailwind · Recharts │
-                 └─────────────────┘                   │ SSR from /public    │
-                                                       └─────────────────────┘
-```
-
-### Why this layout
-
-- **Artifacts are the contract.** Both surfaces (FastAPI + Next.js) read the same
-  JSON artifacts, so the UI works without the API running and vice versa.
-- **Modular future feeds.** True SKU sales, GPS, Suraksha, and depot balances
-  each have a contract + UI placeholder. Wiring them in is an ETL change, not a
-  UI rewrite.
-- **No fabricated data.** Every analytic is computed on data that is actually in
-  the uploaded files. Anything we can't compute honestly is scaffolded and
-  labelled "interim" or "awaiting feed".
+It is explicitly **not** framed as a generic ML dashboard. It is framed as an
+intervention and decision system; the model is one component.
 
 ---
 
-## What is real vs scaffolded
-
-| Layer                                  | Status    | Notes                                                                |
-| -------------------------------------- | --------- | -------------------------------------------------------------------- |
-| Outlet / district / depot forecasting  | **Real**  | 14-day horizon, best-of-baselines, rolling backtest, MAPE reported   |
-| Outlet segmentation (6 clusters)       | **Real**  | KMeans on standardized sales features; human-readable segment labels |
-| Peer-benchmarked opportunity scoring   | **Real**  | district × vendor-type peer median; 0–100 composite                  |
-| Anomaly detection                      | **Real**  | Isolation Forest + explainable reason strings                        |
-| Brand proliferation / label churn      | **Real**  | From product master + label approvals                                |
-| Rule-based SKU rationalization         | **Real**  | Flagged as *interim* per the honesty contract                        |
-| Action engine (with explainability)    | **Real**  | Revenue-impact sorted; confidence + drivers attached                 |
-| Scenario simulator (what-if levers)    | **Real**  | Linear elasticity model; confidence decays with lever magnitude      |
-| Map intelligence (SVG geo scatter)     | **Real**  | ~4500 outlets at real coordinates                                    |
-| External signals (policy, supply, …)   | Scaffolded | Mock seed; ingestion contract live in `/signals`                     |
-| True SKU × outlet forecasting          | Scaffolded | Requires outlet × SKU × date feed                                    |
-| GPS / route intelligence               | Scaffolded | Requires GPS logs + dispatch schedules                               |
-| Suraksha consumer intelligence         | Scaffolded | Requires consumer transactions                                       |
-| Depot balancing                        | Scaffolded | Requires inventory positions                                         |
-
-Open `/data-quality` in the app for the complete audit log.
-
----
-
-## Project layout
+## What's in the repo
 
 ```
 neural-city-playground/
-├── pipeline/
-│   ├── audit.py          Phase 1 data audit (inventory, schema, join strategy)
-│   ├── etl.py            Excel → canonical parquet (outlets, sales, products, labels)
-│   └── analytics.py      Feature engineering, forecasting, segmentation, scoring,
-│                         anomaly detection, product intel, actions, signals
-├── server/
-│   └── main.py           FastAPI app exposing artifacts as typed endpoints
-├── artifacts/
-│   ├── reports/audit.json   raw data audit
-│   ├── data_quality.json    honesty report (issues, joins, feasibility)
-│   ├── districts.json       per-district rollups
-│   ├── outlets.json         every outlet with segment / score / anomaly flags
-│   ├── forecast_*.json      district + top-outlet forecasts
-│   ├── segments.json        cluster summaries + recommended stocking logic
-│   ├── product_intel.json   heatmap, rationalization, new-launch watchlist
-│   ├── actions.json         ranked action recommendations
-│   └── external_feed.json   mock policy / supply / competitor signals
-├── data/
-│   └── processed/           parquet cache (gitignored)
-└── web/                     Next.js 14 + TypeScript + Tailwind + Recharts
-    ├── src/app/             App Router pages (10 routes)
-    ├── src/components/      layout + UI primitives + chart wrappers
-    ├── src/lib/data.ts      typed SSR data loader
-    └── public/data/         mirror of artifacts for static SSR
+├── data/                # raw inputs (kept out of git for privacy)
+├── pipeline/            # Python pipeline (analysis + modeling + action logic)
+│   ├── utils.py         # shared loaders + derivation helpers
+│   ├── audit.py         # data audit (stage 1)
+│   ├── features.py      # feature engineering (stage 2)
+│   ├── train.py         # layered modeling + early-warning variant (stage 3)
+│   ├── intervene.py     # intervention engine + recoverability + explainability (stage 4)
+│   ├── hotspot.py       # school + district + block hotspot analytics + insights (stage 5)
+│   └── run.py           # end-to-end orchestrator
+├── artifacts/           # JSON outputs + the trained-scores parquet
+├── web/                 # Next.js 14 dashboard (role-based views)
+│   └── public/data/     # artifacts mirrored here so the dashboard is purely static
+└── docs/                # audit memo, jury talk track, architecture doc
 ```
 
 ---
 
-## Running the POC
-
-Prerequisites: Python 3.9+ and Node 20+.
-
-### 1. Run the pipeline
+## Run the pipeline
 
 ```bash
+# 1. Set up Python env (one-time)
 python3 -m venv .venv
-.venv/bin/pip install -U pip pandas openpyxl numpy scikit-learn pyarrow fastapi "uvicorn[standard]"
+.venv/bin/pip install pandas numpy scikit-learn openpyxl pyarrow
 
-# Phase 1: audit the raw files
-.venv/bin/python pipeline/audit.py
+# 2. Drop the four source files into data/:
+#    data_FIN_YEAR_2023-2024.csv
+#    data_FIN_YEAR_2024-2025.csv
+#    CHILDSNO_Dropped_2023_24.xlsx
+#    CHILDSNO_Dropped_2024_25.xlsx
 
-# Phase 2: ETL raw → canonical parquet
-.venv/bin/python pipeline/etl.py
-
-# Phase 3: analytics → artifact JSONs
-.venv/bin/python pipeline/analytics.py
-
-# refresh the copies the frontend reads
-cp -r artifacts web/public/data
+# 3. Run the entire pipeline end-to-end (~8-10 min on a laptop)
+.venv/bin/python pipeline/run.py --publish
 ```
 
-### 2. Run the backend (optional)
+`--publish` copies the generated JSON artifacts into `web/public/data/` so the
+dashboard can read them directly with no backend server required.
+
+### Run individual stages
 
 ```bash
-.venv/bin/uvicorn server.main:app --reload --port 8000
-# http://127.0.0.1:8000/api/health
-# http://127.0.0.1:8000/api/districts
-# http://127.0.0.1:8000/api/scenario/simulate?premium_mix_delta=0.1&sku_prune_pct=0.05&event_district=Tirupati&event_uplift=0.2
+.venv/bin/python pipeline/audit.py        # produces artifacts/audit.json + docs/data_audit.md
+.venv/bin/python pipeline/features.py     # produces artifacts/features.parquet
+.venv/bin/python pipeline/train.py        # produces artifacts/{model_results,student_scores}.*
+.venv/bin/python pipeline/intervene.py    # produces artifacts/{student_actions,watchlist,recoverable}.json
+.venv/bin/python pipeline/hotspot.py      # produces artifacts/{school_risk,district_decision,hotspots,insights,command_center}.json
 ```
 
-### 3. Run the frontend
+---
+
+## Run the dashboard
 
 ```bash
 cd web
 npm install
-npm run dev       # http://localhost:3000
+npm run dev          # http://localhost:3000
 # or
-npm run build && npm run start
+npm run build && npm start
 ```
 
----
+Views (role-based, per the brief):
 
-## Key screens (what each answers)
-
-1. **Executive Command Center (`/`)** — *What should the department do tomorrow
-   morning?* Today's forecast, high-urgency actions, anomalies, opportunity
-   outlets, segment distribution, forecast MAPE by district.
-2. **Action Center (`/actions`)** — every recommendation with `entity ·
-   district · depot · outlet · issue · confidence · impact · urgency · action ·
-   why · window`. Filterable.
-3. **Districts (`/districts`)** — league table across all 26 districts.
-   Click-through to a district drilldown with forecast vs actual, segment mix,
-   depot dependency, declining watchlist, and top opportunities.
-4. **Outlets (`/outlets`, `/outlets/[code]`)** — 4,899 outlets with peer
-   comparison, volatility, growth, anomaly flags, and recommended strategy.
-5. **Product & Assortment (`/products`)** — price-band × pack-size heatmap,
-   rationalization candidates, new-launch watchlist, brand proliferation.
-   Clearly labelled as interim pending outlet × SKU sales.
-6. **Scenario Simulator (`/scenario`)** — move levers for premiumization, SKU
-   prune, event uplift, route delay. Decomposed impact + confidence decay.
-7. **Map Intelligence (`/map`)** — every geo-located outlet plotted, colour by
-   segment / opportunity / anomaly / growth.
-8. **External Signals (`/signals`)** — mock policy / supply / competitor /
-   search signals with ingestion contract for live wiring.
-9. **Data Audit (`/data-quality`)** — totals, issues, join strengths,
-   feasibility matrix, scaffolded future modules.
+| Route | View | Audience |
+|-------|------|----------|
+| `/` | State Command Center | Secretariat / RTGS leadership |
+| `/districts` + `/districts/[code]` | District Decision Table | District Education Officers |
+| `/schools` + `/schools/[id]` | School Risk Queue + Headmaster View | Headmasters, block officers |
+| `/teacher` | Teacher View (2-minute usable) | Class teachers |
+| `/students` + `/students/[id]` | Student Action Queue + Student 360 | Teachers, counsellors |
+| `/interventions` | Intervention Effectiveness + Resource Efficiency | District planners |
+| `/hotspots` | Systemic Hotspot Analytics | State secretariat |
+| `/insights` | Non-obvious jury-facing findings | Jury / stakeholders |
+| `/model` | Model card + early-warning variant | Technical reviewers |
 
 ---
 
-## Honest constraints (what this build does NOT claim)
+## Headline results (2023-24 labelled cohort)
 
-- No true SKU-level forecasting — the sales feed is at `outlet × date`, not
-  `outlet × SKU × date`. All SKU-level logic is rule-based and marked as
-  "interim — pending SKU transaction feed".
-- No GPS or route intelligence — no vehicle GPS logs were uploaded.
-- No Suraksha consumer intelligence — no consumer transaction feed was uploaded.
-- No real depot balancing — no inventory-position / dispatch-schedule feed was
-  uploaded.
-- Scenario elasticities are prior-based planning values, not causally estimated.
+- **408,876** students · **9,120** schools · **12** AP districts
+- Champion model: **Gradient Boosting** with ROC-AUC **0.924**, PR-AUC **0.419**
+- **Top-10% risk band captures 64.5%** of actual dropouts
+- **Hyper-early detection** (first 30-60 days only, no marks): top-10% still captures **60.6%** — the gap to full-year is only 4 percentage points
+- Non-obvious finding: the top feature is not a student-level signal but
+  `school_historical_dropout_rate` — **schools matter more than individual circumstance**
 
-These are called out inside `/data-quality` and inside each relevant screen so
-officers and analysts know exactly what the system is asserting.
+See `docs/jury_talk_track.md` for the talk track, `docs/data_audit.md` for the data memo,
+and `docs/architecture.md` for the scale-up architecture and production next steps.
 
 ---
 
-## Design principles
+## Ethics and privacy
 
-1. **Build for tired judges.** Decision tables, action recommendations, and
-   explainability — not a wall of KPIs.
-2. **Be transparent.** Every limitation is declared on the Data Audit page and
-   mirrored in screen-level captions.
-3. **Think like a revenue and operations intelligence system.** Where is mix
-   suboptimal? Where is demand shifting? Which outlet needs intervention first?
-4. **Look like a system a Commissioner would trust.** Government-grade dark
-   theme, information-dense, no gimmicks.
-
----
-
-## License
-
-POC build for hackathon demonstration purposes. Attribution: AP Prohibition &
-Excise / APSBCL data sources.
+- Anonymized DISE identifiers only; no PII surfaced in the dashboard
+- Human-in-the-loop confirmation required for every action
+- Positive-support language everywhere — no stigmatizing labels on parent- or student-facing interfaces
+- Bias check hooks across gender and social category are in place but require
+  additional calibration data before being wired into the UI
+- No punitive use of scores

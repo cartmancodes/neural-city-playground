@@ -1,58 +1,52 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
-  content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
+  content: ["./src/**/*.{ts,tsx}"],
   theme: {
     extend: {
       colors: {
         ink: {
-          950: "#05080f",
-          900: "#0a0f1c",
-          800: "#111827",
-          700: "#1f2937",
-          600: "#334155",
-          500: "#64748b",
-          400: "#94a3b8",
-          300: "#cbd5e1",
-          200: "#e5e7eb",
-          100: "#f1f5f9",
+          900: "#0b1220",
+          800: "#111a2e",
+          700: "#1b2540",
+          600: "#27324f",
+          500: "#3b4666",
+          400: "#5a6687",
+          300: "#8692b2",
+          200: "#c6cbdc",
+          100: "#e4e7f1",
         },
         accent: {
-          50: "#fff8eb",
-          100: "#fff0c7",
-          200: "#ffe08a",
-          300: "#ffcb49",
-          400: "#ffb721",
-          500: "#f59e0b",
-          600: "#d97706",
-          700: "#b45309",
+          DEFAULT: "#1867d8",
+          500: "#1867d8",
+          400: "#3684f4",
+          300: "#6ba5fa",
+          200: "#bbd7ff",
+          100: "#e4efff",
         },
-        teal: {
-          500: "#14b8a6",
-          600: "#0d9488",
-          700: "#0f766e",
+        risk: {
+          critical: "#b8283b",
+          high: "#d7783b",
+          medium: "#d4aa2a",
+          watch: "#4e8c5b",
+          good: "#2f7d51",
         },
-        ok: "#22c55e",
-        warn: "#f59e0b",
-        bad: "#ef4444",
       },
       fontFamily: {
-        sans: ["var(--font-geist-sans)", "system-ui", "sans-serif"],
-        mono: ["var(--font-geist-mono)", "Menlo", "monospace"],
-      },
-      boxShadow: {
-        tile: "0 1px 0 0 rgb(255 255 255 / 0.04) inset, 0 1px 3px rgb(0 0 0 / 0.4)",
-      },
-      fontSize: {
-        "2xs": "0.625rem",
+        sans: [
+          'InterVariable',
+          'Inter',
+          '-apple-system',
+          'BlinkMacSystemFont',
+          '"Segoe UI"',
+          'Roboto',
+          'system-ui',
+          'sans-serif',
+        ],
+        mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
       },
     },
   },
   plugins: [],
 };
-
 export default config;
