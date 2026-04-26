@@ -1,0 +1,508 @@
+// Configurable rule engine. Reads a JSON rule pack rather than hard-
+// coding if/else, so the same engine handles low-rise residential,
+// commercial, layout and occupancy with one code path.
+
+import rulesJson from "@/data/rules/demoRules.json";
+import type {
+  Application,
+  BuildingProposal,
+  LayoutProposal,
+  OccupancyRequest,
+  RuleCheck,
+  RulePack,
+  RuleScrutinyResult,
+  ScrutinyOutcome,
+} from "@/types";
+
+const RULES = rulesJson as RulePack;
+
+// Pick the right rule category for a building proposal.
+function categoryFor(proposal: BuildingProposal): string {
+  if (proposal.buildingUse === "commercial") return "commercial";
+  if (proposal.buildingUse === "mixed_use") return "mixed_use";
+  if (proposal.buildingUse === "institutional") return "institutional";
+  if (proposal.buildingUse === "industrial") return "industrial";
+  // residential — pick by height
+  if (proposal.buildingHeightM > 15) return "residential_high_rise";
+  if (proposal.buildingHeightM > 10) return "residential_mid_rise";
+  return "residential_low_rise";
+}
+
+function within(value: number, target: number, tolerancePct = 0.05): boolean {
+  if (target === 0) return value === 0;
+  return Math.abs(value - target) <= Math.abs(target) * tolerancePct;
+}
+
+function statusFromBool(ok: boolean, severityIfFail: RuleCheck["severity"] = "medium"): {
+  status: RuleCheck["status"];
+  severity: RuleCheck["severity"];
+} {
+  return ok
+    ? { status: "pass", severity: "low" }
+    : { status: "fail", severity: severityIfFail };
+}
+
+interface BuildingInputs {
+  proposal: BuildingProposal;
+  declaredPlotAreaSqM: number;
+  geomPlotAreaSqM?: number;
+  jurisdictionKnown: boolean;
+  hasBoundary: boolean;
+  roadWidthFromGISMissing?: boolean;
+}
+
+export function runBuildingScrutiny(input: BuildingInputs): RuleScrutinyResult {
+  const { proposal, declaredPlotAreaSqM, geomPlotAreaSqM, jurisdictionKnown, hasBoundary, roadWidthFromGISMissing } = input;
+
+  const cat = categoryFor(proposal);
+  const pack = RULES[cat];
+  const checks: RuleCheck[] = [];
+
+  // 1. Jurisdiction
+  checks.push({
+    id: "jurisdiction",
+    name: "Jurisdiction identified",
+    applicantValue: jurisdictionKnown ? "Identified" : "Uncertain",
+    requiredValue: "Identified",
+    ...(jurisdictionKnown
+      ? { status: "pass", severity: "low" }
+      : { status: "manual_review", severity: "medium" }),
+    explanation: jurisdictionKnown
+      ? "Plot location maps to a recognised village/ULB boundary."
+      : "Plot does not fall fully inside known boundaries — manual GIS verification required.",
+  });
+
+  // 2. Boundary provided
+  checks.push({
+    id: "boundary",
+    name: "Plot boundary provided",
+    applicantValue: hasBoundary ? "Drawn" : "Missing",
+    requiredValue: "Drawn",
+    ...statusFromBool(hasBoundary, "high"),
+    explanation: hasBoundary
+      ? "Applicant-drawn polygon captured."
+      : "No plot polygon submitted — system cannot run jurisdiction or monitoring checks.",
+  });
+
+  // 3. Plot area matches declared (within 5%)
+  if (typeof geomPlotAreaSqM === "number") {
+    const ok = within(declaredPlotAreaSqM, geomPlotAreaSqM, 0.05);
+    checks.push({
+      id: "plot_area_match",
+      name: "Plot area matches drawn boundary",
+      applicantValue: `${declaredPlotAreaSqM.toFixed(0)} sq m`,
+      requiredValue: `${geomPlotAreaSqM.toFixed(0)} sq m (±5%)`,
+      ...(ok ? { status: "pass", severity: "low" } : { status: "warning", severity: "medium" }),
+      explanation: ok
+        ? "Declared plot area is within tolerance of the drawn polygon."
+        : "Declared area differs from polygon by more than 5%. Recheck declared area or boundary.",
+      suggestedCorrection: ok ? undefined : "Verify declared plot area against drawn polygon.",
+    });
+  }
+
+  // 4–6. Setbacks
+  const checkSetback = (
+    id: string,
+    name: string,
+    val: number,
+    min: number,
+  ): RuleCheck => ({
+    id,
+    name,
+    applicantValue: `${val} m`,
+    requiredValue: `≥ ${min} m`,
+    ...(val >= min
+      ? { status: "pass", severity: "low" }
+      : { status: "fail", severity: "high" }),
+    explanation:
+      val >= min
+        ? "Meets the minimum setback for this category."
+        : `Required minimum setback for ${pack.label || cat} is ${min} m.`,
+    suggestedCorrection: val >= min ? undefined : `Increase to at least ${min} m.`,
+  });
+  checks.push(checkSetback("front_setback", "Minimum front setback", proposal.frontSetbackM, pack.minFrontSetbackM));
+  checks.push(checkSetback("rear_setback", "Minimum rear setback", proposal.rearSetbackM, pack.minRearSetbackM));
+  const sideMin = pack.minSideSetbackM;
+  const minSide = Math.min(proposal.leftSetbackM, proposal.rightSetbackM);
+  checks.push({
+    id: "side_setback",
+    name: "Minimum side setback",
+    applicantValue: `${minSide} m (min of L/R)`,
+    requiredValue: `≥ ${sideMin} m`,
+    ...(minSide >= sideMin
+      ? { status: "pass", severity: "low" }
+      : { status: "fail", severity: "high" }),
+    explanation:
+      minSide >= sideMin
+        ? "Both side setbacks meet the requirement."
+        : `Minimum side setback must be ≥ ${sideMin} m. Either side currently violates the rule.`,
+    suggestedCorrection: minSide >= sideMin ? undefined : `Increase the smaller side setback to ${sideMin} m.`,
+  });
+
+  // 7. FAR / built-up area
+  const far = proposal.plotAreaSqM > 0 ? proposal.proposedBuiltUpAreaSqM / proposal.plotAreaSqM : 0;
+  checks.push({
+    id: "far",
+    name: "FAR / built-up area",
+    applicantValue: `FAR ${far.toFixed(2)}`,
+    requiredValue: `≤ ${pack.maxFAR}`,
+    ...(far <= pack.maxFAR
+      ? { status: "pass", severity: "low" }
+      : { status: "fail", severity: "high" }),
+    explanation:
+      far <= pack.maxFAR
+        ? "Built-up area is within the FAR cap."
+        : `Built-up area exceeds the maximum FAR of ${pack.maxFAR} for ${pack.label || cat}.`,
+    suggestedCorrection: far <= pack.maxFAR ? undefined : "Reduce proposed built-up area or split into more plots.",
+  });
+
+  // 8. Ground coverage
+  checks.push({
+    id: "ground_coverage",
+    name: "Ground coverage",
+    applicantValue: `${proposal.groundCoveragePercent}%`,
+    requiredValue: `≤ ${pack.maxGroundCoveragePercent}%`,
+    ...(proposal.groundCoveragePercent <= pack.maxGroundCoveragePercent
+      ? { status: "pass", severity: "low" }
+      : { status: "fail", severity: "medium" }),
+    explanation:
+      proposal.groundCoveragePercent <= pack.maxGroundCoveragePercent
+        ? "Ground coverage within permissible limit."
+        : `Ground coverage exceeds the cap of ${pack.maxGroundCoveragePercent}%.`,
+  });
+
+  // 9. Height category
+  checks.push({
+    id: "building_height",
+    name: "Building height category",
+    applicantValue: `${proposal.buildingHeightM} m / ${proposal.numberOfFloors} floors`,
+    requiredValue: `≤ ${pack.maxHeightM} m`,
+    ...(proposal.buildingHeightM <= pack.maxHeightM
+      ? { status: "pass", severity: "low" }
+      : { status: "fail", severity: "high" }),
+    explanation:
+      proposal.buildingHeightM <= pack.maxHeightM
+        ? "Height fits within the chosen category."
+        : `Height ${proposal.buildingHeightM} m exceeds limit ${pack.maxHeightM} m for ${pack.label || cat}.`,
+  });
+
+  // 10. Parking
+  const requiredParking = Math.ceil((proposal.numberOfFloors || 1) * pack.parkingPerDwellingUnit);
+  checks.push({
+    id: "parking",
+    name: "Parking provision",
+    applicantValue: `${proposal.parkingSpaces} bays`,
+    requiredValue: `≥ ${requiredParking} bays`,
+    ...(proposal.parkingSpaces >= requiredParking
+      ? { status: "pass", severity: "low" }
+      : { status: "fail", severity: "medium" }),
+    explanation:
+      proposal.parkingSpaces >= requiredParking
+        ? "Adequate parking provision."
+        : `Need ${requiredParking} bays for ${proposal.numberOfFloors} floors at ${pack.parkingPerDwellingUnit}/unit.`,
+    suggestedCorrection:
+      proposal.parkingSpaces >= requiredParking ? undefined : `Add ${requiredParking - proposal.parkingSpaces} more parking bays.`,
+  });
+
+  // 11. Road width compatibility
+  if (roadWidthFromGISMissing) {
+    checks.push({
+      id: "road_width",
+      name: "Road width compatibility",
+      applicantValue: `${proposal.roadWidthAbuttingM} m (declared)`,
+      requiredValue: `≥ ${pack.minRoadWidthM} m`,
+      status: "manual_review",
+      severity: "medium",
+      explanation: "Road width could not be auto-verified from GIS. Field verification required.",
+    });
+  } else {
+    checks.push({
+      id: "road_width",
+      name: "Road width compatibility",
+      applicantValue: `${proposal.roadWidthAbuttingM} m`,
+      requiredValue: `≥ ${pack.minRoadWidthM} m`,
+      ...(proposal.roadWidthAbuttingM >= pack.minRoadWidthM
+        ? { status: "pass", severity: "low" }
+        : { status: "fail", severity: "high" }),
+      explanation:
+        proposal.roadWidthAbuttingM >= pack.minRoadWidthM
+          ? "Abutting road meets the minimum width requirement."
+          : `Abutting road of ${proposal.roadWidthAbuttingM} m is below required ${pack.minRoadWidthM} m for ${pack.label || cat}.`,
+    });
+  }
+
+  // 12. Rainwater harvesting
+  if (pack.rainwaterHarvestingRequired) {
+    checks.push({
+      id: "rainwater",
+      name: "Rainwater harvesting",
+      applicantValue: proposal.rainwaterHarvesting ? "Yes" : "No",
+      requiredValue: "Yes",
+      ...(proposal.rainwaterHarvesting
+        ? { status: "pass", severity: "low" }
+        : { status: "fail", severity: "medium" }),
+      explanation: proposal.rainwaterHarvesting
+        ? "Rainwater harvesting committed."
+        : "Rainwater harvesting is mandatory for this category.",
+    });
+  }
+
+  // 13. Solar provision
+  if (pack.solarRequired) {
+    checks.push({
+      id: "solar",
+      name: "Solar provision",
+      applicantValue: proposal.solarProvision ? "Yes" : "No",
+      requiredValue: "Yes",
+      ...(proposal.solarProvision
+        ? { status: "pass", severity: "low" }
+        : { status: "warning", severity: "medium" }),
+      explanation: proposal.solarProvision
+        ? "Solar provision included as required."
+        : "Solar provision recommended for this category.",
+    });
+  }
+
+  return finalize(checks, proposal);
+}
+
+export function runLayoutScrutiny(input: { proposal: LayoutProposal; insideBoundary: boolean }): RuleScrutinyResult {
+  const pack = RULES.layout;
+  const p = input.proposal;
+  const checks: RuleCheck[] = [];
+  checks.push({
+    id: "internal_road_width",
+    name: "Internal road width",
+    applicantValue: `${p.internalRoadWidthM} m`,
+    requiredValue: `≥ ${pack.minInternalRoadWidthM} m`,
+    ...(p.internalRoadWidthM >= (pack.minInternalRoadWidthM || 9)
+      ? { status: "pass", severity: "low" }
+      : { status: "fail", severity: "high" }),
+    explanation:
+      p.internalRoadWidthM >= (pack.minInternalRoadWidthM || 9)
+        ? "Internal roads meet minimum width."
+        : `Internal road width must be ≥ ${pack.minInternalRoadWidthM} m.`,
+  });
+  checks.push({
+    id: "open_space",
+    name: "Open space percentage",
+    applicantValue: `${p.openSpacePercent}%`,
+    requiredValue: `≥ ${pack.minOpenSpacePercent}%`,
+    ...(p.openSpacePercent >= (pack.minOpenSpacePercent || 10)
+      ? { status: "pass", severity: "low" }
+      : { status: "fail", severity: "medium" }),
+    explanation:
+      p.openSpacePercent >= (pack.minOpenSpacePercent || 10)
+        ? "Open space allocation is sufficient."
+        : `Layouts must reserve ≥ ${pack.minOpenSpacePercent}% open space.`,
+  });
+  checks.push({
+    id: "plot_count",
+    name: "Plot count",
+    applicantValue: p.numberOfPlots,
+    requiredValue: "≥ 1",
+    ...(p.numberOfPlots >= 1
+      ? { status: "pass", severity: "low" }
+      : { status: "fail", severity: "high" }),
+    explanation: p.numberOfPlots >= 1 ? "Plot count provided." : "At least one plot required.",
+  });
+  checks.push({
+    id: "utilities",
+    name: "Utility provision",
+    applicantValue: [
+      p.drainageProvision ? "drainage" : null,
+      p.waterSupplyProvision ? "water" : null,
+      p.streetLightingProvision ? "lighting" : null,
+    ]
+      .filter(Boolean)
+      .join(", ") || "none",
+    requiredValue: "drainage, water, lighting",
+    ...(p.drainageProvision && p.waterSupplyProvision && p.streetLightingProvision
+      ? { status: "pass", severity: "low" }
+      : { status: "fail", severity: "medium" }),
+    explanation: "All three utility commitments are mandatory.",
+  });
+  checks.push({
+    id: "approach_road",
+    name: "Approach road availability",
+    applicantValue: `${p.approachRoadM} m`,
+    requiredValue: "≥ 9 m",
+    ...(p.approachRoadM >= 9
+      ? { status: "pass", severity: "low" }
+      : { status: "fail", severity: "high" }),
+    explanation: p.approachRoadM >= 9 ? "Approach road sufficient." : "Approach road must be ≥ 9 m.",
+  });
+  checks.push({
+    id: "boundary_within_jurisdiction",
+    name: "Boundary within jurisdiction",
+    applicantValue: input.insideBoundary ? "Inside" : "Crosses boundary",
+    requiredValue: "Inside",
+    ...(input.insideBoundary
+      ? { status: "pass", severity: "low" }
+      : { status: "warning", severity: "high" }),
+    explanation: input.insideBoundary
+      ? "Layout polygon is inside selected jurisdiction."
+      : "Layout polygon overlaps outside the selected village/ULB.",
+  });
+  return finalize(checks);
+}
+
+export function runOccupancyScrutiny(input: {
+  request: OccupancyRequest;
+  approvedProposal?: BuildingProposal;
+  documentsUploaded: boolean;
+  roadWidthVerified: boolean;
+}): RuleScrutinyResult {
+  const checks: RuleCheck[] = [];
+  const r = input.request;
+  const p = input.approvedProposal;
+  const floorsMatch = p ? r.floorsConstructed === p.numberOfFloors : true;
+  checks.push({
+    id: "floors_match",
+    name: "Floors match approved plan",
+    applicantValue: r.floorsConstructed,
+    requiredValue: p ? p.numberOfFloors : "—",
+    ...(floorsMatch
+      ? { status: "pass", severity: "low" }
+      : { status: "fail", severity: "high" }),
+    explanation: floorsMatch
+      ? "Constructed floors match the sanctioned plan."
+      : "Constructed floors differ from the sanctioned plan.",
+  });
+  const usageMatches = p ? p.buildingUse === r.usage : true;
+  checks.push({
+    id: "usage_match",
+    name: "Usage matches approved plan",
+    applicantValue: r.usage,
+    requiredValue: p ? p.buildingUse : "—",
+    ...(usageMatches
+      ? { status: "pass", severity: "low" }
+      : { status: "fail", severity: "high" }),
+    explanation: usageMatches
+      ? "Usage matches the sanctioned plan."
+      : "Usage on completion differs from sanctioned usage.",
+  });
+  const setbacksMatch = p
+    ? r.externalSetbacks.front >= p.frontSetbackM &&
+      r.externalSetbacks.rear >= p.rearSetbackM &&
+      r.externalSetbacks.left >= p.leftSetbackM &&
+      r.externalSetbacks.right >= p.rightSetbackM
+    : true;
+  checks.push({
+    id: "setbacks_match",
+    name: "Setbacks match approved plan",
+    applicantValue: `F ${r.externalSetbacks.front}, R ${r.externalSetbacks.rear}, L ${r.externalSetbacks.left}, Ri ${r.externalSetbacks.right}`,
+    requiredValue: p
+      ? `F ${p.frontSetbackM}, R ${p.rearSetbackM}, L ${p.leftSetbackM}, Ri ${p.rightSetbackM}`
+      : "—",
+    ...(setbacksMatch
+      ? { status: "pass", severity: "low" }
+      : { status: "fail", severity: "high" }),
+    explanation: setbacksMatch
+      ? "All setbacks meet or exceed sanctioned values."
+      : "One or more setbacks fall below sanctioned values.",
+  });
+  const parkingOk = p ? r.parkingProvided >= p.parkingSpaces : true;
+  checks.push({
+    id: "parking_provided",
+    name: "Parking provided",
+    applicantValue: r.parkingProvided,
+    requiredValue: p ? p.parkingSpaces : "—",
+    ...(parkingOk
+      ? { status: "pass", severity: "low" }
+      : { status: "fail", severity: "medium" }),
+    explanation: "Final parking count must be at least sanctioned.",
+  });
+  checks.push({
+    id: "road_width_verified",
+    name: "Road width verified",
+    applicantValue: input.roadWidthVerified ? "Yes" : "No",
+    requiredValue: "Yes",
+    ...(input.roadWidthVerified
+      ? { status: "pass", severity: "low" }
+      : { status: "manual_review", severity: "medium" }),
+    explanation: input.roadWidthVerified
+      ? "Road width verified during inspection."
+      : "Road width has not been re-verified at the site.",
+  });
+  checks.push({
+    id: "completion_documents",
+    name: "Completion documents uploaded",
+    applicantValue: input.documentsUploaded ? "Uploaded" : "Missing",
+    requiredValue: "Uploaded",
+    ...(input.documentsUploaded
+      ? { status: "pass", severity: "low" }
+      : { status: "fail", severity: "high" }),
+    explanation: input.documentsUploaded
+      ? "Completion notice and supporting documents uploaded."
+      : "Completion notice or supporting documents missing.",
+  });
+  return finalize(checks);
+}
+
+function finalize(checks: RuleCheck[], proposal?: BuildingProposal): RuleScrutinyResult {
+  const failHigh = checks.filter((c) => c.status === "fail" && c.severity === "high").length;
+  const fail = checks.filter((c) => c.status === "fail").length;
+  const warnings = checks.filter((c) => c.status === "warning").length;
+  const manual = checks.filter((c) => c.status === "manual_review").length;
+
+  let outcome: ScrutinyOutcome = "auto_pass_eligible";
+  if (failHigh >= 2) outcome = "reject_recommendation";
+  else if (failHigh === 1 || fail > 0) outcome = "needs_correction";
+  else if (manual > 0) outcome = "field_verification_required";
+
+  // Technical review nudges
+  const whyEscalated: string[] = [];
+  if (proposal?.proposedBuiltUpAreaSqM && proposal.proposedBuiltUpAreaSqM > 1500) whyEscalated.push("High built-up area");
+  if (proposal?.buildingUse === "commercial") whyEscalated.push("Commercial use");
+  if (proposal && proposal.buildingHeightM > 15) whyEscalated.push("Height threshold crossed");
+  if (warnings > 0) whyEscalated.push("Rule ambiguity");
+  if (manual > 0) whyEscalated.push("Boundary mismatch");
+  if (checks.find((c) => c.id === "road_width" && c.status !== "pass")) whyEscalated.push("Road width missing");
+  if (whyEscalated.length > 0 && outcome === "auto_pass_eligible") outcome = "needs_technical_review";
+
+  // Score 0–100. Ground-truth: pass adds, fail subtracts, weighted by severity.
+  const totalChecks = checks.length || 1;
+  const passCount = checks.filter((c) => c.status === "pass").length;
+  const baseRule = (passCount / totalChecks) * 100;
+  const ruleScore = Math.round(Math.max(0, Math.min(100, baseRule)));
+
+  // Risk score: high if fails or commercial/high-rise
+  let risk = fail * 18 + warnings * 8 + manual * 6;
+  if (proposal?.buildingHeightM && proposal.buildingHeightM > 15) risk += 10;
+  if (proposal?.buildingUse === "commercial") risk += 5;
+  const riskScore = Math.max(0, Math.min(100, risk));
+
+  return {
+    outcome,
+    checks,
+    riskScore,
+    ruleScore,
+    whyEscalated,
+    triggeredAt: new Date().toISOString(),
+  };
+}
+
+export function scrutinyOutcomeLabel(o: ScrutinyOutcome): string {
+  switch (o) {
+    case "auto_pass_eligible":
+      return "Auto-pass eligible";
+    case "needs_correction":
+      return "Needs correction";
+    case "needs_technical_review":
+      return "Needs technical review";
+    case "field_verification_required":
+      return "Field verification required";
+    case "reject_recommendation":
+      return "Reject recommendation";
+  }
+}
+
+export function ruleSeverityForApplication(app: Application): "low" | "medium" | "high" {
+  if (!app.ruleScrutiny) return "low";
+  if (app.ruleScrutiny.outcome === "reject_recommendation") return "high";
+  if (app.ruleScrutiny.outcome === "needs_correction") return "high";
+  if (app.ruleScrutiny.outcome === "needs_technical_review") return "medium";
+  if (app.ruleScrutiny.outcome === "field_verification_required") return "medium";
+  return "low";
+}
