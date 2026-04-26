@@ -18,6 +18,11 @@ data/processed/
 web/.next/
 web/out/
 
+# Large raw datasets — too big for GitHub; rebuild from source / pipeline
+liquor-hackathon/data/*.csv
+liquor-hackathon/data/*.xlsx
+liquor-hackathon/artifacts/*.parquet
+
 # keep artifacts committed — they are the contract between backend and frontend
 !artifacts/
 !web/public/data/
