@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { PageHeader } from "@/components/shared/PageHeader";
 import { Card, CardBody, CardHeader, CardFooter } from "@/components/ui/Card";
@@ -68,9 +68,9 @@ import { formatArea, formatINR, formatNumber } from "@/lib/format";
 
 const STEPS: Step[] = [
   { id: "applicant", label: "Applicant", short: "1" },
-  { id: "site", label: "Site location", short: "2" },
-  { id: "proposal", label: "Proposal", short: "3" },
-  { id: "upload", label: "Plan upload", short: "4" },
+  { id: "upload", label: "Plan upload", short: "2" },
+  { id: "site", label: "Site location", short: "3" },
+  { id: "proposal", label: "Proposal", short: "4" },
   { id: "scrutiny", label: "Rule check", short: "5" },
   { id: "fee", label: "Fee", short: "6" },
   { id: "tracking", label: "Track", short: "7" },
@@ -219,18 +219,18 @@ export default function CitizenWizard() {
   const stepsForFlow: Step[] = useMemo(() => {
     if (isOccupancy) return [
       { id: "applicant", label: "Applicant" },
+      { id: "upload", label: "Documents" },
       { id: "site", label: "Site reference" },
       { id: "proposal", label: "Completion details" },
-      { id: "upload", label: "Documents" },
       { id: "scrutiny", label: "Rule check" },
       { id: "fee", label: "Fee" },
       { id: "tracking", label: "Track" },
     ];
     if (isLayout) return [
       { id: "applicant", label: "Applicant" },
+      { id: "upload", label: "Documents" },
       { id: "site", label: "Layout boundary" },
       { id: "proposal", label: "Layout details" },
-      { id: "upload", label: "Documents" },
       { id: "scrutiny", label: "Rule check" },
       { id: "fee", label: "Fee" },
       { id: "tracking", label: "Track" },
@@ -245,7 +245,8 @@ export default function CitizenWizard() {
   function next() { setStep((s) => Math.min(stepsForFlow.length - 1, s + 1)); }
   function prev() { setStep((s) => Math.max(0, s - 1)); }
 
-  // Step 2: when polygon changes, compute jurisdiction + nearest road.
+  // Step 2: when polygon changes, compute jurisdiction + nearest road in a single state update
+  // so we don't trigger three sequential re-renders (and three map overlay rebuilds).
   useEffect(() => {
     if (!state.polygon || !layers) return;
     const centroid = polygonCentroid(state.polygon);
@@ -281,12 +282,15 @@ export default function CitizenWizard() {
         }
       : { found: false, manualVerificationRequired: true };
 
-    patch("jurisdiction", jurisdiction);
-    patch("nearestRoad", nearestRoad);
-    if (nearestRoad.found && state.building.roadWidthAbuttingM === 9 && nearestRoad.widthM) {
-      patch("building", { ...state.building, roadWidthAbuttingM: nearestRoad.widthM });
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    setState((s) => ({
+      ...s,
+      jurisdiction,
+      nearestRoad,
+      building:
+        nearestRoad.found && s.building.roadWidthAbuttingM === 9 && nearestRoad.widthM
+          ? { ...s.building, roadWidthAbuttingM: nearestRoad.widthM }
+          : s.building,
+    }));
   }, [state.polygon, layers]);
 
   // Step 4: simulate AI extraction once user marks documents uploaded.
@@ -435,6 +439,17 @@ export default function CitizenWizard() {
         />
       )}
       {step === 1 && (
+        <Step4Upload
+          state={state}
+          onChange={setState}
+          onSimulate={simulateExtraction}
+          onNext={next}
+          onPrev={prev}
+          isOccupancy={isOccupancy}
+          isLayout={isLayout}
+        />
+      )}
+      {step === 2 && (
         <Step2Site
           state={state}
           onChange={setState}
@@ -443,25 +458,14 @@ export default function CitizenWizard() {
           onPrev={prev}
         />
       )}
-      {step === 2 && !isOccupancy && !isLayout && (
-        <Step3Building state={state} onChange={setState} onNext={next} onPrev={prev} />
+      {step === 3 && !isOccupancy && !isLayout && (
+        <Step3Building state={state} onChange={setState} onNext={() => { runScrutiny(); }} onPrev={prev} />
       )}
-      {step === 2 && isLayout && (
-        <Step3Layout state={state} onChange={setState} onNext={next} onPrev={prev} />
+      {step === 3 && isLayout && (
+        <Step3Layout state={state} onChange={setState} onNext={() => { runScrutiny(); }} onPrev={prev} />
       )}
-      {step === 2 && isOccupancy && (
-        <Step3Occupancy state={state} onChange={setState} onNext={next} onPrev={prev} />
-      )}
-      {step === 3 && (
-        <Step4Upload
-          state={state}
-          onChange={setState}
-          onSimulate={simulateExtraction}
-          onNext={() => { runScrutiny(); next(); }}
-          onPrev={prev}
-          isOccupancy={isOccupancy}
-          isLayout={isLayout}
-        />
+      {step === 3 && isOccupancy && (
+        <Step3Occupancy state={state} onChange={setState} onNext={() => { runScrutiny(); }} onPrev={prev} />
       )}
       {step === 4 && (
         <Step5Scrutiny
@@ -585,6 +589,27 @@ function Step2Site({
   const j = state.jurisdiction;
   const r = state.nearestRoad;
 
+  // Memoise overlay layers so MapView doesn't clear and rebuild every overlay
+  // every time jurisdiction/road/boundary state changes — that was causing the stutter.
+  const overlayLayers = useMemo(
+    () =>
+      layers
+        ? {
+            districts: layers.districts,
+            mandals: layers.mandals,
+            villages: layers.villages,
+            ulbs: layers.ulbs,
+            roads: layers.roads,
+          }
+        : undefined,
+    [layers],
+  );
+  const handlePolygonChange = useCallback(
+    (p: GeoJSON.Polygon | null) => onChange({ ...state, polygon: p, boundaryAccepted: false }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [state],
+  );
+
   return (
     <Card>
       <CardHeader
@@ -597,14 +622,8 @@ function Step2Site({
             height={520}
             draw
             initialPolygon={state.polygon ?? undefined}
-            onPolygonChange={(p) => onChange({ ...state, polygon: p, boundaryAccepted: false })}
-            layers={layers ? {
-              districts: layers.districts,
-              mandals: layers.mandals,
-              villages: layers.villages,
-              ulbs: layers.ulbs,
-              roads: layers.roads,
-            } : undefined}
+            onPolygonChange={handlePolygonChange}
+            layers={overlayLayers}
           />
         </div>
         <div className="space-y-3">
@@ -734,7 +753,7 @@ function Step3Building({
       </CardBody>
       <CardFooter className="flex justify-between">
         <Button variant="ghost" onClick={onPrev} leadingIcon={<ChevronLeft size={16} />}>Back</Button>
-        <Button onClick={onNext} trailingIcon={<ArrowRight size={16} />}>Continue</Button>
+        <Button onClick={onNext} trailingIcon={<ArrowRight size={16} />} leadingIcon={<ShieldCheck size={16} />}>Run rule scrutiny</Button>
       </CardFooter>
     </Card>
   );
@@ -776,7 +795,7 @@ function Step3Layout({
       </CardBody>
       <CardFooter className="flex justify-between">
         <Button variant="ghost" onClick={onPrev} leadingIcon={<ChevronLeft size={16} />}>Back</Button>
-        <Button onClick={onNext} trailingIcon={<ArrowRight size={16} />}>Continue</Button>
+        <Button onClick={onNext} trailingIcon={<ArrowRight size={16} />} leadingIcon={<ShieldCheck size={16} />}>Run rule scrutiny</Button>
       </CardFooter>
     </Card>
   );
@@ -829,7 +848,7 @@ function Step3Occupancy({
       </CardBody>
       <CardFooter className="flex justify-between">
         <Button variant="ghost" onClick={onPrev} leadingIcon={<ChevronLeft size={16} />}>Back</Button>
-        <Button onClick={onNext} trailingIcon={<ArrowRight size={16} />}>Continue</Button>
+        <Button onClick={onNext} trailingIcon={<ArrowRight size={16} />} leadingIcon={<ShieldCheck size={16} />}>Run rule scrutiny</Button>
       </CardFooter>
     </Card>
   );
@@ -933,8 +952,8 @@ function Step4Upload({
       </CardBody>
       <CardFooter className="flex justify-between">
         <Button variant="ghost" onClick={onPrev} leadingIcon={<ChevronLeft size={16} />}>Back</Button>
-        <Button onClick={onNext} trailingIcon={<ArrowRight size={16} />} leadingIcon={<ShieldCheck size={16} />}>
-          Run rule scrutiny
+        <Button onClick={onNext} trailingIcon={<ArrowRight size={16} />} leadingIcon={<MapPin size={16} />}>
+          Continue to site location
         </Button>
       </CardFooter>
     </Card>
