@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "verification-engine"
+version = "0.1.0"
+description = "AP Building Rules verification engine"
+requires-python = ">=3.11"
+dependencies = [
+  "anthropic>=0.39",
+  "pydantic>=2.6",
+  "pydantic-settings>=2.2",
+  "python-dotenv>=1.0",
+  "pymupdf>=1.24",
+  "pdfplumber>=0.11",
+  "streamlit>=1.32",
+  "Pillow>=10.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0",
+  "pytest-mock>=3.12",
+  "reportlab>=4.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+  "live: tests that hit the real Anthropic API (gated by RUN_LIVE_TESTS=1)",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["schema*", "extractor*", "asset_extractor*", "engine*", "integration*", "ui*", "scripts*"]
