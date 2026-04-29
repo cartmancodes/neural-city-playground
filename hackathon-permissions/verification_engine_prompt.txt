@@ -1,0 +1,72 @@
+
+
+**System Role:** Expert Document AI & Building Code Engineer.
+**Task:** Extract building compliance rules, administrative processes, and visual assets (diagrams/tables) from the "Andhra Pradesh Building Rules 2017" PDF. Convert this into a strict JSON format designed to directly power a modular Python compliance verification engine.
+
+**Instructions:**
+Analyze the document thoroughly. Extract the data into a JSON object containing three main arrays: `Rules`, `Processes`, and `Visual_Assets`. 
+
+**1. Extraction Logic for `Rules` (Individual Checks):**
+* **`rule_id`**: Unique uppercase ID (e.g., `SETBACK_T17_01`).
+* **`description`**: Plain-English summary of the rule.
+* **`required_inputs`**: Dictionary of variables needed with data types (e.g., `{"plot_area": "float"}`).
+* **`python_logic`**: Pseudo-code for the Python module (e.g., `IF plot_area > 100: REQUIRE setback >= 1.5`).
+* **`rule_specific_documents`**: Array of specific certificates or NOCs required to prove compliance.
+* **`verbatim_chunk`**: The exact original text/amendment for auditability.
+* **`associated_assets`**: Array of `asset_id`s (from the Visual_Assets list) that support this rule.
+
+**2. Extraction Logic for `Processes` (Multi-Rule Workflows):**
+* **`process_name`**: Name of the workflow (e.g., "Building Permit Approval").
+* **`associated_rules`**: Array of `rule_id`s validated during this process.
+* **`overall_documents_required`**: Comprehensive master list of all documents needed for the workflow.
+
+**3. Extraction Logic for `Visual_Assets` (Images, Diagrams & Tables):**
+Whenever a rule relies on a table (e.g., Table 17) or a diagram (e.g., parking layout, setback illustration):
+* **`asset_id`**: Unique ID (e.g., `ASSET_TABLE_17`).
+* **`asset_type`**: "Table", "Diagram", or "Image".
+* **`page_number`**: Exact page number in the PDF.
+* **`interpretation`**: Detailed text explaining how to read the diagram/table for coding purposes.
+* **`suggested_filename`**: A standardized name to save the extracted image as (e.g., `rule_SETBACK_T17_table.png`).
+
+**Strict Output Format (Return ONLY valid JSON):**
+```json
+{
+  "Rules": [
+    {
+      "rule_id": "FIRE_01",
+      "description": "High-rise buildings must maintain a minimum fire setback.",
+      "required_inputs": {"building_height_m": "float", "fire_setback_m": "float"},
+      "python_logic": "IF building_height_m > 18: REQUIRE fire_setback_m >= 7.0",
+      "rule_specific_documents": ["Fire Dept NOC"],
+      "verbatim_chunk": "All high rise buildings above 18m shall require a 7m setback.",
+      "associated_assets": ["ASSET_DIAGRAM_FIRE_01"]
+    }
+  ],
+  "Processes": [
+    {
+      "process_name": "Building Permit Approval",
+      "associated_rules": ["FIRE_01"],
+      "overall_documents_required": ["Title Deed", "Architect Plan"]
+    }
+  ],
+  "Visual_Assets": [
+    {
+      "asset_id": "ASSET_DIAGRAM_FIRE_01",
+      "asset_type": "Diagram",
+      "page_number": 45,
+      "interpretation": "Diagram shows a 7m buffer zone surrounding the building perimeter for fire engine access.",
+      "suggested_filename": "diagram_fire_setback_pg45.png"
+    }
+  ]
+}
+```
+
+***
+
+### How this connects to your Python Module:
+Because LLMs cannot directly "crop and save" images to your hard drive, this prompt forces the LLM to create a **mapping directory** (`Visual_Assets`). 
+
+In your Python setup, you can write a simple extraction script using a library like `PyMuPDF` (`fitz`) that reads this JSON, goes to the specified `page_number`, extracts the images/tables found on that page, and saves them locally using the `suggested_filename`. Your Streamlit UI can then automatically load `diagram_fire_setback_pg45.png` whenever `FIRE_01` fails!
+
+
+
