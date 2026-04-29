@@ -15,6 +15,10 @@ import type {
 } from "@/types";
 import type { Polygon } from "geojson";
 
+// Villages layer is heavy (~20 MB, ~28k features) — render only when the
+// user has zoomed in enough that village boundaries are actually meaningful.
+const VILLAGE_RENDER_MIN_ZOOM = 10;
+
 export interface OverlayLayers {
   districts?: DistrictsFC;
   mandals?: MandalsFC;
@@ -61,6 +65,8 @@ export function MapView({
   const mapRef = useRef<L.Map | null>(null);
   const overlayRef = useRef<L.LayerGroup | null>(null);
   const drawnRef = useRef<L.FeatureGroup | null>(null);
+  const villagesLayerRef = useRef<L.GeoJSON | null>(null);
+  const villagesFcRef = useRef<VillagesFC | null>(null);
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -84,6 +90,29 @@ export function MapView({
     drawnRef.current = new L.FeatureGroup().addTo(map);
 
     if (fitTo === "ap") map.fitBounds(AP_BOUNDS, { padding: [20, 20] });
+
+    // Toggle the villages overlay on/off based on zoom — keeps the world-zoom
+    // view fast even with a 28k-feature village dataset loaded.
+    map.on("zoomend", () => {
+      const fc = villagesFcRef.current;
+      const overlay = overlayRef.current;
+      if (!fc || !overlay) return;
+      const z = map.getZoom();
+      const shouldShow = z >= VILLAGE_RENDER_MIN_ZOOM;
+      const present = !!villagesLayerRef.current;
+      if (shouldShow && !present) {
+        const layer = L.geoJSON(fc as any, {
+          style: { color: "#0a7cad", weight: 0.6, fillColor: "#0a7cad", fillOpacity: 0.04 },
+          onEachFeature: (feat, lyr) =>
+            lyr.bindTooltip(`${feat.properties.village} • ${feat.properties.mandal}`, { sticky: true }),
+        });
+        villagesLayerRef.current = layer;
+        overlay.addLayer(layer);
+      } else if (!shouldShow && present && villagesLayerRef.current) {
+        overlay.removeLayer(villagesLayerRef.current);
+        villagesLayerRef.current = null;
+      }
+    });
 
     if (draw) {
       const drawControl = new (L.Control as any).Draw({
@@ -143,6 +172,7 @@ export function MapView({
     const overlay = overlayRef.current;
     if (!map || !overlay) return;
     overlay.clearLayers();
+    villagesLayerRef.current = null;
 
     const addFC = (fc: any, style: L.PathOptions, label?: (p: any) => string) => {
       if (!fc) return;
@@ -157,9 +187,21 @@ export function MapView({
 
     addFC(layers?.districts, { color: "#1d3461", weight: 1.2, fill: false }, (p) => p.district);
     addFC(layers?.mandals, { color: "#3f4d68", weight: 0.8, dashArray: "3 3", fill: false }, (p) => p.mandal);
-    addFC(layers?.villages, { color: "#0a7cad", weight: 0.6, fillColor: "#0a7cad", fillOpacity: 0.04 }, (p) => p.village);
     addFC(layers?.ulbs, { color: "#d97706", weight: 1.4, fillColor: "#d97706", fillOpacity: 0.05 }, (p) => p.ulb);
     addFC(layers?.roads, { color: "#475569", weight: 1.2 }, (p) => `${p.name} • ${p.widthM}m`);
+
+    // Villages: stash the FC and let the zoom handler add/remove it
+    // dynamically. Render immediately if we're already zoomed in enough.
+    villagesFcRef.current = layers?.villages ?? null;
+    if (layers?.villages && map.getZoom() >= VILLAGE_RENDER_MIN_ZOOM) {
+      const villagesLayer = L.geoJSON(layers.villages as any, {
+        style: { color: "#0a7cad", weight: 0.6, fillColor: "#0a7cad", fillOpacity: 0.04 },
+        onEachFeature: (feat, lyr) =>
+          lyr.bindTooltip(`${feat.properties.village} • ${feat.properties.mandal}`, { sticky: true }),
+      });
+      villagesLayerRef.current = villagesLayer;
+      overlay.addLayer(villagesLayer);
+    }
 
     if (layers?.approvedGeofence) {
       L.geoJSON(layers.approvedGeofence as any, {

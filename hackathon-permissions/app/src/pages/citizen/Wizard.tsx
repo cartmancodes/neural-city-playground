@@ -258,9 +258,15 @@ export default function CitizenWizard() {
     const polyVsDistrict = polygonInsideAny(state.polygon, layers.districts);
     const uncertain = !polyVsDistrict || !polyVsDistrict.fullyInside;
 
+    // Real village data carries mandal+district as feature properties, so
+    // when a separate mandals layer isn't provided we still get a complete
+    // jurisdiction by reading the fields off the village hit.
     const jurisdiction: Jurisdiction = {
-      district: insideUlb?.properties.district ?? districtHit?.properties.district,
-      mandal: mandalHit?.properties.mandal,
+      district:
+        insideUlb?.properties.district ??
+        districtHit?.properties.district ??
+        villageHit?.properties.district,
+      mandal: mandalHit?.properties.mandal ?? villageHit?.properties.mandal,
       village: villageHit?.properties.village,
       ulb: insideUlb?.properties.ulb,
       insideUlb: !!insideUlb,
@@ -614,10 +620,10 @@ function Step2Site({
     <Card>
       <CardHeader
         title="Site location and plot boundary"
-        subtitle="Pan/zoom to your site, then use the polygon tool on the map (top-right) to outline the plot. The system identifies the jurisdiction automatically."
+        subtitle="Pan/zoom to your site, then use the polygon tool on the map (top-right) to outline the plot. Village boundaries appear once you zoom in. Jurisdiction is detected automatically."
       />
       <CardBody className="grid lg:grid-cols-3 gap-4">
-        <div className="lg:col-span-2">
+        <div className="lg:col-span-2 relative">
           <MapView
             height={520}
             draw
@@ -625,6 +631,14 @@ function Step2Site({
             onPolygonChange={handlePolygonChange}
             layers={overlayLayers}
           />
+          {!layers && (
+            <div className="absolute inset-0 z-[400] flex items-center justify-center bg-white/70 rounded-xl">
+              <div className="flex items-center gap-2 rounded-full bg-white px-4 py-2 shadow border border-ink-200 text-sm text-ink-700">
+                <span className="h-2 w-2 rounded-full bg-gov-accent animate-pulse" />
+                Loading AP boundary data…
+              </div>
+            </div>
+          )}
         </div>
         <div className="space-y-3">
           <div className="rounded-lg border border-ink-200 p-4 bg-ink-50/50">
