@@ -27,6 +27,7 @@ dev = [
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+pythonpath = ["."]
 markers = [
   "live: tests that hit the real Anthropic API (gated by RUN_LIVE_TESTS=1)",
 ]
