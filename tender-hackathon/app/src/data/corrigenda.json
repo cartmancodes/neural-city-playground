@@ -1,0 +1,33 @@
+[
+  {
+    "id": "cor_001",
+    "caseId": "AP-FISH-2026-001",
+    "number": "Corrigendum-1",
+    "issuedAt": "2026-04-30T10:00:00.000Z",
+    "reason": "Revision of financial capacity lookback period from 5 to 10 years to widen bidder pool while keeping value threshold same.",
+    "bidderCommunicationNeeded": true,
+    "deadlineExtensionSuggested": true,
+    "changes": [
+      {
+        "id": "cc_001",
+        "changedItem": "Financial Capacity Lookback Period",
+        "originalValue": "5 years",
+        "revisedValue": "10 years",
+        "impactedSections": ["Instructions to Tenderers", "Tender Data Sheet", "Evaluation and Qualification Criteria"],
+        "updatedInFinalTender": false,
+        "riskLevel": "Critical",
+        "officerActionRequired": true
+      },
+      {
+        "id": "cc_002",
+        "changedItem": "Bid submission deadline",
+        "originalValue": "2026-06-12",
+        "revisedValue": "2026-06-22",
+        "impactedSections": ["Tender Data Sheet"],
+        "updatedInFinalTender": true,
+        "riskLevel": "Low",
+        "officerActionRequired": false
+      }
+    ]
+  }
+]

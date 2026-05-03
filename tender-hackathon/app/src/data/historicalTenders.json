@@ -1,0 +1,62 @@
+[
+  {
+    "id": "ht_jetty_nizampatnam",
+    "title": "Construction of Fishing Jetty at Nizampatnam (FY24-25)",
+    "department": "AP Fisheries Department",
+    "category": "EPC",
+    "contractType": "EPC",
+    "year": 2024,
+    "value": 168000000,
+    "tags": ["jetty", "marine", "EPC", "fisheries"]
+  },
+  {
+    "id": "ht_jetty_kakinada",
+    "title": "Fishing Harbour Berth Extension at Kakinada",
+    "department": "AP Fisheries Department",
+    "category": "EPC",
+    "contractType": "EPC",
+    "year": 2023,
+    "value": 245000000,
+    "tags": ["harbour", "marine", "EPC", "fisheries"]
+  },
+  {
+    "id": "ht_irr_polavaram_s2",
+    "title": "Polavaram Lift Irrigation Stage II",
+    "department": "Irrigation",
+    "category": "Works",
+    "contractType": "EPC",
+    "year": 2023,
+    "value": 1100000000,
+    "tags": ["irrigation", "lift", "EPC"]
+  },
+  {
+    "id": "ht_rws_chittoor",
+    "title": "Rural Water Supply Augmentation - Chittoor",
+    "department": "Rural Water Supply",
+    "category": "Works",
+    "contractType": "Item Rate",
+    "year": 2024,
+    "value": 92000000,
+    "tags": ["water", "rural", "item rate"]
+  },
+  {
+    "id": "ht_rdb_mdr_103",
+    "title": "Strengthening of MDR-103 Eluru-Tadepalligudem",
+    "department": "Roads & Buildings",
+    "category": "Works",
+    "contractType": "Lump Sum",
+    "year": 2024,
+    "value": 188000000,
+    "tags": ["roads", "lump sum"]
+  },
+  {
+    "id": "ht_it_revenue_dms",
+    "title": "Revenue Department - Document Management System",
+    "department": "Revenue",
+    "category": "IT System",
+    "contractType": "QCBS",
+    "year": 2024,
+    "value": 320000000,
+    "tags": ["it", "dms", "qcbs"]
+  }
+]

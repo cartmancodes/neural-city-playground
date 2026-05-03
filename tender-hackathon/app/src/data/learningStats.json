@@ -1,0 +1,57 @@
+{
+  "aiSuggestionsAccepted": 312,
+  "aiSuggestionsRejected": 64,
+  "aiSuggestionsEdited": 128,
+  "falsePositivesMarked": 17,
+  "frequentlyMissingClauses": [
+    { "name": "Technical Specifications", "count": 42 },
+    { "name": "Available Bid Capacity definitions", "count": 31 },
+    { "name": "JV joint and several liability", "count": 22 },
+    { "name": "Solvency certificate age", "count": 18 },
+    { "name": "Schedule of Payments milestone packaging", "count": 14 }
+  ],
+  "frequentlyEditedClauses": [
+    { "name": "Similar Work definition", "count": 36 },
+    { "name": "EMD validity period", "count": 24 },
+    { "name": "Performance Security duration", "count": 19 }
+  ],
+  "commonRejectionReasons": [
+    { "reason": "Engineering content not approved", "count": 27 },
+    { "reason": "JV clause incomplete", "count": 12 },
+    { "reason": "Bid mode contradicts portal", "count": 9 }
+  ],
+  "commonCorrigendumReasons": [
+    { "reason": "Lookback period adjusted", "count": 11 },
+    { "reason": "Bid submission deadline extended", "count": 18 },
+    { "reason": "EMD amount revised", "count": 6 }
+  ],
+  "departmentValidationIssues": [
+    { "department": "AP Fisheries Department", "issues": 14 },
+    { "department": "Irrigation", "issues": 38 },
+    { "department": "Roads & Buildings", "issues": 22 },
+    { "department": "Rural Water Supply", "issues": 9 },
+    { "department": "IT, E&C Department", "issues": 12 },
+    { "department": "Health, Medical & Family Welfare", "issues": 7 }
+  ],
+  "ruleConfidenceTrend": [
+    { "rule": "Technical Specifications need approval", "trend": [0.78, 0.81, 0.83, 0.86, 0.88, 0.90] },
+    { "rule": "Available Bid Capacity formula", "trend": [0.82, 0.85, 0.87, 0.89, 0.91, 0.93] },
+    { "rule": "Corrigendum propagation", "trend": [0.66, 0.7, 0.72, 0.78, 0.83, 0.86] }
+  ],
+  "clauseConfidenceTrend": [
+    { "clause": "JV agreement", "trend": [0.7, 0.74, 0.77, 0.79, 0.82, 0.84] },
+    { "clause": "Similar Work", "trend": [0.62, 0.66, 0.7, 0.74, 0.77, 0.81] }
+  ],
+  "templateImprovementSuggestions": [
+    "Embed CRZ clearance reference token in EPC marine SCC template.",
+    "Add reusable JV liability paragraph with placeholder for partner shares.",
+    "Tighten 'Similar Work' template to require 7-year evidence by default."
+  ],
+  "insights": [
+    "Technical Specifications missing in 42% of draft EPC tenders",
+    "Available Bid Capacity formula often missing variable definitions",
+    "JV clauses frequently require legal edits",
+    "Solvency certificate age rule caused repeated clarifications",
+    "Schedule of Payments often conflicts with scope package structure"
+  ]
+}

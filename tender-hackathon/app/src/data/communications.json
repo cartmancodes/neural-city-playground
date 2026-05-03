@@ -1,0 +1,32 @@
+[
+  {
+    "id": "com_001",
+    "caseId": "AP-FISH-2026-001",
+    "type": "Internal Technical Review Note",
+    "subject": "Request for Approval — Technical Specifications & Design Criteria",
+    "body": "To: Technical Evaluator, AP Fisheries Department\nSubject: Request for Approval — Technical Specifications & Design Criteria for Tender AP/FISH/EPC/2026/001\n\nReference: Tender Notice AP/FISH/EPC/2026/001 — Construction of Fishing Jetty at Machilipatnam (EPC).\n\nThe AI drafting workspace has structured the Technical Specifications and Design Criteria sections but cannot finalise project-specific engineering content (marine grade steel spec, concrete mix, pile load capacity, fender energy absorption, design wave height, berthing energy, seismic factor) without department-approved input.\n\nKindly upload approved Technical Specifications, Design Criteria, drawings or BOQ — or confirm use of an approved historical template (Nizampatnam Jetty FY24-25) — to enable publication.\n\nDeadline for action: 2026-05-10\nOfficer Approval Required: Yes",
+    "recipient": "Lakshmi Devi (Technical Evaluator)",
+    "tenderNumber": "AP/FISH/EPC/2026/001",
+    "projectName": "Construction of Fishing Jetty at Machilipatnam (EPC)",
+    "sourceIssue": "vi_001 / vi_002",
+    "approvalStatus": "Pending Approval",
+    "createdAt": "2026-04-28T11:50:00.000Z",
+    "createdBy": "Procure Intelligence AP",
+    "officerApprovalFlag": true
+  },
+  {
+    "id": "com_002",
+    "caseId": "AP-FISH-2026-001",
+    "type": "Corrigendum Notice",
+    "subject": "Corrigendum-1 — Revision of Financial Capacity Lookback Period & Bid Submission Deadline",
+    "body": "To: All prospective bidders\nSubject: Corrigendum-1 to Tender AP/FISH/EPC/2026/001\n\nThis is to notify all prospective bidders of the following revisions:\n\n1. Financial Capacity Lookback Period revised from five (5) years to ten (10) years.\n2. Bid submission deadline extended to 2026-06-22 (15:00 IST).\n\nAll other terms and conditions remain unchanged. Bidders are advised to refer to the corrigendum-marked tender document available on the AP eProcurement portal.\n\nOfficer Approval Required: Yes",
+    "recipient": "All bidders (eProcurement portal notification)",
+    "tenderNumber": "AP/FISH/EPC/2026/001",
+    "projectName": "Construction of Fishing Jetty at Machilipatnam (EPC)",
+    "sourceIssue": "cor_001",
+    "approvalStatus": "Draft",
+    "createdAt": "2026-04-30T10:30:00.000Z",
+    "createdBy": "Procure Intelligence AP",
+    "officerApprovalFlag": true
+  }
+]

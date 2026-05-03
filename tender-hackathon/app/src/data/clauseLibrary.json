@@ -1,0 +1,162 @@
+[
+  {
+    "id": "cl_fraud_001",
+    "title": "Fraud and Corruption (World Bank language)",
+    "category": "Fraud & Corruption",
+    "text": "The Employer requires that bidders, suppliers, contractors, and consultants observe the highest standard of ethics during the procurement and execution of contracts...",
+    "confidence": 0.97,
+    "source": "Rulebook",
+    "approvalRequired": false,
+    "riskIfIgnored": "Audit objection; cannot enforce blacklisting on detection."
+  },
+  {
+    "id": "cl_secrecy_001",
+    "title": "Secrecy of bid evaluation",
+    "category": "Secrecy",
+    "text": "Information relating to the evaluation of bids and recommendation of award shall not be disclosed to bidders or other persons not officially concerned with the process until the award has been notified.",
+    "confidence": 0.96,
+    "source": "Rulebook",
+    "approvalRequired": false,
+    "riskIfIgnored": "Procedural irregularity; risk of bid rigging."
+  },
+  {
+    "id": "cl_jv_001",
+    "title": "Joint Venture / Consortium permitted",
+    "category": "JV",
+    "text": "Bids from a Joint Venture (JV) of two or three firms as partners are permitted, subject to the conditions specified in the ITT/TDS, including a notarized JV agreement, lead member responsibility and joint and several liability through defect liability period.",
+    "confidence": 0.94,
+    "source": "Rulebook",
+    "approvalRequired": false,
+    "riskIfIgnored": "JV bids may be improperly accepted/rejected."
+  },
+  {
+    "id": "cl_similar_001",
+    "title": "Similar Work definition (EPC marine works)",
+    "category": "Similar Work",
+    "text": "Similar work means design and execution of marine works such as jetties, breakwaters, harbour berths or piers of value not less than 40% of the estimated cost in any one year during the last seven (7) years.",
+    "confidence": 0.91,
+    "source": "Historical Tender",
+    "approvalRequired": true,
+    "riskIfIgnored": "Eligibility criterion may not match scope; legal challenge risk."
+  },
+  {
+    "id": "cl_turnover_001",
+    "title": "Average annual financial turnover",
+    "category": "Turnover",
+    "text": "The bidder shall have an average annual financial turnover (in similar works) of not less than 30% of the estimated cost during the last 3 financial years, supported by audited financial statements.",
+    "confidence": 0.95,
+    "source": "Rulebook",
+    "approvalRequired": false,
+    "riskIfIgnored": "Financially weak bidders may qualify."
+  },
+  {
+    "id": "cl_bidcap_001",
+    "title": "Available Bid Capacity formula",
+    "category": "Bid Capacity",
+    "text": "Available Bid Capacity = (A × N × 3) − B, where A is the maximum value of works executed in any one year during the last five years, N is number of years prescribed for completion, and B is the value of existing commitments and on-going works to be completed in the next N years.",
+    "confidence": 0.97,
+    "source": "Rulebook",
+    "approvalRequired": false,
+    "riskIfIgnored": "Bid capacity check cannot be applied uniformly; risk of award to over-committed bidders."
+  },
+  {
+    "id": "cl_solvency_001",
+    "title": "Solvency certificate",
+    "category": "Solvency",
+    "text": "The bidder shall furnish a solvency certificate from a Scheduled Commercial Bank for not less than 25% of the estimated cost issued within the last six (6) months from the bid submission deadline.",
+    "confidence": 0.96,
+    "source": "Rulebook",
+    "approvalRequired": false,
+    "riskIfIgnored": "Old/insufficient solvency certificate may be accepted."
+  },
+  {
+    "id": "cl_emd_001",
+    "title": "Earnest Money Deposit (EMD)",
+    "category": "EMD",
+    "text": "The bidder shall furnish EMD in the form of Bank Guarantee or Demand Draft for the amount specified in the TDS, valid for not less than 45 days beyond the bid validity period.",
+    "confidence": 0.97,
+    "source": "Rulebook",
+    "approvalRequired": false,
+    "riskIfIgnored": "Bid security may be insufficient or invalid."
+  },
+  {
+    "id": "cl_perf_001",
+    "title": "Performance Security",
+    "category": "Performance Security",
+    "text": "The successful bidder shall furnish Performance Security for an amount equal to 5% of the contract price in the form of an unconditional Bank Guarantee, valid through the defect liability period.",
+    "confidence": 0.96,
+    "source": "Rulebook",
+    "approvalRequired": false,
+    "riskIfIgnored": "Inadequate security against non-performance."
+  },
+  {
+    "id": "cl_payment_001",
+    "title": "Schedule of Payments (EPC milestone-based)",
+    "category": "Payment",
+    "text": "Payments shall be released against achievement of design, procurement, construction and commissioning milestones as specified in the Schedule of Payments. Mobilisation advance up to 10% may be released against an unconditional Bank Guarantee of equivalent value.",
+    "confidence": 0.93,
+    "source": "Template",
+    "approvalRequired": false,
+    "riskIfIgnored": "Cash flow disputes; advance recovery risk."
+  },
+  {
+    "id": "cl_labour_001",
+    "title": "Labour compliance",
+    "category": "Labour",
+    "text": "The contractor shall comply with all applicable labour laws including the Building and Other Construction Workers Act 1996, the Code on Wages 2019, ESI, EPF, and applicable State labour rules.",
+    "confidence": 0.95,
+    "source": "Rulebook",
+    "approvalRequired": false,
+    "riskIfIgnored": "Statutory non-compliance; penalty risk."
+  },
+  {
+    "id": "cl_safety_001",
+    "title": "Safety plan",
+    "category": "Safety",
+    "text": "The contractor shall implement a project-specific Safety Plan in accordance with the EHS Guidelines, including HIRA, PPE, and incident reporting requirements.",
+    "confidence": 0.92,
+    "source": "Template",
+    "approvalRequired": false,
+    "riskIfIgnored": "Site safety failures; reputational and legal risk."
+  },
+  {
+    "id": "cl_env_001",
+    "title": "Environmental compliance",
+    "category": "Environmental",
+    "text": "The contractor shall obtain and comply with all applicable environmental clearances including CRZ, EIA, Coastal Aquaculture Authority (where applicable), and consent from the State Pollution Control Board.",
+    "confidence": 0.91,
+    "source": "Template",
+    "approvalRequired": true,
+    "riskIfIgnored": "Project halt risk due to clearance lapses."
+  },
+  {
+    "id": "cl_quality_001",
+    "title": "Quality control plan",
+    "category": "Quality",
+    "text": "The contractor shall submit and implement a Quality Control Plan covering material testing frequency, third party inspection, mill test certificates and as-built documentation.",
+    "confidence": 0.93,
+    "source": "Template",
+    "approvalRequired": false,
+    "riskIfIgnored": "Quality lapses undetected during execution."
+  },
+  {
+    "id": "cl_dispute_001",
+    "title": "Dispute resolution (Arbitration & Conciliation Act 1996)",
+    "category": "Dispute Resolution",
+    "text": "Any dispute arising out of or in connection with this contract shall be referred to arbitration in accordance with the Arbitration and Conciliation Act, 1996 with seat at Vijayawada, Andhra Pradesh.",
+    "confidence": 0.94,
+    "source": "Rulebook",
+    "approvalRequired": false,
+    "riskIfIgnored": "Disputes default to courts; longer resolution time."
+  },
+  {
+    "id": "cl_audit_001",
+    "title": "Audit trail",
+    "category": "Audit",
+    "text": "The Employer shall maintain a complete audit trail of every recommendation, approval and decision throughout the procurement lifecycle, available for inspection by competent authorities.",
+    "confidence": 0.97,
+    "source": "Rulebook",
+    "approvalRequired": false,
+    "riskIfIgnored": "Audit objection; non-traceable decisions."
+  }
+]

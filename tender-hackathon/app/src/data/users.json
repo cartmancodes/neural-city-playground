@@ -1,0 +1,9 @@
+[
+  { "id": "u_po", "name": "Ramesh Naidu", "role": "Procurement Officer", "department": "AP Fisheries Department" },
+  { "id": "u_te", "name": "Lakshmi Devi", "role": "Technical Evaluator", "department": "AP Fisheries Department" },
+  { "id": "u_fr", "name": "Anil Kumar", "role": "Finance Reviewer", "department": "Finance Department" },
+  { "id": "u_lr", "name": "Suma Sree", "role": "Legal Reviewer", "department": "Law Department" },
+  { "id": "u_dh", "name": "Dr. Venkat Rao", "role": "Department Head", "department": "AP Fisheries Department" },
+  { "id": "u_ad", "name": "Auditor General Office", "role": "Auditor", "department": "AP Audit Cell" },
+  { "id": "u_admin", "name": "System Admin", "role": "Admin", "department": "RTGS" }
+]

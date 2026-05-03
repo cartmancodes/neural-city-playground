@@ -1,0 +1,13 @@
+[
+  { "id": "v_001", "name": "Name of Work", "detectedValue": "Construction of Fishing Jetty at Machilipatnam", "isPlaceholder": false, "documentId": "doc_001" },
+  { "id": "v_002", "name": "Location", "detectedValue": "Machilipatnam, Krishna District", "isPlaceholder": false, "documentId": "doc_001" },
+  { "id": "v_003", "name": "Tender Notice Number", "detectedValue": "AP/FISH/EPC/2026/001", "isPlaceholder": false, "documentId": "doc_001" },
+  { "id": "v_004", "name": "Completion Period", "detectedValue": "18 months", "isPlaceholder": false, "documentId": "doc_001" },
+  { "id": "v_005", "name": "Bid Bond Amount", "detectedValue": "₹37,00,000", "isPlaceholder": false, "documentId": "doc_001" },
+  { "id": "v_006", "name": "Bid Validity", "detectedValue": "120 days", "isPlaceholder": false, "documentId": "doc_001" },
+  { "id": "v_007", "name": "Turnover Requirement", "detectedValue": "30% of estimated cost", "isPlaceholder": false, "documentId": "doc_001" },
+  { "id": "v_008", "name": "Similar Work Value", "detectedValue": "≥ 40% of estimated cost", "isPlaceholder": false, "documentId": "doc_001" },
+  { "id": "v_009", "name": "Available Bid Capacity Formula", "detectedValue": "(A × N × 3) − B", "isPlaceholder": false, "documentId": "doc_001" },
+  { "id": "v_010", "name": "Defect Liability Period", "detectedValue": "24 months", "isPlaceholder": false, "documentId": "doc_001" },
+  { "id": "v_011", "name": "CRZ Clearance Reference Number", "detectedValue": "XXXX (placeholder)", "isPlaceholder": true, "documentId": "doc_003" }
+]
