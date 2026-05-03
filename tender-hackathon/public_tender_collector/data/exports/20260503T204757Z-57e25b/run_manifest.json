@@ -1,0 +1,86 @@
+{
+  "run_id": "20260503T204757Z-57e25b",
+  "package_version": "0.1.0",
+  "git_sha": "f19c3aa",
+  "python_version": "3.13.13",
+  "platform": "macOS-15.2-arm64-arm-64bit-Mach-O",
+  "exported_at": "2026-05-03T20:48:32.951712+00:00",
+  "config_snapshot": {
+    "runtime": {
+      "user_agent": "ProcureIntelligenceAP-ResearchBot/0.2 (+contact: ops@example.com)",
+      "default_rate_limit_seconds": 5,
+      "max_concurrent_requests": 1,
+      "max_pages_per_source_per_run": 20,
+      "max_documents_per_source_per_run": 100,
+      "max_file_size_mb": 100,
+      "request_timeout_seconds": 30,
+      "total_run_timeout_minutes": 60
+    },
+    "compliance": {
+      "respect_robots_txt": true,
+      "stop_on_captcha": true,
+      "stop_on_login_required": true,
+      "stop_on_403_count": 1,
+      "stop_on_429_count": 1,
+      "consecutive_5xx_threshold": 3,
+      "allowed_extensions": [
+        "pdf",
+        "doc",
+        "docx",
+        "xls",
+        "xlsx",
+        "zip"
+      ],
+      "blocked_path_substrings": [
+        "admin",
+        "login",
+        "signin",
+        "signup",
+        "register",
+        "private",
+        "dashboard",
+        "api/internal",
+        "secure",
+        "auth",
+        "oauth",
+        "sso",
+        "captcha",
+        "submit-bid",
+        "my-bids",
+        "payment",
+        "checkout"
+      ]
+    },
+    "features": {
+      "safe_mode": true,
+      "ocr_enabled": false,
+      "playwright_enabled": false,
+      "resume_partial_runs": true
+    },
+    "storage": {
+      "db_path": "data/metadata/collector.db",
+      "raw_dir": "data/raw",
+      "processed_dir": "data/processed",
+      "exports_dir": "data/exports",
+      "logs_dir": "logs"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "local_fixture",
+      "source_name": "Local fixture server (live demo)",
+      "approved": true,
+      "reviewed_by": "Live Demo Operator",
+      "reviewed_on": "2026-05-04",
+      "tos_url": "http://127.0.0.1:8765/tos"
+    }
+  ],
+  "counts": {
+    "pages_fetched": 1,
+    "documents_downloaded": 7,
+    "documents_skipped": 0,
+    "compliance_violations": 0,
+    "tripwires_hit": 0,
+    "extractions_ok": 7
+  }
+}

@@ -1,0 +1,130 @@
+# sources.yaml — example, UNAPPROVED entries.
+#
+# A source is unusable until a human reviewer:
+#   1. Reads the portal Terms of Service and pastes a one-paragraph summary
+#      into SOURCES_REVIEW_LOG.md.
+#   2. Manually fetches robots.txt and pastes it into SOURCES_REVIEW_LOG.md.
+#   3. Verifies that every URL pattern in `allowed_paths` is publicly
+#      reachable without authentication.
+#   4. Pastes the approval line into SOURCES_REVIEW_LOG.md.
+#   5. Flips `review.approved` from false to true here.
+#
+# `python main.py check-source --source <id>` enforces the checklist.
+
+sources:
+  - source_id: cppp_eprocure_example
+    source_name: "CPPP eProcure (public search) — EXAMPLE, NOT APPROVED"
+    base_url: "https://example-portal-cppp.gov.invalid"
+    allowed_paths:
+      - "/eprocure/app/"
+      - "/eprocure/public/"
+    source_type: official_portal
+    country: IN
+    state: null
+    department: null
+    languages: [en]
+    parser_name: cppp_parser
+    discovery:
+      mode: manual_seed
+      sitemap_url: null
+      search_pages: []
+    limits:
+      rate_limit_seconds: 8
+      max_pages_per_run: 10
+      max_documents_per_run: 50
+    allowed_file_extensions: [pdf, doc, docx, xls, xlsx, zip]
+    robots_required: true
+    review:
+      reviewed_by: ""
+      reviewed_on: null
+      tos_url: null
+      tos_summary: ""
+      approved: false
+    notes: "Replace base_url and review.* with real values after manual approval."
+
+  - source_id: ap_eprocure_example
+    source_name: "Andhra Pradesh eProcurement (public notices) — EXAMPLE, NOT APPROVED"
+    base_url: "https://tender.example-ap.gov.invalid"
+    allowed_paths:
+      - "/eprocurement/public/"
+    source_type: official_portal
+    country: IN
+    state: AP
+    department: null
+    languages: [en, te]
+    parser_name: state_portal_parser
+    discovery:
+      mode: manual_seed
+      sitemap_url: null
+      search_pages: []
+    limits:
+      rate_limit_seconds: 10
+      max_pages_per_run: 10
+      max_documents_per_run: 30
+    allowed_file_extensions: [pdf, doc, docx, xls, xlsx, zip]
+    robots_required: true
+    review:
+      reviewed_by: ""
+      reviewed_on: null
+      tos_url: null
+      tos_summary: ""
+      approved: false
+    notes: "Andhra Pradesh state portal placeholder. AP RTGS hackathon target source."
+
+  - source_id: gepnic_example
+    source_name: "GePNIC (Government eMarketplace public notices) — EXAMPLE, NOT APPROVED"
+    base_url: "https://example-gepnic.gov.invalid"
+    allowed_paths:
+      - "/nicgep/app/"
+    source_type: official_portal
+    country: IN
+    state: null
+    department: null
+    languages: [en]
+    parser_name: gepnic_parser
+    discovery:
+      mode: manual_seed
+      sitemap_url: null
+      search_pages: []
+    limits:
+      rate_limit_seconds: 8
+      max_pages_per_run: 10
+      max_documents_per_run: 50
+    allowed_file_extensions: [pdf, doc, docx, xls, xlsx, zip]
+    robots_required: true
+    review:
+      reviewed_by: ""
+      reviewed_on: null
+      tos_url: null
+      tos_summary: ""
+      approved: false
+    notes: "GePNIC placeholder."
+
+  - source_id: epublish_example
+    source_name: "ePublish bulk-download — EXAMPLE, NOT APPROVED"
+    base_url: "https://example-epublish.gov.invalid"
+    allowed_paths:
+      - "/epublish/public/"
+    source_type: bulk_download
+    country: IN
+    state: null
+    department: null
+    languages: [en]
+    parser_name: epublish_parser
+    discovery:
+      mode: sitemap
+      sitemap_url: null
+      search_pages: []
+    limits:
+      rate_limit_seconds: 12
+      max_pages_per_run: 5
+      max_documents_per_run: 30
+    allowed_file_extensions: [pdf, zip]
+    robots_required: true
+    review:
+      reviewed_by: ""
+      reviewed_on: null
+      tos_url: null
+      tos_summary: ""
+      approved: false
+    notes: "ePublish placeholder."

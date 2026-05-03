@@ -1,0 +1,8 @@
+{
+  "embedder_name": "sentence-transformers/all-MiniLM-L6-v2",
+  "dimension": 384,
+  "chunk_count": 13,
+  "doc_count": 7,
+  "built_at": 1777841369.5811698,
+  "schema_version": 1
+}

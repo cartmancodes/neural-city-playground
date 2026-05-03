@@ -1,0 +1,2 @@
+[console_scripts]
+tender-embeddings = main:app

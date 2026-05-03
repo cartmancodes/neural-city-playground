@@ -1,0 +1,9 @@
+timestamp,run_id,source_id,url,decision,rule_triggered,reason
+2026-05-03T20:47:57.838355,20260503T204757Z-57e25b,local_fixture,http://127.0.0.1:8765/eprocure/public/tender_page.html,allow,,all checks passed
+2026-05-03T20:47:57.850390,20260503T204757Z-57e25b,local_fixture,http://127.0.0.1:8765/eprocure/public/tender_document.pdf,allow,,all checks passed
+2026-05-03T20:48:03.024520,20260503T204757Z-57e25b,local_fixture,http://127.0.0.1:8765/eprocure/public/scope_of_work.pdf,allow,,all checks passed
+2026-05-03T20:48:07.874234,20260503T204757Z-57e25b,local_fixture,http://127.0.0.1:8765/eprocure/public/technical_specifications.pdf,allow,,all checks passed
+2026-05-03T20:48:12.902638,20260503T204757Z-57e25b,local_fixture,http://127.0.0.1:8765/eprocure/public/instructions_to_tenderers_itt.pdf,allow,,all checks passed
+2026-05-03T20:48:17.899037,20260503T204757Z-57e25b,local_fixture,http://127.0.0.1:8765/eprocure/public/tender_data_sheet_tds.pdf,allow,,all checks passed
+2026-05-03T20:48:22.906927,20260503T204757Z-57e25b,local_fixture,http://127.0.0.1:8765/eprocure/public/evaluation_and_qualification_criteria.pdf,allow,,all checks passed
+2026-05-03T20:48:27.885888,20260503T204757Z-57e25b,local_fixture,http://127.0.0.1:8765/eprocure/public/corrigendum_1.pdf,allow,,all checks passed

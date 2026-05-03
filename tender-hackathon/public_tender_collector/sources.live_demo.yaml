@@ -1,0 +1,36 @@
+# sources.live_demo.yaml — for the LOCAL FIXTURE SERVER ONLY.
+#
+# This file is used to verify the pipeline end-to-end against a local
+# http.server serving fixture HTML and PDF on http://127.0.0.1:8765.
+# It is NOT a production source. The committed sources.yaml ships with
+# all sources approved=false.
+
+sources:
+  - source_id: local_fixture
+    source_name: "Local fixture server (live demo)"
+    base_url: "http://127.0.0.1:8765"
+    allowed_paths:
+      - "/eprocure/public/"
+    source_type: official_portal
+    country: IN
+    state: AP
+    department: null
+    languages: [en]
+    parser_name: cppp_parser
+    discovery:
+      mode: manual_seed
+      sitemap_url: null
+      search_pages: []
+    limits:
+      rate_limit_seconds: 1
+      max_pages_per_run: 5
+      max_documents_per_run: 20
+    allowed_file_extensions: [pdf, doc, docx, xls, xlsx, zip]
+    robots_required: true
+    review:
+      reviewed_by: "Live Demo Operator"
+      reviewed_on: "2026-05-04"
+      tos_url: "http://127.0.0.1:8765/tos"
+      tos_summary: "Local fixture server. No real terms apply; intended only for end-to-end pipeline verification."
+      approved: true
+    notes: "Spun up by the live-demo verification step. Not a real portal."

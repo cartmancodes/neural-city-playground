@@ -1,0 +1,70 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tender-embeddings"
+version = "0.1.0"
+description = "Local sentence-transformers embeddings + cosine search over public-tender-collector exports. No external API calls."
+authors = [{ name = "Procure Intelligence AP" }]
+readme = "README.md"
+license = { text = "Proprietary" }
+requires-python = ">=3.10,<3.15"
+dependencies = [
+  "numpy>=1.26,<3",
+  "sentence-transformers>=3.0,<4",
+  "typer==0.19.2",
+  "rich==13.9.4",
+  "tqdm>=4.66",
+  "pydantic==2.9.2",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest==8.3.4",
+  "pytest-mock==3.14.0",
+  "mypy==1.13.0",
+  "ruff==0.7.4",
+]
+
+[project.scripts]
+tender-embeddings = "main:app"
+
+[tool.setuptools]
+py-modules = ["main"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["tender_embeddings*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+extend-exclude = ["data", ".venv"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "SIM", "PL", "RUF"]
+ignore = ["PLR0913", "PLR2004", "E501", "PLR0915"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["PLR2004", "B011", "PLR0913"]
+"main.py" = ["B008", "B904"]
+
+[tool.mypy]
+python_version = "3.10"
+strict = true
+warn_unused_ignores = true
+plugins = ["pydantic.mypy"]
+exclude = "(data|\\.venv)/"
+
+[[tool.mypy.overrides]]
+module = ["sentence_transformers", "sentence_transformers.*", "tqdm", "tqdm.*"]
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q -ra"
+filterwarnings = [
+  "ignore::DeprecationWarning",
+  "ignore::pydantic.PydanticDeprecatedSince20",
+]

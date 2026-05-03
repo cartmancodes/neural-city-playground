@@ -1,0 +1,14 @@
+{
+  "run_id": "20260503T204757Z-57e25b",
+  "documents": [
+    {
+      "document_id": "097f744b5536fb36",
+      "tender_id": "7fa83df821071190",
+      "source_id": "local_fixture",
+      "file_path": "data/raw/local_fixture/7fa83df821071190/097f744b_evaluation_and_qualification_criteria.pdf",
+      "classified_type": "Evaluation_Qualification_Criteria",
+      "relevance_score": 44
+    }
+  ],
+  "count": 1
+}

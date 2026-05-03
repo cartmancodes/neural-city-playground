@@ -1,0 +1,2 @@
+[console_scripts]
+public-tender-collector = main:app

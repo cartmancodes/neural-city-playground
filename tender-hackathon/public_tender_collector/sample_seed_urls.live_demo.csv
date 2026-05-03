@@ -1,0 +1,3 @@
+# Live-demo seed file. Points at the local fixture server.
+source_id,tender_url,notes
+local_fixture,http://127.0.0.1:8765/eprocure/public/tender_page.html,Live demo verification

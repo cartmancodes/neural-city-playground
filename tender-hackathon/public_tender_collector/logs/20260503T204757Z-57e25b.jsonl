@@ -1,0 +1,136 @@
+load_ssl_context verify=True cert=None trust_env=True http2=False
+load_verify_locations cafile='/Users/shubhojeetchakraborty/PersonalProjects/neural-city-playground/tender-hackathon/public_tender_collector/.venv/lib/python3.13/site-packages/certifi/cacert.pem'
+connect_tcp.started host='127.0.0.1' port=8765 local_address=None timeout=30 socket_options=None
+connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x104b8ea50>
+send_request_headers.started request=<Request [b'GET']>
+send_request_headers.complete
+send_request_body.started request=<Request [b'GET']>
+send_request_body.complete
+receive_response_headers.started request=<Request [b'GET']>
+receive_response_headers.complete return_value=(b'HTTP/1.0', 200, b'OK', [(b'Server', b'SimpleHTTP/0.6 Python/3.13.13'), (b'Date', b'Sun, 03 May 2026 20:47:57 GMT'), (b'Content-type', b'text/plain'), (b'Content-Length', b'38'), (b'Last-Modified', b'Sun, 03 May 2026 20:13:37 GMT')])
+HTTP Request: GET http://127.0.0.1:8765/robots.txt "HTTP/1.0 200 OK"
+receive_response_body.started request=<Request [b'GET']>
+receive_response_body.complete
+response_closed.started
+response_closed.complete
+load_ssl_context verify=True cert=None trust_env=True http2=False
+load_verify_locations cafile='/Users/shubhojeetchakraborty/PersonalProjects/neural-city-playground/tender-hackathon/public_tender_collector/.venv/lib/python3.13/site-packages/certifi/cacert.pem'
+connect_tcp.started host='127.0.0.1' port=8765 local_address=None timeout=30 socket_options=None
+connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x104bd8b90>
+send_request_headers.started request=<Request [b'GET']>
+send_request_headers.complete
+send_request_body.started request=<Request [b'GET']>
+send_request_body.complete
+receive_response_headers.started request=<Request [b'GET']>
+receive_response_headers.complete return_value=(b'HTTP/1.0', 200, b'OK', [(b'Server', b'SimpleHTTP/0.6 Python/3.13.13'), (b'Date', b'Sun, 03 May 2026 20:47:57 GMT'), (b'Content-type', b'text/html'), (b'Content-Length', b'1085'), (b'Last-Modified', b'Sun, 03 May 2026 20:47:47 GMT')])
+HTTP Request: GET http://127.0.0.1:8765/eprocure/public/tender_page.html "HTTP/1.0 200 OK"
+receive_response_body.started request=<Request [b'GET']>
+receive_response_body.complete
+response_closed.started
+response_closed.complete
+load_ssl_context verify=True cert=None trust_env=True http2=False
+load_verify_locations cafile='/Users/shubhojeetchakraborty/PersonalProjects/neural-city-playground/tender-hackathon/public_tender_collector/.venv/lib/python3.13/site-packages/certifi/cacert.pem'
+connect_tcp.started host='127.0.0.1' port=8765 local_address=None timeout=30 socket_options=None
+connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x104bdaad0>
+send_request_headers.started request=<Request [b'GET']>
+send_request_headers.complete
+send_request_body.started request=<Request [b'GET']>
+send_request_body.complete
+receive_response_headers.started request=<Request [b'GET']>
+receive_response_headers.complete return_value=(b'HTTP/1.0', 200, b'OK', [(b'Server', b'SimpleHTTP/0.6 Python/3.13.13'), (b'Date', b'Sun, 03 May 2026 20:48:02 GMT'), (b'Content-type', b'application/pdf'), (b'Content-Length', b'4588'), (b'Last-Modified', b'Sun, 03 May 2026 20:13:17 GMT')])
+HTTP Request: GET http://127.0.0.1:8765/eprocure/public/tender_document.pdf "HTTP/1.0 200 OK"
+receive_response_body.started request=<Request [b'GET']>
+receive_response_body.complete
+response_closed.started
+response_closed.complete
+load_ssl_context verify=True cert=None trust_env=True http2=False
+load_verify_locations cafile='/Users/shubhojeetchakraborty/PersonalProjects/neural-city-playground/tender-hackathon/public_tender_collector/.venv/lib/python3.13/site-packages/certifi/cacert.pem'
+connect_tcp.started host='127.0.0.1' port=8765 local_address=None timeout=30 socket_options=None
+connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x105a83e10>
+send_request_headers.started request=<Request [b'GET']>
+send_request_headers.complete
+send_request_body.started request=<Request [b'GET']>
+send_request_body.complete
+receive_response_headers.started request=<Request [b'GET']>
+receive_response_headers.complete return_value=(b'HTTP/1.0', 200, b'OK', [(b'Server', b'SimpleHTTP/0.6 Python/3.13.13'), (b'Date', b'Sun, 03 May 2026 20:48:07 GMT'), (b'Content-type', b'application/pdf'), (b'Content-Length', b'4545'), (b'Last-Modified', b'Sun, 03 May 2026 20:13:17 GMT')])
+HTTP Request: GET http://127.0.0.1:8765/eprocure/public/scope_of_work.pdf "HTTP/1.0 200 OK"
+receive_response_body.started request=<Request [b'GET']>
+receive_response_body.complete
+response_closed.started
+response_closed.complete
+load_ssl_context verify=True cert=None trust_env=True http2=False
+load_verify_locations cafile='/Users/shubhojeetchakraborty/PersonalProjects/neural-city-playground/tender-hackathon/public_tender_collector/.venv/lib/python3.13/site-packages/certifi/cacert.pem'
+connect_tcp.started host='127.0.0.1' port=8765 local_address=None timeout=30 socket_options=None
+connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x1066ea780>
+send_request_headers.started request=<Request [b'GET']>
+send_request_headers.complete
+send_request_body.started request=<Request [b'GET']>
+send_request_body.complete
+receive_response_headers.started request=<Request [b'GET']>
+receive_response_headers.complete return_value=(b'HTTP/1.0', 200, b'OK', [(b'Server', b'SimpleHTTP/0.6 Python/3.13.13'), (b'Date', b'Sun, 03 May 2026 20:48:12 GMT'), (b'Content-type', b'application/pdf'), (b'Content-Length', b'4582'), (b'Last-Modified', b'Sun, 03 May 2026 20:13:17 GMT')])
+HTTP Request: GET http://127.0.0.1:8765/eprocure/public/technical_specifications.pdf "HTTP/1.0 200 OK"
+receive_response_body.started request=<Request [b'GET']>
+receive_response_body.complete
+response_closed.started
+response_closed.complete
+load_ssl_context verify=True cert=None trust_env=True http2=False
+load_verify_locations cafile='/Users/shubhojeetchakraborty/PersonalProjects/neural-city-playground/tender-hackathon/public_tender_collector/.venv/lib/python3.13/site-packages/certifi/cacert.pem'
+connect_tcp.started host='127.0.0.1' port=8765 local_address=None timeout=30 socket_options=None
+connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x1059c4dd0>
+send_request_headers.started request=<Request [b'GET']>
+send_request_headers.complete
+send_request_body.started request=<Request [b'GET']>
+send_request_body.complete
+receive_response_headers.started request=<Request [b'GET']>
+receive_response_headers.complete return_value=(b'HTTP/1.0', 200, b'OK', [(b'Server', b'SimpleHTTP/0.6 Python/3.13.13'), (b'Date', b'Sun, 03 May 2026 20:48:17 GMT'), (b'Content-type', b'application/pdf'), (b'Content-Length', b'4532'), (b'Last-Modified', b'Sun, 03 May 2026 20:13:17 GMT')])
+HTTP Request: GET http://127.0.0.1:8765/eprocure/public/instructions_to_tenderers_itt.pdf "HTTP/1.0 200 OK"
+receive_response_body.started request=<Request [b'GET']>
+receive_response_body.complete
+response_closed.started
+response_closed.complete
+load_ssl_context verify=True cert=None trust_env=True http2=False
+load_verify_locations cafile='/Users/shubhojeetchakraborty/PersonalProjects/neural-city-playground/tender-hackathon/public_tender_collector/.venv/lib/python3.13/site-packages/certifi/cacert.pem'
+connect_tcp.started host='127.0.0.1' port=8765 local_address=None timeout=30 socket_options=None
+connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x105af9f20>
+send_request_headers.started request=<Request [b'GET']>
+send_request_headers.complete
+send_request_body.started request=<Request [b'GET']>
+send_request_body.complete
+receive_response_headers.started request=<Request [b'GET']>
+receive_response_headers.complete return_value=(b'HTTP/1.0', 200, b'OK', [(b'Server', b'SimpleHTTP/0.6 Python/3.13.13'), (b'Date', b'Sun, 03 May 2026 20:48:22 GMT'), (b'Content-type', b'application/pdf'), (b'Content-Length', b'4514'), (b'Last-Modified', b'Sun, 03 May 2026 20:13:17 GMT')])
+HTTP Request: GET http://127.0.0.1:8765/eprocure/public/tender_data_sheet_tds.pdf "HTTP/1.0 200 OK"
+receive_response_body.started request=<Request [b'GET']>
+receive_response_body.complete
+response_closed.started
+response_closed.complete
+load_ssl_context verify=True cert=None trust_env=True http2=False
+load_verify_locations cafile='/Users/shubhojeetchakraborty/PersonalProjects/neural-city-playground/tender-hackathon/public_tender_collector/.venv/lib/python3.13/site-packages/certifi/cacert.pem'
+connect_tcp.started host='127.0.0.1' port=8765 local_address=None timeout=30 socket_options=None
+connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x105f385a0>
+send_request_headers.started request=<Request [b'GET']>
+send_request_headers.complete
+send_request_body.started request=<Request [b'GET']>
+send_request_body.complete
+receive_response_headers.started request=<Request [b'GET']>
+receive_response_headers.complete return_value=(b'HTTP/1.0', 200, b'OK', [(b'Server', b'SimpleHTTP/0.6 Python/3.13.13'), (b'Date', b'Sun, 03 May 2026 20:48:27 GMT'), (b'Content-type', b'application/pdf'), (b'Content-Length', b'4637'), (b'Last-Modified', b'Sun, 03 May 2026 20:13:17 GMT')])
+HTTP Request: GET http://127.0.0.1:8765/eprocure/public/evaluation_and_qualification_criteria.pdf "HTTP/1.0 200 OK"
+receive_response_body.started request=<Request [b'GET']>
+receive_response_body.complete
+response_closed.started
+response_closed.complete
+load_ssl_context verify=True cert=None trust_env=True http2=False
+load_verify_locations cafile='/Users/shubhojeetchakraborty/PersonalProjects/neural-city-playground/tender-hackathon/public_tender_collector/.venv/lib/python3.13/site-packages/certifi/cacert.pem'
+connect_tcp.started host='127.0.0.1' port=8765 local_address=None timeout=30 socket_options=None
+connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x105af7450>
+send_request_headers.started request=<Request [b'GET']>
+send_request_headers.complete
+send_request_body.started request=<Request [b'GET']>
+send_request_body.complete
+receive_response_headers.started request=<Request [b'GET']>
+receive_response_headers.complete return_value=(b'HTTP/1.0', 200, b'OK', [(b'Server', b'SimpleHTTP/0.6 Python/3.13.13'), (b'Date', b'Sun, 03 May 2026 20:48:32 GMT'), (b'Content-type', b'application/pdf'), (b'Content-Length', b'4589'), (b'Last-Modified', b'Sun, 03 May 2026 20:13:17 GMT')])
+HTTP Request: GET http://127.0.0.1:8765/eprocure/public/corrigendum_1.pdf "HTTP/1.0 200 OK"
+receive_response_body.started request=<Request [b'GET']>
+receive_response_body.complete
+response_closed.started
+response_closed.complete
+{"out": "data/exports/20260503T204757Z-57e25b", "files": 9, "event": "export_complete", "run_id": "20260503T204757Z-57e25b", "level": "info", "timestamp": "2026-05-03T20:48:32.952319Z"}

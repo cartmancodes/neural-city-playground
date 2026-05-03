@@ -1,0 +1,9 @@
+# Sample seed URLs file. THIS FILE INTENTIONALLY HAS NO REAL URLs.
+#
+# Each non-comment row is one tender page that a HUMAN has visited and
+# verified to be public, hosted on an APPROVED source listed in sources.yaml.
+# The collector will refuse to fetch any row whose source_id is unknown
+# or whose tender_url falls outside that source's allowed_paths.
+#
+# Add rows below the header. Lines starting with '#' are ignored.
+source_id,tender_url,notes
